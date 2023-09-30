@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Control_Gym.Capa_logica
 {
-    internal class Socios
+    internal class CSocio
     {
     }
 }
