@@ -8,5 +8,8 @@ namespace Control_Gym.Capa_de_datos
 {
     internal class CSocioD
     {
+        public CSocioD() {
+            string test = "Desde branch dev";
+        }
     }
 }
