@@ -77,12 +77,12 @@ namespace Control_Gym
 
         private void btnlogoInicio_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new FormPrincipal());
+            //AbrirFormEnPanel(new FormPrincipal());
         }
 
         private void btnEmpleados_Click(object sender, EventArgs e)
         {
-            //AbrirFormEnPanel(new FormEmpleados());
+            AbrirFormEnPanel(new FormEmpleados());
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
@@ -107,13 +107,13 @@ namespace Control_Gym
 
         private void btnInicio_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new FormPrincipal());
+            //AbrirFormEnPanel(new FormPrincipal());
         }
 
         private void FormContenedor_Load(object sender, EventArgs e)
         {
             btnlogoInicio_Click(null, e);
-            AbrirFormEnPanel(new FormPrincipal());
+            //AbrirFormEnPanel(new FormPrincipal());
         }
 
         private void MenuVertical_Paint(object sender, PaintEventArgs e)

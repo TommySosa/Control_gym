@@ -1,11 +1,61 @@
-# Ignorar archivos compilados
+# Archivos y carpetas generados por Visual Studio
+.vscode/
 bin/
 obj/
 
-# Ignorar archivos de configuración local
-appsettings.json
-appsettings.Development.json
+# Configuración de usuario y archivos temporales de Visual Studio
+*.suo
+*.user
+*.suo
+*.user
+*.suo
+*.user
 
-# Ignorar archivos de paquetes NuGet
-/packages/
-*.nupkg
+# Archivos de respaldo y caché
+[Bb]in/
+[Dd]ebug/
+[Rr]elease/
+ipch/
+obj/
+[Rr]eleaseNotes/
+[Tt]estResults/
+
+# Archivos de proyecto generados automáticamente
+[Tt]humbs.db
+[Bb]in/
+[Oo]bj/
+
+# Archivos de caché de NuGet
+packages/
+*.lock.json
+*.backup.json
+
+# Carpeta "packages" generada por NuGet Package Restore
+packages/
+
+# Registros y archivos de seguimiento
+*.log
+*.logs
+
+# Archivos de usuario y configuración de Visual Studio
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Carpeta de caché de Rider IDE
+.idea/
+.idea/
+
+# Carpeta de caché de Visual Studio Code
+.vscode/
+
+# Archivos temporales generados durante la compilación
+.~
+
+# Caché de archivos de usuario
+Desktop.ini
+
+# Archivos de proyecto específicos de Windows Forms
+*.suo
+*.user
