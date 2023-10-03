@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using Control_Gym.Capa_de_presentacion;
 
 namespace Control_Gym
 {
@@ -74,19 +75,9 @@ namespace Control_Gym
             fh.Show();
         }
 
-        private void btnprod_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void btnlogoInicio_Click(object sender, EventArgs e)
         {
-            
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            btnlogoInicio_Click(null,e);
+            AbrirFormEnPanel(new FormPrincipal());
         }
 
         private void btnEmpleados_Click(object sender, EventArgs e)
@@ -112,6 +103,17 @@ namespace Control_Gym
         private void btnAcceso_Click(object sender, EventArgs e)
         {
             //AbrirFormEnPanel(new FormAcceso());
+        }
+
+        private void btnInicio_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new FormPrincipal());
+        }
+
+        private void FormContenedor_Load(object sender, EventArgs e)
+        {
+            btnlogoInicio_Click(null, e);
+            AbrirFormEnPanel(new FormPrincipal());
         }
     }
 }

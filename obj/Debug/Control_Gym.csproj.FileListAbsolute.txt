@@ -17,3 +17,4 @@ C:\Users\Usuario\Documents\Materias\CONTROL__GYM\Control_gym\obj\Debug\Control_G
 C:\Users\Usuario\Documents\Materias\CONTROL__GYM\Control_gym\bin\Debug\Control_Gym.exe.config
 C:\Users\Usuario\Documents\Materias\CONTROL__GYM\Control_gym\bin\Debug\Control_Gym.exe
 C:\Users\Usuario\Documents\Materias\CONTROL__GYM\Control_gym\bin\Debug\Control_Gym.pdb
+C:\Users\Usuario\Documents\Materias\CONTROL__GYM\Control_gym\obj\Debug\Control_Gym.Capa_de_presentacion.FormPrincipal.resources

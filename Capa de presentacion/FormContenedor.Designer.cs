@@ -226,7 +226,7 @@
             this.btnInicio.TabIndex = 1;
             this.btnInicio.Text = "INICIO";
             this.btnInicio.UseVisualStyleBackColor = true;
-            this.btnInicio.Click += new System.EventHandler(this.btnprod_Click);
+            this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
             // 
             // btnlogoInicio
             // 
@@ -341,7 +341,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormContenedor";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.FormContenedor_Load);
             this.MenuVertical.ResumeLayout(false);
             this.MenuVertical.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
