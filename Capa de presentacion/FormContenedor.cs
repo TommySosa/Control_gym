@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
-namespace GUI_V_2
+namespace Control_Gym
 {
     public partial class FormContenedor : Form
     {
@@ -76,17 +76,42 @@ namespace GUI_V_2
 
         private void btnprod_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new Productos());
+            
         }
 
         private void btnlogoInicio_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new InicioResumen());
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             btnlogoInicio_Click(null,e);
+        }
+
+        private void btnEmpleados_Click(object sender, EventArgs e)
+        {
+            //AbrirFormEnPanel(new FormEmpleados());
+        }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            //AbrirFormEnPanel(new FormClientes());
+        }
+
+        private void btnSocios_Click(object sender, EventArgs e)
+        {
+            //AbrirFormEnPanel(new FormSocios());
+        }
+
+        private void btnMembresias_Click(object sender, EventArgs e)
+        {
+            //AbrirFormEnPanel(new FormMembresias());
+        }
+
+        private void btnAcceso_Click(object sender, EventArgs e)
+        {
+            //AbrirFormEnPanel(new FormAcceso());
         }
     }
 }

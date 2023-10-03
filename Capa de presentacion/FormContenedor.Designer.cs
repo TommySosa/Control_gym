@@ -1,4 +1,4 @@
-﻿namespace GUI_V_2
+﻿namespace Control_Gym
 {
     partial class FormContenedor
     {
@@ -141,6 +141,7 @@
             this.btnAcceso.TabIndex = 6;
             this.btnAcceso.Text = "ACCESO";
             this.btnAcceso.UseVisualStyleBackColor = true;
+            this.btnAcceso.Click += new System.EventHandler(this.btnAcceso_Click);
             // 
             // btnMembresias
             // 
@@ -157,6 +158,7 @@
             this.btnMembresias.TabIndex = 5;
             this.btnMembresias.Text = "MEMBRESÍAS";
             this.btnMembresias.UseVisualStyleBackColor = true;
+            this.btnMembresias.Click += new System.EventHandler(this.btnMembresias_Click);
             // 
             // btnSocios
             // 
@@ -173,6 +175,7 @@
             this.btnSocios.TabIndex = 4;
             this.btnSocios.Text = "SOCIOS";
             this.btnSocios.UseVisualStyleBackColor = true;
+            this.btnSocios.Click += new System.EventHandler(this.btnSocios_Click);
             // 
             // btnClientes
             // 
@@ -189,6 +192,7 @@
             this.btnClientes.TabIndex = 3;
             this.btnClientes.Text = "CLIENTES";
             this.btnClientes.UseVisualStyleBackColor = true;
+            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
             // btnEmpleados
             // 
@@ -205,6 +209,7 @@
             this.btnEmpleados.TabIndex = 2;
             this.btnEmpleados.Text = "EMPLEADOS";
             this.btnEmpleados.UseVisualStyleBackColor = true;
+            this.btnEmpleados.Click += new System.EventHandler(this.btnEmpleados_Click);
             // 
             // btnInicio
             // 
