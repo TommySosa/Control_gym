@@ -1,5 +1,18 @@
+# Ignorar archivos binarios generados por Visual Studio
+/bin/
+/obj/
+
+# Ignorar archivos de configuración local
+app.config
+
+# Ignorar archivos de salida del depurador
+*.suo
+*.user
+*.pdb
+
 # Archivos y carpetas generados por Visual Studio
 .vscode/
+.vs/
 bin/
 obj/
 
@@ -59,3 +72,4 @@ Desktop.ini
 # Archivos de proyecto específicos de Windows Forms
 *.suo
 *.user
+/Control_Gym.csproj
