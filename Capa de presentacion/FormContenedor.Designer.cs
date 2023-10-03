@@ -204,7 +204,7 @@
             this.btnEmpleados.ForeColor = System.Drawing.Color.White;
             this.btnEmpleados.Image = ((System.Drawing.Image)(resources.GetObject("btnEmpleados.Image")));
             this.btnEmpleados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEmpleados.Location = new System.Drawing.Point(0, 172);
+            this.btnEmpleados.Location = new System.Drawing.Point(1, 172);
             this.btnEmpleados.Name = "btnEmpleados";
             this.btnEmpleados.Size = new System.Drawing.Size(250, 40);
             this.btnEmpleados.TabIndex = 2;

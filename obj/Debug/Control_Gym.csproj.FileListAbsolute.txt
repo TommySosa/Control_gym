@@ -7,14 +7,25 @@ F:\Proyectos desarrollo\Control_Gym\obj\Debug\Control_Gym.csproj.GenerateResourc
 F:\Proyectos desarrollo\Control_Gym\obj\Debug\Control_Gym.csproj.CoreCompileInputs.cache
 F:\Proyectos desarrollo\Control_Gym\obj\Debug\Control_Gym.exe
 F:\Proyectos desarrollo\Control_Gym\obj\Debug\Control_Gym.pdb
+<<<<<<< HEAD
 C:\Users\Usuario\Documents\Materias\CONTROL__GYM\Control_gym\obj\Debug\Control_Gym.csproj.AssemblyReference.cache
+=======
+C:\Users\Usuario\Documents\Materias\CONTROL__GYM\Control_gym\bin\Debug\Control_Gym.exe.config
+C:\Users\Usuario\Documents\Materias\CONTROL__GYM\Control_gym\bin\Debug\Control_Gym.exe
+C:\Users\Usuario\Documents\Materias\CONTROL__GYM\Control_gym\bin\Debug\Control_Gym.pdb
+C:\Users\Usuario\Documents\Materias\CONTROL__GYM\Control_gym\obj\Debug\Control_Gym.csproj.AssemblyReference.cache
+C:\Users\Usuario\Documents\Materias\CONTROL__GYM\Control_gym\obj\Debug\Control_Gym.Capa_de_presentacion.FormEmpleados.resources
+>>>>>>> FormEmpleado
 C:\Users\Usuario\Documents\Materias\CONTROL__GYM\Control_gym\obj\Debug\Control_Gym.Properties.Resources.resources
 C:\Users\Usuario\Documents\Materias\CONTROL__GYM\Control_gym\obj\Debug\Control_Gym.csproj.GenerateResource.cache
 C:\Users\Usuario\Documents\Materias\CONTROL__GYM\Control_gym\obj\Debug\Control_Gym.csproj.CoreCompileInputs.cache
 C:\Users\Usuario\Documents\Materias\CONTROL__GYM\Control_gym\obj\Debug\Control_Gym.exe
 C:\Users\Usuario\Documents\Materias\CONTROL__GYM\Control_gym\obj\Debug\Control_Gym.pdb
+<<<<<<< HEAD
 C:\Users\Usuario\Documents\Materias\CONTROL__GYM\Control_gym\obj\Debug\Control_Gym.FormContenedor.resources
 C:\Users\Usuario\Documents\Materias\CONTROL__GYM\Control_gym\bin\Debug\Control_Gym.exe.config
 C:\Users\Usuario\Documents\Materias\CONTROL__GYM\Control_gym\bin\Debug\Control_Gym.exe
 C:\Users\Usuario\Documents\Materias\CONTROL__GYM\Control_gym\bin\Debug\Control_Gym.pdb
 C:\Users\Usuario\Documents\Materias\CONTROL__GYM\Control_gym\obj\Debug\Control_Gym.Capa_de_presentacion.FormPrincipal.resources
+=======
+>>>>>>> FormEmpleado
