@@ -115,5 +115,10 @@ namespace Control_Gym
             btnlogoInicio_Click(null, e);
             AbrirFormEnPanel(new FormPrincipal());
         }
+
+        private void MenuVertical_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

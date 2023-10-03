@@ -1,0 +1,11 @@
+# Ignorar archivos compilados
+bin/
+obj/
+
+# Ignorar archivos de configuración local
+appsettings.json
+appsettings.Development.json
+
+# Ignorar archivos de paquetes NuGet
+/packages/
+*.nupkg
