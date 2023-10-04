@@ -97,7 +97,7 @@ namespace Control_Gym
 
         private void btnMembresias_Click(object sender, EventArgs e)
         {
-            //AbrirFormEnPanel(new FormMembresias());
+            AbrirFormEnPanel(new FormMembresias());
         }
 
         private void btnAcceso_Click(object sender, EventArgs e)
