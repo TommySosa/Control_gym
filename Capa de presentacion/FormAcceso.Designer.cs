@@ -28,12 +28,67 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.lblDni = new System.Windows.Forms.Label();
+            this.lblContraseña = new System.Windows.Forms.Label();
+            this.txtDniEmpleado = new System.Windows.Forms.TextBox();
+            this.txtContraseñaEmpleado = new System.Windows.Forms.TextBox();
+            this.SuspendLayout();
+            // 
+            // lblDni
+            // 
+            this.lblDni.AutoSize = true;
+            this.lblDni.Location = new System.Drawing.Point(264, 150);
+            this.lblDni.Name = "lblDni";
+            this.lblDni.Size = new System.Drawing.Size(29, 13);
+            this.lblDni.TabIndex = 0;
+            this.lblDni.Text = "DNI:";
+            // 
+            // lblContraseña
+            // 
+            this.lblContraseña.AutoSize = true;
+            this.lblContraseña.Location = new System.Drawing.Point(264, 198);
+            this.lblContraseña.Name = "lblContraseña";
+            this.lblContraseña.Size = new System.Drawing.Size(64, 13);
+            this.lblContraseña.TabIndex = 1;
+            this.lblContraseña.Text = "Contraseña:";
+            this.lblContraseña.Click += new System.EventHandler(this.lblContraseña_Click);
+            // 
+            // txtDniEmpleado
+            // 
+            this.txtDniEmpleado.Location = new System.Drawing.Point(350, 143);
+            this.txtDniEmpleado.Name = "txtDniEmpleado";
+            this.txtDniEmpleado.Size = new System.Drawing.Size(100, 20);
+            this.txtDniEmpleado.TabIndex = 2;
+            // 
+            // txtContraseñaEmpleado
+            // 
+            this.txtContraseñaEmpleado.Location = new System.Drawing.Point(350, 195);
+            this.txtContraseñaEmpleado.Name = "txtContraseñaEmpleado";
+            this.txtContraseñaEmpleado.Size = new System.Drawing.Size(100, 20);
+            this.txtContraseñaEmpleado.TabIndex = 3;
+            // 
+            // FormAcceso
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtContraseñaEmpleado);
+            this.Controls.Add(this.txtDniEmpleado);
+            this.Controls.Add(this.lblContraseña);
+            this.Controls.Add(this.lblDni);
+            this.Name = "FormAcceso";
             this.Text = "FormAcceso";
+            this.Load += new System.EventHandler(this.FormAcceso_Load);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Label lblDni;
+        private System.Windows.Forms.Label lblContraseña;
+        private System.Windows.Forms.TextBox txtDniEmpleado;
+        private System.Windows.Forms.TextBox txtContraseñaEmpleado;
     }
 }

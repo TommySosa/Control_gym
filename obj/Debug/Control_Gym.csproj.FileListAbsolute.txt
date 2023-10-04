@@ -7,3 +7,13 @@ F:\Proyectos desarrollo\Control_Gym\obj\Debug\Control_Gym.csproj.GenerateResourc
 F:\Proyectos desarrollo\Control_Gym\obj\Debug\Control_Gym.csproj.CoreCompileInputs.cache
 F:\Proyectos desarrollo\Control_Gym\obj\Debug\Control_Gym.exe
 F:\Proyectos desarrollo\Control_Gym\obj\Debug\Control_Gym.pdb
+T:\gym\Control_gym\bin\Debug\Control_Gym.exe.config
+T:\gym\Control_gym\bin\Debug\Control_Gym.exe
+T:\gym\Control_gym\bin\Debug\Control_Gym.pdb
+T:\gym\Control_gym\obj\Debug\Control_Gym.csproj.AssemblyReference.cache
+T:\gym\Control_gym\obj\Debug\Control_Gym.Capa_de_presentacion.FormAcceso.resources
+T:\gym\Control_gym\obj\Debug\Control_Gym.Properties.Resources.resources
+T:\gym\Control_gym\obj\Debug\Control_Gym.csproj.GenerateResource.cache
+T:\gym\Control_gym\obj\Debug\Control_Gym.csproj.CoreCompileInputs.cache
+T:\gym\Control_gym\obj\Debug\Control_Gym.exe
+T:\gym\Control_gym\obj\Debug\Control_Gym.pdb
