@@ -54,16 +54,27 @@
       <DependentUpon>FormMembresias.cs</DependentUpon>
     </Compile>
     <Compile Include="Capa de presentacion\FormPrincipal.cs">
+    <Compile Include="Capa de presentacion\FormContenedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Capa de presentacion\FormPrincipal.Designer.cs">
-      <DependentUpon>FormPrincipal.cs</DependentUpon>
+    <Compile Include="Capa de presentacion\FormContenedor.designer.cs">
+      <DependentUpon>FormContenedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Capa logica\CSocio.cs" />
+    <Compile Include="Capa de presentacion\FormEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Capa de presentacion\FormEmpleados.Designer.cs">
+      <DependentUpon>FormEmpleados.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Capa de presentacion\FormMembresias.resx">
       <DependentUpon>FormMembresias.cs</DependentUpon>
+    <EmbeddedResource Include="Capa de presentacion\FormContenedor.resx">
+      <DependentUpon>FormContenedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Capa de presentacion\FormEmpleados.resx">
+      <DependentUpon>FormEmpleados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -87,6 +98,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Capa de datos\" />
+    <Folder Include="Capa logica\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

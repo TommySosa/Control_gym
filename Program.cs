@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Control_Gym.Capa_de_presentacion;
 
+
 namespace Control_Gym
 {
     internal static class Program
@@ -17,7 +18,7 @@ namespace Control_Gym
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMembresias());
+            Application.Run(new FormContenedor());
         }
     }
 }
