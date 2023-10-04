@@ -17,7 +17,7 @@ namespace Control_Gym
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormPrincipal());
+            Application.Run(new FormMembresias());
         }
     }
 }
