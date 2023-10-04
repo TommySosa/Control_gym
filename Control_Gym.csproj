@@ -46,6 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Capa de datos\CSocioD.cs" />
+    <Compile Include="Capa de presentacion\FormMembresias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Capa de presentacion\FormMembresias.Designer.cs">
+      <DependentUpon>FormMembresias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Capa de presentacion\FormPrincipal.cs">
     <Compile Include="Capa de presentacion\FormContenedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +68,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Capa de presentacion\FormMembresias.resx">
+      <DependentUpon>FormMembresias.cs</DependentUpon>
     <EmbeddedResource Include="Capa de presentacion\FormContenedor.resx">
       <DependentUpon>FormContenedor.cs</DependentUpon>
     </EmbeddedResource>
