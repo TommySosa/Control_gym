@@ -26,5 +26,15 @@ namespace Control_Gym.Capa_de_presentacion
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDni_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

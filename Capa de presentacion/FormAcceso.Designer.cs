@@ -32,21 +32,23 @@
             this.lblContraseña = new System.Windows.Forms.Label();
             this.txtDniEmpleado = new System.Windows.Forms.TextBox();
             this.txtContraseñaEmpleado = new System.Windows.Forms.TextBox();
+            this.btnIniciarSesion = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblDni
             // 
             this.lblDni.AutoSize = true;
-            this.lblDni.Location = new System.Drawing.Point(264, 150);
+            this.lblDni.Location = new System.Drawing.Point(280, 150);
             this.lblDni.Name = "lblDni";
             this.lblDni.Size = new System.Drawing.Size(29, 13);
             this.lblDni.TabIndex = 0;
             this.lblDni.Text = "DNI:";
+            this.lblDni.Click += new System.EventHandler(this.lblDni_Click);
             // 
             // lblContraseña
             // 
             this.lblContraseña.AutoSize = true;
-            this.lblContraseña.Location = new System.Drawing.Point(264, 198);
+            this.lblContraseña.Location = new System.Drawing.Point(280, 198);
             this.lblContraseña.Name = "lblContraseña";
             this.lblContraseña.Size = new System.Drawing.Size(64, 13);
             this.lblContraseña.TabIndex = 1;
@@ -64,14 +66,26 @@
             // 
             this.txtContraseñaEmpleado.Location = new System.Drawing.Point(350, 195);
             this.txtContraseñaEmpleado.Name = "txtContraseñaEmpleado";
+            this.txtContraseñaEmpleado.PasswordChar = '*';
             this.txtContraseñaEmpleado.Size = new System.Drawing.Size(100, 20);
             this.txtContraseñaEmpleado.TabIndex = 3;
+            // 
+            // btnIniciarSesion
+            // 
+            this.btnIniciarSesion.Location = new System.Drawing.Point(350, 250);
+            this.btnIniciarSesion.Name = "btnIniciarSesion";
+            this.btnIniciarSesion.Size = new System.Drawing.Size(100, 27);
+            this.btnIniciarSesion.TabIndex = 4;
+            this.btnIniciarSesion.Text = "Iniciar Sesión";
+            this.btnIniciarSesion.UseVisualStyleBackColor = true;
+            this.btnIniciarSesion.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormAcceso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnIniciarSesion);
             this.Controls.Add(this.txtContraseñaEmpleado);
             this.Controls.Add(this.txtDniEmpleado);
             this.Controls.Add(this.lblContraseña);
@@ -90,5 +104,6 @@
         private System.Windows.Forms.Label lblContraseña;
         private System.Windows.Forms.TextBox txtDniEmpleado;
         private System.Windows.Forms.TextBox txtContraseñaEmpleado;
+        private System.Windows.Forms.Button btnIniciarSesion;
     }
 }
