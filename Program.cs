@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Control_Gym.Capa_de_presentacion;
 
+
 namespace Control_Gym
 {
     internal static class Program
