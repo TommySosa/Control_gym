@@ -16,7 +16,6 @@ namespace Control_Gym.Capa_de_presentacion
         {
             InitializeComponent();
         }
-
         private void lblContraseña_Click(object sender, EventArgs e)
         {
 
