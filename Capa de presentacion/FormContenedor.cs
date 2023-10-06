@@ -102,7 +102,7 @@ namespace Control_Gym
 
         private void btnAcceso_Click(object sender, EventArgs e)
         {
-            //AbrirFormEnPanel(new FormAcceso());
+            AbrirFormEnPanel(new FormAcceso());
         }
 
         private void btnInicio_Click(object sender, EventArgs e)
