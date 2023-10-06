@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Control_Gym.Capa_de_presentacion
 {
-    public partial class FormPrincipal : Form
+    public partial class FormSocio : Form
     {
-        public FormPrincipal()
+        public FormSocio()
         {
             InitializeComponent();
         }
