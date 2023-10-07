@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Control_Gym.Capa_logica;
+
 namespace Control_Gym.Capa_de_presentacion
 {
     public partial class FormSocio : Form
@@ -15,6 +17,16 @@ namespace Control_Gym.Capa_de_presentacion
         public FormSocio()
         {
             InitializeComponent();
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GuardarDatosSocios()
+        {
+
         }
     }
 }
