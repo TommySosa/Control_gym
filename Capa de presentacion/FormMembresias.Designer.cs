@@ -75,6 +75,7 @@
             this.btnGuardarMembresia.TabIndex = 8;
             this.btnGuardarMembresia.Text = "Guardar";
             this.btnGuardarMembresia.UseVisualStyleBackColor = true;
+            this.btnGuardarMembresia.Click += new System.EventHandler(this.btnGuardarMembresia_Click);
             // 
             // btnEliminarMembresia
             // 
@@ -84,6 +85,7 @@
             this.btnEliminarMembresia.TabIndex = 6;
             this.btnEliminarMembresia.Text = "Eliminar";
             this.btnEliminarMembresia.UseVisualStyleBackColor = true;
+            this.btnEliminarMembresia.Click += new System.EventHandler(this.btnEliminarMembresia_Click);
             // 
             // btnEditarMembresia
             // 
@@ -93,6 +95,7 @@
             this.btnEditarMembresia.TabIndex = 7;
             this.btnEditarMembresia.Text = "Editar";
             this.btnEditarMembresia.UseVisualStyleBackColor = true;
+            this.btnEditarMembresia.Click += new System.EventHandler(this.btnEditarMembresia_Click);
             // 
             // btnCrearMembresia
             // 
@@ -102,6 +105,7 @@
             this.btnCrearMembresia.TabIndex = 5;
             this.btnCrearMembresia.Text = "Crear";
             this.btnCrearMembresia.UseVisualStyleBackColor = true;
+            this.btnCrearMembresia.Click += new System.EventHandler(this.btnCrearMembresia_Click);
             // 
             // panel1
             // 
@@ -137,6 +141,7 @@
             this.btnBuscarMembresia.TabIndex = 10;
             this.btnBuscarMembresia.Text = "Buscar";
             this.btnBuscarMembresia.UseVisualStyleBackColor = true;
+            this.btnBuscarMembresia.Click += new System.EventHandler(this.btnBuscarMembresia_Click);
             // 
             // lblDni2Membresia
             // 
@@ -171,6 +176,7 @@
             this.cbTipoMembresia.Name = "cbTipoMembresia";
             this.cbTipoMembresia.Size = new System.Drawing.Size(200, 21);
             this.cbTipoMembresia.TabIndex = 2;
+            this.cbTipoMembresia.SelectedIndexChanged += new System.EventHandler(this.cbTipoMembresia_SelectedIndexChanged);
             // 
             // lblTipoMembresia
             // 
@@ -187,6 +193,7 @@
             this.dtpFechaFin.Name = "dtpFechaFin";
             this.dtpFechaFin.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaFin.TabIndex = 4;
+            this.dtpFechaFin.ValueChanged += new System.EventHandler(this.dtpFechaFin_ValueChanged);
             // 
             // dtpFechaInicio
             // 
@@ -194,6 +201,7 @@
             this.dtpFechaInicio.Name = "dtpFechaInicio";
             this.dtpFechaInicio.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaInicio.TabIndex = 3;
+            this.dtpFechaInicio.ValueChanged += new System.EventHandler(this.dtpFechaInicio_ValueChanged);
             // 
             // lblFechaFinMembresia
             // 
