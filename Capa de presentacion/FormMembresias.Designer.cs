@@ -113,29 +113,36 @@
             this.panel1.Controls.Add(this.btnGuardarMembresia);
             this.panel1.Controls.Add(this.btnEliminarMembresia);
             this.panel1.Controls.Add(this.btnEditarMembresia);
-            this.panel1.Location = new System.Drawing.Point(468, 41);
+            this.panel1.Location = new System.Drawing.Point(585, 100);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(297, 111);
             this.panel1.TabIndex = 19;
             // 
             // dvgMembresias
             // 
+            this.dvgMembresias.AllowUserToAddRows = false;
+            this.dvgMembresias.AllowUserToDeleteRows = false;
+            this.dvgMembresias.AllowUserToOrderColumns = true;
+            this.dvgMembresias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dvgMembresias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgMembresias.Location = new System.Drawing.Point(12, 221);
+            this.dvgMembresias.Location = new System.Drawing.Point(65, 343);
+            this.dvgMembresias.MultiSelect = false;
             this.dvgMembresias.Name = "dvgMembresias";
-            this.dvgMembresias.Size = new System.Drawing.Size(776, 211);
+            this.dvgMembresias.ReadOnly = true;
+            this.dvgMembresias.Size = new System.Drawing.Size(921, 211);
             this.dvgMembresias.TabIndex = 11;
+            this.dvgMembresias.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dvgMembresias_CellFormatting);
             // 
             // txtBuscarDni
             // 
-            this.txtBuscarDni.Location = new System.Drawing.Point(12, 189);
+            this.txtBuscarDni.Location = new System.Drawing.Point(65, 303);
             this.txtBuscarDni.Name = "txtBuscarDni";
             this.txtBuscarDni.Size = new System.Drawing.Size(189, 20);
             this.txtBuscarDni.TabIndex = 9;
             // 
             // btnBuscarMembresia
             // 
-            this.btnBuscarMembresia.Location = new System.Drawing.Point(237, 189);
+            this.btnBuscarMembresia.Location = new System.Drawing.Point(270, 301);
             this.btnBuscarMembresia.Name = "btnBuscarMembresia";
             this.btnBuscarMembresia.Size = new System.Drawing.Size(75, 23);
             this.btnBuscarMembresia.TabIndex = 10;
@@ -146,7 +153,7 @@
             // lblDni2Membresia
             // 
             this.lblDni2Membresia.AutoSize = true;
-            this.lblDni2Membresia.Location = new System.Drawing.Point(12, 173);
+            this.lblDni2Membresia.Location = new System.Drawing.Point(62, 287);
             this.lblDni2Membresia.Name = "lblDni2Membresia";
             this.lblDni2Membresia.Size = new System.Drawing.Size(26, 13);
             this.lblDni2Membresia.TabIndex = 14;
@@ -162,7 +169,7 @@
             this.groupBox2.Controls.Add(this.lblFechaInicioMembresia);
             this.groupBox2.Controls.Add(this.txtDniMembresia);
             this.groupBox2.Controls.Add(this.lblDniMembresia);
-            this.groupBox2.Location = new System.Drawing.Point(43, 12);
+            this.groupBox2.Location = new System.Drawing.Point(133, 54);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(390, 157);
             this.groupBox2.TabIndex = 21;
@@ -189,6 +196,7 @@
             // 
             // dtpFechaFin
             // 
+            this.dtpFechaFin.Enabled = false;
             this.dtpFechaFin.Location = new System.Drawing.Point(137, 123);
             this.dtpFechaFin.Name = "dtpFechaFin";
             this.dtpFechaFin.Size = new System.Drawing.Size(200, 20);
@@ -225,7 +233,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1120, 584);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.lblDni2Membresia);
             this.Controls.Add(this.btnBuscarMembresia);
