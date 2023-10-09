@@ -92,7 +92,7 @@ namespace Control_Gym
 
         private void btnSocios_Click(object sender, EventArgs e)
         {
-            //AbrirFormEnPanel(new FormSocios());
+            AbrirFormEnPanel(new FormSocio());
         }
 
         private void btnMembresias_Click(object sender, EventArgs e)
