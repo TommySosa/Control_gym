@@ -113,7 +113,7 @@ namespace Control_Gym
         private void FormContenedor_Load(object sender, EventArgs e)
         {
             btnlogoInicio_Click(null, e);
-            AbrirFormEnPanel(new FormPrincipal());
+            AbrirFormEnPanel(new FormProductos());
         }
 
         private void MenuVertical_Paint(object sender, PaintEventArgs e)
