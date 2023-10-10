@@ -107,7 +107,7 @@ namespace Control_Gym
 
         private void btnInicio_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new FormPrincipal());
+            AbrirFormEnPanel(new FormProductos());
         }
 
         private void FormContenedor_Load(object sender, EventArgs e)
