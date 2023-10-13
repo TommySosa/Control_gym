@@ -38,7 +38,7 @@
             this.btnMembresias = new System.Windows.Forms.Button();
             this.btnSocios = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
-            this.btnEmpleados = new System.Windows.Forms.Button();
+            this.btnAdministracion = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.Button();
             this.btnlogoInicio = new System.Windows.Forms.PictureBox();
             this.BarraTitulo = new System.Windows.Forms.Panel();
@@ -70,7 +70,7 @@
             this.MenuVertical.Controls.Add(this.btnMembresias);
             this.MenuVertical.Controls.Add(this.btnSocios);
             this.MenuVertical.Controls.Add(this.btnClientes);
-            this.MenuVertical.Controls.Add(this.btnEmpleados);
+            this.MenuVertical.Controls.Add(this.btnAdministracion);
             this.MenuVertical.Controls.Add(this.btnInicio);
             this.MenuVertical.Controls.Add(this.btnlogoInicio);
             this.MenuVertical.Dock = System.Windows.Forms.DockStyle.Left;
@@ -195,22 +195,22 @@
             this.btnClientes.UseVisualStyleBackColor = true;
             this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
-            // btnEmpleados
+            // btnAdministracion
             // 
-            this.btnEmpleados.FlatAppearance.BorderSize = 0;
-            this.btnEmpleados.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.btnEmpleados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmpleados.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmpleados.ForeColor = System.Drawing.Color.White;
-            this.btnEmpleados.Image = ((System.Drawing.Image)(resources.GetObject("btnEmpleados.Image")));
-            this.btnEmpleados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEmpleados.Location = new System.Drawing.Point(1, 172);
-            this.btnEmpleados.Name = "btnEmpleados";
-            this.btnEmpleados.Size = new System.Drawing.Size(250, 40);
-            this.btnEmpleados.TabIndex = 2;
-            this.btnEmpleados.Text = "EMPLEADOS";
-            this.btnEmpleados.UseVisualStyleBackColor = true;
-            this.btnEmpleados.Click += new System.EventHandler(this.btnEmpleados_Click);
+            this.btnAdministracion.FlatAppearance.BorderSize = 0;
+            this.btnAdministracion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnAdministracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdministracion.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdministracion.ForeColor = System.Drawing.Color.White;
+            this.btnAdministracion.Image = ((System.Drawing.Image)(resources.GetObject("btnAdministracion.Image")));
+            this.btnAdministracion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdministracion.Location = new System.Drawing.Point(1, 172);
+            this.btnAdministracion.Name = "btnAdministracion";
+            this.btnAdministracion.Size = new System.Drawing.Size(250, 40);
+            this.btnAdministracion.TabIndex = 2;
+            this.btnAdministracion.Text = "     ADMINISTRACIÓN";
+            this.btnAdministracion.UseVisualStyleBackColor = true;
+            this.btnAdministracion.Click += new System.EventHandler(this.btnAdministracion_Click);
             // 
             // btnInicio
             // 
@@ -341,6 +341,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormContenedor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormContenedor_Load);
             this.MenuVertical.ResumeLayout(false);
@@ -373,7 +374,7 @@
         private System.Windows.Forms.Button btnMembresias;
         private System.Windows.Forms.Button btnSocios;
         private System.Windows.Forms.Button btnClientes;
-        private System.Windows.Forms.Button btnEmpleados;
+        private System.Windows.Forms.Button btnAdministracion;
         private System.Windows.Forms.Label lblcorreo;
         private System.Windows.Forms.Label lbluser;
         private System.Windows.Forms.PictureBox pictureBox2;

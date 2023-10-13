@@ -1,5 +1,12 @@
 ﻿using Control_Gym.Capa_de_presentacion;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Control_Gym
@@ -27,6 +34,11 @@ namespace Control_Gym
         private void btnEmpleados_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanel(new FormEmpleados());
+        }
+
+        private void btnTiposMembresia_Click(object sender, EventArgs e)
+        {
+            //AbrirFormEnPanel(new FormTiposMembresias());
         }
 
         private void btnProveedores_Click(object sender, EventArgs e)

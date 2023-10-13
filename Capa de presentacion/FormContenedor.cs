@@ -80,14 +80,14 @@ namespace Control_Gym
             //AbrirFormEnPanel(new FormPrincipal());
         }
 
-        private void btnEmpleados_Click(object sender, EventArgs e)
-        {
-            AbrirFormEnPanel(new FormEmpleados());
-        }
-
         private void btnClientes_Click(object sender, EventArgs e)
         {
             //AbrirFormEnPanel(new FormClientes());
+        }
+
+        private void btnAdministracion_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new FormAdministracion());
         }
 
         private void btnSocios_Click(object sender, EventArgs e)
@@ -120,5 +120,6 @@ namespace Control_Gym
         {
 
         }
+
     }
 }
