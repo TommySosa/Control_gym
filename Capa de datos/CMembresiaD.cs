@@ -74,6 +74,7 @@ namespace Control_Gym.Capa_de_datos
 			}
           
         }
+
         public List<CMembresia> TraerMembresias()
         {
             List<CMembresia> membresias = new List<CMembresia>();
@@ -162,7 +163,9 @@ namespace Control_Gym.Capa_de_datos
 
             DateTime fecha_inicio = new DateTime(año_inicio, mes_inicio, dia_inicio);
             DateTime fecha_fin = new DateTime(año_fin, mes_fin, dia_fin);
-            string query = "update membresias set cod_tipo_membresia = '"+cMembresia.cod_tipo_membresia+"', dni_socio = '"+cMembresia.dni_socio+"', fecha_inicio = '"+ fecha_inicio + "', fecha_fin = '"+ fecha_fin + "' where dni_socio = '"+cMembresia.dni_socio+"'";
+
+
+            string query = "update membresias set cod_tipo_membresia = '"+cMembresia.cod_tipo_membresia+"', dni_socio = '"+cMembresia.dni_socio+"', fecha_inicio = '"+ fecha_inicio + "', fecha_fin = '"+ fecha_fin + "' where cod_membresia = '"+cMembresia.cod_membresia+"'";
             try
             {
                 SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
