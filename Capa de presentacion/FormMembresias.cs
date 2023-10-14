@@ -234,6 +234,11 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void dvgMembresias_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+        }
+
+        private void dvgMembresias_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
             if (dvgMembresias.SelectedRows.Count > 0)
             {
                 btnCrearMembresia.Visible = false;
@@ -246,7 +251,7 @@ namespace Control_Gym.Capa_de_presentacion
                 txtDniMembresia.Text = filaSeleccionada.Cells["dni_socio"].Value.ToString();
                 dtpFechaInicio.Text = filaSeleccionada.Cells["fecha_inicio"].Value.ToString();
                 dtpFechaFin.Text = filaSeleccionada.Cells["fecha_fin"].Value.ToString();
-                
+
             }
             else
             {

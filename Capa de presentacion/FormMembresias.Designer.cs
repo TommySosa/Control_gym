@@ -134,6 +134,7 @@
             this.dvgMembresias.TabIndex = 11;
             this.dvgMembresias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgMembresias_CellClick);
             this.dvgMembresias.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dvgMembresias_CellFormatting);
+            this.dvgMembresias.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dvgMembresias_RowHeaderMouseClick);
             // 
             // txtBuscarDni
             // 
