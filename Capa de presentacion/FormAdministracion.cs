@@ -13,6 +13,7 @@ namespace Control_Gym
 {
     public partial class FormAdministracion : Form
     {
+
         public FormAdministracion()
         {
             InitializeComponent();
@@ -48,6 +49,16 @@ namespace Control_Gym
         private void btnProductos_Click(object sender, EventArgs e)
         {
             //AbrirFormEnPanel(new FormProductos());
+        }
+
+        private void btnTiposMembresias_Click(object sender, EventArgs e)
+        {
+            //AbrirFormEnPanel(new FormTiposMembresias());
+        }
+
+        private void FormAdministracion_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
