@@ -93,7 +93,7 @@
             this.btnTiposMembresia.Name = "btnTiposMembresia";
             this.btnTiposMembresia.Size = new System.Drawing.Size(80, 23);
             this.btnTiposMembresia.TabIndex = 41;
-            this.btnTiposMembresia.Text = "AGREGAR";
+            this.btnTiposMembresia.Text = "MOSTRAR";
             this.btnTiposMembresia.UseVisualStyleBackColor = false;
             this.btnTiposMembresia.Click += new System.EventHandler(this.btnTiposMembresia_Click);
             // 
@@ -146,7 +146,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label15.Location = new System.Drawing.Point(9, 0);
+            this.label15.Location = new System.Drawing.Point(28, 1);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(171, 25);
             this.label15.TabIndex = 37;
@@ -173,18 +173,18 @@
             this.btnProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProveedores.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProveedores.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnProveedores.Location = new System.Drawing.Point(40, 103);
+            this.btnProveedores.Location = new System.Drawing.Point(49, 103);
             this.btnProveedores.Name = "btnProveedores";
             this.btnProveedores.Size = new System.Drawing.Size(80, 23);
             this.btnProveedores.TabIndex = 40;
-            this.btnProveedores.Text = "AGREGAR";
+            this.btnProveedores.Text = "MOSTRAR";
             this.btnProveedores.UseVisualStyleBackColor = false;
             this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
             // 
             // pictureBox6
             // 
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(40, 30);
+            this.pictureBox6.Location = new System.Drawing.Point(49, 30);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(80, 80);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -238,7 +238,7 @@
             this.btnEmpleados.Name = "btnEmpleados";
             this.btnEmpleados.Size = new System.Drawing.Size(80, 23);
             this.btnEmpleados.TabIndex = 38;
-            this.btnEmpleados.Text = "AGREGAR";
+            this.btnEmpleados.Text = "MOSTRAR";
             this.btnEmpleados.UseVisualStyleBackColor = false;
             this.btnEmpleados.Click += new System.EventHandler(this.btnEmpleados_Click);
             // 
@@ -342,7 +342,7 @@
             this.btnProductos.Name = "btnProductos";
             this.btnProductos.Size = new System.Drawing.Size(80, 23);
             this.btnProductos.TabIndex = 39;
-            this.btnProductos.Text = "AGREGAR";
+            this.btnProductos.Text = "MOSTRAR";
             this.btnProductos.UseVisualStyleBackColor = false;
             this.btnProductos.Click += new System.EventHandler(this.btnProductos_Click);
             // 
