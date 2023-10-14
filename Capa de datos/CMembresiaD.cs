@@ -20,23 +20,18 @@ namespace Control_Gym.Capa_de_datos
                 MessageBox.Show("El socio con el DNI especificado no existe en la base de datos.");
                 return;
             }
-            int mes_inicio = cMembresia.fecha_inicio.Day;
-            int dia_inicio = cMembresia.fecha_inicio.Month;
-            int año_inicio = cMembresia.fecha_inicio.Year;
 
-            int mes_fin = cMembresia.fecha_fin.Day;
-            int dia_fin = cMembresia.fecha_fin.Month;
-            int año_fin = cMembresia.fecha_fin.Year;
-
-            DateTime fecha_inicio = new DateTime(año_inicio, mes_inicio, dia_inicio);
-            DateTime fecha_fin = new DateTime(año_fin, mes_fin, dia_fin);
-
-            string query = "insert into membresias(cod_tipo_membresia, dni_socio, fecha_inicio, fecha_fin) values('" + cMembresia.cod_tipo_membresia + "','" + cMembresia.dni_socio + "','" + fecha_inicio + "','" + fecha_fin + "')";
-			try
-			{
+            string query = "INSERT INTO membresias(cod_tipo_membresia, dni_socio, fecha_inicio, fecha_fin) VALUES (@cod_tipo_membresia, @dni_socio, @fecha_inicio, @fecha_fin)";
+            try
+            {
 				SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
 
-				comando.ExecuteNonQuery();
+                comando.Parameters.Add(new SqlParameter("@cod_tipo_membresia", cMembresia.cod_tipo_membresia));
+                comando.Parameters.Add(new SqlParameter("@dni_socio", cMembresia.dni_socio));
+                comando.Parameters.Add(new SqlParameter("@fecha_inicio", cMembresia.fecha_inicio));
+                comando.Parameters.Add(new SqlParameter("@fecha_fin", cMembresia.fecha_fin));
+
+                comando.ExecuteNonQuery();
 			}
 			catch (Exception ex)
 			{
@@ -74,6 +69,7 @@ namespace Control_Gym.Capa_de_datos
 			}
           
         }
+
         public List<CMembresia> TraerMembresias()
         {
             List<CMembresia> membresias = new List<CMembresia>();
@@ -152,32 +148,31 @@ namespace Control_Gym.Capa_de_datos
 
         public void EditarMembresia(CMembresia cMembresia)
         {
-            int mes_inicio = cMembresia.fecha_inicio.Day;
-            int dia_inicio = cMembresia.fecha_inicio.Month;
-            int año_inicio = cMembresia.fecha_inicio.Year;
+            string query = "UPDATE membresias SET cod_tipo_membresia = @cod_tipo_membresia, dni_socio = @dni_socio, fecha_inicio = @fecha_inicio, fecha_fin = @fecha_fin WHERE cod_membresia = @cod_membresia";
 
-            int mes_fin = cMembresia.fecha_fin.Day;
-            int dia_fin = cMembresia.fecha_fin.Month;
-            int año_fin = cMembresia.fecha_fin.Year;
-
-            DateTime fecha_inicio = new DateTime(año_inicio, mes_inicio, dia_inicio);
-            DateTime fecha_fin = new DateTime(año_fin, mes_fin, dia_fin);
-            string query = "update membresias set cod_tipo_membresia = '"+cMembresia.cod_tipo_membresia+"', dni_socio = '"+cMembresia.dni_socio+"', fecha_inicio = '"+ fecha_inicio + "', fecha_fin = '"+ fecha_fin + "' where dni_socio = '"+cMembresia.dni_socio+"'";
             try
             {
                 SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
+
+                comando.Parameters.Add(new SqlParameter("@cod_tipo_membresia", cMembresia.cod_tipo_membresia));
+                comando.Parameters.Add(new SqlParameter("@dni_socio", cMembresia.dni_socio));
+                comando.Parameters.Add(new SqlParameter("@fecha_inicio", cMembresia.fecha_inicio));
+                comando.Parameters.Add(new SqlParameter("@fecha_fin", cMembresia.fecha_fin));
+                comando.Parameters.Add(new SqlParameter("@cod_membresia", cMembresia.cod_membresia));
+
                 comando.ExecuteNonQuery();
-                MessageBox.Show("Membresia actualizada correctamente");
+                MessageBox.Show("Membresía actualizada correctamente");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al actualizar la membresia"+ ex);
+                MessageBox.Show("Error al actualizar la membresía: " + ex.Message);
             }
             finally
             {
                 conexionBD.CerrarConexion();
             }
         }
+
 
         public void EliminarMembresia(int id)
         {
