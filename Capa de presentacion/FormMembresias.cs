@@ -44,11 +44,28 @@ namespace Control_Gym.Capa_de_presentacion
         }
         private void FormMembresias_Load(object sender, EventArgs e)
         {
+            btnCancelarMembresia.Visible = false;
+            btnActualizarMembresia.Visible = false;
+            btnCancelarMembresia.Visible = false;
+            btnEliminarMembresia.Visible = false;
             dtpFechaFin.Value = dtpFechaFin.Value.AddDays(cMembresia.cantidad_dias);
             dvgMembresias.CellFormatting += dvgMembresias_CellFormatting;
             CargarGrilla();
         }
 
+        public void CancelarModificar()
+        {
+            btnCrearMembresia.Visible = true;
+            btnActualizarMembresia.Visible = false;
+            btnEliminarMembresia.Visible = false;
+            btnCancelarMembresia.Visible = false;
+        }
+        public void LimpiarCampos()
+        {
+            txtDniMembresia.Text = "";
+            cbTipoMembresia.Text = "";
+            dtpFechaInicio.Value = DateTime.Now;          
+        }
         private void btnCrearMembresia_Click(object sender, EventArgs e)
         {
             if(txtDniMembresia.Text != "")
@@ -58,7 +75,7 @@ namespace Control_Gym.Capa_de_presentacion
                 bool existe = cMembresiaD.SocioExiste(cMembresia.dni_socio);
                 if (existe)
                 {
-                    cMembresiaD.CrearMembresia(cMembresia);
+                    cMembresia.CrearMembresia(cMembresia);
                     CargarGrilla();
                 }
                 else
@@ -77,7 +94,8 @@ namespace Control_Gym.Capa_de_presentacion
             if (dvgMembresias.SelectedRows.Count > 0)
             {
                 DataGridViewRow filaSeleccionada = dvgMembresias.SelectedRows[0];
-                
+
+                txtCodMembresia.Text = filaSeleccionada.Cells["cod_membresia"].Value.ToString();
                 cbTipoMembresia.Text = filaSeleccionada.Cells["cod_tipo_membresia"].Value.ToString();
                 txtDniMembresia.Text = filaSeleccionada.Cells["dni_socio"].Value.ToString();
                 dtpFechaInicio.Text = filaSeleccionada.Cells["fecha_inicio"].Value.ToString();
@@ -91,25 +109,7 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void btnGuardarMembresia_Click(object sender, EventArgs e)
         {
-            if(txtDniMembresia.Text != "")
-            {
-                CMembresia cMembresiaG = new CMembresia(Convert.ToInt32(cTipoMembresia.cod_tipo_membresia), Convert.ToInt32(txtDniMembresia.Text), DateTime.Parse(dtpFechaInicio.Value.ToString("yyyy/MM/dd")), DateTime.Parse(dtpFechaFin.Value.ToString("yyyy/MM/dd")));
-                CMembresiaD cMembresiaD = new CMembresiaD();
-                bool existe = cMembresiaD.SocioExiste(cMembresiaG.dni_socio);
-                if (existe)
-                {
-                    cMembresia.EditarMembresia(cMembresiaG);
-                    CargarGrilla();
-                }
-                else
-                {
-                    MessageBox.Show("El socio con el DNI especificado no existe en la base de datos. Primero haga el alta al socio.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Porfavor ingrese el DNI");
-            }
+
         }
 
         private void btnEliminarMembresia_Click(object sender, EventArgs e)
@@ -156,13 +156,20 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void dtpFechaInicio_ValueChanged(object sender, EventArgs e)
         {
-            if (dtpFechaInicio.Value != null)
+            try
             {
-                CTipoMembresia tipoSeleccionado = (CTipoMembresia)cbTipoMembresia.SelectedItem;
-                int cantidadDias = tipoSeleccionado.cantidad_dias;
-                DateTime fechaInicio = dtpFechaInicio.Value;
-                DateTime fechaFin = fechaInicio.AddDays(cantidadDias);
-                dtpFechaFin.Value = fechaFin;
+                if (dtpFechaInicio.Value != null)
+                {
+                    CTipoMembresia tipoSeleccionado = (CTipoMembresia)cbTipoMembresia.SelectedItem;
+                    int cantidadDias = tipoSeleccionado.cantidad_dias;
+                    DateTime fechaInicio = dtpFechaInicio.Value;
+                    DateTime fechaFin = fechaInicio.AddDays(cantidadDias);
+                    dtpFechaFin.Value = fechaFin;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error inesperado"+ ex);
             }
         }
 
@@ -173,7 +180,83 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void dvgMembresias_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (e.RowIndex >= 0 && e.ColumnIndex == 4)
+            {
+                DateTime fechaFin = (DateTime)dvgMembresias.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                DateTime hoy = DateTime.Now;
 
+                TimeSpan diferencia = fechaFin - hoy;
+
+                if (diferencia.TotalDays < -1)
+                {
+                    dvgMembresias.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.Salmon;
+                }
+                else if (diferencia.TotalDays <= 5)
+                {
+                    dvgMembresias.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.Yellow;
+                }
+                else
+                {
+                    dvgMembresias.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.LightGreen;
+                }
+            }
+
+        }
+
+        private void btnActualizarMembresia_Click(object sender, EventArgs e)
+        {
+            if (txtDniMembresia.Text != "")
+            {
+                CMembresia cMembresiaG = new CMembresia(Convert.ToInt32(txtCodMembresia.Text),cTipoMembresia.cod_tipo_membresia, Convert.ToInt32(txtDniMembresia.Text), DateTime.Parse(dtpFechaInicio.Value.ToString("yyyy/MM/dd")), DateTime.Parse(dtpFechaFin.Value.ToString("yyyy/MM/dd")));
+                CMembresiaD cMembresiaD = new CMembresiaD();
+                bool existe = cMembresiaD.SocioExiste(cMembresiaG.dni_socio);
+                if (existe)
+                {
+                    cMembresia.EditarMembresia(cMembresiaG);
+                    CargarGrilla();
+                }
+                else
+                {
+                    MessageBox.Show("El socio con el DNI especificado no existe en la base de datos. Primero haga el alta al socio.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Porfavor ingrese el DNI");
+            }
+        }
+
+        private void btnCancelarMembresia_Click(object sender, EventArgs e)
+        {
+            CancelarModificar();
+            LimpiarCampos();
+        }
+
+        private void dvgMembresias_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dvgMembresias_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dvgMembresias.SelectedRows.Count > 0)
+            {
+                btnCrearMembresia.Visible = false;
+                btnCancelarMembresia.Visible = true;
+                btnActualizarMembresia.Visible = true;
+                btnEliminarMembresia.Visible = true;
+                DataGridViewRow filaSeleccionada = dvgMembresias.SelectedRows[0];
+                txtCodMembresia.Text = filaSeleccionada.Cells["cod_membresia"].Value.ToString();
+                cbTipoMembresia.Text = filaSeleccionada.Cells["cod_tipo_membresia"].Value.ToString();
+                txtDniMembresia.Text = filaSeleccionada.Cells["dni_socio"].Value.ToString();
+                dtpFechaInicio.Text = filaSeleccionada.Cells["fecha_inicio"].Value.ToString();
+                dtpFechaFin.Text = filaSeleccionada.Cells["fecha_fin"].Value.ToString();
+
+            }
+            else
+            {
+                MessageBox.Show("Selecciona una fila en la grilla antes de cargar los datos.");
+            }
         }
     }
 }
