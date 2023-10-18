@@ -33,12 +33,14 @@
             this.txtDniEmpleado = new System.Windows.Forms.TextBox();
             this.txtContraseñaEmpleado = new System.Windows.Forms.TextBox();
             this.btnIniciarSesion = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblDni
             // 
             this.lblDni.AutoSize = true;
-            this.lblDni.Location = new System.Drawing.Point(280, 150);
+            this.lblDni.Location = new System.Drawing.Point(13, 35);
             this.lblDni.Name = "lblDni";
             this.lblDni.Size = new System.Drawing.Size(29, 13);
             this.lblDni.TabIndex = 0;
@@ -48,7 +50,7 @@
             // lblContraseña
             // 
             this.lblContraseña.AutoSize = true;
-            this.lblContraseña.Location = new System.Drawing.Point(280, 198);
+            this.lblContraseña.Location = new System.Drawing.Point(13, 83);
             this.lblContraseña.Name = "lblContraseña";
             this.lblContraseña.Size = new System.Drawing.Size(64, 13);
             this.lblContraseña.TabIndex = 1;
@@ -57,44 +59,57 @@
             // 
             // txtDniEmpleado
             // 
-            this.txtDniEmpleado.Location = new System.Drawing.Point(350, 143);
+            this.txtDniEmpleado.Location = new System.Drawing.Point(83, 28);
             this.txtDniEmpleado.Name = "txtDniEmpleado";
-            this.txtDniEmpleado.Size = new System.Drawing.Size(100, 20);
+            this.txtDniEmpleado.Size = new System.Drawing.Size(129, 20);
             this.txtDniEmpleado.TabIndex = 2;
+            this.txtDniEmpleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDniEmpleado_KeyPress);
             // 
             // txtContraseñaEmpleado
             // 
-            this.txtContraseñaEmpleado.Location = new System.Drawing.Point(350, 195);
+            this.txtContraseñaEmpleado.Location = new System.Drawing.Point(83, 80);
             this.txtContraseñaEmpleado.Name = "txtContraseñaEmpleado";
             this.txtContraseñaEmpleado.PasswordChar = '*';
-            this.txtContraseñaEmpleado.Size = new System.Drawing.Size(100, 20);
+            this.txtContraseñaEmpleado.Size = new System.Drawing.Size(129, 20);
             this.txtContraseñaEmpleado.TabIndex = 3;
             // 
             // btnIniciarSesion
             // 
-            this.btnIniciarSesion.Location = new System.Drawing.Point(350, 250);
+            this.btnIniciarSesion.Location = new System.Drawing.Point(83, 135);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
             this.btnIniciarSesion.Size = new System.Drawing.Size(100, 27);
             this.btnIniciarSesion.TabIndex = 4;
             this.btnIniciarSesion.Text = "Iniciar Sesión";
             this.btnIniciarSesion.UseVisualStyleBackColor = true;
-            this.btnIniciarSesion.Click += new System.EventHandler(this.button1_Click);
+            this.btnIniciarSesion.Click += new System.EventHandler(this.btnIniciarSesion_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtContraseñaEmpleado);
+            this.groupBox1.Controls.Add(this.btnIniciarSesion);
+            this.groupBox1.Controls.Add(this.lblDni);
+            this.groupBox1.Controls.Add(this.lblContraseña);
+            this.groupBox1.Controls.Add(this.txtDniEmpleado);
+            this.groupBox1.Location = new System.Drawing.Point(347, 158);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(236, 204);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Ingresa los datos";
             // 
             // FormAcceso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnIniciarSesion);
-            this.Controls.Add(this.txtContraseñaEmpleado);
-            this.Controls.Add(this.txtDniEmpleado);
-            this.Controls.Add(this.lblContraseña);
-            this.Controls.Add(this.lblDni);
+            this.ClientSize = new System.Drawing.Size(989, 567);
+            this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormAcceso";
             this.Text = "FormAcceso";
             this.Load += new System.EventHandler(this.FormAcceso_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -105,5 +120,6 @@
         private System.Windows.Forms.TextBox txtDniEmpleado;
         private System.Windows.Forms.TextBox txtContraseñaEmpleado;
         private System.Windows.Forms.Button btnIniciarSesion;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
