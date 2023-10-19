@@ -18,7 +18,7 @@ namespace Control_Gym.Capa_de_datos
             try
             {
                 conexionBD.AbrirConexion();
-                string query = "select cod_tipo_membresia, nombre from tipos_membresias";
+                string query = "select * from tipos_membresias";
                 SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
                 SqlDataReader reader = comando.ExecuteReader();
                 {
@@ -26,7 +26,11 @@ namespace Control_Gym.Capa_de_datos
                     {
                         int cod_tipo_membresia = Convert.ToInt32(reader["cod_tipo_membresia"]);
                         string nombre = reader["nombre"].ToString();
-                        tipos_membresias.Add(new CTipoMembresia(cod_tipo_membresia, nombre));
+                        int cantidadDias = Convert.ToInt32(reader["cantidad_dias"]);
+
+                        CTipoMembresia tipoMembresia = new CTipoMembresia(cod_tipo_membresia, nombre);
+                        tipoMembresia.cantidad_dias = cantidadDias;
+                        tipos_membresias.Add(tipoMembresia);
                     }
                 }
                 return tipos_membresias;

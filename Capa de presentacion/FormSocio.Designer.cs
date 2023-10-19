@@ -51,6 +51,9 @@
             this.txtBuscarSocio = new System.Windows.Forms.TextBox();
             this.btnBuscarSocio = new System.Windows.Forms.Button();
             this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
+            this.btnRecargar = new System.Windows.Forms.Button();
+            this.txtCod = new System.Windows.Forms.TextBox();
+            this.lblCod = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,47 +62,50 @@
             this.dgvSocios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSocios.Location = new System.Drawing.Point(385, 48);
             this.dgvSocios.Name = "dgvSocios";
-            this.dgvSocios.Size = new System.Drawing.Size(403, 362);
+            this.dgvSocios.ReadOnly = true;
+            this.dgvSocios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSocios.Size = new System.Drawing.Size(622, 362);
             this.dgvSocios.TabIndex = 0;
+            this.dgvSocios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSocios_CellClick);
             // 
             // txtDniSocio
             // 
-            this.txtDniSocio.Location = new System.Drawing.Point(126, 12);
+            this.txtDniSocio.Location = new System.Drawing.Point(126, 69);
             this.txtDniSocio.Name = "txtDniSocio";
             this.txtDniSocio.Size = new System.Drawing.Size(234, 20);
             this.txtDniSocio.TabIndex = 1;
             // 
             // txtNombreSocio
             // 
-            this.txtNombreSocio.Location = new System.Drawing.Point(126, 48);
+            this.txtNombreSocio.Location = new System.Drawing.Point(126, 108);
             this.txtNombreSocio.Name = "txtNombreSocio";
             this.txtNombreSocio.Size = new System.Drawing.Size(234, 20);
             this.txtNombreSocio.TabIndex = 2;
             // 
             // txtApellidoSocio
             // 
-            this.txtApellidoSocio.Location = new System.Drawing.Point(126, 86);
+            this.txtApellidoSocio.Location = new System.Drawing.Point(126, 148);
             this.txtApellidoSocio.Name = "txtApellidoSocio";
             this.txtApellidoSocio.Size = new System.Drawing.Size(234, 20);
             this.txtApellidoSocio.TabIndex = 3;
             // 
             // txtTelefonoSocio
             // 
-            this.txtTelefonoSocio.Location = new System.Drawing.Point(126, 122);
+            this.txtTelefonoSocio.Location = new System.Drawing.Point(126, 186);
             this.txtTelefonoSocio.Name = "txtTelefonoSocio";
             this.txtTelefonoSocio.Size = new System.Drawing.Size(234, 20);
             this.txtTelefonoSocio.TabIndex = 4;
             // 
             // txtDomicilio
             // 
-            this.txtDomicilio.Location = new System.Drawing.Point(126, 196);
+            this.txtDomicilio.Location = new System.Drawing.Point(126, 266);
             this.txtDomicilio.Name = "txtDomicilio";
             this.txtDomicilio.Size = new System.Drawing.Size(234, 20);
             this.txtDomicilio.TabIndex = 6;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(126, 231);
+            this.txtEmail.Location = new System.Drawing.Point(126, 302);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(234, 20);
             this.txtEmail.TabIndex = 7;
@@ -107,7 +113,7 @@
             // lblDni
             // 
             this.lblDni.AutoSize = true;
-            this.lblDni.Location = new System.Drawing.Point(9, 15);
+            this.lblDni.Location = new System.Drawing.Point(12, 72);
             this.lblDni.Name = "lblDni";
             this.lblDni.Size = new System.Drawing.Size(26, 13);
             this.lblDni.TabIndex = 8;
@@ -116,7 +122,7 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(9, 51);
+            this.lblNombre.Location = new System.Drawing.Point(12, 111);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(54, 13);
             this.lblNombre.TabIndex = 9;
@@ -125,7 +131,7 @@
             // lblApellido
             // 
             this.lblApellido.AutoSize = true;
-            this.lblApellido.Location = new System.Drawing.Point(9, 89);
+            this.lblApellido.Location = new System.Drawing.Point(12, 151);
             this.lblApellido.Name = "lblApellido";
             this.lblApellido.Size = new System.Drawing.Size(59, 13);
             this.lblApellido.TabIndex = 10;
@@ -134,7 +140,7 @@
             // lblTelefono
             // 
             this.lblTelefono.AutoSize = true;
-            this.lblTelefono.Location = new System.Drawing.Point(9, 125);
+            this.lblTelefono.Location = new System.Drawing.Point(12, 189);
             this.lblTelefono.Name = "lblTelefono";
             this.lblTelefono.Size = new System.Drawing.Size(64, 13);
             this.lblTelefono.TabIndex = 11;
@@ -143,7 +149,7 @@
             // lblFechaNacimiento
             // 
             this.lblFechaNacimiento.AutoSize = true;
-            this.lblFechaNacimiento.Location = new System.Drawing.Point(9, 162);
+            this.lblFechaNacimiento.Location = new System.Drawing.Point(12, 232);
             this.lblFechaNacimiento.Name = "lblFechaNacimiento";
             this.lblFechaNacimiento.Size = new System.Drawing.Size(88, 13);
             this.lblFechaNacimiento.TabIndex = 12;
@@ -152,7 +158,7 @@
             // lblDomicilio
             // 
             this.lblDomicilio.AutoSize = true;
-            this.lblDomicilio.Location = new System.Drawing.Point(9, 199);
+            this.lblDomicilio.Location = new System.Drawing.Point(12, 269);
             this.lblDomicilio.Name = "lblDomicilio";
             this.lblDomicilio.Size = new System.Drawing.Size(62, 13);
             this.lblDomicilio.TabIndex = 13;
@@ -161,7 +167,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(9, 234);
+            this.lblEmail.Location = new System.Drawing.Point(12, 305);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(39, 13);
             this.lblEmail.TabIndex = 14;
@@ -169,7 +175,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(12, 282);
+            this.btnGuardar.Location = new System.Drawing.Point(42, 346);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 15;
@@ -179,30 +185,33 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(102, 282);
+            this.btnModificar.Location = new System.Drawing.Point(123, 346);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 16;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnBorrar
             // 
-            this.btnBorrar.Location = new System.Drawing.Point(193, 282);
+            this.btnBorrar.Location = new System.Drawing.Point(204, 346);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(75, 23);
             this.btnBorrar.TabIndex = 17;
             this.btnBorrar.Text = "Borrar";
             this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(285, 282);
+            this.btnCancelar.Location = new System.Drawing.Point(285, 346);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 18;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // contextMenuStrip1
             // 
@@ -212,9 +221,11 @@
             // txtBuscarSocio
             // 
             this.txtBuscarSocio.Location = new System.Drawing.Point(486, 12);
+            this.txtBuscarSocio.Multiline = true;
             this.txtBuscarSocio.Name = "txtBuscarSocio";
             this.txtBuscarSocio.Size = new System.Drawing.Size(234, 20);
             this.txtBuscarSocio.TabIndex = 21;
+            this.txtBuscarSocio.TextChanged += new System.EventHandler(this.txtBuscarSocio_TextChanged);
             // 
             // btnBuscarSocio
             // 
@@ -224,21 +235,54 @@
             this.btnBuscarSocio.TabIndex = 22;
             this.btnBuscarSocio.Text = "Buscar";
             this.btnBuscarSocio.UseVisualStyleBackColor = true;
+            this.btnBuscarSocio.Click += new System.EventHandler(this.btnBuscarSocio_Click);
             // 
             // dtpFechaNacimiento
             // 
-            this.dtpFechaNacimiento.Location = new System.Drawing.Point(126, 156);
+            this.dtpFechaNacimiento.Location = new System.Drawing.Point(126, 226);
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
             this.dtpFechaNacimiento.Size = new System.Drawing.Size(234, 20);
             this.dtpFechaNacimiento.TabIndex = 23;
             this.dtpFechaNacimiento.ValueChanged += new System.EventHandler(this.dtpFechaNacimiento_ValueChanged);
             // 
+            // btnRecargar
+            // 
+            this.btnRecargar.Location = new System.Drawing.Point(151, 387);
+            this.btnRecargar.Name = "btnRecargar";
+            this.btnRecargar.Size = new System.Drawing.Size(75, 23);
+            this.btnRecargar.TabIndex = 24;
+            this.btnRecargar.Text = "Recargar";
+            this.btnRecargar.UseVisualStyleBackColor = true;
+            this.btnRecargar.Click += new System.EventHandler(this.btnRecargar_Click);
+            // 
+            // txtCod
+            // 
+            this.txtCod.Location = new System.Drawing.Point(126, 27);
+            this.txtCod.Name = "txtCod";
+            this.txtCod.ReadOnly = true;
+            this.txtCod.Size = new System.Drawing.Size(234, 20);
+            this.txtCod.TabIndex = 25;
+            this.txtCod.Visible = false;
+            // 
+            // lblCod
+            // 
+            this.lblCod.AutoSize = true;
+            this.lblCod.Location = new System.Drawing.Point(12, 30);
+            this.lblCod.Name = "lblCod";
+            this.lblCod.Size = new System.Drawing.Size(76, 13);
+            this.lblCod.TabIndex = 26;
+            this.lblCod.Text = "DNI solicitante";
+            this.lblCod.Visible = false;
+            // 
             // FormSocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1176, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.lblCod);
+            this.Controls.Add(this.txtCod);
+            this.Controls.Add(this.btnRecargar);
             this.Controls.Add(this.dtpFechaNacimiento);
             this.Controls.Add(this.btnBuscarSocio);
             this.Controls.Add(this.txtBuscarSocio);
@@ -263,6 +307,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormSocio";
             this.Text = "FormSocio";
+            this.Load += new System.EventHandler(this.FormSocio_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -293,5 +338,8 @@
         private System.Windows.Forms.TextBox txtBuscarSocio;
         private System.Windows.Forms.Button btnBuscarSocio;
         private System.Windows.Forms.DateTimePicker dtpFechaNacimiento;
+        private System.Windows.Forms.Button btnRecargar;
+        private System.Windows.Forms.TextBox txtCod;
+        private System.Windows.Forms.Label lblCod;
     }
 }
