@@ -32,7 +32,7 @@ namespace Control_Gym.Capa_de_presentacion
             string nombre = txtNombreSocio.Text;
             string apellido = txtApellidoSocio.Text;
             DateTime fechaNacimiento = dtpFechaNacimiento.Value;
-            int telefono = Convert.ToInt32(txtTelefonoSocio.Text);
+            string telefono = txtTelefonoSocio.Text;
             string domicilio = txtDomicilio.Text;
             string email = txtEmail.Text;
 
@@ -50,12 +50,12 @@ namespace Control_Gym.Capa_de_presentacion
         private void btnModificar_Click(object sender, EventArgs e)
         {
             ClsSocio clsSocio = new ClsSocio();
-            int cod = Convert.ToInt32(txtCod.Text);
+            string cod = txtCod.Text;
             int dni = Convert.ToInt32(txtDniSocio.Text);
             string nombre = txtNombreSocio.Text;
             string apellido = txtApellidoSocio.Text;
             DateTime fechaNacimiento = dtpFechaNacimiento.Value;
-            int telefono = Convert.ToInt32(txtTelefonoSocio.Text);
+            string telefono = txtTelefonoSocio.Text;
             string domicilio = txtDomicilio.Text;
             string email = txtEmail.Text;
 
@@ -86,7 +86,7 @@ namespace Control_Gym.Capa_de_presentacion
         private void btnBorrar_Click(object sender, EventArgs e)
         {
             ClsSocio clsSocio = new ClsSocio();
-            int cod = Convert.ToInt32(txtCod.Text);
+            string cod = txtCod.Text;
             string nombre = txtNombreSocio.Text ;
             clsSocio.EliminarDatos(cod, nombre);
 

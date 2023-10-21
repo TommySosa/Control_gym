@@ -239,6 +239,7 @@
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.dgvProveedores);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormProveedores";
             this.Text = "FormProveedores";
             this.Load += new System.EventHandler(this.FormProveedores_Load);

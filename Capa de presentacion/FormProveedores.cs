@@ -42,7 +42,7 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void dgvProveedores_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtCodigo.Text = dgvProveedores.SelectedCells[0].Value.ToString();
+            txtCodigo.Text = dgvProveedores.Rows[e.RowIndex].Cells["cod_proveedor"].FormattedValue.ToString();
             txtNombre.Text = dgvProveedores.Rows[e.RowIndex].Cells["nombre"].FormattedValue.ToString();
             txtCuit.Text = dgvProveedores.Rows[e.RowIndex].Cells["cuit"].FormattedValue.ToString();
             txtTelefono.Text = dgvProveedores.Rows[e.RowIndex].Cells["telefono"].FormattedValue.ToString();
@@ -54,7 +54,7 @@ namespace Control_Gym.Capa_de_presentacion
         {
             ClsProvedores clsProvedores = new ClsProvedores();
 
-            int cod = Convert.ToInt32(txtCodigo.Text);
+            string cod = txtCodigo.Text;
             string nombre = txtNombre.Text;
             string cuit = txtCuit.Text;
             string telefono = txtTelefono.Text;
@@ -68,7 +68,7 @@ namespace Control_Gym.Capa_de_presentacion
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             ClsProvedores clsProvedores = new ClsProvedores();
-            int cod = Convert.ToInt32(txtCodigo.Text);
+            string cod = txtCodigo.Text;
             string nombre = txtNombre.Text;
             clsProvedores.EliminarDatos(cod, nombre);
 

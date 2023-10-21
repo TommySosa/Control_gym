@@ -10,13 +10,13 @@ namespace Control_Gym.Capa_logica
 {
     internal class ClsProvedores
     {
-        public int Cod { get; set; }
+        public string Cod { get; set; }
         public string Nombre { get; set; }
         public string Cuit { get; set; }
         public string Telefono { get; set; }
         public string Direccion { get; set; }
         public string Email { get; set; }
-        public ClsProvedores(int Cod, string Nombre, string Cuit, string Telefono, string Direccion, string Email) 
+        public ClsProvedores(string Cod, string Nombre, string Cuit, string Telefono, string Direccion, string Email) 
         {
             this.Cod = Cod;
             this.Nombre = Nombre;
@@ -32,12 +32,12 @@ namespace Control_Gym.Capa_logica
             cProveedoresD.AgregarProv(nombre, cuit,  telefono, direccion, email);
 
         }
-        public void ModificarProv(int cod, string nombre, string cuit, string telefono, string direccion, string email)
+        public void ModificarProv(string cod, string nombre, string cuit, string telefono, string direccion, string email)
         {
             CProveedoresD cProveedoresD = new CProveedoresD();
             cProveedoresD.ModificarProv(cod, nombre, cuit, telefono, direccion, email);
         }
-        public void EliminarDatos(int cod, string nombre)
+        public void EliminarDatos(string cod, string nombre)
         {
             CProveedoresD cProveedoresD = new CProveedoresD();
             cProveedoresD.EliminarDatos(cod, nombre);

@@ -7,64 +7,58 @@ using System.Data;
 using System.Data.SqlClient;
 using Control_Gym.Capa_logica;
 using System.Windows.Forms;
-using System.Collections;
-using System.Data.SqlTypes;
 
 namespace Control_Gym.Capa_de_datos
 {
-    internal class CProveedoresD
+    internal class CFTipoMembresiaD
     {
         private ConexionBD conexionBD = ConexionBD.Instancia;
 
-
-        public void AgregarProv( string nombre, string cuit, string telefono, string direccion, string email)
+        public void AgregarTipo(string nombre, decimal precio, int dias)
         {
 
-            string query = "INSERT INTO proveedores(nombre,cuit,telefono,direccion,email)VALUES(@nombre,@cuit, @telefono, @direccion, @email)";
+            string query = "INSERT INTO tipos_membresias(nombre,precio,cantidad_dias)VALUES(@nombre,@precio, @dias)";
             try
             {
                 SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
 
-               
+
                 comando.Parameters.AddWithValue("@nombre", nombre);
-                comando.Parameters.AddWithValue("@cuit", cuit);
-                comando.Parameters.AddWithValue("@telefono", telefono);
-                comando.Parameters.AddWithValue("@direccion", direccion);
-                comando.Parameters.AddWithValue("@email", email);
+                comando.Parameters.AddWithValue("@precio", precio);
+                comando.Parameters.AddWithValue("@dias", dias);
 
                 comando.ExecuteNonQuery();
-                MessageBox.Show("Agregaste un nuevo proveedor");
+                MessageBox.Show("Agregaste un nuevo tipo de membresia");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al agregar un nuevo proveedor" + ex);
+                MessageBox.Show("Error al agregar un nuevo tipo de membresia" + ex);
             }
             finally
             {
                 conexionBD.CerrarConexion();
             }
         }
-        public void ModificarProv(string cod, string nombre, string cuit, string telefono, string direccion, string email)
+
+        public void ModificarTipo(string cod, string nombre,decimal precio,int dias)
         {
 
-            string query = "UPDATE proveedores SET nombre = @nombre, cuit = @cuit, telefono = @telefono, direccion = @direccion, email = @email WHERE cod_proveedor = @cod";
+            string query = "UPDATE tipos_membresias SET nombre = @nombre, precio = @precio, cantidad_dias = @dias WHERE cod_tipo_membresia = @cod";
             try
             {
                 SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
 
                 comando.Parameters.AddWithValue("@cod", cod);
                 comando.Parameters.AddWithValue("@nombre", nombre);
-                comando.Parameters.AddWithValue("@cuit", cuit);
-                comando.Parameters.AddWithValue("@telefono", telefono);
-                comando.Parameters.AddWithValue("@direccion", direccion);
-                comando.Parameters.AddWithValue("@email", email);
+                comando.Parameters.AddWithValue("@precio", precio);
+                comando.Parameters.AddWithValue("@dias", dias);
 
                 comando.ExecuteNonQuery();
-                MessageBox.Show("Modificaste al proveedor");
+                MessageBox.Show("Modificaste el tipo de membresia");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al modificar un proveedor" + ex);
+                MessageBox.Show("Error al modificar un tipo de membresia" + ex);
             }
             finally
             {
@@ -73,7 +67,7 @@ namespace Control_Gym.Capa_de_datos
         }
         public void EliminarDatos(string cod, string name)
         {
-            string query = "DELETE proveedores WHERE cod_proveedor= @cod";
+            string query = "DELETE tipos_membresias WHERE cod_tipo_membresia= @cod";
             try
             {
                 SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
@@ -91,36 +85,10 @@ namespace Control_Gym.Capa_de_datos
                 conexionBD.CerrarConexion();
             }
         }
-        public DataTable Filtrar(string cod)
-        {
-            ClsSocio clsSocio = new ClsSocio();
-            string query = "SELECT * FROM proveedores WHERE nombre LIKE '%" + cod + "%' OR cuit LIKE '%" + cod + "%'";
-            DataTable tabla = new DataTable();
-
-            try
-            {
-                SqlDataReader leer;
-                SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
-                leer = comando.ExecuteReader();
-                tabla.Load(leer);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error" + ex);
-            }
-
-            finally
-            {
-                conexionBD.CerrarConexion();
-            }
-
-            return tabla;
-        }
-
         public DataTable CargarDatos()
         {
 
-            string query = "SELECT * FROM proveedores";
+            string query = "SELECT * FROM tipos_membresias";
             DataTable tabla = new DataTable();
             try
             {
@@ -146,5 +114,31 @@ namespace Control_Gym.Capa_de_datos
 
             return tabla;
         }
+        public DataTable Filtrar(string cod)
+        {
+            ClsSocio clsSocio = new ClsSocio();
+            string query = "SELECT * FROM tipos_membresias WHERE nombre LIKE '%" + cod + "%' OR precio LIKE '%" + cod + "%'";
+            DataTable tabla = new DataTable();
+
+            try
+            {
+                SqlDataReader leer;
+                SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
+                leer = comando.ExecuteReader();
+                tabla.Load(leer);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error" + ex);
+            }
+
+            finally
+            {
+                conexionBD.CerrarConexion();
+            }
+
+            return tabla;
+        }
+
     }
 }

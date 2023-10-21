@@ -18,7 +18,7 @@ namespace Control_Gym.Capa_de_datos
         private ConexionBD conexionBD = ConexionBD.Instancia;
 
 
-        public void GuardarSocio(int dni, string nombre, string apellido, DateTime fechaNacimiento, int telefono, string domicilio, string email)
+        public void GuardarSocio(int dni, string nombre, string apellido, DateTime fechaNacimiento, string telefono, string domicilio, string email)
         {
            
             string query = "INSERT INTO socios(dni_socio,nombre,apellido,fecha_nac,telefono,domicilio,email)VALUES(@dni, @nombre, @apellido, @fechaNacimiento, @telefono, @domicilio, @email)";
@@ -46,7 +46,7 @@ namespace Control_Gym.Capa_de_datos
                 conexionBD.CerrarConexion();
             }
         }
-        public void ModificarSocio(int cod, int dni, string nombre, string apellido, DateTime fechaNacimiento, int telefono, string domicilio, string email)
+        public void ModificarSocio(string cod, int dni, string nombre, string apellido, DateTime fechaNacimiento, string telefono, string domicilio, string email)
         {
             string query = "UPDATE socios SET dni_socio = @dni, nombre = @nombre, apellido = @apellido, fecha_nac = @fechaNacimiento, telefono = @telefono, domicilio = @domicilio, email = @email WHERE dni_socio = @cod";
 
@@ -105,13 +105,13 @@ namespace Control_Gym.Capa_de_datos
             return tabla;
         }
 
-        public void EliminarDatos(int cod, string name)
+        public void EliminarDatos(string cod, string name)
         {
-            string query = "DELETE socios WHERE dni_socio='" + cod + "'";
+            string query = "DELETE socios WHERE dni_socio= @cod";
             try
             {
                 SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
-
+                comando.Parameters.AddWithValue("@cod", cod);
                 comando.ExecuteNonQuery();
                 MessageBox.Show("Eliminaste los datos del socio "+ name);
             }

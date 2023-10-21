@@ -16,12 +16,12 @@ namespace Control_Gym.Capa_logica
         public int Dni { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
-        public int Telefono { get; set; }
+        public string Telefono { get; set; }
         public DateTime FechaDeNacimiento { get; set; }
         public string Domicilio { get; set; }
         public string Email { get; set; }
 
-        public ClsSocio(int Dni, string Nombre, string Apellido, int Telefono, DateTime FechaDeNacimiento, string Domicilio, string Email)
+        public ClsSocio(int Dni, string Nombre, string Apellido, string Telefono, DateTime FechaDeNacimiento, string Domicilio, string Email)
         {
             this.Dni = Dni; 
             this.Nombre = Nombre;
@@ -36,13 +36,13 @@ namespace Control_Gym.Capa_logica
         {
         }
 
-        public void GuardarSocio(int dni, string nombre, string apellido, DateTime fechaNacimiento, int telefono, string domicilio, string email)
+        public void GuardarSocio(int dni, string nombre, string apellido, DateTime fechaNacimiento, string telefono, string domicilio, string email)
         {
             CSociosD CSociosD = new CSociosD();
             CSociosD.GuardarSocio(dni, nombre, apellido, fechaNacimiento, telefono, domicilio, email);
 
         }
-        public void ModificarSocio(int cod, int dni, string nombre, string apellido, DateTime fechaNacimiento, int telefono, string domicilio, string email)
+        public void ModificarSocio(string cod, int dni, string nombre, string apellido, DateTime fechaNacimiento, string telefono, string domicilio, string email)
         {
             CSociosD cSociosD = new CSociosD();
             cSociosD.ModificarSocio(cod, dni, nombre, apellido, fechaNacimiento, telefono, domicilio, email);
@@ -56,7 +56,7 @@ namespace Control_Gym.Capa_logica
 
             return tabla;
         }
-        public void EliminarDatos(int cod, string nombre)
+        public void EliminarDatos(string cod, string nombre)
         {
             CSociosD cSociosD = new CSociosD();
             cSociosD.EliminarDatos(cod, nombre);
