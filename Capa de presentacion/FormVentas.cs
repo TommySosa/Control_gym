@@ -18,22 +18,69 @@ namespace Control_Gym.Capa_de_presentacion
         {
             InitializeComponent();
         }
-        private CDetalleVenta cDetalle = new CDetalleVenta();
         private CVenta cVenta = new CVenta();
+        private CProducto cProducto = new CProducto();
 
         private void FormVentas_Load(object sender, EventArgs e)
         {
-            //dvgCarrito.Rows.Add("Test", "Test 2", "Test 3");
+            List<CProducto> productos = cProducto.traerProductos();
+            cbCodProducto.DataSource = productos;
+            btnQuitar.Visible = false;
+            txtNombreProducto.Text = "";
+            txtPrecio.Text = "";
+            txtSubtotal.Text = "";
+            txtStock.Text = "";
+
+            txtCodProducto.Text = "";
         }
+
+        private decimal CalcultarTotal()
+        {
+            decimal total = 0;
+            foreach (DataGridViewRow row in dvgCarrito.Rows)
+            {
+                decimal subtotal = 0;
+                if (row.Cells["subtotal_producto"].Value != null)
+                {
+
+                    if (decimal.TryParse(row.Cells["subtotal_producto"].Value.ToString(), out subtotal))
+                    {
+                        total += subtotal;
+                    }
+                    return total;
+                }
+                return total;
+            }
+            return total;
+        }
+        private decimal CalcularTodosSubtotales()
+        {
+            decimal total = 0;
+
+            foreach (DataGridViewRow row in dvgCarrito.Rows)
+            {
+                if (row.Cells["subtotal_producto"].Value != null)
+                {
+                    decimal subtotal = 0;
+
+                    if (decimal.TryParse(row.Cells["subtotal_producto"].Value.ToString(), out subtotal))
+                    {
+                        total += subtotal;
+                    }
+                }
+            }
+
+            return total;
+        }
+
 
         private void btnAgregarCarrito_Click(object sender, EventArgs e)
         {
-            if (txtCodProducto.Text != "" && txtNombreProducto.Text != "" && txtPrecio.Text != "" && txtCantidad.Text != "")
+            if (txtCodProducto.Text != "" && txtNombreProducto.Text != "" && txtPrecio.Text != "" && txtCantidad.Text != "" && txtStock.Text != "")
             {
-                decimal subtotal = 0; // Inicializa el subtotal a cero
+                decimal subtotal = 0;
                 bool productoExistente = false;
 
-                // Busca el código del producto en las filas existentes
                 foreach (DataGridViewRow row in dvgCarrito.Rows)
                 {
                     if (row.Cells["cod_producto"].Value != null)
@@ -41,7 +88,6 @@ namespace Control_Gym.Capa_de_presentacion
                         long codigoExistente;
                         if (long.TryParse(row.Cells["cod_producto"].Value.ToString(), out codigoExistente) && codigoExistente == long.Parse(txtCodProducto.Text))
                         {
-                            // El producto ya existe en el carrito, actualiza la cantidad
                             int cantidadExistente = int.Parse(row.Cells["cantidad"].Value.ToString());
                             int nuevaCantidad = int.Parse(txtCantidad.Text);
                             cantidadExistente += nuevaCantidad;
@@ -54,29 +100,28 @@ namespace Control_Gym.Capa_de_presentacion
 
                 if (!productoExistente)
                 {
-                    // El producto no existe en el carrito, agrega una nueva fila
-                    dvgCarrito.Rows.Add(txtCodProducto.Text, txtNombreProducto.Text, txtPrecio.Text, txtCantidad.Text);
+                    dvgCarrito.Rows.Add(txtCodProducto.Text, txtNombreProducto.Text, txtPrecio.Text, txtCantidad.Text,txtStock.Text, txtSubtotal.Text);
                 }
 
-                // Calcular el subtotal para todas las filas
                 foreach (DataGridViewRow row in dvgCarrito.Rows)
                 {
                     if (row.Cells["precio_producto"].Value != null && row.Cells["cantidad"].Value != null)
                     {
                         decimal precio = 0;
                         int cantidad = 0;
+                        decimal descuento = 0;
 
-                        // Intenta convertir los valores de las celdas en números
                         if (decimal.TryParse(row.Cells["precio_producto"].Value.ToString(), out precio) &&
-                            int.TryParse(row.Cells["cantidad"].Value.ToString(), out cantidad))
+                            int.TryParse(row.Cells["cantidad"].Value.ToString(), out cantidad) && decimal.TryParse(txtDescuento.Text, out descuento))
                         {
-                            subtotal += precio * cantidad;
+                            subtotal = (precio - (precio * descuento / 100)) * cantidad;
+                            row.Cells["subtotal_producto"].Value = subtotal;
                         }
                     }
                 }
+                lblTotal.Text = "$ "+ CalcularTodosSubtotales().ToString();
 
-                // Actualiza el valor del subtotal después de calcularlo
-                txtSubtotal.Text = subtotal.ToString();
+                txtSubtotal.Text = CalcultarTotal().ToString();
             }
             else
             {
@@ -90,9 +135,8 @@ namespace Control_Gym.Capa_de_presentacion
             decimal descuento;
 
             if (int.TryParse(txtDniCliente.Text, out dniCliente) && int.TryParse(txtDniEmpleado.Text, out dniEmpleado) &&
-                decimal.TryParse(txtDescuento.Text, out descuento))
+                decimal.TryParse(txtDescuento.Text, out descuento) && Convert.ToInt32(txtPrecio.Text) > 0)
             {
-                // Crear una lista para almacenar los detalles de ventas
                 List<CDetalleVenta> detallesVenta = new List<CDetalleVenta>();
                 decimal subtotal = 0;
 
@@ -100,54 +144,63 @@ namespace Control_Gym.Capa_de_presentacion
                 {
                     if (row.Cells["cod_producto"].Value != null &&
                         row.Cells["precio_producto"].Value != null &&
-                        row.Cells["cantidad"].Value != null)
+                        row.Cells["cantidad"].Value != null)                        
                     {
                         long codProducto;
                         decimal precio;
                         int cantidad;
+                        
 
                         if (long.TryParse(row.Cells["cod_producto"].Value.ToString(), out codProducto) &&
                             decimal.TryParse(row.Cells["precio_producto"].Value.ToString(), out precio) &&
-                            int.TryParse(row.Cells["cantidad"].Value.ToString(), out cantidad))
+                            int.TryParse(row.Cells["cantidad"].Value.ToString(), out cantidad)
+                            )
                         {
                             subtotal += precio * cantidad;
                             CDetalleVenta detalle = new CDetalleVenta
                             {
                                 cod_producto = codProducto,
-                                subtotal = precio * cantidad,
-                                cantidad = cantidad
+                                subtotal = (precio - (precio * descuento / 100) ) * cantidad,
+                                cantidad = cantidad,
+                                descuento = descuento
                             };
                             detallesVenta.Add(detalle);
                         }
                     }
                 }
 
-                txtSubtotal.Text = subtotal.ToString();
-                cVenta.RealizarVenta(dniCliente, dniEmpleado, descuento, detallesVenta);
+                decimal total = CalcularTodosSubtotales();
 
+                bool ventaExitosa = cVenta.RealizarVenta(dniCliente, dniEmpleado, descuento, total, detallesVenta);
+
+                if (!ventaExitosa)
+                {
+                   MessageBox.Show("No hay suficiente stock disponible para completar la venta.");
+                }
+                else
+                {
+                   MessageBox.Show("Venta realizada con éxito.");
+                   List<CProducto> productos = cProducto.traerProductos();
+                   Limpiar();
+
+                   cbCodProducto.DataSource = productos;
+                }
             }
             else
             {
                 MessageBox.Show("Por favor, ingresa valores numéricos válidos en los campos de DNI y Descuento.");
             }
+        }
 
-            // Llamar al procedimiento almacenado para realizar la venta
-            //cVenta.RealizarVenta(dniCliente, dniEmpleado, descuento, detallesVenta);
-            //foreach (DataGridViewRow row in dvgCarrito.Rows)
-            //{
-            //    if (!row.IsNewRow) 
-            //    {
-            //        int cod_producto = Convert.ToInt32(row.Cells["cod_producto"].Value);
-            //        //string nombre = row.Cells["nombre"].Value.ToString();
-            //        int cantidad = Convert.ToInt32(row.Cells["cantidad"].Value);
-            //        decimal subtotal = 4000;
-            //        int num_venta = 1;
+        public void Limpiar()
+        {
+            if (dvgCarrito.Rows.Count > 0)
+            {
+                dvgCarrito.ClearSelection();
 
-            //        CDetalleVenta cDetalleVenta = new CDetalleVenta(num_venta,cod_producto,subtotal,cantidad);
-
-            //        cVenta.RealizarDetalleVenta(cDetalleVenta);
-            //    }
-            //}
+                dvgCarrito.Rows.Clear();
+                lblTotal.Text = "$ 0.00";
+            }
         }
 
         private void btnVerificar_Click(object sender, EventArgs e)
@@ -180,6 +233,65 @@ namespace Control_Gym.Capa_de_presentacion
             else
             {
                 MessageBox.Show("Debes ingresar el dni del cliente!");
+            }
+        }
+
+        private void cbCodProducto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CProducto cProducto = new CProducto();
+            if (cbCodProducto.SelectedItem != null)
+            {
+                CProducto productoSeleccionado = (CProducto)cbCodProducto.SelectedItem;
+                long cod_producto = productoSeleccionado.cod_producto;
+                cProducto.cod_producto = cod_producto;
+
+                txtNombreProducto.Text = productoSeleccionado.nombre;
+                txtCodProducto.Text = productoSeleccionado.cod_producto.ToString();
+                txtPrecio.Text = productoSeleccionado.precio_venta.ToString();
+                txtStock.Text = productoSeleccionado.stock.ToString();
+                txtSubtotal.Text = "$ "+CalcultarTotal().ToString();
+            }
+        }
+
+        private void btnQuitar_Click(object sender, EventArgs e)
+        {
+            if (dvgCarrito.SelectedRows.Count > 0)
+            {
+                dvgCarrito.Rows.Remove(dvgCarrito.SelectedRows[0]);
+                lblTotal.Text = "$ " + CalcularTodosSubtotales().ToString();
+            }
+            else
+            {
+                MessageBox.Show("Selecciona una fila");
+            }
+        }
+
+        private void dvgCarrito_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dvgCarrito.SelectedRows.Count > 0)
+            {
+                btnQuitar.Visible = true;
+            }
+        }
+
+        private void txtCodProducto_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtCodProducto.Text))
+            {
+                long codigo = Convert.ToInt64(txtCodProducto.Text);
+                CProducto producto = cVenta.BuscarPorCod(codigo);
+                if (producto != null)
+                {
+                    lblNoEncontrado.Visible = false;
+                    txtNombreProducto.Text = producto.nombre;
+                    txtPrecio.Text = producto.precio_venta.ToString();
+                    txtStock.Text = producto.stock.ToString();
+                    txtSubtotal.Text = "$ "+CalcultarTotal().ToString();  
+                }
+                else
+                {
+                    lblNoEncontrado.Visible = true;
+                }
             }
         }
     }

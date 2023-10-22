@@ -13,6 +13,7 @@ namespace Control_Gym.Capa_logica
         public long cod_producto { get; set; }
         public decimal subtotal { get; set; }
         public int cantidad { get; set; }
+        public decimal descuento { get; set; }
 
 
         public CDetalleVenta() { }
@@ -29,6 +30,7 @@ namespace Control_Gym.Capa_logica
             this.cod_producto = cod_producto;
             this.subtotal = subtotal;
             this.cantidad = cantidad;
+            this.descuento = descuento;
         }
     }
 }

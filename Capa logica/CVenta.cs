@@ -16,7 +16,6 @@ namespace Control_Gym.Capa_logica
         public decimal descuento { get; set; }
 
         private CVentaD cVentaD = new CVentaD();
-        private CDetalleVentaD cDetalleD = new CDetalleVentaD();
         public CVenta() { 
 
         }
@@ -36,14 +35,16 @@ namespace Control_Gym.Capa_logica
             this.descuento = descuento;
         }
 
-        public void RealizarVenta(int dniCliente, int dniEmpleado, decimal descuento, List<CDetalleVenta> detallesVenta)
+        public bool RealizarVenta(int dniCliente, int dniEmpleado, decimal descuento,decimal total ,List<CDetalleVenta> detallesVenta)
         {
-            cVentaD.RealizarVenta(dniCliente, dniEmpleado, descuento, detallesVenta);
+            bool ventaExitosa = cVentaD.RealizarVenta(dniCliente, dniEmpleado, descuento, total, detallesVenta);
+            return ventaExitosa;
         }
 
-        public void RealizarDetalleVenta(CDetalleVenta detalle)
+        public CProducto BuscarPorCod(long cod)
         {
-            cDetalleD.RealizarDetalleVenta(detalle);
+            CProducto CProducto = cVentaD.BuscarPorCod(cod);
+            return CProducto;
         }
     }
 }
