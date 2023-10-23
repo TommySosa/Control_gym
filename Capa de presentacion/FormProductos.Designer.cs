@@ -32,14 +32,15 @@
             this.lblCodProveedor = new System.Windows.Forms.Label();
             this.lblCodTipoProducto = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cmbCodTipoProducto = new System.Windows.Forms.ComboBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtCodProveedor = new System.Windows.Forms.TextBox();
             this.txtCodProducto = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtCod = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtStock = new System.Windows.Forms.TextBox();
             this.lblStock = new System.Windows.Forms.Label();
-            this.txtFechaVencimiento = new System.Windows.Forms.TextBox();
             this.lblFechaVencimiento = new System.Windows.Forms.Label();
             this.txtGanancia = new System.Windows.Forms.TextBox();
             this.txtCosto = new System.Windows.Forms.TextBox();
@@ -56,8 +57,8 @@
             this.txtCodigoProducto = new System.Windows.Forms.TextBox();
             this.lblCodigoProducto = new System.Windows.Forms.Label();
             this.btnBuscarCod = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtCod = new System.Windows.Forms.TextBox();
+            this.txtTipoP = new System.Windows.Forms.TextBox();
+            this.dtpFechaVenc = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
@@ -99,13 +100,13 @@
             this.lblNombre.TabIndex = 3;
             this.lblNombre.Text = "Nombre: ";
             // 
-            // comboBox3
+            // cmbCodTipoProducto
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(174, 94);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 8;
+            this.cmbCodTipoProducto.FormattingEnabled = true;
+            this.cmbCodTipoProducto.Location = new System.Drawing.Point(556, 209);
+            this.cmbCodTipoProducto.Name = "cmbCodTipoProducto";
+            this.cmbCodTipoProducto.Size = new System.Drawing.Size(121, 21);
+            this.cmbCodTipoProducto.TabIndex = 8;
             // 
             // txtNombre
             // 
@@ -131,11 +132,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dtpFechaVenc);
+            this.groupBox1.Controls.Add(this.txtTipoP);
             this.groupBox1.Controls.Add(this.txtCod);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtStock);
             this.groupBox1.Controls.Add(this.lblStock);
-            this.groupBox1.Controls.Add(this.txtFechaVencimiento);
             this.groupBox1.Controls.Add(this.lblFechaVencimiento);
             this.groupBox1.Controls.Add(this.txtGanancia);
             this.groupBox1.Controls.Add(this.txtCosto);
@@ -148,7 +150,6 @@
             this.groupBox1.Controls.Add(this.lblCodProveedor);
             this.groupBox1.Controls.Add(this.txtNombre);
             this.groupBox1.Controls.Add(this.txtCodProveedor);
-            this.groupBox1.Controls.Add(this.comboBox3);
             this.groupBox1.Controls.Add(this.lblCodTipoProducto);
             this.groupBox1.Controls.Add(this.lblNombre);
             this.groupBox1.Location = new System.Drawing.Point(56, 2);
@@ -157,6 +158,22 @@
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
+            // 
+            // txtCod
+            // 
+            this.txtCod.Location = new System.Drawing.Point(174, 7);
+            this.txtCod.Name = "txtCod";
+            this.txtCod.Size = new System.Drawing.Size(100, 20);
+            this.txtCod.TabIndex = 25;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(106, 13);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Producto solicitante: ";
             // 
             // txtStock
             // 
@@ -173,13 +190,6 @@
             this.lblStock.Size = new System.Drawing.Size(38, 13);
             this.lblStock.TabIndex = 22;
             this.lblStock.Text = "Stock:";
-            // 
-            // txtFechaVencimiento
-            // 
-            this.txtFechaVencimiento.Location = new System.Drawing.Point(174, 254);
-            this.txtFechaVencimiento.Name = "txtFechaVencimiento";
-            this.txtFechaVencimiento.Size = new System.Drawing.Size(100, 20);
-            this.txtFechaVencimiento.TabIndex = 21;
             // 
             // lblFechaVencimiento
             // 
@@ -326,21 +336,19 @@
             this.btnBuscarCod.Text = "Buscar";
             this.btnBuscarCod.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // txtTipoP
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 13);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "Producto solicitante: ";
+            this.txtTipoP.Location = new System.Drawing.Point(174, 99);
+            this.txtTipoP.Name = "txtTipoP";
+            this.txtTipoP.Size = new System.Drawing.Size(100, 20);
+            this.txtTipoP.TabIndex = 26;
             // 
-            // txtCod
+            // dtpFechaVenc
             // 
-            this.txtCod.Location = new System.Drawing.Point(174, 7);
-            this.txtCod.Name = "txtCod";
-            this.txtCod.Size = new System.Drawing.Size(100, 20);
-            this.txtCod.TabIndex = 25;
+            this.dtpFechaVenc.Location = new System.Drawing.Point(174, 253);
+            this.dtpFechaVenc.Name = "dtpFechaVenc";
+            this.dtpFechaVenc.Size = new System.Drawing.Size(200, 20);
+            this.dtpFechaVenc.TabIndex = 27;
             // 
             // FormProductos
             // 
@@ -353,6 +361,7 @@
             this.Controls.Add(this.dgvProductos);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.cmbCodTipoProducto);
             this.Name = "FormProductos";
             this.Text = "FormProductos";
             this.Load += new System.EventHandler(this.FormProductos_Load);
@@ -371,7 +380,7 @@
         private System.Windows.Forms.Label lblCodProveedor;
         private System.Windows.Forms.Label lblCodTipoProducto;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cmbCodTipoProducto;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtCodProveedor;
         private System.Windows.Forms.TextBox txtCodProducto;
@@ -391,11 +400,12 @@
         private System.Windows.Forms.TextBox txtGanancia;
         private System.Windows.Forms.TextBox txtCosto;
         private System.Windows.Forms.TextBox txtPrecioVenta;
-        private System.Windows.Forms.TextBox txtFechaVencimiento;
         private System.Windows.Forms.Label lblFechaVencimiento;
         private System.Windows.Forms.TextBox txtStock;
         private System.Windows.Forms.Label lblStock;
         private System.Windows.Forms.TextBox txtCod;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtTipoP;
+        private System.Windows.Forms.DateTimePicker dtpFechaVenc;
     }
 }

@@ -16,14 +16,16 @@ namespace Control_Gym.Capa_de_datos
         private ConexionBD conexionBD = ConexionBD.Instancia;
 
 
-        public void GuardarProducto(string nombre , int fecha_venc, double precio_costo, double precio_venta, double ganancia, int stock)
+        public void GuardarProducto(Int64 cod_producto, int cod_proveedor, int cod_tipo_producto, string nombre , DateTime fecha_venc, decimal precio_costo, decimal precio_venta, decimal ganancia, int stock)
         {
 
-            string query = "INSERT INTO productos(nombre, fecha_venc, precio_costo, precio_venta, ganancia, stock)VALUES(@nombre, @fechavencimiento, @preciocosto, @precioventa, @ganancia, @stock)";
+            string query = "INSERT INTO productos(cod_producto, cod_proveedor, cod_tipo_producto, nombre, fecha_venc, precio_costo, precio_venta, ganancia, stock)VALUES(@codigoproducto, @codigoproveedor, @codigotipoproducto, @nombre, @fechavencimiento, @preciocosto, @precioventa, @ganancia, @stock)";
             try
             {
                 SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
-
+                comando.Parameters.AddWithValue("@codigoproducto", cod_producto);
+                comando.Parameters.AddWithValue("@codigoproveedor", cod_proveedor);
+                comando.Parameters.AddWithValue("@codigotipoproducto", cod_tipo_producto);
                 comando.Parameters.AddWithValue("@nombre", nombre);
                 comando.Parameters.AddWithValue("@fechavencimiento", fecha_venc);
                 comando.Parameters.AddWithValue("@preciocosto", precio_costo);
@@ -43,13 +45,17 @@ namespace Control_Gym.Capa_de_datos
                 conexionBD.CerrarConexion();
             }
         }
-        public void ModificarProducto(int cod, string nombre, int fecha_venc, double precio_costo, double precio_venta, double ganancia, int stock)
+        public void ModificarProducto(string cod, Int64 cod_producto, int cod_proveedor, int cod_tipo_producto, string nombre, DateTime fecha_venc, decimal precio_costo, decimal precio_venta, decimal ganancia, int stock)
         {
-            string query = "UPDATE productos SET nombre = @nombre, fecha_venc = @fechavencimiento, precio_costo = @preciocosto, precio_venta = @precioventa, ganancia = @ganancia, stock = @stock WHERE cod_producto = @cod";
+            string query = "UPDATE productos SET cod_producto = @codigoproducto, cod_tipo_producto = @codigotipoproducto, cod_proveedor = @codigoproveedor, nombre = @nombre, fecha_venc = @fechavencimiento, precio_costo = @preciocosto, precio_venta = @precioventa, ganancia = @ganancia, stock = @stock WHERE cod_producto = @cod";
 
             try
             {
                 SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
+
+                comando.Parameters.AddWithValue("@codigoproducto", cod_producto);
+                comando.Parameters.AddWithValue("@codigotipoproducto", cod_tipo_producto);
+                comando.Parameters.AddWithValue("@codigoproveedor", cod_proveedor);
                 comando.Parameters.AddWithValue("@cod", cod);
                 comando.Parameters.AddWithValue("@nombre", nombre);
                 comando.Parameters.AddWithValue("@fechavencimiento", fecha_venc);
@@ -101,7 +107,7 @@ namespace Control_Gym.Capa_de_datos
             return tabla;
         }
 
-        public void EliminarProducto(int cod, string nombre)
+        public void EliminarProducto(string cod, string nombre)
         {
             string query = "DELETE productos WHERE cod_producto='" + cod + "'";
             try
