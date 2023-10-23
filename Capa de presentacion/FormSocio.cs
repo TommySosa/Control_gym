@@ -156,5 +156,10 @@ namespace Control_Gym.Capa_de_presentacion
             txtEmail.Text = "";
             
         }
+
+        private void dgvSocios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
