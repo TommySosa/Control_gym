@@ -53,7 +53,7 @@
             // dgvProveedores
             // 
             this.dgvProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProveedores.Location = new System.Drawing.Point(359, 50);
+            this.dgvProveedores.Location = new System.Drawing.Point(336, 50);
             this.dgvProveedores.Name = "dgvProveedores";
             this.dgvProveedores.Size = new System.Drawing.Size(636, 344);
             this.dgvProveedores.TabIndex = 0;
@@ -104,7 +104,7 @@
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(558, 24);
+            this.txtBuscar.Location = new System.Drawing.Point(649, 26);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(240, 20);
             this.txtBuscar.TabIndex = 7;
@@ -169,7 +169,7 @@
             // 
             this.btnAgregar.Location = new System.Drawing.Point(12, 342);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.Size = new System.Drawing.Size(0, 0);
             this.btnAgregar.TabIndex = 14;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -207,7 +207,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(795, 22);
+            this.btnBuscar.Location = new System.Drawing.Point(877, 24);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 18;
@@ -219,7 +219,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(998, 450);
+            this.ClientSize = new System.Drawing.Size(974, 448);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnEliminar);

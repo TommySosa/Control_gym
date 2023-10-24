@@ -36,7 +36,6 @@
             this.txtTelefonoSocio = new System.Windows.Forms.TextBox();
             this.txtDomicilio = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.lblDni = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblApellido = new System.Windows.Forms.Label();
             this.lblTelefono = new System.Windows.Forms.Label();
@@ -54,70 +53,62 @@
             this.btnRecargar = new System.Windows.Forms.Button();
             this.txtCod = new System.Windows.Forms.TextBox();
             this.lblCod = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvSocios
             // 
             this.dgvSocios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSocios.Location = new System.Drawing.Point(385, 48);
+            this.dgvSocios.Location = new System.Drawing.Point(382, 48);
             this.dgvSocios.Name = "dgvSocios";
             this.dgvSocios.ReadOnly = true;
             this.dgvSocios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSocios.Size = new System.Drawing.Size(622, 362);
+            this.dgvSocios.Size = new System.Drawing.Size(645, 362);
             this.dgvSocios.TabIndex = 0;
             this.dgvSocios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSocios_CellClick);
             // 
             // txtDniSocio
             // 
-            this.txtDniSocio.Location = new System.Drawing.Point(126, 69);
+            this.txtDniSocio.Location = new System.Drawing.Point(109, 72);
             this.txtDniSocio.Name = "txtDniSocio";
-            this.txtDniSocio.Size = new System.Drawing.Size(234, 20);
+            this.txtDniSocio.Size = new System.Drawing.Size(212, 20);
             this.txtDniSocio.TabIndex = 1;
             // 
             // txtNombreSocio
             // 
-            this.txtNombreSocio.Location = new System.Drawing.Point(126, 108);
+            this.txtNombreSocio.Location = new System.Drawing.Point(109, 108);
             this.txtNombreSocio.Name = "txtNombreSocio";
-            this.txtNombreSocio.Size = new System.Drawing.Size(234, 20);
+            this.txtNombreSocio.Size = new System.Drawing.Size(212, 20);
             this.txtNombreSocio.TabIndex = 2;
             // 
             // txtApellidoSocio
             // 
-            this.txtApellidoSocio.Location = new System.Drawing.Point(126, 148);
+            this.txtApellidoSocio.Location = new System.Drawing.Point(109, 148);
             this.txtApellidoSocio.Name = "txtApellidoSocio";
-            this.txtApellidoSocio.Size = new System.Drawing.Size(234, 20);
+            this.txtApellidoSocio.Size = new System.Drawing.Size(212, 20);
             this.txtApellidoSocio.TabIndex = 3;
             // 
             // txtTelefonoSocio
             // 
-            this.txtTelefonoSocio.Location = new System.Drawing.Point(126, 186);
+            this.txtTelefonoSocio.Location = new System.Drawing.Point(109, 186);
             this.txtTelefonoSocio.Name = "txtTelefonoSocio";
-            this.txtTelefonoSocio.Size = new System.Drawing.Size(234, 20);
+            this.txtTelefonoSocio.Size = new System.Drawing.Size(212, 20);
             this.txtTelefonoSocio.TabIndex = 4;
             // 
             // txtDomicilio
             // 
-            this.txtDomicilio.Location = new System.Drawing.Point(126, 266);
+            this.txtDomicilio.Location = new System.Drawing.Point(109, 266);
             this.txtDomicilio.Name = "txtDomicilio";
-            this.txtDomicilio.Size = new System.Drawing.Size(234, 20);
+            this.txtDomicilio.Size = new System.Drawing.Size(212, 20);
             this.txtDomicilio.TabIndex = 6;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(126, 302);
+            this.txtEmail.Location = new System.Drawing.Point(109, 302);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(234, 20);
+            this.txtEmail.Size = new System.Drawing.Size(212, 20);
             this.txtEmail.TabIndex = 7;
-            // 
-            // lblDni
-            // 
-            this.lblDni.AutoSize = true;
-            this.lblDni.Location = new System.Drawing.Point(12, 72);
-            this.lblDni.Name = "lblDni";
-            this.lblDni.Size = new System.Drawing.Size(26, 13);
-            this.lblDni.TabIndex = 8;
-            this.lblDni.Text = "DNI";
             // 
             // lblNombre
             // 
@@ -175,40 +166,44 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(42, 346);
+            this.btnGuardar.Location = new System.Drawing.Point(1, 387);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 15;
+            this.btnGuardar.TabStop = false;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(123, 346);
+            this.btnModificar.Location = new System.Drawing.Point(82, 387);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 16;
+            this.btnModificar.TabStop = false;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnBorrar
             // 
-            this.btnBorrar.Location = new System.Drawing.Point(204, 346);
+            this.btnBorrar.Location = new System.Drawing.Point(163, 387);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(75, 23);
             this.btnBorrar.TabIndex = 17;
+            this.btnBorrar.TabStop = false;
             this.btnBorrar.Text = "Borrar";
             this.btnBorrar.UseVisualStyleBackColor = true;
             this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(285, 346);
+            this.btnCancelar.Location = new System.Drawing.Point(244, 387);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 18;
+            this.btnCancelar.TabStop = false;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -220,16 +215,16 @@
             // 
             // txtBuscarSocio
             // 
-            this.txtBuscarSocio.Location = new System.Drawing.Point(486, 12);
+            this.txtBuscarSocio.Location = new System.Drawing.Point(382, 22);
             this.txtBuscarSocio.Multiline = true;
             this.txtBuscarSocio.Name = "txtBuscarSocio";
-            this.txtBuscarSocio.Size = new System.Drawing.Size(234, 20);
+            this.txtBuscarSocio.Size = new System.Drawing.Size(223, 20);
             this.txtBuscarSocio.TabIndex = 21;
             this.txtBuscarSocio.TextChanged += new System.EventHandler(this.txtBuscarSocio_TextChanged);
             // 
             // btnBuscarSocio
             // 
-            this.btnBuscarSocio.Location = new System.Drawing.Point(713, 10);
+            this.btnBuscarSocio.Location = new System.Drawing.Point(593, 20);
             this.btnBuscarSocio.Name = "btnBuscarSocio";
             this.btnBuscarSocio.Size = new System.Drawing.Size(75, 23);
             this.btnBuscarSocio.TabIndex = 22;
@@ -239,28 +234,29 @@
             // 
             // dtpFechaNacimiento
             // 
-            this.dtpFechaNacimiento.Location = new System.Drawing.Point(126, 226);
+            this.dtpFechaNacimiento.Location = new System.Drawing.Point(109, 226);
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
-            this.dtpFechaNacimiento.Size = new System.Drawing.Size(234, 20);
+            this.dtpFechaNacimiento.Size = new System.Drawing.Size(212, 20);
             this.dtpFechaNacimiento.TabIndex = 23;
             this.dtpFechaNacimiento.ValueChanged += new System.EventHandler(this.dtpFechaNacimiento_ValueChanged);
             // 
             // btnRecargar
             // 
-            this.btnRecargar.Location = new System.Drawing.Point(151, 387);
+            this.btnRecargar.Location = new System.Drawing.Point(109, 416);
             this.btnRecargar.Name = "btnRecargar";
             this.btnRecargar.Size = new System.Drawing.Size(75, 23);
             this.btnRecargar.TabIndex = 24;
+            this.btnRecargar.TabStop = false;
             this.btnRecargar.Text = "Recargar";
             this.btnRecargar.UseVisualStyleBackColor = true;
             this.btnRecargar.Click += new System.EventHandler(this.btnRecargar_Click);
             // 
             // txtCod
             // 
-            this.txtCod.Location = new System.Drawing.Point(126, 27);
+            this.txtCod.Location = new System.Drawing.Point(109, 27);
             this.txtCod.Name = "txtCod";
             this.txtCod.ReadOnly = true;
-            this.txtCod.Size = new System.Drawing.Size(234, 20);
+            this.txtCod.Size = new System.Drawing.Size(212, 20);
             this.txtCod.TabIndex = 25;
             this.txtCod.Visible = false;
             // 
@@ -274,12 +270,22 @@
             this.lblCod.Text = "DNI solicitante";
             this.lblCod.Visible = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 75);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(26, 13);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "DNI";
+            // 
             // FormSocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1176, 450);
+            this.ClientSize = new System.Drawing.Size(1026, 1038);
             this.ControlBox = false;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblCod);
             this.Controls.Add(this.txtCod);
             this.Controls.Add(this.btnRecargar);
@@ -296,7 +302,6 @@
             this.Controls.Add(this.lblTelefono);
             this.Controls.Add(this.lblApellido);
             this.Controls.Add(this.lblNombre);
-            this.Controls.Add(this.lblDni);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtDomicilio);
             this.Controls.Add(this.txtTelefonoSocio);
@@ -305,6 +310,7 @@
             this.Controls.Add(this.txtDniSocio);
             this.Controls.Add(this.dgvSocios);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MinimumSize = new System.Drawing.Size(536, 560);
             this.Name = "FormSocio";
             this.Text = "FormSocio";
             this.Load += new System.EventHandler(this.FormSocio_Load);
@@ -323,7 +329,6 @@
         private System.Windows.Forms.TextBox txtTelefonoSocio;
         private System.Windows.Forms.TextBox txtDomicilio;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Label lblDni;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.Label lblTelefono;
@@ -341,5 +346,6 @@
         private System.Windows.Forms.Button btnRecargar;
         private System.Windows.Forms.TextBox txtCod;
         private System.Windows.Forms.Label lblCod;
+        private System.Windows.Forms.Label label1;
     }
 }

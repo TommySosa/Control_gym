@@ -157,7 +157,7 @@
             // dgvTipoMembresia
             // 
             this.dgvTipoMembresia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTipoMembresia.Location = new System.Drawing.Point(283, 49);
+            this.dgvTipoMembresia.Location = new System.Drawing.Point(457, 52);
             this.dgvTipoMembresia.Name = "dgvTipoMembresia";
             this.dgvTipoMembresia.Size = new System.Drawing.Size(505, 389);
             this.dgvTipoMembresia.TabIndex = 12;
@@ -165,7 +165,7 @@
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(527, 23);
+            this.txtBuscar.Location = new System.Drawing.Point(701, 23);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(261, 20);
             this.txtBuscar.TabIndex = 13;
@@ -174,7 +174,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(481, 26);
+            this.label5.Location = new System.Drawing.Point(655, 26);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 13);
             this.label5.TabIndex = 14;
@@ -193,7 +193,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(974, 448);
             this.ControlBox = false;
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
