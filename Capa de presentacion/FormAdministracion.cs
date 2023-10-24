@@ -43,12 +43,12 @@ namespace Control_Gym
 
         private void btnProveedores_Click(object sender, EventArgs e)
         {
-            //AbrirFormEnPanel(new FormProveedores());
+            AbrirFormEnPanel(new FormProveedores());
         }
 
         private void btnProductos_Click(object sender, EventArgs e)
         {
-            //AbrirFormEnPanel(new FormProductos());
+            AbrirFormEnPanel(new FormProductos());
         }
 
         private void btnTiposMembresias_Click(object sender, EventArgs e)

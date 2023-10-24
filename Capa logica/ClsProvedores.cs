@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,15 @@ namespace Control_Gym.Capa_logica
             this.Email = Email;
         }
         public ClsProvedores() { }
+        public ClsProvedores(int cod, string nombre)
+        {
+            this.Cod=cod;
+            this.Nombre=nombre;
+        }
+        public override string ToString()
+        {
+            return Nombre;
+        }
         public void AgregarProv(string nombre, string cuit, string telefono, string direccion, string email)
         {
             CProveedoresD cProveedoresD = new CProveedoresD();
@@ -60,6 +70,10 @@ namespace Control_Gym.Capa_logica
 
             return tabla;
         }
-
+        public List<ClsProvedores> traerTiposProveedores()
+        {
+            CProveedoresD tiposD = new CProveedoresD();
+            return tiposD.traerTiposProveedores();
+        }
     }
 }

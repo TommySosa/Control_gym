@@ -10,7 +10,6 @@ namespace Control_Gym.Capa_logica
 {
     internal class CEmpleado
     {
-        public int cod_empleado { get; set; }
         public int dni_empleado { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
@@ -28,19 +27,6 @@ namespace Control_Gym.Capa_logica
         private CEmpleadoD cEmpleadoD = new CEmpleadoD();
         public CEmpleado(int dni_empleado,  string nombre, string apellido, string telefono, DateTime fecha_nac, string domicilio, string email, string contraseña)
         {
-            this.dni_empleado = dni_empleado;
-            this.nombre = nombre;
-            this.apellido = apellido;
-            this.telefono = telefono;
-            this.fecha_nac = fecha_nac;
-            this.domicilio = domicilio;
-            this.email = email;
-            this.contraseña = contraseña;
-        }
-
-        public CEmpleado(int id, int dni_empleado, string nombre, string apellido, string telefono, DateTime fecha_nac, string domicilio, string email, string contraseña)
-        {
-            this.cod_empleado = id;
             this.dni_empleado = dni_empleado;
             this.nombre = nombre;
             this.apellido = apellido;
