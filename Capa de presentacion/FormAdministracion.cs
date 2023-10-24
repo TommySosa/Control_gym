@@ -51,14 +51,9 @@ namespace Control_Gym
             AbrirFormEnPanel(new FormProductos());
         }
 
-        private void btnTiposMembresias_Click(object sender, EventArgs e)
-        {
-            //AbrirFormEnPanel(new FormTiposMembresias());
-        }
         private void btnTiposProducto_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanel(new FormTipoProductos());
-
         }
 
         private void FormAdministracion_Load(object sender, EventArgs e)
