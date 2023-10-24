@@ -30,17 +30,15 @@ namespace Control_Gym.Capa_de_presentacion
 
             dtvEmpleado.DataSource = empleados;
 
-            dtvEmpleado.Columns[0].HeaderText = "ID";
-            dtvEmpleado.Columns[0].Width = 35;
-            dtvEmpleado.Columns[1].HeaderText = "DNI";
-            dtvEmpleado.Columns[2].HeaderText = "Nombre";
-            dtvEmpleado.Columns[3].HeaderText = "Apellido";
-            dtvEmpleado.Columns[4].HeaderText = "Teléfono";
-            dtvEmpleado.Columns[8].HeaderText = "Fecha de Nacimiento";
-            dtvEmpleado.Columns[8].Width = 75;
-            dtvEmpleado.Columns[5].HeaderText = "Domicilio";
-            dtvEmpleado.Columns[6].HeaderText = "E-Mail";
-            dtvEmpleado.Columns[7].HeaderText = "Contraseña";
+            dtvEmpleado.Columns[0].HeaderText = "DNI";
+            dtvEmpleado.Columns[1].HeaderText = "Nombre";
+            dtvEmpleado.Columns[2].HeaderText = "Apellido";
+            dtvEmpleado.Columns[3].HeaderText = "Teléfono";
+            dtvEmpleado.Columns[7].HeaderText = "Fecha de Nacimiento";
+            dtvEmpleado.Columns[7].Width = 75;
+            dtvEmpleado.Columns[4].HeaderText = "Domicilio";
+            dtvEmpleado.Columns[5].HeaderText = "E-Mail";
+            dtvEmpleado.Columns[6].HeaderText = "Contraseña";
         }
 
         private void FormEmpleados_Load(object sender, EventArgs e)
@@ -166,10 +164,10 @@ namespace Control_Gym.Capa_de_presentacion
                 if (txtNombreEmpleado.Text != "" && txtApellidoEmpleado.Text != "" && txtTelefonoEmpleado.Text != "" && txtDomicilioEmpleado.Text != "" && txtEmailEmpleado.Text != "" && txtContraseñaEmpleado.Text != "")
                 {
                     DataGridViewRow filaSeleccionada = dtvEmpleado.SelectedRows[0];
-                    int id = Convert.ToInt32(filaSeleccionada.Cells["cod_empleado"].Value);
+                    //int id = Convert.ToInt32(filaSeleccionada.Cells["cod_empleado"].Value);
 
                     CEmpleado cEmpleado = new CEmpleado(
-                        id,
+                       // id,
                         Convert.ToInt32(mtxtDniEmpleado.Text),
                         txtNombreEmpleado.Text,
                         txtApellidoEmpleado.Text,
@@ -203,8 +201,9 @@ namespace Control_Gym.Capa_de_presentacion
                 if (dtvEmpleado.SelectedRows.Count > 0)
                 {
                     DataGridViewRow filaSeleccionada = dtvEmpleado.SelectedRows[0];
-                    int id = Convert.ToInt32(filaSeleccionada.Cells["cod_empleado"].Value);
-                    cEmpleado.EliminarEmpleado(id);
+                    //int id = Convert.ToInt32(filaSeleccionada.Cells["cod_empleado"].Value);
+                    int dni = Convert.ToInt32(mtxtDniEmpleado.Text);
+                    cEmpleado.EliminarEmpleado(dni);
                     CargarGrilla();
                     limpiarTextBox();
                     CancelarActualizarEmpleado();

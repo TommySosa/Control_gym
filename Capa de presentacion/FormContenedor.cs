@@ -18,39 +18,6 @@ namespace Control_Gym
         {
             InitializeComponent();
         }
-        private void btnMenu_Click(object sender, EventArgs e)
-        {
-            if (MenuVertical.Width == 250)
-            {
-                MenuVertical.Width = 70;
-            }
-            else
-                MenuVertical.Width = 250;
-        }
-
-        private void iconcerrar_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void iconmaximizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Maximized;
-            iconrestaurar.Visible = true;
-            iconmaximizar.Visible = false;
-        }
-
-        private void iconrestaurar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Normal;
-            iconrestaurar.Visible = false;
-            iconmaximizar.Visible = true;
-        }
-
-        private void iconminimizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -62,6 +29,41 @@ namespace Control_Gym
             ReleaseCapture();
             SendMessage(this.Handle,0x112,0xf012,0);
         }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            if (MenuVertical.Width == 250)
+            {
+                MenuVertical.Width = 70;
+            }
+            else
+                MenuVertical.Width = 250;
+        }
+
+        private void iconminimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void iconrestaurar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            iconrestaurar.Visible = false;
+            iconmaximizar.Visible = true;
+        }
+
+        private void iconmaximizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            iconrestaurar.Visible = true;
+            iconmaximizar.Visible = false;
+        }
+
+        private void iconcerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
 
         private void AbrirFormEnPanel(object Formhijo)
         {

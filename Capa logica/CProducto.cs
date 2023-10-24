@@ -32,6 +32,7 @@ namespace Control_Gym.Capa_logica
             this.ganancia = ganancia;
             this.stock = stock;
         }
+        private CProductosD cProductosD = new CProductosD();
 
         public CProducto()
         {
@@ -40,17 +41,24 @@ namespace Control_Gym.Capa_logica
         {
             return nombre;
         }
-        public void GuardarProducto(long cod_producto, int cod_proveedor, int cod_tipo_producto, string nombre, DateTime fecha_venc, decimal precio_costo, decimal precio_venta, decimal ganancia, int stock)
+        public List<CProducto> traerProductos()
         {
-            CProductosD CProductoD = new CProductosD();
-            CProductoD.GuardarProducto(cod_producto, cod_proveedor, cod_tipo_producto, nombre, fecha_venc, precio_costo, precio_venta, ganancia, stock);
+            List<CProducto> productos = cProductosD.traerProductos();
+            return productos;
+        }
+
+        public void GuardarProducto(long cod_producto, int cod_proveedor, int cod_tipo_producto, string nombre, DateTime fecha_venc, decimal precio_costo, decimal precio_venta, decimal ganancia, int stock)
+        {    
+            cProductosD.GuardarProducto(cod_producto, cod_proveedor, cod_tipo_producto, nombre, fecha_venc, precio_costo, precio_venta, ganancia, stock);
         }
 
 
         public void ModificarProducto(string cod, long cod_producto, int cod_proveedor, int cod_tipo_producto, string nombre, DateTime fecha_venc, decimal precio_costo, decimal precio_venta, decimal ganancia, int stock)
         {
-            CProductosD CProductoD = new CProductosD();
-            CProductoD.ModificarProducto(cod, cod_producto, cod_proveedor, cod_tipo_producto, nombre, fecha_venc, precio_costo, precio_venta, ganancia, stock);
+
+            
+            cProductosD.ModificarProducto(cod, cod_producto, cod_proveedor, cod_tipo_producto, nombre, fecha_venc, precio_costo, precio_venta, ganancia, stock);
+
 
         }
 
@@ -58,33 +66,32 @@ namespace Control_Gym.Capa_logica
         public DataTable MostrarDatos()
         {
 
-            CProductosD CProductoD = new CProductosD();
             DataTable tabla = new DataTable();
-            tabla = CProductoD.MostrarDatos();
+            tabla = cProductosD.MostrarDatos();
 
             return tabla;
         }
         public void EliminarProducto(string cod, string nombre)
         {
-            CProductosD CProductoD = new CProductosD();
-            CProductoD.EliminarProducto(cod, nombre);
+
+           
+            cProductosD.EliminarProducto(cod, nombre);
         }
         public DataTable MostrarTipoProducto()
         {
-            CProductosD cProducto = new CProductosD();
-            return cProducto.MostrarTipoProducto();
+           
+            return cProductosD.MostrarTipoProducto();
         }
         public DataTable MostrarProveedor()
         {
-            CProductosD cProducto = new CProductosD();
-            return cProducto.MostrarProveedor();
+          
+            return cProductosD.MostrarProveedor();
         }
         public DataTable Filtrar(string cod)
         {
 
-            CProductosD cProductoD = new CProductosD();
             DataTable tabla = new DataTable();
-            tabla = cProductoD.Filtrar(cod);
+            tabla = cProductosD.Filtrar(cod);
 
             return tabla;
         }

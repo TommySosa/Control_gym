@@ -245,10 +245,10 @@
             // 
             this.BarraTitulo.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BarraTitulo.Controls.Add(this.iconminimizar);
-            this.BarraTitulo.Controls.Add(this.iconrestaurar);
             this.BarraTitulo.Controls.Add(this.iconmaximizar);
             this.BarraTitulo.Controls.Add(this.iconcerrar);
             this.BarraTitulo.Controls.Add(this.btnMenu);
+            this.BarraTitulo.Controls.Add(this.iconrestaurar);
             this.BarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.BarraTitulo.Location = new System.Drawing.Point(250, 0);
             this.BarraTitulo.Name = "BarraTitulo";
