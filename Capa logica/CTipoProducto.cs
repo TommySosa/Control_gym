@@ -25,6 +25,10 @@ namespace Control_Gym.Capa_logica
         public CTipoProducto()
         {
         }
+        public override string ToString()
+        {
+            return Nombre;
+        }
         public void ActualizarProducto(int cod, string nombre)
         {
             CTipoProductoD cTipoProductoD = new CTipoProductoD();
@@ -46,6 +50,11 @@ namespace Control_Gym.Capa_logica
             DataTable tabla = new DataTable();
             tabla = cTipoProductoD.MostrarTipoProducto();
             return tabla;
+        }
+        public List<CTipoProducto> traerTiposProductos()
+        {
+            CTipoProductoD tiposD = new CTipoProductoD();
+            return tiposD.traerTiposProducto();
         }
 
 

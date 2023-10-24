@@ -97,5 +97,37 @@ namespace Control_Gym.Capa_de_datos
                 MessageBox.Show("Error al eliminar el tipo de producto" +  ex);
             }
         }
+        public List<CTipoProducto> traerTiposProducto()
+        {
+            ConexionBD conexionBD = ConexionBD.Instancia;
+            List<CTipoProducto> tipos_productos = new List<CTipoProducto>();
+            try
+            {
+                conexionBD.AbrirConexion();
+                string query = "select * from tipos_productos";
+                SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
+                SqlDataReader reader = comando.ExecuteReader();
+                {
+                    while (reader.Read())
+                    {
+                        int cod_tipo_producto = Convert.ToInt32(reader["cod_tipo_producto"]);
+                        string nombre = reader["nombre"].ToString();
+
+                        CTipoProducto tipoProducto = new CTipoProducto(cod_tipo_producto, nombre);
+                        tipos_productos.Add(tipoProducto);
+                    }
+                }
+                return tipos_productos;
+            }
+            catch
+            {
+                MessageBox.Show("Error al traer los tipos");
+                return null;
+            }
+            finally
+            {
+                conexionBD.CerrarConexion();
+            }
+        }
     }
 }

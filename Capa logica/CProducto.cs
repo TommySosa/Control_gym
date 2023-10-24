@@ -10,7 +10,7 @@ namespace Control_Gym.Capa_logica
 {
     internal class CProducto
     {
-        public Int64 cod_producto { get; set; }
+        public long cod_producto { get; set; }
         public int cod_proveedor { get; set; }
         public int cod_tipo_producto { get; set; }
         public string nombre { get; set; }
@@ -20,7 +20,7 @@ namespace Control_Gym.Capa_logica
         public decimal ganancia { get; set; }
         public int stock { get; set; }
 
-        public CProducto(Int64 cod_producto, int cod_proveedor, int cod_tipo_producto, DateTime fecha_venc, decimal precio_costo, decimal precio_venta, decimal ganancia, int stock)
+        public CProducto(long cod_producto, int cod_proveedor, int cod_tipo_producto, string nombre, DateTime fecha_venc, decimal precio_costo, decimal precio_venta, decimal ganancia, int stock)
         {
             this.cod_producto = cod_producto;
             this.cod_proveedor = cod_proveedor;
@@ -33,20 +33,21 @@ namespace Control_Gym.Capa_logica
             this.stock = stock;
         }
 
-
         public CProducto()
         {
-
         }
-
-        public void GuardarProducto(Int64 cod_producto, int cod_proveedor, int cod_tipo_producto, string nombre, DateTime fecha_venc, decimal precio_costo, decimal precio_venta, decimal ganancia, int stock)
+        public override string ToString()
+        {
+            return nombre;
+        }
+        public void GuardarProducto(long cod_producto, int cod_proveedor, int cod_tipo_producto, string nombre, DateTime fecha_venc, decimal precio_costo, decimal precio_venta, decimal ganancia, int stock)
         {
             CProductoD CProductoD = new CProductoD();
             CProductoD.GuardarProducto(cod_producto, cod_proveedor, cod_tipo_producto, nombre, fecha_venc, precio_costo, precio_venta, ganancia, stock);
         }
 
 
-        public void ModificarProducto(string cod, Int64 cod_producto, int cod_proveedor, int cod_tipo_producto, string nombre, DateTime fecha_venc, decimal precio_costo, decimal precio_venta, decimal ganancia, int stock)
+        public void ModificarProducto(string cod, long cod_producto, int cod_proveedor, int cod_tipo_producto, string nombre, DateTime fecha_venc, decimal precio_costo, decimal precio_venta, decimal ganancia, int stock)
         {
             CProductoD CProductoD = new CProductoD();
             CProductoD.ModificarProducto(cod, cod_producto, cod_proveedor, cod_tipo_producto, nombre, fecha_venc, precio_costo, precio_venta, ganancia, stock);
@@ -68,7 +69,25 @@ namespace Control_Gym.Capa_logica
             CProductoD CProductoD = new CProductoD();
             CProductoD.EliminarProducto(cod, nombre);
         }
+        public DataTable MostrarTipoProducto()
+        {
+            CProductoD cProducto = new CProductoD();
+            return cProducto.MostrarTipoProducto();
+        }
+        public DataTable MostrarProveedor()
+        {
+            CProductoD cProducto = new CProductoD();
+            return cProducto.MostrarProveedor();
+        }
+        public DataTable Filtrar(string cod)
+        {
 
+            CProductoD cProductoD = new CProductoD();
+            DataTable tabla = new DataTable();
+            tabla = cProductoD.Filtrar(cod);
 
+            return tabla;
+        }
     }
 }
+  
