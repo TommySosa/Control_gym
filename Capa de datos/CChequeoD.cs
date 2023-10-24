@@ -37,28 +37,34 @@ namespace Control_Gym.Capa_de_datos
         public string[] buscarPorDni(int dni)
         {
             List<string> result = new List<string>();
-            string query = "SELECT fecha_inicio, fecha_fin, cod_tipo_membresia FROM Membresias ";
+
+            string query = "SELECT fecha_inicio, fecha_fin  FROM Membresias WHERE dni_socio = @dni";
 
             try
             {
                 SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
+                comando.Parameters.AddWithValue("@dni", dni);
+
                 SqlDataReader reader = comando.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    int cod_tipo_membresia = Convert.ToInt32(reader["cod_tipo_membresia"].ToString());
                     DateTime fecha_inicio = DateTime.Parse(reader["fecha_inicio"].ToString());
                     DateTime fecha_fin = DateTime.Parse(reader["fecha_fin"].ToString());
+                    DateTime fecha_actual = DateTime.Now; 
+                    TimeSpan diferencia = fecha_fin - fecha_actual;
+                    int dias_restantes = diferencia.Days;
 
-                    // Crear un string con los valores y agregarlo a la lista de resultados
-                    string resultString = $"cod_tipo_membresia: {cod_tipo_membresia}, fecha_inicio: {fecha_inicio}, fecha_fin: {fecha_fin}";
-                    result.Add(resultString);
+                    result.Add(fecha_inicio.ToString("dd/MM"));
+                    result.Add(fecha_fin.ToString("dd/MM"));
+                    result.Add(dias_restantes.ToString());
+                    
                 }
                 reader.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hubo un error al mostrar las membresias: " + ex);
+                MessageBox.Show("Hubo un error al buscar el DNI: " + ex);
                 throw;
             }
             finally
@@ -66,7 +72,6 @@ namespace Control_Gym.Capa_de_datos
                 conexionBD.CerrarConexion();
             }
 
-            // Convertir la lista de resultados a un array de strings y retornarlo
             return result.ToArray();
         }
     }
