@@ -191,6 +191,7 @@ namespace Control_Gym.Capa_de_datos
 
         public List<CMembresia> BuscarPorDNI(int dni)
         {
+
             string query = "select cod_membresia as 'ID', membresias.cod_tipo_membresia as 'ID tipo',dni_socio as 'Dni socio', fecha_inicio as 'Fecha de inicio', fecha_fin as 'Fecha de fin', nombre as 'Tipo de membresia',precio as 'Precio', cantidad_dias as 'Dias de duración' from membresias inner join tipos_membresias on membresias.cod_tipo_membresia = tipos_membresias.cod_tipo_membresia where dni_socio ='" + dni + "'";
             List<CMembresia> membresias = new List<CMembresia>();
             try
