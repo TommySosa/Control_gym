@@ -157,6 +157,7 @@ namespace Control_Gym.Capa_de_presentacion
             
         }
 
-      
+
+
     }
 }

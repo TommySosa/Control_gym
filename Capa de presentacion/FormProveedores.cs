@@ -18,20 +18,6 @@ namespace Control_Gym.Capa_de_presentacion
             InitializeComponent();
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-           ClsProvedores clsProvedores = new ClsProvedores();
-
-            
-            string nombre = txtNombre.Text;
-            string cuit = txtCuit.Text;
-            string telefono = txtTelefono.Text;
-            string direccion = txtDireccion.Text;
-            string email = txtEmail.Text;
-
-            clsProvedores.AgregarProv( nombre, cuit, telefono, direccion, email);
-            dgvProveedores.DataSource = clsProvedores.CargarDatos();
-        }
 
         private void FormProveedores_Load(object sender, EventArgs e)
         {
@@ -121,6 +107,22 @@ namespace Control_Gym.Capa_de_presentacion
             {
                 clsProvedores.CargarDatos();
             }
+        }
+
+        private void btnAgregar_Click_1(object sender, EventArgs e)
+        {
+
+            ClsProvedores clsProvedores = new ClsProvedores();
+
+
+            string nombre = txtNombre.Text;
+            string cuit = txtCuit.Text;
+            string telefono = txtTelefono.Text;
+            string direccion = txtDireccion.Text;
+            string email = txtEmail.Text;
+
+            clsProvedores.AgregarProv(nombre, cuit, telefono, direccion, email);
+            dgvProveedores.DataSource = clsProvedores.CargarDatos();
         }
     }
 }

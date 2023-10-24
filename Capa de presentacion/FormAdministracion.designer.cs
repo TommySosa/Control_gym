@@ -87,7 +87,7 @@
             this.btnTiposMembresia.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.btnTiposMembresia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btnTiposMembresia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTiposMembresia.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTiposMembresia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTiposMembresia.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnTiposMembresia.Location = new System.Drawing.Point(45, 103);
             this.btnTiposMembresia.Name = "btnTiposMembresia";
@@ -171,7 +171,7 @@
             this.btnProveedores.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.btnProveedores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btnProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProveedores.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProveedores.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnProveedores.Location = new System.Drawing.Point(49, 103);
             this.btnProveedores.Name = "btnProveedores";
@@ -232,7 +232,7 @@
             this.btnEmpleados.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.btnEmpleados.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btnEmpleados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmpleados.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmpleados.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmpleados.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnEmpleados.Location = new System.Drawing.Point(43, 103);
             this.btnEmpleados.Name = "btnEmpleados";
@@ -336,7 +336,7 @@
             this.btnProductos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.btnProductos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btnProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProductos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProductos.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnProductos.Location = new System.Drawing.Point(48, 103);
             this.btnProductos.Name = "btnProductos";
@@ -348,6 +348,9 @@
             // 
             // panelContenedor
             // 
+            this.panelContenedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelContenedor.Location = new System.Drawing.Point(33, 162);
             this.panelContenedor.Name = "panelContenedor";
             this.panelContenedor.Size = new System.Drawing.Size(974, 448);

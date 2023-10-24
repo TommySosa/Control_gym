@@ -255,5 +255,10 @@ namespace Control_Gym.Capa_de_presentacion
                 return;
             }
         }
+
+        private void dtvEmpleado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

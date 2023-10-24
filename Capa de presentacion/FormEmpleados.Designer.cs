@@ -63,6 +63,7 @@
             this.dtvEmpleado.ReadOnly = true;
             this.dtvEmpleado.Size = new System.Drawing.Size(703, 394);
             this.dtvEmpleado.TabIndex = 0;
+            this.dtvEmpleado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtvEmpleado_CellContentClick);
             this.dtvEmpleado.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtvEmpleado_CellFormatting);
             this.dtvEmpleado.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtvEmpleado_RowHeaderMouseClick);
             // 
