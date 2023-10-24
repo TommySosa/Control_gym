@@ -33,7 +33,6 @@ namespace Control_Gym.Capa_de_presentacion
 
             txtCodProducto.Text = "";
         }
-
         private decimal CalcultarTotal()
         {
             decimal total = 0;

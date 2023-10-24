@@ -20,9 +20,17 @@ namespace Control_Gym.Capa_de_datos
         {
             try
             {
-                string query = "INSERT INTO Empleados(dni_empleado, nombre, apellido, telefono, fecha_nac, domicilio, email, contraseña) VALUES ('" + cEmpleado.dni_empleado + "','" + cEmpleado.nombre + "','" + cEmpleado.apellido + "','" + cEmpleado.telefono + "','" + cEmpleado.fecha_nac + "','" + cEmpleado.domicilio + "','" + cEmpleado.email + "','" + cEmpleado.contraseña + "')";
+                string query = "INSERT INTO Empleados(dni_empleado, nombre, apellido, telefono, fecha_nac, domicilio, email, contraseña) VALUES (@dni_empleado, @nombre, @apellido,@telefono,@fecha_nac,@domicilio,@email,@contraseña)";
 
                 SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
+                comando.Parameters.Add(new SqlParameter("@dni_empleado", cEmpleado.dni_empleado));
+                comando.Parameters.Add(new SqlParameter("@nombre", cEmpleado.nombre));
+                comando.Parameters.Add(new SqlParameter("@apellido", cEmpleado.apellido));
+                comando.Parameters.Add(new SqlParameter("@telefono", cEmpleado.telefono));
+                comando.Parameters.Add(new SqlParameter("@fecha_nac", cEmpleado.fecha_nac));
+                comando.Parameters.Add(new SqlParameter("@domicilio", cEmpleado.domicilio));
+                comando.Parameters.Add(new SqlParameter("@email", cEmpleado.email));
+                comando.Parameters.Add(new SqlParameter("@contraseña", cEmpleado.contraseña));
                 comando.ExecuteNonQuery();
                 MessageBox.Show("Empleado agregado correctamente.");
             }
@@ -36,9 +44,18 @@ namespace Control_Gym.Capa_de_datos
         {
             try
             {
-                string query = "UPDATE empleados SET dni_empleado = '" + cEmpleado.dni_empleado + "', nombre = '" + cEmpleado.nombre + "', apellido = '" + cEmpleado.apellido + "', telefono = '" + cEmpleado.telefono + "', fecha_nac = '" + cEmpleado.fecha_nac + "', domicilio = '" + cEmpleado.domicilio + "', email = '" + cEmpleado.email + "', contraseña = '" + cEmpleado.contraseña + "' WHERE cod_empleado = " + cEmpleado.cod_empleado;
+                string query = "UPDATE empleados SET nombre = @nombre, apellido = @apellido, telefono = @telefono, fecha_nac = @fecha_nac, domicilio = @domicilio, email = @email, contraseña = @contraseña WHERE dni_empleado = @dni_empleado";
+
 
                 SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
+                comando.Parameters.Add(new SqlParameter("@dni_empleado", cEmpleado.dni_empleado));
+                comando.Parameters.Add(new SqlParameter("@nombre", cEmpleado.nombre));
+                comando.Parameters.Add(new SqlParameter("@apellido", cEmpleado.apellido));
+                comando.Parameters.Add(new SqlParameter("@telefono", cEmpleado.telefono));
+                comando.Parameters.Add(new SqlParameter("@fecha_nac", cEmpleado.fecha_nac));
+                comando.Parameters.Add(new SqlParameter("@domicilio", cEmpleado.domicilio));
+                comando.Parameters.Add(new SqlParameter("@email", cEmpleado.email));
+                comando.Parameters.Add(new SqlParameter("@contraseña", cEmpleado.contraseña));
                 comando.ExecuteNonQuery();
                 MessageBox.Show("Empleado actualizado correctamente.");
             }
@@ -48,9 +65,9 @@ namespace Control_Gym.Capa_de_datos
             }
         }
 
-        public void EliminarEmpleado(int id)
+        public void EliminarEmpleado(int dni)
         {
-            string query = "delete Empleados where cod_empleado = '" + id + "'";
+            string query = "delete Empleados where dni_empleado = '" + dni + "'";
             try
             {
                 SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
@@ -78,7 +95,6 @@ namespace Control_Gym.Capa_de_datos
                 {
                     CEmpleado Empleado = new CEmpleado
                     {
-                        cod_empleado = Convert.ToInt32(reader["cod_empleado"].ToString()),
                         dni_empleado = Convert.ToInt32(reader["dni_empleado"].ToString()),
                         nombre = reader["nombre"].ToString(),
                         apellido = reader["apellido"].ToString(),
@@ -108,7 +124,7 @@ namespace Control_Gym.Capa_de_datos
         public List<CEmpleado> CargarGrilla()
         {
             List<CEmpleado> Empleados = new List<CEmpleado>();
-            string query = "select cod_empleado as 'ID' dni_empleado as 'DNI', nombre as 'Nombre', apellido as 'Apellido', telefono as 'Teléfono', fecha_nac as 'Fecha de Nacimiento',domicilio as 'Domicilio', email as 'E-Mail', contraseña as 'Contraseña' from Empleados";
+            string query = "select dni_empleado as 'DNI', nombre as 'Nombre', apellido as 'Apellido', telefono as 'Teléfono', fecha_nac as 'Fecha de Nacimiento',domicilio as 'Domicilio', email as 'E-Mail', contraseña as 'Contraseña' from Empleados";
             try
             {
                 SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
@@ -118,7 +134,7 @@ namespace Control_Gym.Capa_de_datos
                 {
                     CEmpleado Empleado = new CEmpleado
                     {
-                        cod_empleado = Convert.ToInt32(reader["ID"].ToString()),
+                        
                         dni_empleado = Convert.ToInt32(reader["DNI"].ToString()),
                         nombre = reader["Nombre"].ToString(),
                         apellido = reader["Apellido"].ToString(),
