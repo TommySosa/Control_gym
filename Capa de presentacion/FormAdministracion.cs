@@ -33,7 +33,7 @@ namespace Control_Gym
 
         private void btnEmpleados_Click(object sender, EventArgs e)
         {
-            //AbrirFormEnPanel(new FormEmpleados());
+            AbrirFormEnPanel(new FormEmpleados());
         }
 
         private void btnTiposMembresia_Click(object sender, EventArgs e)
@@ -55,10 +55,16 @@ namespace Control_Gym
         {
             //AbrirFormEnPanel(new FormTiposMembresias());
         }
+        private void btnTiposProducto_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new FormTipoProductos());
+
+        }
 
         private void FormAdministracion_Load(object sender, EventArgs e)
         {
 
         }
+
     }
 }
