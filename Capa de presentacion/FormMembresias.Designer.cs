@@ -116,7 +116,7 @@
             this.panel1.Controls.Add(this.btnCancelarMembresia);
             this.panel1.Location = new System.Drawing.Point(585, 100);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(297, 111);
+            this.panel1.Size = new System.Drawing.Size(296, 111);
             this.panel1.TabIndex = 19;
             // 
             // dvgMembresias

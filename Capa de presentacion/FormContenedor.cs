@@ -82,7 +82,7 @@ namespace Control_Gym
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new FormVentas());
+           //AbrirFormEnPanel(new FormVentas());
         }
 
         private void btnAdministracion_Click(object sender, EventArgs e)

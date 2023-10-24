@@ -258,5 +258,7 @@ namespace Control_Gym.Capa_de_presentacion
                 MessageBox.Show("Selecciona una fila en la grilla antes de cargar los datos.");
             }
         }
+
+        
     }
 }

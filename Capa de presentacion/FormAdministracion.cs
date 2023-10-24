@@ -48,7 +48,7 @@ namespace Control_Gym
 
         private void btnProductos_Click(object sender, EventArgs e)
         {
-            //AbrirFormEnPanel(new FormProductos());
+            AbrirFormEnPanel(new FormProductos());
         }
 
         private void btnTiposMembresias_Click(object sender, EventArgs e)

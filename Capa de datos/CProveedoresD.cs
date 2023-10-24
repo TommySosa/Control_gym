@@ -116,18 +116,6 @@ namespace Control_Gym.Capa_de_datos
 
             return tabla;
         }
-
-
-
-
-
-
-
-
-
-
-
-
         public DataTable CargarDatos()
         {
 
@@ -156,6 +144,38 @@ namespace Control_Gym.Capa_de_datos
             }
 
             return tabla;
+        }
+        public List<ClsProvedores> traerTiposProveedores()
+        {
+            ConexionBD conexionBD = ConexionBD.Instancia;
+            List<ClsProvedores> tipos_proveedores = new List<ClsProvedores>();
+            try
+            {
+                conexionBD.AbrirConexion();
+                string query = "select * from proveedores";
+                SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
+                SqlDataReader reader = comando.ExecuteReader();
+                {
+                    while (reader.Read())
+                    {
+                        int cod_proveedor = Convert.ToInt32(reader["cod_proveedor"]);
+                        string nombre = reader["nombre"].ToString();
+
+                        ClsProvedores tipoProveedor = new ClsProvedores(cod_proveedor, nombre);
+                        tipos_proveedores.Add(tipoProveedor);
+                    }
+                }
+                return tipos_proveedores;
+            }
+            catch
+            {
+                MessageBox.Show("Error al traer los tipos");
+                return null;
+            }
+            finally
+            {
+                conexionBD.CerrarConexion();
+            }
         }
     }
 }

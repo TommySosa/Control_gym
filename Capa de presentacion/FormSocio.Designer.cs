@@ -67,6 +67,7 @@
             this.dgvSocios.Size = new System.Drawing.Size(622, 362);
             this.dgvSocios.TabIndex = 0;
             this.dgvSocios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSocios_CellClick);
+            this.dgvSocios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSocios_CellContentClick);
             // 
             // txtDniSocio
             // 
