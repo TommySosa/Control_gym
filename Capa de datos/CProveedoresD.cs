@@ -44,10 +44,10 @@ namespace Control_Gym.Capa_de_datos
                 conexionBD.CerrarConexion();
             }
         }
-        public void ModificarProv(int cod, string nombre, string cuit, string telefono, string direccion, string email)
+        public void ModificarProv(string cod, string nombre, string cuit, string telefono, string direccion, string email)
         {
 
-            string query = "UPDATE proveedores SET nombre = @nombre,cuit = @cuit, telefono = @telefono, direccion = @direccion, email = @email WHERE cod_proveedor = @cod";
+            string query = "UPDATE proveedores SET nombre = @nombre, cuit = @cuit, telefono = @telefono, direccion = @direccion, email = @email WHERE cod_proveedor = @cod";
             try
             {
                 SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
@@ -71,7 +71,7 @@ namespace Control_Gym.Capa_de_datos
                 conexionBD.CerrarConexion();
             }
         }
-        public void EliminarDatos(int cod, string name)
+        public void EliminarDatos(string cod, string name)
         {
             string query = "DELETE proveedores WHERE cod_proveedor= @cod";
             try
@@ -116,6 +116,18 @@ namespace Control_Gym.Capa_de_datos
 
             return tabla;
         }
+
+
+
+
+
+
+
+
+
+
+
+
         public DataTable CargarDatos()
         {
 

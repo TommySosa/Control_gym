@@ -18,20 +18,6 @@ namespace Control_Gym.Capa_de_presentacion
             InitializeComponent();
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-           ClsProvedores clsProvedores = new ClsProvedores();
-
-            
-            string nombre = txtNombre.Text;
-            string cuit = txtCuit.Text;
-            string telefono = txtTelefono.Text;
-            string direccion = txtDireccion.Text;
-            string email = txtEmail.Text;
-
-            clsProvedores.AgregarProv( nombre, cuit, telefono, direccion, email);
-            dgvProveedores.DataSource = clsProvedores.CargarDatos();
-        }
 
         private void FormProveedores_Load(object sender, EventArgs e)
         {
@@ -42,7 +28,7 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void dgvProveedores_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtCodigo.Text = dgvProveedores.SelectedCells[0].Value.ToString();
+            txtCodigo.Text = dgvProveedores.Rows[e.RowIndex].Cells["cod_proveedor"].FormattedValue.ToString();
             txtNombre.Text = dgvProveedores.Rows[e.RowIndex].Cells["nombre"].FormattedValue.ToString();
             txtCuit.Text = dgvProveedores.Rows[e.RowIndex].Cells["cuit"].FormattedValue.ToString();
             txtTelefono.Text = dgvProveedores.Rows[e.RowIndex].Cells["telefono"].FormattedValue.ToString();
@@ -54,7 +40,7 @@ namespace Control_Gym.Capa_de_presentacion
         {
             ClsProvedores clsProvedores = new ClsProvedores();
 
-            int cod = Convert.ToInt32(txtCodigo.Text);
+            string cod = txtCodigo.Text;
             string nombre = txtNombre.Text;
             string cuit = txtCuit.Text;
             string telefono = txtTelefono.Text;
@@ -68,7 +54,7 @@ namespace Control_Gym.Capa_de_presentacion
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             ClsProvedores clsProvedores = new ClsProvedores();
-            int cod = Convert.ToInt32(txtCodigo.Text);
+            string cod = txtCodigo.Text;
             string nombre = txtNombre.Text;
             clsProvedores.EliminarDatos(cod, nombre);
 
@@ -121,6 +107,22 @@ namespace Control_Gym.Capa_de_presentacion
             {
                 clsProvedores.CargarDatos();
             }
+        }
+
+        private void btnAgregar_Click_1(object sender, EventArgs e)
+        {
+
+            ClsProvedores clsProvedores = new ClsProvedores();
+
+
+            string nombre = txtNombre.Text;
+            string cuit = txtCuit.Text;
+            string telefono = txtTelefono.Text;
+            string direccion = txtDireccion.Text;
+            string email = txtEmail.Text;
+
+            clsProvedores.AgregarProv(nombre, cuit, telefono, direccion, email);
+            dgvProveedores.DataSource = clsProvedores.CargarDatos();
         }
     }
 }

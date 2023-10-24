@@ -48,20 +48,24 @@ namespace Control_Gym.Capa_logica
         }
 
         public void GuardarProducto(long cod_producto, int cod_proveedor, int cod_tipo_producto, string nombre, DateTime fecha_venc, decimal precio_costo, decimal precio_venta, decimal ganancia, int stock)
-        {
+        {    
             cProductosD.GuardarProducto(cod_producto, cod_proveedor, cod_tipo_producto, nombre, fecha_venc, precio_costo, precio_venta, ganancia, stock);
         }
 
 
         public void ModificarProducto(string cod, long cod_producto, int cod_proveedor, int cod_tipo_producto, string nombre, DateTime fecha_venc, decimal precio_costo, decimal precio_venta, decimal ganancia, int stock)
         {
+
+            
             cProductosD.ModificarProducto(cod, cod_producto, cod_proveedor, cod_tipo_producto, nombre, fecha_venc, precio_costo, precio_venta, ganancia, stock);
+
 
         }
 
 
         public DataTable MostrarDatos()
         {
+
             DataTable tabla = new DataTable();
             tabla = cProductosD.MostrarDatos();
 
@@ -69,18 +73,23 @@ namespace Control_Gym.Capa_logica
         }
         public void EliminarProducto(string cod, string nombre)
         {
+
+           
             cProductosD.EliminarProducto(cod, nombre);
         }
         public DataTable MostrarTipoProducto()
         {
+           
             return cProductosD.MostrarTipoProducto();
         }
         public DataTable MostrarProveedor()
         {
+          
             return cProductosD.MostrarProveedor();
         }
         public DataTable Filtrar(string cod)
         {
+
             DataTable tabla = new DataTable();
             tabla = cProductosD.Filtrar(cod);
 
