@@ -53,20 +53,6 @@ namespace Control_Gym.Capa_de_presentacion
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void iconmaximizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Maximized;
-            iconrestaurar.Visible = true;
-            iconmaximizar.Visible = false;
-        }
-
-        private void iconrestaurar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Normal;
-            iconrestaurar.Visible = false;
-            iconmaximizar.Visible = true;
-        }
-
         private void iconcerrar_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -85,6 +71,14 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void pbAdministradores_Click(object sender, EventArgs e)
         {
+            FormAcceso accesoForm = new FormAcceso();
+
+            DialogResult result = accesoForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string dniCliente = accesoForm.dni_empleado;
+                string nombre = accesoForm.contraseña;
+            }
 
         }
 

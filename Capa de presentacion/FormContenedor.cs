@@ -18,6 +18,14 @@ namespace Control_Gym
         {
             InitializeComponent();
         }
+        private int dni_empleado;
+        private string nombre;
+        public FormContenedor(int dni_empleado, string nombre)
+        {
+            InitializeComponent();
+            this.dni_empleado = dni_empleado;
+            this.nombre = nombre;
+        }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -84,7 +92,7 @@ namespace Control_Gym
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-           //AbrirFormEnPanel(new FormVentas());
+           AbrirFormEnPanel(new FormVentas());
         }
 
         private void btnAdministracion_Click(object sender, EventArgs e)
@@ -116,6 +124,9 @@ namespace Control_Gym
         {
             btnlogoInicio_Click(null, e);
             //AbrirFormEnPanel(new FormPrincipal());
+            lblDNI.Text = this.dni_empleado.ToString();
+            lblNombre.Text = this.nombre;
+
         }
 
         private void MenuVertical_Paint(object sender, PaintEventArgs e)
