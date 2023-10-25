@@ -15,7 +15,7 @@ namespace Control_Gym.Capa_de_datos
 
         public int ContarTiposMembresia(int dni)
         {
-            string query = "select COUNT(dni_socio) from membresias where dni_soci = '" + dni + "'";
+            string query = "select COUNT(dni_socio) from membresias where dni_socio = '" + dni + "'";
             try
             {
                 SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
@@ -31,7 +31,48 @@ namespace Control_Gym.Capa_de_datos
             {
                 conexionBD.CerrarConexion();
             }
+        }
 
+        public string[] buscarPorDni(int dni, int cod_tipo_membresia)
+        {
+            List<string> result = new List<string>();
+
+            string query = "SELECT fecha_inicio, fecha_fin  FROM Membresias WHERE dni_socio = @dni and cod_tipo_membresia = @cod_tipo_membresia";
+
+            try
+            {
+                SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
+                comando.Parameters.AddWithValue("@dni", dni);
+                comando.Parameters.AddWithValue("@cod_tipo_membresia", cod_tipo_membresia);
+
+                SqlDataReader reader = comando.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    DateTime fecha_inicio = DateTime.Parse(reader["fecha_inicio"].ToString());
+                    DateTime fecha_fin = DateTime.Parse(reader["fecha_fin"].ToString());
+                    DateTime fecha_actual = DateTime.Now;
+                    TimeSpan diferencia = fecha_fin - fecha_actual;
+                    int dias_restantes = diferencia.Days;
+
+                    result.Add(fecha_inicio.ToString("dd/MM"));
+                    result.Add(fecha_fin.ToString("dd/MM"));
+                    result.Add(dias_restantes.ToString());
+
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hubo un error al buscar el DNI: " + ex);
+                throw;
+            }
+            finally
+            {
+                conexionBD.CerrarConexion();
+            }
+
+            return result.ToArray();
         }
 
         public string[] buscarPorDni(int dni)
@@ -58,7 +99,6 @@ namespace Control_Gym.Capa_de_datos
                     result.Add(fecha_inicio.ToString("dd/MM"));
                     result.Add(fecha_fin.ToString("dd/MM"));
                     result.Add(dias_restantes.ToString());
-                    
                 }
                 reader.Close();
             }

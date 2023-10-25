@@ -1,10 +1,12 @@
 ﻿using Control_Gym.Capa_de_datos;
+using Control_Gym.Capa_logica;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +20,9 @@ namespace Control_Gym.Capa_de_presentacion
         {
             InitializeComponent();
         }
+
+        private CTipoMembresia cTipoMembresia = new CTipoMembresia();
+        private CMembresiaD cMembresiaD = new CMembresiaD();
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -35,8 +40,12 @@ namespace Control_Gym.Capa_de_presentacion
             pbNeutro.Visible = true;
             pbYes.Visible = false;
             pbNo.Visible = false;
+            cmbTipoMembresia.Visible = false;
+            lblTipoMembresia.Visible = false;
 
             limpiarLabels();
+            List<CTipoMembresia> tipos = cTipoMembresia.traerTipos();
+            cmbTipoMembresia.DataSource = tipos;
         }
 
         private void iconminimizar_Click(object sender, EventArgs e)
@@ -65,10 +74,13 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void limpiarLabels()
         {
+            txtDni.Text = "";
             lblInicio.Text = "00/00";
             lblFin.Text = "00/00";
             lblDiasRestantes.Text = "00";
-            cmbTipoMembresia.Text = string.Empty;
+            cmbTipoMembresia.Text = "" ;
+            cmbTipoMembresia.Visible = false;
+            lblTipoMembresia.Visible = false;
         }
 
         private void pbAdministradores_Click(object sender, EventArgs e)
@@ -78,7 +90,42 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void cmbTipoMembresia_SelectedIndexChanged(object sender, EventArgs e)
         {
+            CTipoMembresia tipoSeleccionado = (CTipoMembresia)cmbTipoMembresia.SelectedItem;
+            int cod_tipo_membresia = tipoSeleccionado.cod_tipo_membresia;
+            cTipoMembresia.cod_tipo_membresia = cod_tipo_membresia;
 
+            if (txtDni.Text != "")
+            {
+
+                timer1.Stop();
+                timer1.Start();
+
+                if (cMembresiaD.TieneTipoMembresia(Convert.ToInt32(txtDni.Text), cTipoMembresia.cod_tipo_membresia))
+                {
+                    CChequeoD cChequeoD = new CChequeoD();
+                    string[] resultado = cChequeoD.buscarPorDni(Convert.ToInt32(txtDni.Text), cTipoMembresia.cod_tipo_membresia);
+
+                    if (resultado.Length > 0)
+                    {
+                        if (Convert.ToInt32(resultado[2]) > 0)
+                        {
+                            lblInicio.Text = resultado[0];
+                            lblFin.Text = resultado[1];
+                            lblDiasRestantes.Text = resultado[2];
+                        }
+                        else
+                        {
+                            lblInicio.Text = resultado[0];
+                            lblFin.Text = resultado[1];
+                            lblDiasRestantes.Text = resultado[2];
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("DNI VACIO");
+                }
+            }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -89,10 +136,16 @@ namespace Control_Gym.Capa_de_presentacion
 
                 CChequeoD cChequeoD = new CChequeoD();
                 string[] resultado = cChequeoD.buscarPorDni(dni);
+                int cant_tipo_membresia = cChequeoD.ContarTiposMembresia(dni);
+
+                if (cant_tipo_membresia > 1)
+                {
+                    cmbTipoMembresia.Visible = true;
+                    lblTipoMembresia.Visible = true;
+                }
 
                 timer1.Stop();
                 timer1.Start();
-
 
                 if (resultado.Length > 0)
                 {
@@ -105,8 +158,6 @@ namespace Control_Gym.Capa_de_presentacion
                         pbNeutro.Visible = false;
                         pbYes.Visible = true;
                         pbNo.Visible = false;
-
-                        txtDni.Text = "";
                     }
                     else
                     {
@@ -117,8 +168,6 @@ namespace Control_Gym.Capa_de_presentacion
                         pbNeutro.Visible = false;
                         pbYes.Visible = false;
                         pbNo.Visible = true;
-                        
-                        txtDni.Text = "";
                     }
                 }
                 else
@@ -167,8 +216,8 @@ namespace Control_Gym.Capa_de_presentacion
             }
             if (e.KeyChar == (char)(Keys.Enter))
             {
-                e.Handled = true;//elimina el sonido
-                btnBuscar_Click(sender, e);//llama al evento click del boton
+                e.Handled = true;
+                btnBuscar_Click(sender, e);
             }
         }
     }

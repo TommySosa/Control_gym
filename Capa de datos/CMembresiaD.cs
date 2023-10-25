@@ -13,6 +13,35 @@ namespace Control_Gym.Capa_de_datos
     internal class CMembresiaD
     {
         private ConexionBD conexionBD = ConexionBD.Instancia;
+
+        public bool TieneTipoMembresia(int dni, int cod_tipo)
+        {
+            string query = "select COUNT(cod_membresia) from membresias where dni_socio = @dni_socio and cod_tipo_membresia = @cod_tipo_membresia;";
+
+            try
+            {
+                SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
+
+                comando.Parameters.Add(new SqlParameter("@dni_socio", dni));
+                comando.Parameters.Add(new SqlParameter("@cod_tipo_membresia", cod_tipo));
+
+                int resultado = (int)comando.ExecuteScalar();
+                if (resultado >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hubo un error." + ex);
+                return false;
+            }
+        }
+
         public void CrearMembresia(CMembresia cMembresia)
         {
             if (!SocioExiste(cMembresia.dni_socio))
@@ -24,23 +53,30 @@ namespace Control_Gym.Capa_de_datos
             string query = "INSERT INTO membresias(cod_tipo_membresia, dni_socio, fecha_inicio, fecha_fin) VALUES (@cod_tipo_membresia, @dni_socio, @fecha_inicio, @fecha_fin)";
             try
             {
-				SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
+                if (!TieneTipoMembresia(cMembresia.dni_socio, cMembresia.cod_tipo_membresia))
+                {
+                    SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
 
-                comando.Parameters.Add(new SqlParameter("@cod_tipo_membresia", cMembresia.cod_tipo_membresia));
-                comando.Parameters.Add(new SqlParameter("@dni_socio", cMembresia.dni_socio));
-                comando.Parameters.Add(new SqlParameter("@fecha_inicio", cMembresia.fecha_inicio));
-                comando.Parameters.Add(new SqlParameter("@fecha_fin", cMembresia.fecha_fin));
+                    comando.Parameters.Add(new SqlParameter("@cod_tipo_membresia", cMembresia.cod_tipo_membresia));
+                    comando.Parameters.Add(new SqlParameter("@dni_socio", cMembresia.dni_socio));
+                    comando.Parameters.Add(new SqlParameter("@fecha_inicio", cMembresia.fecha_inicio));
+                    comando.Parameters.Add(new SqlParameter("@fecha_fin", cMembresia.fecha_fin));
 
-                comando.ExecuteNonQuery();
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Error al crear la membresia."+ ex.Message);
-			}
-			finally
-			{
-				conexionBD.CerrarConexion();
-			}
+                    comando.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("El socio ya tiene cargado una membresia de ese tipo.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al crear la membresia." + ex.Message);
+            }
+            finally
+            {
+                conexionBD.CerrarConexion();
+            }
         }
         public bool SocioExiste(int dni)
         {
