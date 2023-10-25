@@ -84,5 +84,15 @@ namespace Control_Gym.Capa_de_presentacion
                 conexionBD.CerrarConexion();
             }
         }
+
+        private void iconminimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void iconcerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

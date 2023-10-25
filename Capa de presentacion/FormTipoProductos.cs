@@ -25,10 +25,10 @@ namespace Control_Gym.Capa_de_presentacion
             int cod = Convert.ToInt32(txtCod.Text);
             string nombre= txtNombre.Text;
             cTipoProducto.EliminarProducto(cod, nombre);
-            txtCod.Text = "";
-            txtNombre.Text = "";
             dgvTipoProducto.DataSource = cTipoProducto.MostrarTipoProducto();
 
+            limpiarCampos();
+            cancelarActualizar();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -39,45 +39,21 @@ namespace Control_Gym.Capa_de_presentacion
                 String nombre = txtNombre.Text;
                 cTipoProducto.AgregarTipoProducto(nombre);
                 dgvTipoProducto.DataSource = cTipoProducto.MostrarTipoProducto();
+                limpiarCampos();
+                cancelarActualizar();
             }
-           
-        }
-
-        private void btnMostrar_Click(object sender, EventArgs e)
-        {
-            CTipoProducto cTipoProducto = new CTipoProducto();
-            dgvTipoProducto.DataSource = cTipoProducto.MostrarTipoProducto();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-                CTipoProducto cTipoProducto = new CTipoProducto();
-                int cod = Convert.ToInt32(txtCod.Text);
-                String nombre = txtNombre.Text;
-                cTipoProducto.ActualizarProducto(cod, nombre);
-                dgvTipoProducto.DataSource = cTipoProducto.MostrarTipoProducto();
-                dgvTipoProducto.DataSource = cTipoProducto.MostrarTipoProducto();
-
-            
+            CTipoProducto cTipoProducto = new CTipoProducto();
+            int cod = Convert.ToInt32(txtCod.Text);
+            String nombre = txtNombre.Text;
+            cTipoProducto.ActualizarProducto(cod, nombre);
+            dgvTipoProducto.DataSource = cTipoProducto.MostrarTipoProducto();
+            limpiarCampos();
+            cancelarActualizar();
         }
-
-        private void dgvTipoProducto_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if(dgvTipoProducto.SelectedRows.Count > 0)
-            {
-                txtCod.Text = dgvTipoProducto.Rows[e.RowIndex].Cells["cod_tipo_producto"].FormattedValue.ToString();
-
-                txtNombre.Text = dgvTipoProducto.Rows[e.RowIndex].Cells["nombre"].FormattedValue.ToString();
-                btnEliminar.Visible = true;
-                btnModificar.Visible = true;
-                btnAgregar.Visible = false;
-                btnCancelar.Visible = true;
-
-            }
-
-        }
-
-        
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
@@ -94,12 +70,38 @@ namespace Control_Gym.Capa_de_presentacion
             dgvTipoProducto.DataSource = cTipoProducto.MostrarTipoProducto();
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void cancelarActualizar()
         {
             btnEliminar.Visible = false;
             btnModificar.Visible = false;
             btnAgregar.Visible = true;
             btnCancelar.Visible = false;
+        }
+
+        private void limpiarCampos()
+        {
+            txtCod.Text = "";
+            txtNombre.Text = "";
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            cancelarActualizar();
+            limpiarCampos();
+        }
+
+        private void dgvTipoProducto_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dgvTipoProducto.SelectedRows.Count > 0)
+            {
+                txtCod.Text = dgvTipoProducto.Rows[e.RowIndex].Cells["cod_tipo_producto"].FormattedValue.ToString();
+
+                txtNombre.Text = dgvTipoProducto.Rows[e.RowIndex].Cells["nombre"].FormattedValue.ToString();
+                btnEliminar.Visible = true;
+                btnModificar.Visible = true;
+                btnAgregar.Visible = false;
+                btnCancelar.Visible = true;
+            }
         }
     }
 }
