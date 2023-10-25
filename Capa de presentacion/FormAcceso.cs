@@ -17,85 +17,82 @@ namespace Control_Gym.Capa_de_presentacion
     {
         private CAcceso cAcceso = new CAcceso();
         private CAccesoD cAccesoD = new CAccesoD();
+
         public FormAcceso()
         {
             InitializeComponent();
         }
+
         public string dni_empleado
         {
             get { return txtDniEmpleado.Text; }
             set { txtDniEmpleado.Text = value; }
         }
+
         public string contraseña
         {
             get { return txtContraseñaEmpleado.Text; }
             set { txtContraseñaEmpleado.Text = value; }
         }
-        private void lblContraseña_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormAcceso_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblDni_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            CAcceso cAcc = new CAcceso(Convert.ToInt32(txtDniEmpleado.Text), txtContraseñaEmpleado.Text);
-            List<CAcceso> acceso = cAcceso.Login(cAcc);
-
-            if (acceso[0] != null)
+            if (txtDniEmpleado.Text != "" && txtContraseñaEmpleado.Text != "")
             {
-                //MessageBox.Show("Datos de acceso: " + acceso[0].dni_empleado + "contraseña" + acceso[0].nombre);
-                FormContenedor formContenedor = new FormContenedor(acceso[0].dni_empleado, acceso[0].nombre);
-                formContenedor.Show();
-                Close();
+                CAcceso cAcc = new CAcceso(Convert.ToInt32(txtDniEmpleado.Text), txtContraseñaEmpleado.Text);
+                List<CAcceso> acceso = cAcceso.Login(cAcc);
+
+                if (acceso[0] != null)
+                {
+                    MessageBox.Show("Acceso Concedido");
+                    FormContenedor formContenedor = new FormContenedor(acceso[0].dni_empleado, acceso[0].nombre);
+                    
+                    formContenedor.Show();
+
+                    txtDniEmpleado.Text = "";
+                    txtContraseñaEmpleado.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Datos incorrectos.");
+                }
             }
             else
             {
-                MessageBox.Show("Datos incorrectos.");
+                MessageBox.Show("Uno de las campos está vacío");
             }
         }
 
         private void txtDniEmpleado_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if (char.IsDigit(e.KeyChar))
+            {
+                string currentText = txtDniEmpleado.Text;
+
+                if (currentText.Length + 1 > 8)
+                {
+                    e.Handled = true;
+                }
+            }
+            else if (!char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
+            if ((e.KeyChar >= 33 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo números", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
         }
 
-        private void iconcerrar_Click(object sender, EventArgs e)
+        private void txtContraseñaEmpleado_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Application.Exit();
-        }
-
-        private void iconminimizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-
-        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
-        private void BarraTitulo_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-        private void lblVolver_Click(object sender, EventArgs e)
-        {
-            Visible = false;
+            if (e.KeyChar == (char)(Keys.Enter))
+            {
+                e.Handled = true;
+                btnIniciarSesion_Click(sender, e);
+            }
         }
     }
 }

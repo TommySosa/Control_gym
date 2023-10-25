@@ -28,59 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblDni = new System.Windows.Forms.Label();
-            this.lblContraseña = new System.Windows.Forms.Label();
             this.txtDniEmpleado = new System.Windows.Forms.TextBox();
             this.txtContraseñaEmpleado = new System.Windows.Forms.TextBox();
             this.btnIniciarSesion = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblDni = new System.Windows.Forms.Label();
+            this.lblContraseña = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lblDni
-            // 
-            this.lblDni.AutoSize = true;
-            this.lblDni.Location = new System.Drawing.Point(13, 35);
-            this.lblDni.Name = "lblDni";
-            this.lblDni.Size = new System.Drawing.Size(29, 13);
-            this.lblDni.TabIndex = 0;
-            this.lblDni.Text = "DNI:";
-            this.lblDni.Click += new System.EventHandler(this.lblDni_Click);
-            // 
-            // lblContraseña
-            // 
-            this.lblContraseña.AutoSize = true;
-            this.lblContraseña.Location = new System.Drawing.Point(13, 83);
-            this.lblContraseña.Name = "lblContraseña";
-            this.lblContraseña.Size = new System.Drawing.Size(64, 13);
-            this.lblContraseña.TabIndex = 1;
-            this.lblContraseña.Text = "Contraseña:";
-            this.lblContraseña.Click += new System.EventHandler(this.lblContraseña_Click);
-            // 
             // txtDniEmpleado
             // 
-            this.txtDniEmpleado.Location = new System.Drawing.Point(83, 28);
+            this.txtDniEmpleado.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDniEmpleado.Location = new System.Drawing.Point(98, 29);
             this.txtDniEmpleado.Name = "txtDniEmpleado";
-            this.txtDniEmpleado.Size = new System.Drawing.Size(129, 20);
+            this.txtDniEmpleado.Size = new System.Drawing.Size(129, 25);
             this.txtDniEmpleado.TabIndex = 2;
             this.txtDniEmpleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDniEmpleado_KeyPress);
             // 
             // txtContraseñaEmpleado
             // 
-            this.txtContraseñaEmpleado.Location = new System.Drawing.Point(83, 80);
+            this.txtContraseñaEmpleado.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContraseñaEmpleado.Location = new System.Drawing.Point(98, 73);
             this.txtContraseñaEmpleado.Name = "txtContraseñaEmpleado";
             this.txtContraseñaEmpleado.PasswordChar = '*';
-            this.txtContraseñaEmpleado.Size = new System.Drawing.Size(129, 20);
+            this.txtContraseñaEmpleado.Size = new System.Drawing.Size(129, 25);
             this.txtContraseñaEmpleado.TabIndex = 3;
+            this.txtContraseñaEmpleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContraseñaEmpleado_KeyPress);
             // 
             // btnIniciarSesion
             // 
-            this.btnIniciarSesion.Location = new System.Drawing.Point(83, 135);
+            this.btnIniciarSesion.AutoEllipsis = true;
+            this.btnIniciarSesion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnIniciarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnIniciarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIniciarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIniciarSesion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnIniciarSesion.Location = new System.Drawing.Point(110, 113);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
-            this.btnIniciarSesion.Size = new System.Drawing.Size(100, 27);
+            this.btnIniciarSesion.Size = new System.Drawing.Size(102, 27);
             this.btnIniciarSesion.TabIndex = 4;
             this.btnIniciarSesion.Text = "Iniciar Sesión";
-            this.btnIniciarSesion.UseVisualStyleBackColor = true;
+            this.btnIniciarSesion.UseVisualStyleBackColor = false;
             this.btnIniciarSesion.Click += new System.EventHandler(this.btnIniciarSesion_Click);
             // 
             // groupBox1
@@ -91,25 +80,45 @@
             this.groupBox1.Controls.Add(this.lblDni);
             this.groupBox1.Controls.Add(this.lblContraseña);
             this.groupBox1.Controls.Add(this.txtDniEmpleado);
-            this.groupBox1.Location = new System.Drawing.Point(212, 105);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(330, 83);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(236, 204);
+            this.groupBox1.Size = new System.Drawing.Size(258, 191);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingresa los datos";
+            // 
+            // lblDni
+            // 
+            this.lblDni.AutoSize = true;
+            this.lblDni.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDni.Location = new System.Drawing.Point(13, 35);
+            this.lblDni.Name = "lblDni";
+            this.lblDni.Size = new System.Drawing.Size(33, 17);
+            this.lblDni.TabIndex = 0;
+            this.lblDni.Text = "DNI:";
+            // 
+            // lblContraseña
+            // 
+            this.lblContraseña.AutoSize = true;
+            this.lblContraseña.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContraseña.Location = new System.Drawing.Point(13, 76);
+            this.lblContraseña.Name = "lblContraseña";
+            this.lblContraseña.Size = new System.Drawing.Size(77, 17);
+            this.lblContraseña.TabIndex = 1;
+            this.lblContraseña.Text = "Contraseña:";
             // 
             // FormAcceso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(681, 420);
+            this.ClientSize = new System.Drawing.Size(960, 377);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormAcceso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAcceso";
-            this.Load += new System.EventHandler(this.FormAcceso_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -117,12 +126,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblDni;
-        private System.Windows.Forms.Label lblContraseña;
         private System.Windows.Forms.TextBox txtDniEmpleado;
         private System.Windows.Forms.TextBox txtContraseñaEmpleado;
         private System.Windows.Forms.Button btnIniciarSesion;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblDni;
+        private System.Windows.Forms.Label lblContraseña;
     }
 }

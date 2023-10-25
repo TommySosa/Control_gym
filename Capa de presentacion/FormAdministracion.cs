@@ -58,8 +58,7 @@ namespace Control_Gym
 
         private void FormAdministracion_Load(object sender, EventArgs e)
         {
-
+            AbrirFormEnPanel(new FormEmpleados());
         }
-
     }
 }

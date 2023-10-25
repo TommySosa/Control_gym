@@ -22,6 +22,7 @@ namespace Control_Gym.Capa_de_presentacion
         private ClsProvedores cProveedor = new ClsProvedores();
         private void FormProductos_Load(object sender, EventArgs e)
         {
+            cancelarActualizar();
 
             CProducto CProductoD = new CProducto();
             dgvProductos.DataSource = CProductoD.MostrarDatos();
@@ -40,8 +41,6 @@ namespace Control_Gym.Capa_de_presentacion
         {
 
         }
-
-       
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
@@ -73,29 +72,21 @@ namespace Control_Gym.Capa_de_presentacion
             CProductoD.ModificarProducto(cod, cod_producto, cod_proveedor, cod_tipo_producto, nombre, fecha_venc, precioventa, preciocosto, ganancia, stock);
 
             dgvProductos.DataSource = CProductoD.MostrarDatos();
+
+            limpiarCampos();
+            cancelarActualizar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-
-
             CProducto CProductoD = new CProducto();
             string cod = txtCod.Text;
             string nombre = txtNombre.Text;
             CProductoD.EliminarProducto(cod, nombre);
-
-
-            txtCodProducto.Text = "";
-            cmbTipoProducto.Text = "";
-            cmbProveedor.Text = "";
-            txtCod.Text = "";
-            txtNombre.Text = "";
-            dtpFechaVenc.Text ="";
-            txtPrecioVenta.Text = "";
-            txtCosto.Text = "";
-            txtGanancia.Text = "";
-            txtStock.Text = "";
             dgvProductos.DataSource = CProductoD.MostrarDatos();
+
+            limpiarCampos();
+            cancelarActualizar();
         }
 
         private void btnCrear_Click(object sender, EventArgs e)
@@ -128,11 +119,8 @@ namespace Control_Gym.Capa_de_presentacion
             CProducto CProductoD = new CProducto();
             CProductoD.GuardarProducto(cod_producto, cod_proveedor, cod_tipo_producto, nombre, fecha_venc, preciocosto, precioventa, ganancia, stock);
             dgvProductos.DataSource = CProductoD.MostrarDatos();
-        }
 
-        private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
+            limpiarCampos();
         }
 
         private void cmbProveedor_SelectedIndexChanged(object sender, EventArgs e)
@@ -183,13 +171,17 @@ namespace Control_Gym.Capa_de_presentacion
             {
                 dgvProductos.DataSource = cProducto.MostrarDatos();
             }
-
         }
 
         private void dgvProductos_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (dgvProductos.SelectedRows.Count > 0)
             {
+                btnCrear.Visible = false;
+                btnModificar.Visible = true;
+                btnEliminar.Visible = true;
+                btnCancelar.Visible = true;
+
                 DataGridViewRow filaSeleccionada = dgvProductos.SelectedRows[0];
                 txtCodProducto.Text = filaSeleccionada.Cells["cod_producto"].Value.ToString();
                 cmbProveedor.Text = filaSeleccionada.Cells["cod_proveedor"].Value.ToString();
@@ -205,6 +197,34 @@ namespace Control_Gym.Capa_de_presentacion
             {
                 MessageBox.Show("Selecciona una fila en la grilla antes de cargar los datos.");
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            limpiarCampos();
+            cancelarActualizar();
+        }
+
+        private void cancelarActualizar()
+        {
+            btnCrear.Visible = true;
+            btnModificar.Visible = false;
+            btnEliminar.Visible = false;
+            btnCancelar.Visible = false;
+        }
+
+        private void limpiarCampos()
+        {
+            txtCodProducto.Text = "";
+            cmbTipoProducto.Text = "";
+            cmbProveedor.Text = "";
+            txtCod.Text = "";
+            txtNombre.Text = "";
+            dtpFechaVenc.Text = "";
+            txtPrecioVenta.Text = "";
+            txtCosto.Text = "";
+            txtGanancia.Text = "";
+            txtStock.Text = "";
         }
     }
 }

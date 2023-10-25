@@ -70,53 +70,73 @@
             // 
             // btnActualizarMembresia
             // 
+            this.btnActualizarMembresia.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnActualizarMembresia.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnActualizarMembresia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizarMembresia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizarMembresia.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnActualizarMembresia.Location = new System.Drawing.Point(3, 27);
             this.btnActualizarMembresia.Name = "btnActualizarMembresia";
-            this.btnActualizarMembresia.Size = new System.Drawing.Size(75, 23);
+            this.btnActualizarMembresia.Size = new System.Drawing.Size(75, 30);
             this.btnActualizarMembresia.TabIndex = 8;
-            this.btnActualizarMembresia.Text = "Actualizar";
-            this.btnActualizarMembresia.UseVisualStyleBackColor = true;
+            this.btnActualizarMembresia.Text = "Modificar";
+            this.btnActualizarMembresia.UseVisualStyleBackColor = false;
             this.btnActualizarMembresia.Click += new System.EventHandler(this.btnActualizarMembresia_Click);
             // 
             // btnEliminarMembresia
             // 
+            this.btnEliminarMembresia.BackColor = System.Drawing.Color.IndianRed;
+            this.btnEliminarMembresia.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminarMembresia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarMembresia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarMembresia.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnEliminarMembresia.Location = new System.Drawing.Point(106, 27);
             this.btnEliminarMembresia.Name = "btnEliminarMembresia";
-            this.btnEliminarMembresia.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminarMembresia.Size = new System.Drawing.Size(75, 30);
             this.btnEliminarMembresia.TabIndex = 6;
             this.btnEliminarMembresia.Text = "Eliminar";
-            this.btnEliminarMembresia.UseVisualStyleBackColor = true;
+            this.btnEliminarMembresia.UseVisualStyleBackColor = false;
             this.btnEliminarMembresia.Click += new System.EventHandler(this.btnEliminarMembresia_Click);
             // 
             // btnCancelarMembresia
             // 
-            this.btnCancelarMembresia.Location = new System.Drawing.Point(218, 27);
+            this.btnCancelarMembresia.BackColor = System.Drawing.Color.Gray;
+            this.btnCancelarMembresia.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelarMembresia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarMembresia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarMembresia.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCancelarMembresia.Location = new System.Drawing.Point(207, 27);
             this.btnCancelarMembresia.Name = "btnCancelarMembresia";
-            this.btnCancelarMembresia.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelarMembresia.Size = new System.Drawing.Size(75, 30);
             this.btnCancelarMembresia.TabIndex = 7;
             this.btnCancelarMembresia.Text = "Cancelar";
-            this.btnCancelarMembresia.UseVisualStyleBackColor = true;
+            this.btnCancelarMembresia.UseVisualStyleBackColor = false;
             this.btnCancelarMembresia.Click += new System.EventHandler(this.btnCancelarMembresia_Click);
             // 
             // btnCrearMembresia
             // 
+            this.btnCrearMembresia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnCrearMembresia.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCrearMembresia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCrearMembresia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrearMembresia.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnCrearMembresia.Location = new System.Drawing.Point(3, 27);
             this.btnCrearMembresia.Name = "btnCrearMembresia";
-            this.btnCrearMembresia.Size = new System.Drawing.Size(75, 23);
+            this.btnCrearMembresia.Size = new System.Drawing.Size(75, 30);
             this.btnCrearMembresia.TabIndex = 5;
-            this.btnCrearMembresia.Text = "Crear";
-            this.btnCrearMembresia.UseVisualStyleBackColor = true;
+            this.btnCrearMembresia.Text = "Agregar";
+            this.btnCrearMembresia.UseVisualStyleBackColor = false;
             this.btnCrearMembresia.Click += new System.EventHandler(this.btnCrearMembresia_Click);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnCrearMembresia);
-            this.panel1.Controls.Add(this.btnActualizarMembresia);
             this.panel1.Controls.Add(this.btnEliminarMembresia);
             this.panel1.Controls.Add(this.btnCancelarMembresia);
-            this.panel1.Location = new System.Drawing.Point(585, 100);
+            this.panel1.Controls.Add(this.btnCrearMembresia);
+            this.panel1.Controls.Add(this.btnActualizarMembresia);
+            this.panel1.Location = new System.Drawing.Point(586, 70);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(296, 111);
+            this.panel1.Size = new System.Drawing.Size(286, 111);
             this.panel1.TabIndex = 19;
             // 
             // dvgMembresias
@@ -126,11 +146,11 @@
             this.dvgMembresias.AllowUserToOrderColumns = true;
             this.dvgMembresias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dvgMembresias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgMembresias.Location = new System.Drawing.Point(65, 343);
+            this.dvgMembresias.Location = new System.Drawing.Point(67, 290);
             this.dvgMembresias.MultiSelect = false;
             this.dvgMembresias.Name = "dvgMembresias";
             this.dvgMembresias.ReadOnly = true;
-            this.dvgMembresias.Size = new System.Drawing.Size(921, 211);
+            this.dvgMembresias.Size = new System.Drawing.Size(921, 285);
             this.dvgMembresias.TabIndex = 11;
             this.dvgMembresias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgMembresias_CellClick);
             this.dvgMembresias.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dvgMembresias_CellFormatting);
@@ -138,25 +158,30 @@
             // 
             // txtBuscarDni
             // 
-            this.txtBuscarDni.Location = new System.Drawing.Point(65, 303);
+            this.txtBuscarDni.Location = new System.Drawing.Point(68, 245);
             this.txtBuscarDni.Name = "txtBuscarDni";
             this.txtBuscarDni.Size = new System.Drawing.Size(189, 20);
             this.txtBuscarDni.TabIndex = 9;
             // 
             // btnBuscarMembresia
             // 
-            this.btnBuscarMembresia.Location = new System.Drawing.Point(270, 301);
+            this.btnBuscarMembresia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnBuscarMembresia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnBuscarMembresia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarMembresia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarMembresia.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnBuscarMembresia.Location = new System.Drawing.Point(263, 239);
             this.btnBuscarMembresia.Name = "btnBuscarMembresia";
-            this.btnBuscarMembresia.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscarMembresia.Size = new System.Drawing.Size(75, 30);
             this.btnBuscarMembresia.TabIndex = 10;
             this.btnBuscarMembresia.Text = "Buscar";
-            this.btnBuscarMembresia.UseVisualStyleBackColor = true;
+            this.btnBuscarMembresia.UseVisualStyleBackColor = false;
             this.btnBuscarMembresia.Click += new System.EventHandler(this.btnBuscarMembresia_Click);
             // 
             // lblDni2Membresia
             // 
             this.lblDni2Membresia.AutoSize = true;
-            this.lblDni2Membresia.Location = new System.Drawing.Point(62, 287);
+            this.lblDni2Membresia.Location = new System.Drawing.Point(65, 229);
             this.lblDni2Membresia.Name = "lblDni2Membresia";
             this.lblDni2Membresia.Size = new System.Drawing.Size(26, 13);
             this.lblDni2Membresia.TabIndex = 14;
@@ -172,7 +197,7 @@
             this.groupBox2.Controls.Add(this.lblFechaInicioMembresia);
             this.groupBox2.Controls.Add(this.txtDniMembresia);
             this.groupBox2.Controls.Add(this.lblDniMembresia);
-            this.groupBox2.Location = new System.Drawing.Point(133, 54);
+            this.groupBox2.Location = new System.Drawing.Point(134, 24);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(390, 157);
             this.groupBox2.TabIndex = 21;
@@ -234,7 +259,7 @@
             // 
             // txtCodMembresia
             // 
-            this.txtCodMembresia.Location = new System.Drawing.Point(155, 231);
+            this.txtCodMembresia.Location = new System.Drawing.Point(156, 201);
             this.txtCodMembresia.Name = "txtCodMembresia";
             this.txtCodMembresia.Size = new System.Drawing.Size(100, 20);
             this.txtCodMembresia.TabIndex = 22;
@@ -244,7 +269,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1120, 584);
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ClientSize = new System.Drawing.Size(1050, 605);
             this.Controls.Add(this.txtCodMembresia);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.lblDni2Membresia);

@@ -79,7 +79,6 @@ namespace Control_Gym.Capa_de_presentacion
                 string dniCliente = accesoForm.dni_empleado;
                 string nombre = accesoForm.contraseña;
             }
-
         }
 
         private void cmbTipoMembresia_SelectedIndexChanged(object sender, EventArgs e)
@@ -103,6 +102,10 @@ namespace Control_Gym.Capa_de_presentacion
                     {
                         if (Convert.ToInt32(resultado[2]) > 0)
                         {
+                            pbNeutro.Visible = false;
+                            pbYes.Visible = true;
+                            pbNo.Visible = false;
+
                             lblInicio.Text = resultado[0];
                             lblFin.Text = resultado[1];
                             lblDiasRestantes.Text = resultado[2];
@@ -112,6 +115,10 @@ namespace Control_Gym.Capa_de_presentacion
                             lblInicio.Text = resultado[0];
                             lblFin.Text = resultado[1];
                             lblDiasRestantes.Text = resultado[2];
+
+                            pbNeutro.Visible = false;
+                            pbYes.Visible = false;
+                            pbNo.Visible = true;
                         }
                     }
                 }
@@ -131,6 +138,9 @@ namespace Control_Gym.Capa_de_presentacion
                 CChequeoD cChequeoD = new CChequeoD();
                 string[] resultado = cChequeoD.buscarPorDni(dni);
                 int cant_tipo_membresia = cChequeoD.ContarTiposMembresia(dni);
+
+                cmbTipoMembresia.Visible=false;
+                lblTipoMembresia.Visible = false;
 
                 if (cant_tipo_membresia > 1)
                 {

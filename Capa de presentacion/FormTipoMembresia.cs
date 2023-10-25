@@ -30,6 +30,9 @@ namespace Control_Gym.Capa_de_presentacion
 
             clsTipoMembresia.AgregarTipo(nombre, precio, dias );
             dgvTipoMembresia.DataSource = clsTipoMembresia.CargarDatos();
+
+            cancelarActualizar();
+            limpiarCampos();
         }
         private void btnModificar_Click(object sender, EventArgs e)
         {
@@ -42,21 +45,18 @@ namespace Control_Gym.Capa_de_presentacion
 
             clsTipoMembresia.ModificarTipo(cod,nombre, precio, dias);
             dgvTipoMembresia.DataSource = clsTipoMembresia.CargarDatos();
+
+            cancelarActualizar();
+            limpiarCampos();
         }
 
 
         private void FormTipoMembresia_Load(object sender, EventArgs e)
         {
+            cancelarActualizar();
+
             ClsTipoMembresia clsTipoMembresia = new ClsTipoMembresia();
             dgvTipoMembresia.DataSource = clsTipoMembresia.CargarDatos();
-        }
-
-        private void dgvTipoMembresia_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtCod.Text = dgvTipoMembresia.Rows[e.RowIndex].Cells["cod_tipo_membresia"].FormattedValue.ToString();
-            txtNombre.Text = dgvTipoMembresia.Rows[e.RowIndex].Cells["nombre"].FormattedValue.ToString();
-            txtPrecio.Text = dgvTipoMembresia.Rows[e.RowIndex].Cells["precio"].FormattedValue.ToString();
-            txtDias.Text = dgvTipoMembresia.Rows[e.RowIndex].Cells["cantidad_dias"].FormattedValue.ToString();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -67,16 +67,27 @@ namespace Control_Gym.Capa_de_presentacion
             clsTipo.EliminarDatos(cod, nombre);
 
 
-            txtCod.Text = "";
-            txtNombre.Text = "";
-            txtPrecio.Text = "";
-            txtDias.Text = "";
-            txtBuscar.Text = "";
-           
+            cancelarActualizar();
+            limpiarCampos();
+
             dgvTipoMembresia.DataSource = clsTipo.CargarDatos();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            cancelarActualizar();
+            limpiarCampos();
+        }
+
+        private void cancelarActualizar()
+        {
+            btnAgregar.Visible = true;
+            btnModificar.Visible = false;
+            btnEliminar.Visible = false;
+            btnCancelar.Visible = false;
+        }
+
+        private void limpiarCampos()
         {
             txtCod.Text = "";
             txtNombre.Text = "";
@@ -97,6 +108,19 @@ namespace Control_Gym.Capa_de_presentacion
             {
                 dgvTipoMembresia.DataSource = clsTipo.CargarDatos();
             }
+        }
+
+        private void dgvTipoMembresia_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            btnAgregar.Visible = false;
+            btnModificar.Visible = true;
+            btnEliminar.Visible = true;
+            btnCancelar.Visible = true;
+
+            txtCod.Text = dgvTipoMembresia.Rows[e.RowIndex].Cells["cod_tipo_membresia"].FormattedValue.ToString();
+            txtNombre.Text = dgvTipoMembresia.Rows[e.RowIndex].Cells["nombre"].FormattedValue.ToString();
+            txtPrecio.Text = dgvTipoMembresia.Rows[e.RowIndex].Cells["precio"].FormattedValue.ToString();
+            txtDias.Text = dgvTipoMembresia.Rows[e.RowIndex].Cells["cantidad_dias"].FormattedValue.ToString();
         }
     }
 }

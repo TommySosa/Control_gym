@@ -69,7 +69,7 @@ namespace Control_Gym
 
         private void iconcerrar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
         }
 
 
@@ -123,7 +123,7 @@ namespace Control_Gym
         private void FormContenedor_Load(object sender, EventArgs e)
         {
             btnlogoInicio_Click(null, e);
-            //AbrirFormEnPanel(new FormPrincipal());
+            AbrirFormEnPanel(new FormSocio());
             lblDNI.Text = this.dni_empleado.ToString();
             lblNombre.Text = this.nombre;
 

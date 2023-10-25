@@ -25,7 +25,6 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
             ClsSocio oClsSocio = new ClsSocio();
 
             int dni = Convert.ToInt32(txtDniSocio.Text);
@@ -38,6 +37,9 @@ namespace Control_Gym.Capa_de_presentacion
 
             oClsSocio.GuardarSocio(dni, nombre, apellido, fechaNacimiento, telefono, domicilio, email);
             dgvSocios.DataSource = oClsSocio.CargarDatos();
+
+            limpiarCampos();
+            CancelarModificar();
         }
 
 
@@ -61,9 +63,10 @@ namespace Control_Gym.Capa_de_presentacion
 
             ClsSocio oclsSocio = new ClsSocio();
             oclsSocio.ModificarSocio(cod, dni, nombre, apellido, fechaNacimiento, telefono, domicilio, email);
-
             dgvSocios.DataSource = clsSocio.CargarDatos();
 
+            limpiarCampos();
+            CancelarModificar();
         }
 
         private void btnBuscarSocio_Click(object sender, EventArgs e)
@@ -89,16 +92,10 @@ namespace Control_Gym.Capa_de_presentacion
             string cod = txtCod.Text;
             string nombre = txtNombreSocio.Text ;
             clsSocio.EliminarDatos(cod, nombre);
-
-            txtCod.Text = "";
-            txtDniSocio.Text = "";
-            txtNombreSocio.Text = "";
-            txtApellidoSocio.Text = "";
-            txtTelefonoSocio.Text = "";
-            dtpFechaNacimiento.Text = "";
-            txtDomicilio.Text = "";
-            txtEmail.Text = "";
             dgvSocios.DataSource = clsSocio.CargarDatos();
+
+            limpiarCampos();
+            CancelarModificar();
         }
 
 
@@ -107,6 +104,25 @@ namespace Control_Gym.Capa_de_presentacion
             ClsSocio clsSocio = new ClsSocio();
 
             dgvSocios.DataSource = clsSocio.CargarDatos();
+
+            CancelarModificar();
+        }
+
+        private void dgvSocios_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            btnGuardar.Visible = false;
+            btnCancelar.Visible = true;
+            btnBorrar.Visible = true;
+            btnModificar.Visible = true;
+
+            txtCod.Text = dgvSocios.SelectedCells[0].Value.ToString();
+            txtDniSocio.Text = dgvSocios.SelectedCells[0].Value.ToString();
+            txtNombreSocio.Text = dgvSocios.SelectedCells[1].Value.ToString();
+            txtApellidoSocio.Text = dgvSocios.SelectedCells[2].Value.ToString();
+            txtTelefonoSocio.Text = dgvSocios.SelectedCells[3].Value.ToString();
+            dtpFechaNacimiento.Text = dgvSocios.SelectedCells[4].Value.ToString();
+            txtDomicilio.Text = dgvSocios.SelectedCells[5].Value.ToString();
+            txtEmail.Text = dgvSocios.SelectedCells[6].Value.ToString();
         }
 
         private void txtBuscarSocio_TextChanged(object sender, EventArgs e)
@@ -124,27 +140,21 @@ namespace Control_Gym.Capa_de_presentacion
             }
         }
 
-        private void dgvSocios_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtCod.Text = dgvSocios.SelectedCells[0].Value.ToString();
-            txtDniSocio.Text= dgvSocios.SelectedCells[0].Value.ToString();
-            txtNombreSocio.Text = dgvSocios.SelectedCells[1].Value.ToString();
-            txtApellidoSocio.Text = dgvSocios.SelectedCells[2].Value.ToString();
-            txtTelefonoSocio.Text = dgvSocios.SelectedCells[3].Value.ToString();
-            dtpFechaNacimiento.Text = dgvSocios.SelectedCells[4].Value.ToString();
-            txtDomicilio.Text = dgvSocios.SelectedCells[5].Value.ToString();
-            txtEmail.Text = dgvSocios.SelectedCells[6].Value.ToString();
-
-        }
-
-        private void btnRecargar_Click(object sender, EventArgs e)
-        {
-            ClsSocio clsSocio = new ClsSocio();
-
-            dgvSocios.DataSource = clsSocio.CargarDatos();
-        }
-
         private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            limpiarCampos();
+            CancelarModificar();
+        }
+
+        public void CancelarModificar()
+        {
+            btnGuardar.Visible = true;
+            btnCancelar.Visible = false;
+            btnBorrar.Visible = false;
+            btnModificar.Visible = false;
+        }
+
+        private void limpiarCampos()
         {
             txtCod.Text = "";
             txtDniSocio.Text = "";
@@ -154,10 +164,6 @@ namespace Control_Gym.Capa_de_presentacion
             dtpFechaNacimiento.Text = "";
             txtDomicilio.Text = "";
             txtEmail.Text = "";
-            
         }
-
-
-
     }
 }

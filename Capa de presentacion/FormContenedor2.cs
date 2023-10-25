@@ -87,7 +87,6 @@ namespace Control_Gym.Capa_de_presentacion
             lblVolver.Visible = false;
             pbAdministradores.Visible = true;
             lblAdministradores.Visible = true;
-
         }
     }
 }
