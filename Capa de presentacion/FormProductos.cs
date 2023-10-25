@@ -59,9 +59,9 @@ namespace Control_Gym.Capa_de_presentacion
                 return;
             }
 
-            string cod = txtCod.Text;
-            int cod_proveedor = Convert.ToInt32(cmbProveedor.Text);
-            int cod_tipo_producto = Convert.ToInt32(cmbTipoProducto.Text);
+            string cod = txtCodProducto.Text;
+            int cod_proveedor = cProveedor.Cod;
+            int cod_tipo_producto = cTipoProducto.Cod_tipo_producto;
             string nombre = txtNombre.Text;
             DateTime fecha_venc = dtpFechaVenc.Value;
             decimal precioventa = Convert.ToDecimal(txtPrecioVenta.Text);
@@ -71,6 +71,7 @@ namespace Control_Gym.Capa_de_presentacion
 
             CProducto CProductoD = new CProducto();
             CProductoD.ModificarProducto(cod, cod_producto, cod_proveedor, cod_tipo_producto, nombre, fecha_venc, precioventa, preciocosto, ganancia, stock);
+
             dgvProductos.DataSource = CProductoD.MostrarDatos();
         }
 
@@ -131,16 +132,7 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtCod.Text = dgvProductos.Rows[e.RowIndex].Cells["cod_producto"].FormattedValue.ToString(); ;
-            txtCodProducto.Text = dgvProductos.Rows[e.RowIndex].Cells["cod_producto"].FormattedValue.ToString();
-            cmbProveedor.Text = dgvProductos.Rows[e.RowIndex].Cells["cod_proveedor"].FormattedValue.ToString();
-            cmbTipoProducto.Text = dgvProductos.Rows[e.RowIndex].Cells["cod_tipo_producto"].FormattedValue.ToString();
-            txtNombre.Text = dgvProductos.Rows[e.RowIndex].Cells["nombre"].FormattedValue.ToString();
-            txtPrecioVenta.Text = dgvProductos.Rows[e.RowIndex].Cells["precio_venta"].FormattedValue.ToString();
-            txtCosto.Text = dgvProductos.Rows[e.RowIndex].Cells["precio_costo"].FormattedValue.ToString();
-            txtGanancia.Text = dgvProductos.Rows[e.RowIndex].Cells["ganancia"].FormattedValue.ToString();
-            txtStock.Text = dgvProductos.Rows[e.RowIndex].Cells["stock"].FormattedValue.ToString();
-            dtpFechaVenc.Text = dgvProductos.Rows[e.RowIndex].Cells["fecha_venc"].FormattedValue.ToString();
+            
         }
 
         private void cmbProveedor_SelectedIndexChanged(object sender, EventArgs e)
@@ -192,6 +184,27 @@ namespace Control_Gym.Capa_de_presentacion
                 dgvProductos.DataSource = cProducto.MostrarDatos();
             }
 
+        }
+
+        private void dgvProductos_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dgvProductos.SelectedRows.Count > 0)
+            {
+                DataGridViewRow filaSeleccionada = dgvProductos.SelectedRows[0];
+                txtCodProducto.Text = filaSeleccionada.Cells["cod_producto"].Value.ToString();
+                cmbProveedor.Text = filaSeleccionada.Cells["cod_proveedor"].Value.ToString();
+                cmbTipoProducto.Text = filaSeleccionada.Cells["cod_tipo_producto"].Value.ToString();
+                txtNombre.Text = filaSeleccionada.Cells["nombre"].Value.ToString();
+                txtPrecioVenta.Text = filaSeleccionada.Cells["precio_venta"].Value.ToString();
+                txtCosto.Text = filaSeleccionada.Cells["precio_costo"].Value.ToString();
+                txtGanancia.Text = filaSeleccionada.Cells["ganancia"].Value.ToString();
+                txtStock.Text = filaSeleccionada.Cells["stock"].Value.ToString();
+                dtpFechaVenc.Text = filaSeleccionada.Cells["fecha_venc"].Value.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Selecciona una fila en la grilla antes de cargar los datos.");
+            }
         }
     }
 }

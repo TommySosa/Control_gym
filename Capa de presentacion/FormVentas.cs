@@ -14,13 +14,17 @@ namespace Control_Gym.Capa_de_presentacion
 {
     public partial class FormVentas : Form
     {
-        public FormVentas()
+        private int dni_empleado;
+        private string nombre;
+        public FormVentas(int dni_empleado, string nombre)
         {
             InitializeComponent();
+            this.nombre = nombre;
+            this.dni_empleado = dni_empleado;
         }
         private CVenta cVenta = new CVenta();
         private CProducto cProducto = new CProducto();
-
+        
         private void FormVentas_Load(object sender, EventArgs e)
         {
             List<CProducto> productos = cProducto.traerProductos();
@@ -29,6 +33,8 @@ namespace Control_Gym.Capa_de_presentacion
             txtNombreProducto.Text = "";
             txtPrecio.Text = "";
             txtSubtotal.Text = "";
+            txtDniEmpleado.Text = dni_empleado.ToString();
+            
             txtStock.Text = "";
 
             txtCodProducto.Text = "";

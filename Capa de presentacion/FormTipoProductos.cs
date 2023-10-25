@@ -63,9 +63,18 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void dgvTipoProducto_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtCod.Text = dgvTipoProducto.Rows[e.RowIndex].Cells["cod_tipo_producto"].FormattedValue.ToString();
+            if(dgvTipoProducto.SelectedRows.Count > 0)
+            {
+                txtCod.Text = dgvTipoProducto.Rows[e.RowIndex].Cells["cod_tipo_producto"].FormattedValue.ToString();
 
-            txtNombre.Text = dgvTipoProducto.Rows[e.RowIndex].Cells["nombre"].FormattedValue.ToString();
+                txtNombre.Text = dgvTipoProducto.Rows[e.RowIndex].Cells["nombre"].FormattedValue.ToString();
+                btnEliminar.Visible = true;
+                btnModificar.Visible = true;
+                btnAgregar.Visible = false;
+                btnCancelar.Visible = true;
+
+            }
+
         }
 
         
@@ -73,6 +82,24 @@ namespace Control_Gym.Capa_de_presentacion
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void FormTipoProductos_Load(object sender, EventArgs e)
+        {
+            btnEliminar.Visible = false;
+            btnCancelar.Visible = false;
+            btnModificar.Visible = false;
+
+            CTipoProducto cTipoProducto = new CTipoProducto();
+            dgvTipoProducto.DataSource = cTipoProducto.MostrarTipoProducto();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            btnEliminar.Visible = false;
+            btnModificar.Visible = false;
+            btnAgregar.Visible = true;
+            btnCancelar.Visible = false;
         }
     }
 }

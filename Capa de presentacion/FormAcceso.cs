@@ -53,7 +53,7 @@ namespace Control_Gym.Capa_de_presentacion
 
             if (acceso[0] != null)
             {
-                MessageBox.Show("Datos de acceso: " + acceso[0].dni_empleado + "contraseña" + acceso[0].nombre);
+                //MessageBox.Show("Datos de acceso: " + acceso[0].dni_empleado + "contraseña" + acceso[0].nombre);
                 FormContenedor formContenedor = new FormContenedor(acceso[0].dni_empleado, acceso[0].nombre);
                 formContenedor.Show();
                 Close();
