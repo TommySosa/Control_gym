@@ -35,7 +35,7 @@ namespace Control_Gym.Capa_de_datos
                 comando.Parameters.AddWithValue("@email", email);
 
                 comando.ExecuteNonQuery();
-                MessageBox.Show("Nuevo socio aderido");
+                MessageBox.Show("Nuevo socio adherido");
             }
             catch (Exception ex)
             {
