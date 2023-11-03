@@ -26,50 +26,71 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void CargarGrilla()
         {
-            List<CEmpleado> empleados = cEmpleado.TraerEmpleados();
+            try
+            {
+                List<CEmpleado> empleados = cEmpleado.TraerEmpleados();
 
-            dtvEmpleado.DataSource = empleados;
+                dtvEmpleado.DataSource = empleados;
 
-            dtvEmpleado.Columns[0].HeaderText = "DNI";
-            dtvEmpleado.Columns[1].HeaderText = "Nombre";
-            dtvEmpleado.Columns[2].HeaderText = "Apellido";
-            dtvEmpleado.Columns[3].HeaderText = "Teléfono";
-            dtvEmpleado.Columns[7].HeaderText = "Fecha de Nacimiento";
-            dtvEmpleado.Columns[7].Width = 75;
-            dtvEmpleado.Columns[4].HeaderText = "Domicilio";
-            dtvEmpleado.Columns[5].HeaderText = "E-Mail";
-            dtvEmpleado.Columns[6].HeaderText = "Contraseña";
+                dtvEmpleado.Columns[0].HeaderText = "DNI";
+                dtvEmpleado.Columns[1].HeaderText = "Nombre";
+                dtvEmpleado.Columns[2].HeaderText = "Apellido";
+                dtvEmpleado.Columns[3].HeaderText = "Teléfono";
+                dtvEmpleado.Columns[7].HeaderText = "Fecha de Nacimiento";
+                dtvEmpleado.Columns[7].Width = 75;
+                dtvEmpleado.Columns[4].HeaderText = "Domicilio";
+                dtvEmpleado.Columns[5].HeaderText = "E-Mail";
+                dtvEmpleado.Columns[6].HeaderText = "Contraseña";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar la grilla de empleados: " + ex.Message);
+            }
         }
 
         private void FormEmpleados_Load(object sender, EventArgs e)
         {
-            btnCancelarEmpleado.Visible = false;
-            btnActualizarEmpleado.Visible = false;
-            btnEliminarEmpleado.Visible = false;
+            try
+            {
+                btnCancelarEmpleado.Visible = false;
+                btnActualizarEmpleado.Visible = false;
+                btnEliminarEmpleado.Visible = false;
 
-            dtvEmpleado.CellFormatting += dtvEmpleado_CellFormatting;
-            CargarGrilla();
+                dtvEmpleado.CellFormatting += dtvEmpleado_CellFormatting;
+                CargarGrilla();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el formulario de empleados: " + ex.Message);
+            }
         }
 
         private void dtvEmpleado_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            btnGuardarEmpleado.Visible = false;
-            btnActualizarEmpleado.Visible = true;
-            btnCancelarEmpleado.Visible = true;
-            btnEliminarEmpleado.Visible = true;
-
-            if (dtvEmpleado.SelectedRows.Count > 0)
+            try
             {
-                DataGridViewRow filaSeleccionada = dtvEmpleado.SelectedRows[0];
+                btnGuardarEmpleado.Visible = false;
+                btnActualizarEmpleado.Visible = true;
+                btnCancelarEmpleado.Visible = true;
+                btnEliminarEmpleado.Visible = true;
 
-                mtxtDniEmpleado.Text = filaSeleccionada.Cells["dni_empleado"].Value.ToString();
-                txtNombreEmpleado.Text = filaSeleccionada.Cells["nombre"].Value.ToString();
-                txtApellidoEmpleado.Text = filaSeleccionada.Cells["apellido"].Value.ToString();
-                txtTelefonoEmpleado.Text = filaSeleccionada.Cells["telefono"].Value.ToString();
-                dtpFechNacEmpleado.Text = filaSeleccionada.Cells["fecha_nac"].Value.ToString();
-                txtDomicilioEmpleado.Text = filaSeleccionada.Cells["domicilio"].Value.ToString();
-                txtEmailEmpleado.Text = filaSeleccionada.Cells["email"].Value.ToString();
-                txtContraseñaEmpleado.Text = filaSeleccionada.Cells["contraseña"].Value.ToString();
+                if (dtvEmpleado.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow filaSeleccionada = dtvEmpleado.SelectedRows[0];
+
+                    mtxtDniEmpleado.Text = filaSeleccionada.Cells["dni_empleado"].Value.ToString();
+                    txtNombreEmpleado.Text = filaSeleccionada.Cells["nombre"].Value.ToString();
+                    txtApellidoEmpleado.Text = filaSeleccionada.Cells["apellido"].Value.ToString();
+                    txtTelefonoEmpleado.Text = filaSeleccionada.Cells["telefono"].Value.ToString();
+                    dtpFechNacEmpleado.Text = filaSeleccionada.Cells["fecha_nac"].Value.ToString();
+                    txtDomicilioEmpleado.Text = filaSeleccionada.Cells["domicilio"].Value.ToString();
+                    txtEmailEmpleado.Text = filaSeleccionada.Cells["email"].Value.ToString();
+                    txtContraseñaEmpleado.Text = filaSeleccionada.Cells["contraseña"].Value.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al seleccionar un empleado: " + ex.Message);
             }
         }
 
@@ -83,8 +104,15 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void btnCancelarEmpleado_Click(object sender, EventArgs e)
         {
-            CancelarActualizarEmpleado();
-            limpiarTextBox();
+            try
+            {
+                CancelarActualizarEmpleado();
+                limpiarTextBox();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cancelar la edición: " + ex.Message);
+            }
         }
 
         private void limpiarTextBox()
@@ -123,7 +151,7 @@ namespace Control_Gym.Capa_de_presentacion
                         txtDomicilioEmpleado.Text,
                         txtEmailEmpleado.Text,
                         txtContraseñaEmpleado.Text
-                        );
+                    );
                     CEmpleadoD cEmpleadoD = new CEmpleadoD();
                     bool existe = cEmpleadoD.DniExiste(cEmpleado.dni_empleado);
 
@@ -144,9 +172,9 @@ namespace Control_Gym.Capa_de_presentacion
                     MessageBox.Show("Por favor complete los campos.");
                 }
             }
-            catch (ApplicationException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al crear el empleado en la CAPA DE PRESENTACION: " + ex);
+                MessageBox.Show("Error al guardar el empleado: " + ex.Message);
             }
         }
 
@@ -164,11 +192,10 @@ namespace Control_Gym.Capa_de_presentacion
                 if (txtNombreEmpleado.Text != "" && txtApellidoEmpleado.Text != "" && txtTelefonoEmpleado.Text != "" && txtDomicilioEmpleado.Text != "" && txtEmailEmpleado.Text != "" && txtContraseñaEmpleado.Text != "")
                 {
                     DataGridViewRow filaSeleccionada = dtvEmpleado.SelectedRows[0];
-                    //int id = Convert.ToInt32(filaSeleccionada.Cells["cod_empleado"].Value);
+                    int dniEmpleado = Convert.ToInt32(filaSeleccionada.Cells["dni_empleado"].Value);
 
                     CEmpleado cEmpleado = new CEmpleado(
-                       // id,
-                        Convert.ToInt32(mtxtDniEmpleado.Text),
+                        dniEmpleado,
                         txtNombreEmpleado.Text,
                         txtApellidoEmpleado.Text,
                         txtTelefonoEmpleado.Text,
@@ -185,12 +212,12 @@ namespace Control_Gym.Capa_de_presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Por favor complete los campos");
+                    MessageBox.Show("Por favor complete los campos.");
                 }
             }
-            catch (ApplicationException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al actualizar el empleado en la CAPA DE PRESENTACION: " + ex);
+                MessageBox.Show("Error al actualizar el empleado: " + ex.Message);
             }
         }
 
@@ -201,9 +228,8 @@ namespace Control_Gym.Capa_de_presentacion
                 if (dtvEmpleado.SelectedRows.Count > 0)
                 {
                     DataGridViewRow filaSeleccionada = dtvEmpleado.SelectedRows[0];
-                    //int id = Convert.ToInt32(filaSeleccionada.Cells["cod_empleado"].Value);
-                    int dni = Convert.ToInt32(mtxtDniEmpleado.Text);
-                    cEmpleado.EliminarEmpleado(dni);
+                    int dniEmpleado = Convert.ToInt32(filaSeleccionada.Cells["dni_empleado"].Value);
+                    cEmpleado.EliminarEmpleado(dniEmpleado);
                     CargarGrilla();
                     limpiarTextBox();
                     CancelarActualizarEmpleado();
@@ -211,16 +237,11 @@ namespace Control_Gym.Capa_de_presentacion
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al eliminar el empleado en la CAPA DE PRESENTACION: " + ex);
+                MessageBox.Show("Error al eliminar el empleado: " + ex.Message);
             }
         }
 
         // FIN CRUD //
-
-        private void dtvEmpleado_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-
-        }
 
         private void txtTelefonoEmpleado_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -255,7 +276,7 @@ namespace Control_Gym.Capa_de_presentacion
             }
         }
 
-        private void dtvEmpleado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dtvEmpleado_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
 
         }

@@ -20,36 +20,48 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            ClsTipoMembresia clsTipoMembresia = new ClsTipoMembresia();
+            try
+            {
+                ClsTipoMembresia clsTipoMembresia = new ClsTipoMembresia();
 
+                string nombre = txtNombre.Text;
+                decimal precio = Convert.ToDecimal(txtPrecio.Text);
+                int dias = Convert.ToInt32(txtDias.Text);
 
-            string nombre = txtNombre.Text;
-            decimal precio = Convert.ToDecimal(txtPrecio.Text);
-            int dias = Convert.ToInt32(txtDias.Text);
-    
+                clsTipoMembresia.AgregarTipo(nombre, precio, dias);
+                dgvTipoMembresia.DataSource = clsTipoMembresia.CargarDatos();
 
-            clsTipoMembresia.AgregarTipo(nombre, precio, dias );
-            dgvTipoMembresia.DataSource = clsTipoMembresia.CargarDatos();
-
-            cancelarActualizar();
-            limpiarCampos();
+                cancelarActualizar();
+                limpiarCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar el tipo de membresía: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            ClsTipoMembresia clsTipoMembresia = new ClsTipoMembresia();
+            try
+            {
+                ClsTipoMembresia clsTipoMembresia = new ClsTipoMembresia();
 
-            string cod = txtCod.Text;
-            string nombre = txtNombre.Text;
-            decimal precio = Convert.ToDecimal(txtPrecio.Text);
-            int dias = Convert.ToInt32(txtDias.Text);
+                string cod = txtCod.Text;
+                string nombre = txtNombre.Text;
+                decimal precio = Convert.ToDecimal(txtPrecio.Text);
+                int dias = Convert.ToInt32(txtDias.Text);
 
-            clsTipoMembresia.ModificarTipo(cod,nombre, precio, dias);
-            dgvTipoMembresia.DataSource = clsTipoMembresia.CargarDatos();
+                clsTipoMembresia.ModificarTipo(cod, nombre, precio, dias);
+                dgvTipoMembresia.DataSource = clsTipoMembresia.CargarDatos();
 
-            cancelarActualizar();
-            limpiarCampos();
+                cancelarActualizar();
+                limpiarCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al modificar el tipo de membresía: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
 
         private void FormTipoMembresia_Load(object sender, EventArgs e)
         {
@@ -61,16 +73,22 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            ClsTipoMembresia clsTipo = new ClsTipoMembresia();
-            string cod = txtCod.Text;
-            string nombre = txtNombre.Text;
-            clsTipo.EliminarDatos(cod, nombre);
+            try
+            {
+                ClsTipoMembresia clsTipo = new ClsTipoMembresia();
+                string cod = txtCod.Text;
+                string nombre = txtNombre.Text;
+                clsTipo.EliminarDatos(cod, nombre);
 
+                cancelarActualizar();
+                limpiarCampos();
 
-            cancelarActualizar();
-            limpiarCampos();
-
-            dgvTipoMembresia.DataSource = clsTipo.CargarDatos();
+                dgvTipoMembresia.DataSource = clsTipo.CargarDatos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar el tipo de membresía: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -98,15 +116,22 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            ClsTipoMembresia clsTipo = new ClsTipoMembresia();
-            if (txtBuscar.Text != "")
+            try
             {
-                string cod = txtBuscar.Text;
-                dgvTipoMembresia.DataSource = clsTipo.Filtrar(cod);
+                ClsTipoMembresia clsTipo = new ClsTipoMembresia();
+                if (txtBuscar.Text != "")
+                {
+                    string cod = txtBuscar.Text;
+                    dgvTipoMembresia.DataSource = clsTipo.Filtrar(cod);
+                }
+                else
+                {
+                    dgvTipoMembresia.DataSource = clsTipo.CargarDatos();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                dgvTipoMembresia.DataSource = clsTipo.CargarDatos();
+                MessageBox.Show("Error al filtrar tipos de membresía: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -121,6 +146,24 @@ namespace Control_Gym.Capa_de_presentacion
             txtNombre.Text = dgvTipoMembresia.Rows[e.RowIndex].Cells["nombre"].FormattedValue.ToString();
             txtPrecio.Text = dgvTipoMembresia.Rows[e.RowIndex].Cells["precio"].FormattedValue.ToString();
             txtDias.Text = dgvTipoMembresia.Rows[e.RowIndex].Cells["cantidad_dias"].FormattedValue.ToString();
+        }
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 33 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+            }
+        }
+
+        private void txtDias_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 33 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+            }
         }
     }
 }

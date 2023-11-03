@@ -76,7 +76,6 @@
             this.MenuVertical.Name = "MenuVertical";
             this.MenuVertical.Size = new System.Drawing.Size(250, 650);
             this.MenuVertical.TabIndex = 0;
-            this.MenuVertical.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuVertical_Paint);
             // 
             // lblNombre
             // 
@@ -147,7 +146,7 @@
             this.btnMembresias.Location = new System.Drawing.Point(0, 149);
             this.btnMembresias.Name = "btnMembresias";
             this.btnMembresias.Size = new System.Drawing.Size(250, 40);
-            this.btnMembresias.TabIndex = 5;
+            this.btnMembresias.TabIndex = 1;
             this.btnMembresias.Text = "  MEMBRESÍAS";
             this.btnMembresias.UseVisualStyleBackColor = true;
             this.btnMembresias.Click += new System.EventHandler(this.btnMembresias_Click);
@@ -164,7 +163,7 @@
             this.btnSocios.Location = new System.Drawing.Point(1, 103);
             this.btnSocios.Name = "btnSocios";
             this.btnSocios.Size = new System.Drawing.Size(250, 40);
-            this.btnSocios.TabIndex = 4;
+            this.btnSocios.TabIndex = 0;
             this.btnSocios.Text = " SOCIOS";
             this.btnSocios.UseVisualStyleBackColor = true;
             this.btnSocios.Click += new System.EventHandler(this.btnSocios_Click);
@@ -181,7 +180,7 @@
             this.btnClientes.Location = new System.Drawing.Point(0, 195);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(250, 40);
-            this.btnClientes.TabIndex = 3;
+            this.btnClientes.TabIndex = 2;
             this.btnClientes.Text = "  VENTAS";
             this.btnClientes.UseVisualStyleBackColor = true;
             this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
@@ -198,7 +197,7 @@
             this.btnAdministracion.Location = new System.Drawing.Point(12, 241);
             this.btnAdministracion.Name = "btnAdministracion";
             this.btnAdministracion.Size = new System.Drawing.Size(250, 48);
-            this.btnAdministracion.TabIndex = 2;
+            this.btnAdministracion.TabIndex = 3;
             this.btnAdministracion.Text = "ADMINISTRACIÓN";
             this.btnAdministracion.UseVisualStyleBackColor = true;
             this.btnAdministracion.Click += new System.EventHandler(this.btnAdministracion_Click);
@@ -213,7 +212,6 @@
             this.btnlogoInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnlogoInicio.TabIndex = 0;
             this.btnlogoInicio.TabStop = false;
-            this.btnlogoInicio.Click += new System.EventHandler(this.btnlogoInicio_Click);
             // 
             // BarraTitulo
             // 

@@ -62,7 +62,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(326, 62);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(87, 38);
-            this.btnBuscar.TabIndex = 0;
+            this.btnBuscar.TabIndex = 1;
             this.btnBuscar.Text = "BUSCAR";
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -75,7 +75,7 @@
             this.txtDni.Multiline = true;
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(253, 72);
-            this.txtDni.TabIndex = 1;
+            this.txtDni.TabIndex = 0;
             this.txtDni.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtDni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDni_KeyPress);
             // 
@@ -168,7 +168,7 @@
             this.cmbTipoMembresia.Location = new System.Drawing.Point(262, 240);
             this.cmbTipoMembresia.Name = "cmbTipoMembresia";
             this.cmbTipoMembresia.Size = new System.Drawing.Size(176, 36);
-            this.cmbTipoMembresia.TabIndex = 15;
+            this.cmbTipoMembresia.TabIndex = 2;
             this.cmbTipoMembresia.SelectedIndexChanged += new System.EventHandler(this.cmbTipoMembresia_SelectedIndexChanged);
             // 
             // timer1

@@ -54,6 +54,7 @@
             this.txtDniCliente.Name = "txtDniCliente";
             this.txtDniCliente.Size = new System.Drawing.Size(178, 20);
             this.txtDniCliente.TabIndex = 0;
+            this.txtDniCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDniCliente_KeyPress);
             // 
             // txtNombre
             // 
@@ -75,6 +76,7 @@
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(178, 20);
             this.txtTelefono.TabIndex = 3;
+            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
             // 
             // label1
             // 
@@ -117,7 +119,7 @@
             this.txtDomicilio.Location = new System.Drawing.Point(192, 206);
             this.txtDomicilio.Name = "txtDomicilio";
             this.txtDomicilio.Size = new System.Drawing.Size(178, 20);
-            this.txtDomicilio.TabIndex = 8;
+            this.txtDomicilio.TabIndex = 4;
             // 
             // label5
             // 
@@ -142,7 +144,7 @@
             this.txtEmail.Location = new System.Drawing.Point(192, 241);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(178, 20);
-            this.txtEmail.TabIndex = 11;
+            this.txtEmail.TabIndex = 5;
             // 
             // btnAgregarCliente
             // 
@@ -154,7 +156,7 @@
             this.btnAgregarCliente.Location = new System.Drawing.Point(416, 277);
             this.btnAgregarCliente.Name = "btnAgregarCliente";
             this.btnAgregarCliente.Size = new System.Drawing.Size(122, 43);
-            this.btnAgregarCliente.TabIndex = 12;
+            this.btnAgregarCliente.TabIndex = 6;
             this.btnAgregarCliente.Text = "Registrar cliente";
             this.btnAgregarCliente.UseVisualStyleBackColor = false;
             this.btnAgregarCliente.Click += new System.EventHandler(this.btnAgregarCliente_Click);

@@ -22,7 +22,16 @@ namespace Control_Gym
         public void AbrirFormEnPanel(object Formhijo)
         {
             if (this.panelContenedor.Controls.Count > 0)
-                this.panelContenedor.Controls.RemoveAt(0);
+            {
+                try
+                {
+                    this.panelContenedor.Controls.RemoveAt(0);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al abrir el formulario: " + ex.Message);
+                }
+            }
             Form fh = Formhijo as Form;
             fh.TopLevel = false;
             fh.Dock = DockStyle.Fill;
@@ -33,32 +42,74 @@ namespace Control_Gym
 
         private void btnEmpleados_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new FormEmpleados());
+            try
+            {
+                AbrirFormEnPanel(new FormEmpleados());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario de empleados: " + ex.Message);
+            }
         }
 
         private void btnTiposMembresia_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new FormTipoMembresia());
+            try
+            {
+                AbrirFormEnPanel(new FormTipoMembresia());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario de tipos de membresía: " + ex.Message);
+            }
         }
 
         private void btnProveedores_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new FormProveedores());
+            try
+            {
+                AbrirFormEnPanel(new FormProveedores());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario de proveedores: " + ex.Message);
+            }
         }
 
         private void btnProductos_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new FormProductos());
+            try
+            {
+                AbrirFormEnPanel(new FormProductos());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario de productos: " + ex.Message);
+            }
         }
 
         private void btnTiposProducto_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new FormTipoProductos());
+            try
+            {
+                AbrirFormEnPanel(new FormTipoProductos());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario de tipos de productos: " + ex.Message);
+            }
         }
 
         private void FormAdministracion_Load(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new FormEmpleados());
+            try
+            {
+                AbrirFormEnPanel(new FormEmpleados());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el formulario de empleados: " + ex.Message);
+            }
         }
     }
 }

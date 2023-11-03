@@ -62,8 +62,7 @@
             this.dtvEmpleado.Name = "dtvEmpleado";
             this.dtvEmpleado.ReadOnly = true;
             this.dtvEmpleado.Size = new System.Drawing.Size(698, 394);
-            this.dtvEmpleado.TabIndex = 0;
-            this.dtvEmpleado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtvEmpleado_CellContentClick);
+            this.dtvEmpleado.TabIndex = 100;
             this.dtvEmpleado.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtvEmpleado_CellFormatting);
             this.dtvEmpleado.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtvEmpleado_RowHeaderMouseClick);
             // 
@@ -78,7 +77,7 @@
             this.btnGuardarEmpleado.Location = new System.Drawing.Point(802, 329);
             this.btnGuardarEmpleado.Name = "btnGuardarEmpleado";
             this.btnGuardarEmpleado.Size = new System.Drawing.Size(75, 30);
-            this.btnGuardarEmpleado.TabIndex = 1;
+            this.btnGuardarEmpleado.TabIndex = 8;
             this.btnGuardarEmpleado.Text = "Agregar";
             this.btnGuardarEmpleado.UseVisualStyleBackColor = false;
             this.btnGuardarEmpleado.Click += new System.EventHandler(this.btnGuardarEmpleado_Click);
@@ -94,7 +93,7 @@
             this.btnEliminarEmpleado.Location = new System.Drawing.Point(883, 329);
             this.btnEliminarEmpleado.Name = "btnEliminarEmpleado";
             this.btnEliminarEmpleado.Size = new System.Drawing.Size(75, 30);
-            this.btnEliminarEmpleado.TabIndex = 2;
+            this.btnEliminarEmpleado.TabIndex = 9;
             this.btnEliminarEmpleado.Text = "Eliminar";
             this.btnEliminarEmpleado.UseVisualStyleBackColor = false;
             this.btnEliminarEmpleado.Click += new System.EventHandler(this.btnEliminarEmpleado_Click);
@@ -110,7 +109,7 @@
             this.btnCancelarEmpleado.Location = new System.Drawing.Point(802, 365);
             this.btnCancelarEmpleado.Name = "btnCancelarEmpleado";
             this.btnCancelarEmpleado.Size = new System.Drawing.Size(75, 30);
-            this.btnCancelarEmpleado.TabIndex = 3;
+            this.btnCancelarEmpleado.TabIndex = 10;
             this.btnCancelarEmpleado.Text = "Cancelar";
             this.btnCancelarEmpleado.UseVisualStyleBackColor = false;
             this.btnCancelarEmpleado.Click += new System.EventHandler(this.btnCancelarEmpleado_Click);
@@ -126,7 +125,7 @@
             this.btnActualizarEmpleado.Location = new System.Drawing.Point(802, 329);
             this.btnActualizarEmpleado.Name = "btnActualizarEmpleado";
             this.btnActualizarEmpleado.Size = new System.Drawing.Size(75, 30);
-            this.btnActualizarEmpleado.TabIndex = 4;
+            this.btnActualizarEmpleado.TabIndex = 11;
             this.btnActualizarEmpleado.Text = "Modificar";
             this.btnActualizarEmpleado.UseVisualStyleBackColor = false;
             this.btnActualizarEmpleado.Click += new System.EventHandler(this.btnActualizarEmpleado_Click);
@@ -217,7 +216,7 @@
             this.txtNombreEmpleado.Location = new System.Drawing.Point(802, 66);
             this.txtNombreEmpleado.Name = "txtNombreEmpleado";
             this.txtNombreEmpleado.Size = new System.Drawing.Size(156, 20);
-            this.txtNombreEmpleado.TabIndex = 14;
+            this.txtNombreEmpleado.TabIndex = 1;
             // 
             // txtApellidoEmpleado
             // 
@@ -225,7 +224,7 @@
             this.txtApellidoEmpleado.Location = new System.Drawing.Point(802, 105);
             this.txtApellidoEmpleado.Name = "txtApellidoEmpleado";
             this.txtApellidoEmpleado.Size = new System.Drawing.Size(156, 20);
-            this.txtApellidoEmpleado.TabIndex = 15;
+            this.txtApellidoEmpleado.TabIndex = 2;
             // 
             // txtTelefonoEmpleado
             // 
@@ -233,7 +232,7 @@
             this.txtTelefonoEmpleado.Location = new System.Drawing.Point(802, 138);
             this.txtTelefonoEmpleado.Name = "txtTelefonoEmpleado";
             this.txtTelefonoEmpleado.Size = new System.Drawing.Size(156, 20);
-            this.txtTelefonoEmpleado.TabIndex = 16;
+            this.txtTelefonoEmpleado.TabIndex = 3;
             this.txtTelefonoEmpleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonoEmpleado_KeyPress);
             // 
             // txtDomicilioEmpleado
@@ -242,7 +241,7 @@
             this.txtDomicilioEmpleado.Location = new System.Drawing.Point(802, 209);
             this.txtDomicilioEmpleado.Name = "txtDomicilioEmpleado";
             this.txtDomicilioEmpleado.Size = new System.Drawing.Size(156, 20);
-            this.txtDomicilioEmpleado.TabIndex = 18;
+            this.txtDomicilioEmpleado.TabIndex = 5;
             // 
             // txtEmailEmpleado
             // 
@@ -250,7 +249,7 @@
             this.txtEmailEmpleado.Location = new System.Drawing.Point(802, 245);
             this.txtEmailEmpleado.Name = "txtEmailEmpleado";
             this.txtEmailEmpleado.Size = new System.Drawing.Size(156, 20);
-            this.txtEmailEmpleado.TabIndex = 19;
+            this.txtEmailEmpleado.TabIndex = 6;
             // 
             // txtContraseñaEmpleado
             // 
@@ -258,7 +257,7 @@
             this.txtContraseñaEmpleado.Location = new System.Drawing.Point(802, 285);
             this.txtContraseñaEmpleado.Name = "txtContraseñaEmpleado";
             this.txtContraseñaEmpleado.Size = new System.Drawing.Size(156, 20);
-            this.txtContraseñaEmpleado.TabIndex = 20;
+            this.txtContraseñaEmpleado.TabIndex = 7;
             // 
             // dtpFechNacEmpleado
             // 
@@ -266,7 +265,7 @@
             this.dtpFechNacEmpleado.Location = new System.Drawing.Point(802, 174);
             this.dtpFechNacEmpleado.Name = "dtpFechNacEmpleado";
             this.dtpFechNacEmpleado.Size = new System.Drawing.Size(156, 20);
-            this.dtpFechNacEmpleado.TabIndex = 21;
+            this.dtpFechNacEmpleado.TabIndex = 4;
             // 
             // mtxtDniEmpleado
             // 
@@ -274,7 +273,7 @@
             this.mtxtDniEmpleado.Location = new System.Drawing.Point(802, 28);
             this.mtxtDniEmpleado.Name = "mtxtDniEmpleado";
             this.mtxtDniEmpleado.Size = new System.Drawing.Size(156, 20);
-            this.mtxtDniEmpleado.TabIndex = 24;
+            this.mtxtDniEmpleado.TabIndex = 0;
             this.mtxtDniEmpleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mtxtDniEmpleado_KeyPress);
             // 
             // FormEmpleados
@@ -302,8 +301,8 @@
             this.Controls.Add(this.btnCancelarEmpleado);
             this.Controls.Add(this.btnEliminarEmpleado);
             this.Controls.Add(this.dtvEmpleado);
-            this.Controls.Add(this.btnActualizarEmpleado);
             this.Controls.Add(this.btnGuardarEmpleado);
+            this.Controls.Add(this.btnActualizarEmpleado);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormEmpleados";
             this.Text = "FormEmpleados";

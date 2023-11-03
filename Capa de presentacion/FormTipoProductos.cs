@@ -21,50 +21,68 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            CTipoProducto cTipoProducto = new CTipoProducto();
-            int cod = Convert.ToInt32(txtCod.Text);
-            string nombre= txtNombre.Text;
-            cTipoProducto.EliminarProducto(cod, nombre);
-            dgvTipoProducto.DataSource = cTipoProducto.MostrarTipoProducto();
+            try
+            {
+                CTipoProducto cTipoProducto = new CTipoProducto();
+                int cod = Convert.ToInt32(txtCod.Text);
+                string nombre = txtNombre.Text;
+                cTipoProducto.EliminarProducto(cod, nombre);
+                dgvTipoProducto.DataSource = cTipoProducto.MostrarTipoProducto();
 
-            limpiarCampos();
-            cancelarActualizar();
+                limpiarCampos();
+                cancelarActualizar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar el tipo de producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if ((txtNombre.Text != ""))
+            try
             {
-                CTipoProducto cTipoProducto = new CTipoProducto();
-                String nombre = txtNombre.Text;
-                cTipoProducto.AgregarTipoProducto(nombre);
-                dgvTipoProducto.DataSource = cTipoProducto.MostrarTipoProducto();
-                limpiarCampos();
-                cancelarActualizar();
+                if ((txtNombre.Text != ""))
+                {
+                    CTipoProducto cTipoProducto = new CTipoProducto();
+                    string nombre = txtNombre.Text;
+                    cTipoProducto.AgregarTipoProducto(nombre);
+                    dgvTipoProducto.DataSource = cTipoProducto.MostrarTipoProducto();
+                    limpiarCampos();
+                    cancelarActualizar();
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, ingrese un nombre válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar el tipo de producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            CTipoProducto cTipoProducto = new CTipoProducto();
-            int cod = Convert.ToInt32(txtCod.Text);
-            String nombre = txtNombre.Text;
-            cTipoProducto.ActualizarProducto(cod, nombre);
-            dgvTipoProducto.DataSource = cTipoProducto.MostrarTipoProducto();
-            limpiarCampos();
-            cancelarActualizar();
-        }
-
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-
+            try
+            {
+                CTipoProducto cTipoProducto = new CTipoProducto();
+                int cod = Convert.ToInt32(txtCod.Text);
+                string nombre = txtNombre.Text;
+                cTipoProducto.ActualizarProducto(cod, nombre);
+                dgvTipoProducto.DataSource = cTipoProducto.MostrarTipoProducto();
+                limpiarCampos();
+                cancelarActualizar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al modificar el tipo de producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void FormTipoProductos_Load(object sender, EventArgs e)
         {
-            btnEliminar.Visible = false;
-            btnCancelar.Visible = false;
-            btnModificar.Visible = false;
+            cancelarActualizar();
 
             CTipoProducto cTipoProducto = new CTipoProducto();
             dgvTipoProducto.DataSource = cTipoProducto.MostrarTipoProducto();
@@ -86,8 +104,8 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            cancelarActualizar();
             limpiarCampos();
+            cancelarActualizar();
         }
 
         private void dgvTipoProducto_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -95,7 +113,6 @@ namespace Control_Gym.Capa_de_presentacion
             if (dgvTipoProducto.SelectedRows.Count > 0)
             {
                 txtCod.Text = dgvTipoProducto.Rows[e.RowIndex].Cells["cod_tipo_producto"].FormattedValue.ToString();
-
                 txtNombre.Text = dgvTipoProducto.Rows[e.RowIndex].Cells["nombre"].FormattedValue.ToString();
                 btnEliminar.Visible = true;
                 btnModificar.Visible = true;
@@ -103,5 +120,11 @@ namespace Control_Gym.Capa_de_presentacion
                 btnCancelar.Visible = true;
             }
         }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
     }
 }
+

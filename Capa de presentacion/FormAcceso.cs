@@ -37,61 +37,81 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            if (txtDniEmpleado.Text != "" && txtContraseñaEmpleado.Text != "")
+            try
             {
-                CAcceso cAcc = new CAcceso(Convert.ToInt32(txtDniEmpleado.Text), txtContraseñaEmpleado.Text);
-                List<CAcceso> acceso = cAcceso.Login(cAcc);
-
-                if (acceso[0] != null)
+                if (txtDniEmpleado.Text != "" && txtContraseñaEmpleado.Text != "")
                 {
-                    MessageBox.Show("Acceso Concedido");
-                    FormContenedor formContenedor = new FormContenedor(acceso[0].dni_empleado, acceso[0].nombre);
-                    
-                    formContenedor.Show();
+                    CAcceso cAcc = new CAcceso(Convert.ToInt32(txtDniEmpleado.Text), txtContraseñaEmpleado.Text);
+                    List<CAcceso> acceso = cAcceso.Login(cAcc);
 
-                    txtDniEmpleado.Text = "";
-                    txtContraseñaEmpleado.Text = "";
+                    if (acceso.Count > 0 && acceso[0] != null)
+                    {
+                        MessageBox.Show("Acceso Concedido");
+                        FormContenedor formContenedor = new FormContenedor(acceso[0].dni_empleado, acceso[0].nombre);
+
+                        formContenedor.Show();
+
+                        txtDniEmpleado.Text = "";
+                        txtContraseñaEmpleado.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Datos incorrectos.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Datos incorrectos.");
+                    MessageBox.Show("Uno de los campos está vacío");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Uno de las campos está vacío");
+                MessageBox.Show("Error al iniciar sesión: " + ex.Message);
             }
         }
 
         private void txtDniEmpleado_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsDigit(e.KeyChar))
+            try
             {
-                string currentText = txtDniEmpleado.Text;
+                if (char.IsDigit(e.KeyChar))
+                {
+                    string currentText = txtDniEmpleado.Text;
 
-                if (currentText.Length + 1 > 8)
+                    if (currentText.Length + 1 > 8)
+                    {
+                        e.Handled = true;
+                    }
+                }
+                else if (!char.IsControl(e.KeyChar))
                 {
                     e.Handled = true;
                 }
+                if ((e.KeyChar >= 33 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+                {
+                    MessageBox.Show("Solo números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    e.Handled = true;
+                }
             }
-            else if (!char.IsControl(e.KeyChar))
+            catch (Exception ex)
             {
-                e.Handled = true;
-            }
-            if ((e.KeyChar >= 33 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
-            {
-                MessageBox.Show("Solo números", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                e.Handled = true;
-                return;
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
 
         private void txtContraseñaEmpleado_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)(Keys.Enter))
+            try
             {
-                e.Handled = true;
-                btnIniciarSesion_Click(sender, e);
+                if (e.KeyChar == (char)(Keys.Enter))
+                {
+                    e.Handled = true;
+                    btnIniciarSesion_Click(sender, e);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
     }
