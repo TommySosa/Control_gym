@@ -94,5 +94,43 @@ namespace Control_Gym.Capa_de_presentacion
         {
             Close();
         }
+
+        private void txtDniCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (char.IsDigit(e.KeyChar))
+                {
+                    string currentText = txtDniCliente.Text;
+
+                    if (currentText.Length + 1 > 8)
+                    {
+                        e.Handled = true;
+                    }
+                }
+                else if (!char.IsControl(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+                if ((e.KeyChar >= 33 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+                {
+                    MessageBox.Show("Solo números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    e.Handled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 33 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+            }
+        }
     }
 }

@@ -69,9 +69,9 @@ namespace Control_Gym.Capa_de_datos
                     MessageBox.Show("El socio ya tiene cargado una membresia de ese tipo.");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Error al crear la membresia." + ex.Message);
+                MessageBox.Show("Error al crear la membresia.");
             }
             finally
             {

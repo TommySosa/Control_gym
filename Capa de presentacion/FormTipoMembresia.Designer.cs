@@ -64,6 +64,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(155, 20);
             this.txtPrecio.TabIndex = 1;
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // txtNombre
             // 
@@ -71,7 +72,7 @@
             this.txtNombre.Location = new System.Drawing.Point(757, 93);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(155, 20);
-            this.txtNombre.TabIndex = 2;
+            this.txtNombre.TabIndex = 0;
             // 
             // txtDias
             // 
@@ -79,7 +80,8 @@
             this.txtDias.Location = new System.Drawing.Point(757, 216);
             this.txtDias.Name = "txtDias";
             this.txtDias.Size = new System.Drawing.Size(155, 20);
-            this.txtDias.TabIndex = 3;
+            this.txtDias.TabIndex = 2;
+            this.txtDias.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDias_KeyPress);
             // 
             // label1
             // 
@@ -133,7 +135,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(756, 251);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 30);
-            this.btnAgregar.TabIndex = 8;
+            this.btnAgregar.TabIndex = 3;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -149,7 +151,7 @@
             this.btnModificar.Location = new System.Drawing.Point(756, 251);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 30);
-            this.btnModificar.TabIndex = 9;
+            this.btnModificar.TabIndex = 6;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -165,7 +167,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(837, 251);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 30);
-            this.btnEliminar.TabIndex = 10;
+            this.btnEliminar.TabIndex = 4;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -181,7 +183,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(756, 287);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 30);
-            this.btnCancelar.TabIndex = 11;
+            this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -241,8 +243,6 @@
             this.Controls.Add(this.dgvTipoMembresia);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnModificar);
-            this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -251,6 +251,8 @@
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.txtCod);
+            this.Controls.Add(this.btnModificar);
+            this.Controls.Add(this.btnAgregar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormTipoMembresia";
             this.Text = "TipoMembresia";

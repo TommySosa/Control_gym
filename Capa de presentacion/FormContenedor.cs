@@ -34,105 +34,165 @@ namespace Control_Gym
 
         private void BarraTitulo_MouseDown(object sender, MouseEventArgs e)
         {
-            ReleaseCapture();
-            SendMessage(this.Handle,0x112,0xf012,0);
+            try
+            {
+                ReleaseCapture();
+                SendMessage(this.Handle, 0x112, 0xf012, 0);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mover la ventana: " + ex.Message);
+            }
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
-            if (MenuVertical.Width == 250)
+            try
             {
-                MenuVertical.Width = 70;
+                if (MenuVertical.Width == 250)
+                {
+                    MenuVertical.Width = 70;
+                }
+                else
+                    MenuVertical.Width = 250;
             }
-            else
-                MenuVertical.Width = 250;
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cambiar el ancho del menú: " + ex.Message);
+            }
         }
 
         private void iconminimizar_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            try
+            {
+                this.WindowState = FormWindowState.Minimized;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al minimizar la ventana: " + ex.Message);
+            }
         }
 
         private void iconrestaurar_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Normal;
-            iconrestaurar.Visible = false;
-            iconmaximizar.Visible = true;
+            try
+            {
+                this.WindowState = FormWindowState.Normal;
+                iconrestaurar.Visible = false;
+                iconmaximizar.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al restaurar la ventana: " + ex.Message);
+            }
         }
 
         private void iconmaximizar_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
-            iconrestaurar.Visible = true;
-            iconmaximizar.Visible = false;
+            try
+            {
+                this.WindowState = FormWindowState.Maximized;
+                iconrestaurar.Visible = true;
+                iconmaximizar.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al maximizar la ventana: " + ex.Message);
+            }
         }
 
         private void iconcerrar_Click(object sender, EventArgs e)
         {
-            Close();
+            try
+            {
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cerrar la ventana: " + ex.Message);
+            }
         }
-
 
         private void AbrirFormEnPanel(object Formhijo)
         {
-            if (this.panelContenedor.Controls.Count > 0)
-                this.panelContenedor.Controls.RemoveAt(0);
-            Form fh = Formhijo as Form;
-            fh.TopLevel = false;
-            fh.Dock = DockStyle.Fill;
-            this.panelContenedor.Controls.Add(fh);
-            this.panelContenedor.Tag = fh;
-            fh.Show();
-        }
-
-        private void btnlogoInicio_Click(object sender, EventArgs e)
-        {
-            //AbrirFormEnPanel(new FormPrincipal());
+            try
+            {
+                if (this.panelContenedor.Controls.Count > 0)
+                    this.panelContenedor.Controls.RemoveAt(0);
+                Form fh = Formhijo as Form;
+                fh.TopLevel = false;
+                fh.Dock = DockStyle.Fill;
+                this.panelContenedor.Controls.Add(fh);
+                this.panelContenedor.Tag = fh;
+                fh.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario hijo: " + ex.Message);
+            }
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-           AbrirFormEnPanel(new FormVentas(dni_empleado,nombre));
+            try
+            {
+                AbrirFormEnPanel(new FormVentas(dni_empleado, nombre));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario de ventas: " + ex.Message);
+            }
         }
 
         private void btnAdministracion_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new FormAdministracion());
+            try
+            {
+                AbrirFormEnPanel(new FormAdministracion());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario de administración: " + ex.Message);
+            }
         }
 
         private void btnSocios_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new FormSocio());
+            try
+            {
+                AbrirFormEnPanel(new FormSocio());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario de socios: " + ex.Message);
+            }
         }
 
         private void btnMembresias_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new FormMembresias());
-        }
-
-        private void btnAcceso_Click(object sender, EventArgs e)
-        {
-            AbrirFormEnPanel(new FormAcceso());
-        }
-
-        private void btnInicio_Click(object sender, EventArgs e)
-        {
-            //AbrirFormEnPanel(new FormPrincipal());
+            try
+            {
+                AbrirFormEnPanel(new FormMembresias());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario de membresías: " + ex.Message);
+            }
         }
 
         private void FormContenedor_Load(object sender, EventArgs e)
         {
-            btnlogoInicio_Click(null, e);
-            AbrirFormEnPanel(new FormSocio());
-            lblDNI.Text = this.dni_empleado.ToString();
-            lblNombre.Text = this.nombre;
-
+            try
+            {
+                AbrirFormEnPanel(new FormSocio());
+                lblDNI.Text = this.dni_empleado.ToString();
+                lblNombre.Text = this.nombre;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el formulario de contenedor: " + ex.Message);
+            }
         }
-
-        private void MenuVertical_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
     }
 }

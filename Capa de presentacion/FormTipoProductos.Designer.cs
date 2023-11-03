@@ -70,7 +70,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(668, 65);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 30);
-            this.btnAgregar.TabIndex = 2;
+            this.btnAgregar.TabIndex = 1;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -86,7 +86,7 @@
             this.btnModificar.Location = new System.Drawing.Point(668, 65);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 30);
-            this.btnModificar.TabIndex = 3;
+            this.btnModificar.TabIndex = 4;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -102,7 +102,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(749, 65);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 30);
-            this.btnEliminar.TabIndex = 4;
+            this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -132,7 +132,7 @@
             this.txtCod.Location = new System.Drawing.Point(668, 39);
             this.txtCod.Name = "txtCod";
             this.txtCod.Size = new System.Drawing.Size(156, 20);
-            this.txtCod.TabIndex = 7;
+            this.txtCod.TabIndex = 0;
             this.txtCod.Visible = false;
             // 
             // btnCancelar
@@ -146,7 +146,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(668, 101);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 30);
-            this.btnCancelar.TabIndex = 8;
+            this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -161,10 +161,10 @@
             this.Controls.Add(this.txtCod);
             this.Controls.Add(this.dgvTipoProducto);
             this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnModificar);
-            this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnModificar);
+            this.Controls.Add(this.btnAgregar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormTipoProductos";
             this.Text = "FormTipoProductos";

@@ -58,6 +58,7 @@
             this.txtDniMembresia.Name = "txtDniMembresia";
             this.txtDniMembresia.Size = new System.Drawing.Size(200, 20);
             this.txtDniMembresia.TabIndex = 1;
+            this.txtDniMembresia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDniMembresia_KeyPress);
             // 
             // lblDniMembresia
             // 
@@ -78,7 +79,7 @@
             this.btnActualizarMembresia.Location = new System.Drawing.Point(3, 27);
             this.btnActualizarMembresia.Name = "btnActualizarMembresia";
             this.btnActualizarMembresia.Size = new System.Drawing.Size(75, 30);
-            this.btnActualizarMembresia.TabIndex = 8;
+            this.btnActualizarMembresia.TabIndex = 6;
             this.btnActualizarMembresia.Text = "Modificar";
             this.btnActualizarMembresia.UseVisualStyleBackColor = false;
             this.btnActualizarMembresia.Click += new System.EventHandler(this.btnActualizarMembresia_Click);
@@ -93,7 +94,7 @@
             this.btnEliminarMembresia.Location = new System.Drawing.Point(106, 27);
             this.btnEliminarMembresia.Name = "btnEliminarMembresia";
             this.btnEliminarMembresia.Size = new System.Drawing.Size(75, 30);
-            this.btnEliminarMembresia.TabIndex = 6;
+            this.btnEliminarMembresia.TabIndex = 4;
             this.btnEliminarMembresia.Text = "Eliminar";
             this.btnEliminarMembresia.UseVisualStyleBackColor = false;
             this.btnEliminarMembresia.Click += new System.EventHandler(this.btnEliminarMembresia_Click);
@@ -108,7 +109,7 @@
             this.btnCancelarMembresia.Location = new System.Drawing.Point(207, 27);
             this.btnCancelarMembresia.Name = "btnCancelarMembresia";
             this.btnCancelarMembresia.Size = new System.Drawing.Size(75, 30);
-            this.btnCancelarMembresia.TabIndex = 7;
+            this.btnCancelarMembresia.TabIndex = 5;
             this.btnCancelarMembresia.Text = "Cancelar";
             this.btnCancelarMembresia.UseVisualStyleBackColor = false;
             this.btnCancelarMembresia.Click += new System.EventHandler(this.btnCancelarMembresia_Click);
@@ -123,7 +124,7 @@
             this.btnCrearMembresia.Location = new System.Drawing.Point(3, 27);
             this.btnCrearMembresia.Name = "btnCrearMembresia";
             this.btnCrearMembresia.Size = new System.Drawing.Size(75, 30);
-            this.btnCrearMembresia.TabIndex = 5;
+            this.btnCrearMembresia.TabIndex = 0;
             this.btnCrearMembresia.Text = "Agregar";
             this.btnCrearMembresia.UseVisualStyleBackColor = false;
             this.btnCrearMembresia.Click += new System.EventHandler(this.btnCrearMembresia_Click);
@@ -151,8 +152,7 @@
             this.dvgMembresias.Name = "dvgMembresias";
             this.dvgMembresias.ReadOnly = true;
             this.dvgMembresias.Size = new System.Drawing.Size(921, 285);
-            this.dvgMembresias.TabIndex = 11;
-            this.dvgMembresias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgMembresias_CellClick);
+            this.dvgMembresias.TabIndex = 111;
             this.dvgMembresias.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dvgMembresias_CellFormatting);
             this.dvgMembresias.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dvgMembresias_RowHeaderMouseClick);
             // 
@@ -161,7 +161,7 @@
             this.txtBuscarDni.Location = new System.Drawing.Point(68, 245);
             this.txtBuscarDni.Name = "txtBuscarDni";
             this.txtBuscarDni.Size = new System.Drawing.Size(189, 20);
-            this.txtBuscarDni.TabIndex = 9;
+            this.txtBuscarDni.TabIndex = 77;
             // 
             // btnBuscarMembresia
             // 
@@ -173,7 +173,7 @@
             this.btnBuscarMembresia.Location = new System.Drawing.Point(263, 239);
             this.btnBuscarMembresia.Name = "btnBuscarMembresia";
             this.btnBuscarMembresia.Size = new System.Drawing.Size(75, 30);
-            this.btnBuscarMembresia.TabIndex = 10;
+            this.btnBuscarMembresia.TabIndex = 88;
             this.btnBuscarMembresia.Text = "Buscar";
             this.btnBuscarMembresia.UseVisualStyleBackColor = false;
             this.btnBuscarMembresia.Click += new System.EventHandler(this.btnBuscarMembresia_Click);
@@ -228,7 +228,7 @@
             this.dtpFechaFin.Location = new System.Drawing.Point(137, 123);
             this.dtpFechaFin.Name = "dtpFechaFin";
             this.dtpFechaFin.Size = new System.Drawing.Size(200, 20);
-            this.dtpFechaFin.TabIndex = 4;
+            this.dtpFechaFin.TabIndex = 33;
             this.dtpFechaFin.ValueChanged += new System.EventHandler(this.dtpFechaFin_ValueChanged);
             // 
             // dtpFechaInicio
@@ -262,7 +262,7 @@
             this.txtCodMembresia.Location = new System.Drawing.Point(156, 201);
             this.txtCodMembresia.Name = "txtCodMembresia";
             this.txtCodMembresia.Size = new System.Drawing.Size(100, 20);
-            this.txtCodMembresia.TabIndex = 22;
+            this.txtCodMembresia.TabIndex = 99;
             this.txtCodMembresia.Visible = false;
             // 
             // FormMembresias

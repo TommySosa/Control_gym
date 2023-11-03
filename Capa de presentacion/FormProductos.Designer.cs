@@ -100,7 +100,7 @@
             this.cmbTipoProducto.Location = new System.Drawing.Point(131, 61);
             this.cmbTipoProducto.Name = "cmbTipoProducto";
             this.cmbTipoProducto.Size = new System.Drawing.Size(156, 21);
-            this.cmbTipoProducto.TabIndex = 8;
+            this.cmbTipoProducto.TabIndex = 2;
             this.cmbTipoProducto.SelectedIndexChanged += new System.EventHandler(this.cmbTipoProducto_SelectedIndexChanged);
             // 
             // txtNombre
@@ -108,14 +108,14 @@
             this.txtNombre.Location = new System.Drawing.Point(131, 88);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(156, 20);
-            this.txtNombre.TabIndex = 9;
+            this.txtNombre.TabIndex = 3;
             // 
             // txtCodProducto
             // 
             this.txtCodProducto.Location = new System.Drawing.Point(131, 8);
             this.txtCodProducto.Name = "txtCodProducto";
             this.txtCodProducto.Size = new System.Drawing.Size(156, 20);
-            this.txtCodProducto.TabIndex = 11;
+            this.txtCodProducto.TabIndex = 0;
             this.txtCodProducto.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // cmbProveedor
@@ -124,7 +124,7 @@
             this.cmbProveedor.Location = new System.Drawing.Point(131, 34);
             this.cmbProveedor.Name = "cmbProveedor";
             this.cmbProveedor.Size = new System.Drawing.Size(156, 21);
-            this.cmbProveedor.TabIndex = 28;
+            this.cmbProveedor.TabIndex = 1;
             this.cmbProveedor.SelectedIndexChanged += new System.EventHandler(this.cmbProveedor_SelectedIndexChanged);
             // 
             // dtpFechaVenc
@@ -132,7 +132,7 @@
             this.dtpFechaVenc.Location = new System.Drawing.Point(474, 89);
             this.dtpFechaVenc.Name = "dtpFechaVenc";
             this.dtpFechaVenc.Size = new System.Drawing.Size(156, 20);
-            this.dtpFechaVenc.TabIndex = 27;
+            this.dtpFechaVenc.TabIndex = 6;
             // 
             // txtCod
             // 
@@ -157,7 +157,8 @@
             this.txtStock.Location = new System.Drawing.Point(474, 115);
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(156, 20);
-            this.txtStock.TabIndex = 23;
+            this.txtStock.TabIndex = 7;
+            this.txtStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStock_KeyPress);
             // 
             // lblStock
             // 
@@ -190,14 +191,16 @@
             this.txtCosto.Location = new System.Drawing.Point(474, 36);
             this.txtCosto.Name = "txtCosto";
             this.txtCosto.Size = new System.Drawing.Size(156, 20);
-            this.txtCosto.TabIndex = 18;
+            this.txtCosto.TabIndex = 5;
+            this.txtCosto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCosto_KeyPress);
             // 
             // txtPrecioVenta
             // 
             this.txtPrecioVenta.Location = new System.Drawing.Point(474, 10);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(156, 20);
-            this.txtPrecioVenta.TabIndex = 17;
+            this.txtPrecioVenta.TabIndex = 4;
+            this.txtPrecioVenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioVenta_KeyPress);
             // 
             // lblGanancia
             // 
@@ -236,7 +239,7 @@
             this.btnCrear.Location = new System.Drawing.Point(474, 141);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(75, 30);
-            this.btnCrear.TabIndex = 15;
+            this.btnCrear.TabIndex = 8;
             this.btnCrear.Text = "Agregar";
             this.btnCrear.UseVisualStyleBackColor = false;
             this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
@@ -251,7 +254,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(555, 141);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 30);
-            this.btnEliminar.TabIndex = 16;
+            this.btnEliminar.TabIndex = 9;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -266,7 +269,7 @@
             this.btnModificar.Location = new System.Drawing.Point(474, 141);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 30);
-            this.btnModificar.TabIndex = 17;
+            this.btnModificar.TabIndex = 11;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -314,7 +317,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(474, 171);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 30);
-            this.btnCancelar.TabIndex = 29;
+            this.btnCancelar.TabIndex = 10;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);

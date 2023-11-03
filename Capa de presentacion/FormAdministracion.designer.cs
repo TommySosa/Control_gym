@@ -99,7 +99,7 @@
             this.btnTiposMembresia.Location = new System.Drawing.Point(45, 103);
             this.btnTiposMembresia.Name = "btnTiposMembresia";
             this.btnTiposMembresia.Size = new System.Drawing.Size(80, 23);
-            this.btnTiposMembresia.TabIndex = 41;
+            this.btnTiposMembresia.TabIndex = 2;
             this.btnTiposMembresia.Text = "MOSTRAR";
             this.btnTiposMembresia.UseVisualStyleBackColor = false;
             this.btnTiposMembresia.Click += new System.EventHandler(this.btnTiposMembresia_Click);
@@ -172,7 +172,7 @@
             this.btnProveedores.Location = new System.Drawing.Point(49, 103);
             this.btnProveedores.Name = "btnProveedores";
             this.btnProveedores.Size = new System.Drawing.Size(80, 23);
-            this.btnProveedores.TabIndex = 40;
+            this.btnProveedores.TabIndex = 4;
             this.btnProveedores.Text = "MOSTRAR";
             this.btnProveedores.UseVisualStyleBackColor = false;
             this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
@@ -233,7 +233,7 @@
             this.btnEmpleados.Location = new System.Drawing.Point(43, 103);
             this.btnEmpleados.Name = "btnEmpleados";
             this.btnEmpleados.Size = new System.Drawing.Size(80, 23);
-            this.btnEmpleados.TabIndex = 38;
+            this.btnEmpleados.TabIndex = 1;
             this.btnEmpleados.Text = "MOSTRAR";
             this.btnEmpleados.UseVisualStyleBackColor = false;
             this.btnEmpleados.Click += new System.EventHandler(this.btnEmpleados_Click);
@@ -290,7 +290,7 @@
             this.label1.Location = new System.Drawing.Point(39, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 20);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 15;
             this.label1.Text = "Empleados";
             // 
             // pictureBox3
@@ -337,7 +337,7 @@
             this.btnProductos.Location = new System.Drawing.Point(48, 103);
             this.btnProductos.Name = "btnProductos";
             this.btnProductos.Size = new System.Drawing.Size(80, 23);
-            this.btnProductos.TabIndex = 39;
+            this.btnProductos.TabIndex = 5;
             this.btnProductos.Text = "MOSTRAR";
             this.btnProductos.UseVisualStyleBackColor = false;
             this.btnProductos.Click += new System.EventHandler(this.btnProductos_Click);
@@ -377,7 +377,7 @@
             this.btnTiposProducto.Location = new System.Drawing.Point(45, 103);
             this.btnTiposProducto.Name = "btnTiposProducto";
             this.btnTiposProducto.Size = new System.Drawing.Size(80, 23);
-            this.btnTiposProducto.TabIndex = 41;
+            this.btnTiposProducto.TabIndex = 3;
             this.btnTiposProducto.Text = "MOSTRAR";
             this.btnTiposProducto.UseVisualStyleBackColor = false;
             this.btnTiposProducto.Click += new System.EventHandler(this.btnTiposProducto_Click);

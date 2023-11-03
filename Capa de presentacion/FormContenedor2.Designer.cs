@@ -133,9 +133,9 @@
             // panelContenedor
             // 
             this.panelContenedor.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelContenedor.Location = new System.Drawing.Point(-2, 70);
+            this.panelContenedor.Location = new System.Drawing.Point(0, 50);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(960, 368);
+            this.panelContenedor.Size = new System.Drawing.Size(960, 388);
             this.panelContenedor.TabIndex = 14;
             // 
             // lblAdministradores

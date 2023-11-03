@@ -25,24 +25,116 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            ClsSocio oClsSocio = new ClsSocio();
+            try
+            {
+                CMembresiaD cMembresiaD = new CMembresiaD();
+                ClsSocio oClsSocio = new ClsSocio();
 
-            int dni = Convert.ToInt32(txtDniSocio.Text);
-            string nombre = txtNombreSocio.Text;
-            string apellido = txtApellidoSocio.Text;
-            DateTime fechaNacimiento = dtpFechaNacimiento.Value;
-            string telefono = txtTelefonoSocio.Text;
-            string domicilio = txtDomicilio.Text;
-            string email = txtEmail.Text;
+                int dni = Convert.ToInt32(txtDniSocio.Text);
+                string nombre = txtNombreSocio.Text;
+                string apellido = txtApellidoSocio.Text;
+                DateTime fechaNacimiento = dtpFechaNacimiento.Value;
+                string telefono = txtTelefonoSocio.Text;
+                string domicilio = txtDomicilio.Text;
+                string email = txtEmail.Text;
 
-            oClsSocio.GuardarSocio(dni, nombre, apellido, fechaNacimiento, telefono, domicilio, email);
-            dgvSocios.DataSource = oClsSocio.CargarDatos();
+                bool existe = cMembresiaD.SocioExiste(dni);
+                if (existe)
+                {
+                    MessageBox.Show("El DNI ya está en uso. No se puede crear un socio con el mismo DNI.");
+                    mostrarElementos();
+                }
+                else
+                {
+                    oClsSocio.GuardarSocio(dni, nombre, apellido, fechaNacimiento, telefono, domicilio, email);
+                    dgvSocios.DataSource = oClsSocio.CargarDatos();
 
-            limpiarCampos();
-            CancelarModificar();
+                    limpiarCampos();
+                    CancelarModificar();
+
+                    AbrirFormEnPanel(new FormMembresias(dni));
+                    ocultarElementos();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar un socio: " + ex.Message);
+            }
         }
 
+        private void AbrirFormEnPanel(object Formhijo)
+        {
+            try
+            {
+                if (this.panelContenedor.Controls.Count > 0)
+                    this.panelContenedor.Controls.RemoveAt(0);
+                Form fh = Formhijo as Form;
+                fh.TopLevel = false;
+                fh.Dock = DockStyle.Fill;
+                this.panelContenedor.Controls.Add(fh);
+                this.panelContenedor.Tag = fh;
+                fh.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario en el panel: " + ex.Message);
+            }
+        }
 
+        private void mostrarElementos()
+        {
+            lblDni.Visible = true;
+            lblNombre.Visible = true;
+            lblApellido.Visible = true;
+            lblTelefono.Visible = true;
+            lblFechaNacimiento.Visible = true;
+            lblDomicilio.Visible = true;
+            lblEmail.Visible = true;
+
+            txtDniSocio.Visible = true;
+            txtNombreSocio.Visible = true;
+            txtApellidoSocio.Visible = true;
+            dtpFechaNacimiento.Visible = true;
+            txtTelefonoSocio.Visible = true;
+            txtDomicilio.Visible = true;
+            txtEmail.Visible = true;
+            txtBuscarSocio.Visible = true;
+
+            dgvSocios.Visible = true;
+
+            btnBuscarSocio.Visible = true;
+            btnGuardar.Visible = true;
+        }
+
+        private void ocultarElementos()
+        {
+            lblCod.Visible = false;
+            lblDni.Visible = false;
+            lblNombre.Visible = false;
+            lblApellido.Visible = false;
+            lblTelefono.Visible = false;
+            lblFechaNacimiento.Visible = false;
+            lblDomicilio.Visible = false;
+            lblEmail.Visible = false;
+
+            txtCod.Visible = false;
+            txtDniSocio.Visible = false;
+            txtNombreSocio.Visible = false;
+            txtApellidoSocio.Visible = false;
+            dtpFechaNacimiento.Visible = false;
+            txtTelefonoSocio.Visible = false;
+            txtDomicilio.Visible = false;
+            txtEmail.Visible = false;
+            txtBuscarSocio.Visible = false;
+
+            dgvSocios.Visible = false;
+
+            btnBuscarSocio.Visible = false;
+            btnGuardar.Visible = false;
+            btnCancelar.Visible = false;
+            btnBorrar.Visible = false;
+            btnModificar.Visible = false;
+        }
 
         private void dtpFechaNacimiento_ValueChanged(object sender, EventArgs e)
         {
@@ -51,61 +143,85 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            ClsSocio clsSocio = new ClsSocio();
-            string cod = txtCod.Text;
-            int dni = Convert.ToInt32(txtDniSocio.Text);
-            string nombre = txtNombreSocio.Text;
-            string apellido = txtApellidoSocio.Text;
-            DateTime fechaNacimiento = dtpFechaNacimiento.Value;
-            string telefono = txtTelefonoSocio.Text;
-            string domicilio = txtDomicilio.Text;
-            string email = txtEmail.Text;
+            try
+            {
+                ClsSocio clsSocio = new ClsSocio();
+                string cod = txtCod.Text;
+                int dni = Convert.ToInt32(txtDniSocio.Text);
+                string nombre = txtNombreSocio.Text;
+                string apellido = txtApellidoSocio.Text;
+                DateTime fechaNacimiento = dtpFechaNacimiento.Value;
+                string telefono = txtTelefonoSocio.Text;
+                string domicilio = txtDomicilio.Text;
+                string email = txtEmail.Text;
 
-            ClsSocio oclsSocio = new ClsSocio();
-            oclsSocio.ModificarSocio(cod, dni, nombre, apellido, fechaNacimiento, telefono, domicilio, email);
-            dgvSocios.DataSource = clsSocio.CargarDatos();
+                ClsSocio oclsSocio = new ClsSocio();
+                oclsSocio.ModificarSocio(cod, dni, nombre, apellido, fechaNacimiento, telefono, domicilio, email);
+                dgvSocios.DataSource = clsSocio.CargarDatos();
 
-            limpiarCampos();
-            CancelarModificar();
+                limpiarCampos();
+                CancelarModificar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al modificar socio: " + ex.Message);
+            }
         }
 
         private void btnBuscarSocio_Click(object sender, EventArgs e)
         {
-            
-            ClsSocio clsSocio = new ClsSocio();
-            
-            if (txtBuscarSocio.Text != "")
+            try
             {
-                string cod = txtBuscarSocio.Text ;
-                dgvSocios.DataSource = clsSocio.Filtrar(cod);
+                ClsSocio clsSocio = new ClsSocio();
+                if (txtBuscarSocio.Text != "")
+                {
+                    string cod = txtBuscarSocio.Text;
+                    dgvSocios.DataSource = clsSocio.Filtrar(cod);
+                }
+                else
+                {
+                    clsSocio.CargarDatos();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                clsSocio.CargarDatos();
+                MessageBox.Show("Error al buscar socio: " + ex.Message);
             }
-
         }
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
-            ClsSocio clsSocio = new ClsSocio();
-            string cod = txtCod.Text;
-            string nombre = txtNombreSocio.Text ;
-            clsSocio.EliminarDatos(cod, nombre);
-            dgvSocios.DataSource = clsSocio.CargarDatos();
+            try
+            {
+                ClsSocio clsSocio = new ClsSocio();
+                string cod = txtCod.Text;
+                string nombre = txtNombreSocio.Text;
+                clsSocio.EliminarDatos(cod, nombre);
+                dgvSocios.DataSource = clsSocio.CargarDatos();
 
-            limpiarCampos();
-            CancelarModificar();
+                limpiarCampos();
+                CancelarModificar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar socio: " + ex.Message);
+            }
         }
-
 
         private void FormSocio_Load(object sender, EventArgs e)
         {
-            ClsSocio clsSocio = new ClsSocio();
+            try
+            {
+                ClsSocio clsSocio = new ClsSocio();
 
-            dgvSocios.DataSource = clsSocio.CargarDatos();
+                dgvSocios.DataSource = clsSocio.CargarDatos();
 
-            CancelarModificar();
+                CancelarModificar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar socios: " + ex.Message);
+            }
         }
 
         private void dgvSocios_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -127,23 +243,37 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void txtBuscarSocio_TextChanged(object sender, EventArgs e)
         {
-            ClsSocio clsSocio = new ClsSocio();
+            try
+            {
+                ClsSocio clsSocio = new ClsSocio();
 
-            if (txtBuscarSocio.Text != "")
-            {
-                string cod = txtBuscarSocio.Text;
-                dgvSocios.DataSource = clsSocio.Filtrar(cod);
+                if (txtBuscarSocio.Text != "")
+                {
+                    string cod = txtBuscarSocio.Text;
+                    dgvSocios.DataSource = clsSocio.Filtrar(cod);
+                }
+                else
+                {
+                    dgvSocios.DataSource = clsSocio.CargarDatos();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                dgvSocios.DataSource = clsSocio.CargarDatos();
+                MessageBox.Show("Error al buscar socio: " + ex.Message);
             }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            limpiarCampos();
-            CancelarModificar();
+            try
+            {
+                limpiarCampos();
+                CancelarModificar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cancelar la operación: " + ex.Message);
+            }
         }
 
         public void CancelarModificar()
@@ -164,6 +294,39 @@ namespace Control_Gym.Capa_de_presentacion
             dtpFechaNacimiento.Text = "";
             txtDomicilio.Text = "";
             txtEmail.Text = "";
+        }
+
+        private void txtDniSocio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                string currentText = txtDniSocio.Text;
+
+                if (currentText.Length + 1 > 8)
+                {
+                    e.Handled = true;
+                }
+            }
+            else if (!char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if ((e.KeyChar >= 33 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void txtTelefonoSocio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 33 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
         }
     }
 }
