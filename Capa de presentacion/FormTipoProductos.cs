@@ -53,7 +53,7 @@ namespace Control_Gym.Capa_de_presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Por favor, ingrese un nombre válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Por favor, complete el campo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)

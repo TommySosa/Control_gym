@@ -136,6 +136,7 @@
             // 
             // btnMembresias
             // 
+            this.btnMembresias.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMembresias.FlatAppearance.BorderSize = 0;
             this.btnMembresias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.btnMembresias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -153,6 +154,7 @@
             // 
             // btnSocios
             // 
+            this.btnSocios.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSocios.FlatAppearance.BorderSize = 0;
             this.btnSocios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.btnSocios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -170,6 +172,7 @@
             // 
             // btnClientes
             // 
+            this.btnClientes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClientes.FlatAppearance.BorderSize = 0;
             this.btnClientes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -187,6 +190,7 @@
             // 
             // btnAdministracion
             // 
+            this.btnAdministracion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdministracion.FlatAppearance.BorderSize = 0;
             this.btnAdministracion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.btnAdministracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

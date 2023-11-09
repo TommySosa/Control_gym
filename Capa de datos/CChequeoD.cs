@@ -93,7 +93,7 @@ namespace Control_Gym.Capa_de_datos
                     DateTime fecha_inicio = DateTime.Parse(reader["fecha_inicio"].ToString());
                     DateTime fecha_fin = DateTime.Parse(reader["fecha_fin"].ToString());
                     DateTime fecha_actual = DateTime.Now; 
-                    TimeSpan diferencia = fecha_fin - fecha_actual;
+                    TimeSpan diferencia = (fecha_fin - fecha_actual);
                     int dias_restantes = diferencia.Days;
 
                     result.Add(fecha_inicio.ToString("dd/MM"));

@@ -42,8 +42,6 @@ namespace Control_Gym.Capa_de_datos
         }
         public List<CAcceso> Login(CAcceso cAcc)
         {
-            //if (EmpleadoExiste(cAcc.dni_empleado))
-            //{
                 string query = "select * from empleados where dni_empleado = '"+cAcc.dni_empleado+"' and contraseña = '"+cAcc.contraseña+"';";
                 List<CAcceso> datos = new List<CAcceso>();
                 try
@@ -86,11 +84,5 @@ namespace Control_Gym.Capa_de_datos
                     throw;
                 }
             }
-        //    else
-        //    {
-        //        MessageBox.Show("No existe un empleado con ese dni");
-        //        return null;
-        //    }
-        //}
     }
 }

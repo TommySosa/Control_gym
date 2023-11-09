@@ -16,6 +16,7 @@ namespace Control_Gym.Capa_de_presentacion
 {
     public partial class FormChequeo : Form
     {
+        public int dni_global;
         public FormChequeo()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace Control_Gym.Capa_de_presentacion
             pbNeutro.Visible = true;
             pbYes.Visible = false;
             pbNo.Visible = false;
+            pbWarning.Visible = false;
             cmbTipoMembresia.Visible = false;
             lblTipoMembresia.Visible = false;
 
@@ -44,44 +46,14 @@ namespace Control_Gym.Capa_de_presentacion
             }
         }
 
-        private void iconminimizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void iconcerrar_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void limpiarLabels()
         {
             txtDni.Text = "";
             lblInicio.Text = "00/00";
             lblFin.Text = "00/00";
             lblDiasRestantes.Text = "00";
-            cmbTipoMembresia.Text = "";
             cmbTipoMembresia.Visible = false;
             lblTipoMembresia.Visible = false;
-        }
-
-        private void pbAdministradores_Click(object sender, EventArgs e)
-        {
-            FormAcceso accesoForm = new FormAcceso();
-
-            try
-            {
-                DialogResult result = accesoForm.ShowDialog();
-                if (result == DialogResult.OK)
-                {
-                    string dniCliente = accesoForm.dni_empleado;
-                    string nombre = accesoForm.contraseña;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al abrir el formulario de acceso: " + ex.Message);
-            }
         }
 
         private void cmbTipoMembresia_SelectedIndexChanged(object sender, EventArgs e)
@@ -92,28 +64,39 @@ namespace Control_Gym.Capa_de_presentacion
                 int cod_tipo_membresia = tipoSeleccionado.cod_tipo_membresia;
                 cTipoMembresia.cod_tipo_membresia = cod_tipo_membresia;
 
-                if (txtDni.Text != "")
+                if (dni_global != 0)
                 {
-
                     timer1.Stop();
                     timer1.Start();
 
-                    if (cMembresiaD.TieneTipoMembresia(Convert.ToInt32(txtDni.Text), cTipoMembresia.cod_tipo_membresia))
+                    if (cMembresiaD.TieneTipoMembresia(dni_global, cTipoMembresia.cod_tipo_membresia))
                     {
                         CChequeoD cChequeoD = new CChequeoD();
-                        string[] resultado = cChequeoD.buscarPorDni(Convert.ToInt32(txtDni.Text), cTipoMembresia.cod_tipo_membresia);
+                        string[] resultado = cChequeoD.buscarPorDni(dni_global, cTipoMembresia.cod_tipo_membresia);
 
                         if (resultado.Length > 0)
                         {
-                            if (Convert.ToInt32(resultado[2]) > 0)
+                            if (Convert.ToInt32(resultado[2]) <= 5 && Convert.ToInt32(resultado[2]) >= 1)
                             {
-                                pbNeutro.Visible = false;
-                                pbYes.Visible = true;
-                                pbNo.Visible = false;
-
                                 lblInicio.Text = resultado[0];
                                 lblFin.Text = resultado[1];
                                 lblDiasRestantes.Text = resultado[2];
+
+                                pbNeutro.Visible = false;
+                                pbYes.Visible = false;
+                                pbNo.Visible = false;
+                                pbWarning.Visible = true;
+                            }
+                            else if (Convert.ToInt32(resultado[2]) > 5)
+                            {
+                                lblInicio.Text = resultado[0];
+                                lblFin.Text = resultado[1];
+                                lblDiasRestantes.Text = resultado[2];
+
+                                pbNeutro.Visible = false;
+                                pbYes.Visible = true;
+                                pbNo.Visible = false;
+                                pbWarning.Visible = false;
                             }
                             else
                             {
@@ -123,13 +106,14 @@ namespace Control_Gym.Capa_de_presentacion
 
                                 pbNeutro.Visible = false;
                                 pbYes.Visible = false;
+                                pbWarning.Visible = false;
                                 pbNo.Visible = true;
                             }
                         }
                     }
                     else
                     {
-                        MessageBox.Show("DNI VACIO");
+                        MessageBox.Show("El socio no tiene esta membresía");
                     }
                 }
             }
@@ -146,6 +130,10 @@ namespace Control_Gym.Capa_de_presentacion
                 if (txtDni.Text != "")
                 {
                     int dni = Convert.ToInt32(txtDni.Text);
+
+                    dni_global = dni;
+
+                    txtDni.Text = "";
 
                     CChequeoD cChequeoD = new CChequeoD();
                     string[] resultado = cChequeoD.buscarPorDni(dni);
@@ -165,7 +153,18 @@ namespace Control_Gym.Capa_de_presentacion
 
                     if (resultado.Length > 0)
                     {
-                        if (Convert.ToInt32(resultado[2]) > 0)
+                        if (Convert.ToInt32(resultado[2]) <= 5 && Convert.ToInt32(resultado[2]) >= 1)
+                        {
+                            lblInicio.Text = resultado[0];
+                            lblFin.Text = resultado[1];
+                            lblDiasRestantes.Text = resultado[2];
+
+                            pbNeutro.Visible = false;
+                            pbYes.Visible = false;
+                            pbNo.Visible = false;
+                            pbWarning.Visible = true;
+                        }
+                        else if (Convert.ToInt32(resultado[2]) > 5)
                         {
                             lblInicio.Text = resultado[0];
                             lblFin.Text = resultado[1];
@@ -174,6 +173,7 @@ namespace Control_Gym.Capa_de_presentacion
                             pbNeutro.Visible = false;
                             pbYes.Visible = true;
                             pbNo.Visible = false;
+                            pbWarning.Visible = false;
                         }
                         else
                         {
@@ -183,13 +183,18 @@ namespace Control_Gym.Capa_de_presentacion
 
                             pbNeutro.Visible = false;
                             pbYes.Visible = false;
+                            pbWarning.Visible = false;
                             pbNo.Visible = true;
                         }
                     }
                     else
                     {
                         MessageBox.Show("el DNI ingresado no existe.");
-                        txtDni.Text = "";
+                        limpiarLabels();
+                        pbNeutro.Visible = true;
+                        pbYes.Visible = false;
+                        pbNo.Visible = false;
+                        pbWarning.Visible = false;
                     }
                 }
                 else
@@ -209,6 +214,7 @@ namespace Control_Gym.Capa_de_presentacion
 
             pbYes.Visible = false;
             pbNo.Visible = false;
+            pbWarning.Visible = false;
             pbNeutro.Visible = true;
 
             limpiarLabels();

@@ -26,9 +26,10 @@ namespace Control_Gym.Capa_de_datos
                 comando.Parameters.Add(new SqlParameter("@cod_tipo_membresia", cod_tipo));
 
                 int resultado = (int)comando.ExecuteScalar();
+
                 if (resultado >= 1)
                 {
-                    return true;
+                    return true;    
                 }
                 else
                 {
@@ -44,30 +45,17 @@ namespace Control_Gym.Capa_de_datos
 
         public void CrearMembresia(CMembresia cMembresia)
         {
-            if (!SocioExiste(cMembresia.dni_socio))
-            {
-                MessageBox.Show("El socio con el DNI especificado no existe en la base de datos.");
-                return;
-            }
-
             string query = "INSERT INTO membresias(cod_tipo_membresia, dni_socio, fecha_inicio, fecha_fin) VALUES (@cod_tipo_membresia, @dni_socio, @fecha_inicio, @fecha_fin)";
             try
             {
-                if (!TieneTipoMembresia(cMembresia.dni_socio, cMembresia.cod_tipo_membresia))
-                {
-                    SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
+                SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
 
-                    comando.Parameters.Add(new SqlParameter("@cod_tipo_membresia", cMembresia.cod_tipo_membresia));
-                    comando.Parameters.Add(new SqlParameter("@dni_socio", cMembresia.dni_socio));
-                    comando.Parameters.Add(new SqlParameter("@fecha_inicio", cMembresia.fecha_inicio));
-                    comando.Parameters.Add(new SqlParameter("@fecha_fin", cMembresia.fecha_fin));
+                comando.Parameters.Add(new SqlParameter("@cod_tipo_membresia", cMembresia.cod_tipo_membresia));
+                comando.Parameters.Add(new SqlParameter("@dni_socio", cMembresia.dni_socio));
+                comando.Parameters.Add(new SqlParameter("@fecha_inicio", cMembresia.fecha_inicio));
+                comando.Parameters.Add(new SqlParameter("@fecha_fin", cMembresia.fecha_fin));
 
-                    comando.ExecuteNonQuery();
-                }
-                else
-                {
-                    MessageBox.Show("El socio ya tiene cargado una membresia de ese tipo.");
-                }
+                comando.ExecuteNonQuery();
             }
             catch (Exception)
             {
@@ -78,6 +66,7 @@ namespace Control_Gym.Capa_de_datos
                 conexionBD.CerrarConexion();
             }
         }
+
         public bool SocioExiste(int dni)
         {
             string query = "SELECT COUNT(*) FROM socios WHERE dni_socio = '" + dni + "'";
@@ -103,7 +92,34 @@ namespace Control_Gym.Capa_de_datos
 			{
 				conexionBD.CerrarConexion();
 			}
-          
+        }
+
+        public bool EmailExiste(string email)
+        {
+            string query = "SELECT COUNT(*) FROM socios WHERE email = '" + email + "'";
+            try
+            {
+                SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
+                int resultado = (int)comando.ExecuteScalar();
+                if (resultado == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al verificar si el E-mail existe.");
+                return false;
+            }
+            finally
+            {
+                conexionBD.CerrarConexion();
+            }
+
         }
 
         public List<CMembresia> TraerMembresias()

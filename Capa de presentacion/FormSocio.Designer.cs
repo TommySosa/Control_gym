@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSocio));
             this.dgvSocios = new System.Windows.Forms.DataGridView();
             this.txtDniSocio = new System.Windows.Forms.TextBox();
             this.txtNombreSocio = new System.Windows.Forms.TextBox();
@@ -48,14 +49,14 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.txtBuscarSocio = new System.Windows.Forms.TextBox();
-            this.btnBuscarSocio = new System.Windows.Forms.Button();
             this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
-            this.txtCod = new System.Windows.Forms.TextBox();
-            this.lblCod = new System.Windows.Forms.Label();
             this.lblDni = new System.Windows.Forms.Label();
             this.panelContenedor = new System.Windows.Forms.Panel();
+            this.lblDni2Membresia = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
             this.panelContenedor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvSocios
@@ -63,11 +64,11 @@
             this.dgvSocios.AllowUserToAddRows = false;
             this.dgvSocios.AllowUserToDeleteRows = false;
             this.dgvSocios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSocios.Location = new System.Drawing.Point(382, 60);
+            this.dgvSocios.Location = new System.Drawing.Point(360, 60);
             this.dgvSocios.Name = "dgvSocios";
             this.dgvSocios.ReadOnly = true;
             this.dgvSocios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSocios.Size = new System.Drawing.Size(645, 369);
+            this.dgvSocios.Size = new System.Drawing.Size(667, 511);
             this.dgvSocios.TabIndex = 50;
             this.dgvSocios.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvSocios_RowHeaderMouseClick);
             // 
@@ -77,6 +78,7 @@
             this.txtDniSocio.Name = "txtDniSocio";
             this.txtDniSocio.Size = new System.Drawing.Size(212, 20);
             this.txtDniSocio.TabIndex = 0;
+            this.txtDniSocio.Click += new System.EventHandler(this.txtDniSocio_Click);
             this.txtDniSocio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDniSocio_KeyPress);
             // 
             // txtNombreSocio
@@ -236,25 +238,13 @@
             // 
             // txtBuscarSocio
             // 
-            this.txtBuscarSocio.Location = new System.Drawing.Point(382, 22);
+            this.txtBuscarSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscarSocio.Location = new System.Drawing.Point(382, 28);
             this.txtBuscarSocio.Multiline = true;
             this.txtBuscarSocio.Name = "txtBuscarSocio";
-            this.txtBuscarSocio.Size = new System.Drawing.Size(223, 20);
+            this.txtBuscarSocio.Size = new System.Drawing.Size(189, 26);
             this.txtBuscarSocio.TabIndex = 21;
             this.txtBuscarSocio.TextChanged += new System.EventHandler(this.txtBuscarSocio_TextChanged);
-            // 
-            // btnBuscarSocio
-            // 
-            this.btnBuscarSocio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnBuscarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarSocio.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnBuscarSocio.Location = new System.Drawing.Point(611, 16);
-            this.btnBuscarSocio.Name = "btnBuscarSocio";
-            this.btnBuscarSocio.Size = new System.Drawing.Size(75, 30);
-            this.btnBuscarSocio.TabIndex = 22;
-            this.btnBuscarSocio.Text = "Buscar";
-            this.btnBuscarSocio.UseVisualStyleBackColor = false;
-            this.btnBuscarSocio.Click += new System.EventHandler(this.btnBuscarSocio_Click);
             // 
             // dtpFechaNacimiento
             // 
@@ -263,25 +253,6 @@
             this.dtpFechaNacimiento.Size = new System.Drawing.Size(212, 20);
             this.dtpFechaNacimiento.TabIndex = 4;
             this.dtpFechaNacimiento.ValueChanged += new System.EventHandler(this.dtpFechaNacimiento_ValueChanged);
-            // 
-            // txtCod
-            // 
-            this.txtCod.Location = new System.Drawing.Point(109, 27);
-            this.txtCod.Name = "txtCod";
-            this.txtCod.ReadOnly = true;
-            this.txtCod.Size = new System.Drawing.Size(212, 20);
-            this.txtCod.TabIndex = 25;
-            this.txtCod.Visible = false;
-            // 
-            // lblCod
-            // 
-            this.lblCod.AutoSize = true;
-            this.lblCod.Location = new System.Drawing.Point(12, 30);
-            this.lblCod.Name = "lblCod";
-            this.lblCod.Size = new System.Drawing.Size(76, 13);
-            this.lblCod.TabIndex = 26;
-            this.lblCod.Text = "DNI solicitante";
-            this.lblCod.Visible = false;
             // 
             // lblDni
             // 
@@ -295,12 +266,33 @@
             // panelContenedor
             // 
             this.panelContenedor.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelContenedor.Controls.Add(this.btnBuscarSocio);
+            this.panelContenedor.Controls.Add(this.pictureBox1);
+            this.panelContenedor.Controls.Add(this.lblDni2Membresia);
+            this.panelContenedor.Controls.Add(this.txtBuscarSocio);
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenedor.Location = new System.Drawing.Point(0, 0);
             this.panelContenedor.Name = "panelContenedor";
             this.panelContenedor.Size = new System.Drawing.Size(1050, 605);
             this.panelContenedor.TabIndex = 28;
+            // 
+            // lblDni2Membresia
+            // 
+            this.lblDni2Membresia.AutoSize = true;
+            this.lblDni2Membresia.Location = new System.Drawing.Point(379, 12);
+            this.lblDni2Membresia.Name = "lblDni2Membresia";
+            this.lblDni2Membresia.Size = new System.Drawing.Size(26, 13);
+            this.lblDni2Membresia.TabIndex = 23;
+            this.lblDni2Membresia.Text = "DNI";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(577, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 26);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 24;
+            this.pictureBox1.TabStop = false;
             // 
             // FormSocio
             // 
@@ -310,10 +302,7 @@
             this.ClientSize = new System.Drawing.Size(1050, 605);
             this.ControlBox = false;
             this.Controls.Add(this.lblDni);
-            this.Controls.Add(this.lblCod);
-            this.Controls.Add(this.txtCod);
             this.Controls.Add(this.dtpFechaNacimiento);
-            this.Controls.Add(this.txtBuscarSocio);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.lblEmail);
@@ -328,9 +317,9 @@
             this.Controls.Add(this.txtApellidoSocio);
             this.Controls.Add(this.txtNombreSocio);
             this.Controls.Add(this.txtDniSocio);
-            this.Controls.Add(this.dgvSocios);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnModificar);
+            this.Controls.Add(this.dgvSocios);
             this.Controls.Add(this.panelContenedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(536, 560);
@@ -339,6 +328,8 @@
             this.Load += new System.EventHandler(this.FormSocio_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).EndInit();
             this.panelContenedor.ResumeLayout(false);
+            this.panelContenedor.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,11 +356,10 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.TextBox txtBuscarSocio;
-        private System.Windows.Forms.Button btnBuscarSocio;
         private System.Windows.Forms.DateTimePicker dtpFechaNacimiento;
-        private System.Windows.Forms.TextBox txtCod;
-        private System.Windows.Forms.Label lblCod;
         private System.Windows.Forms.Label lblDni;
         private System.Windows.Forms.Panel panelContenedor;
+        private System.Windows.Forms.Label lblDni2Membresia;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

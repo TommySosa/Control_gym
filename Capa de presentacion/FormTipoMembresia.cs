@@ -22,17 +22,24 @@ namespace Control_Gym.Capa_de_presentacion
         {
             try
             {
-                ClsTipoMembresia clsTipoMembresia = new ClsTipoMembresia();
+                if (txtNombre.Text != "" && txtPrecio.Text != "" && txtDias.Text != "")
+                {
+                    ClsTipoMembresia clsTipoMembresia = new ClsTipoMembresia();
 
-                string nombre = txtNombre.Text;
-                decimal precio = Convert.ToDecimal(txtPrecio.Text);
-                int dias = Convert.ToInt32(txtDias.Text);
+                    string nombre = txtNombre.Text;
+                    decimal precio = Convert.ToDecimal(txtPrecio.Text);
+                    int dias = Convert.ToInt32(txtDias.Text);
 
-                clsTipoMembresia.AgregarTipo(nombre, precio, dias);
-                dgvTipoMembresia.DataSource = clsTipoMembresia.CargarDatos();
+                    clsTipoMembresia.AgregarTipo(nombre, precio, dias);
+                    dgvTipoMembresia.DataSource = clsTipoMembresia.CargarDatos();
 
-                cancelarActualizar();
-                limpiarCampos();
+                    cancelarActualizar();
+                    limpiarCampos();
+                }
+                else
+                {
+                    MessageBox.Show("Por favor complete todos los campos");
+                }
             }
             catch (Exception ex)
             {
@@ -111,28 +118,6 @@ namespace Control_Gym.Capa_de_presentacion
             txtNombre.Text = "";
             txtPrecio.Text = "";
             txtDias.Text = "";
-            txtBuscar.Text = "";
-        }
-
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                ClsTipoMembresia clsTipo = new ClsTipoMembresia();
-                if (txtBuscar.Text != "")
-                {
-                    string cod = txtBuscar.Text;
-                    dgvTipoMembresia.DataSource = clsTipo.Filtrar(cod);
-                }
-                else
-                {
-                    dgvTipoMembresia.DataSource = clsTipo.CargarDatos();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al filtrar tipos de membresía: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void dgvTipoMembresia_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)

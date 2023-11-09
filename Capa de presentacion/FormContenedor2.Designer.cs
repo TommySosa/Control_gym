@@ -132,6 +132,7 @@
             // 
             // panelContenedor
             // 
+            this.panelContenedor.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelContenedor.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panelContenedor.Location = new System.Drawing.Point(0, 50);
             this.panelContenedor.Name = "panelContenedor";
@@ -154,7 +155,7 @@
             // 
             this.pbAdministradores.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pbAdministradores.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbAdministradores.Image = global::Control_Gym.Properties.Resources.Settings;
+            this.pbAdministradores.Image = ((System.Drawing.Image)(resources.GetObject("pbAdministradores.Image")));
             this.pbAdministradores.Location = new System.Drawing.Point(788, 478);
             this.pbAdministradores.Name = "pbAdministradores";
             this.pbAdministradores.Size = new System.Drawing.Size(100, 50);
@@ -179,7 +180,7 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::Control_Gym.Properties.Resources.Settings;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(61, 478);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 50);

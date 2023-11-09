@@ -73,6 +73,7 @@ namespace Control_Gym.Capa_de_presentacion
                 btnActualizarEmpleado.Visible = true;
                 btnCancelarEmpleado.Visible = true;
                 btnEliminarEmpleado.Visible = true;
+                mtxtDniEmpleado.ReadOnly = true;
 
                 if (dtvEmpleado.SelectedRows.Count > 0)
                 {
@@ -100,6 +101,7 @@ namespace Control_Gym.Capa_de_presentacion
             btnActualizarEmpleado.Visible = false;
             btnCancelarEmpleado.Visible = false;
             btnEliminarEmpleado.Visible = false;
+            mtxtDniEmpleado.ReadOnly = false;
         }
 
         private void btnCancelarEmpleado_Click(object sender, EventArgs e)

@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Data;
 using System.Data.SqlClient;
 using Control_Gym.Capa_logica;
 using System.Windows.Forms;
-using System.Collections;
-using System.Data.SqlTypes;
 
 namespace Control_Gym.Capa_de_datos
 {
@@ -39,21 +32,21 @@ namespace Control_Gym.Capa_de_datos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al añadir un nuevo socio" + ex);
+                MessageBox.Show("Error al añadir un nuevo socio: " + ex.Message);
             }
             finally
             {
                 conexionBD.CerrarConexion();
             }
         }
-        public void ModificarSocio(string cod, int dni, string nombre, string apellido, DateTime fechaNacimiento, string telefono, string domicilio, string email)
+        public void ModificarSocio(int dni, string nombre, string apellido, DateTime fechaNacimiento, string telefono, string domicilio, string email)
         {
-            string query = "UPDATE socios SET dni_socio = @dni, nombre = @nombre, apellido = @apellido, fecha_nac = @fechaNacimiento, telefono = @telefono, domicilio = @domicilio, email = @email WHERE dni_socio = @cod";
+            string query = "UPDATE socios SET nombre = @nombre, apellido = @apellido, fecha_nac = @fechaNacimiento, telefono = @telefono, domicilio = @domicilio, email = @email WHERE dni_socio = @dni";
 
             try
             {
                 SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
-                comando.Parameters.AddWithValue("@cod", cod);
+
                 comando.Parameters.AddWithValue("@dni", dni);
                 comando.Parameters.AddWithValue("@nombre", nombre);
                 comando.Parameters.AddWithValue("@apellido", apellido);
@@ -81,20 +74,17 @@ namespace Control_Gym.Capa_de_datos
             string query = "SELECT * FROM socios";
             DataTable tabla = new DataTable();
             try 
-            { 
-                
+            {
                 SqlDataReader leer;
                 
                 SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
                 
                 leer= comando.ExecuteReader();
                 tabla.Load(leer);
-
-                
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error" + ex);
+                MessageBox.Show("Error" + ex.Message);
             }
            
              finally
@@ -105,19 +95,19 @@ namespace Control_Gym.Capa_de_datos
             return tabla;
         }
 
-        public void EliminarDatos(string cod, string name)
+        public void EliminarDatos(int dni, string name)
         {
-            string query = "DELETE socios WHERE dni_socio= @cod";
+            string query = "DELETE socios WHERE dni_socio= @dni";
             try
             {
                 SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
-                comando.Parameters.AddWithValue("@cod", cod);
+                comando.Parameters.AddWithValue("@dni", dni);
                 comando.ExecuteNonQuery();
                 MessageBox.Show("Eliminaste los datos del socio "+ name);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al eliminar un socio" + ex);
+                MessageBox.Show("Error al eliminar un socio: " + ex.Message);
             }
             finally
             {
@@ -125,10 +115,10 @@ namespace Control_Gym.Capa_de_datos
             }
         }
 
-        public DataTable Filtrar(string cod)
+        public DataTable Filtrar(string dni)
         {
             ClsSocio clsSocio= new ClsSocio();
-            string query = "SELECT * FROM socios WHERE nombre LIKE '%"+cod+"%' OR apellido LIKE '%"+cod+ "%' OR dni_socio LIKE '%"+cod+"%'";
+            string query = "SELECT * FROM socios WHERE nombre LIKE '%"+dni+"%' OR apellido LIKE '%"+dni+ "%' OR dni_socio LIKE '%"+dni+"%'";
             DataTable tabla = new DataTable();
 
             try
@@ -140,7 +130,7 @@ namespace Control_Gym.Capa_de_datos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error" + ex);
+                MessageBox.Show("Error" + ex.Message);
             }
 
             finally
@@ -151,6 +141,31 @@ namespace Control_Gym.Capa_de_datos
             return tabla;
         }
 
-
+        public bool MembresiaActiva(int dni)
+        {
+            string query = "SELECT COUNT(*) FROM membresias WHERE dni_socio = '" + dni + "'";
+            try
+            {
+                SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
+                int resultado = (int)comando.ExecuteScalar();
+                if (resultado == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al verificar si el socio existe.");
+                return false;
+            }
+            finally
+            {
+                conexionBD.CerrarConexion();
+            }
+        }
     }
 }
