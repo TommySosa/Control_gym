@@ -24,6 +24,8 @@ namespace Control_Gym.Capa_de_presentacion
         }
         private CVenta cVenta = new CVenta();
         private CProducto cProducto = new CProducto();
+        private CVentaD cVentaD = new CVentaD();
+
 
         private void FormVentas_Load(object sender, EventArgs e)
         {
@@ -113,9 +115,8 @@ namespace Control_Gym.Capa_de_presentacion
 
                     if (!productoExistente)
                     {
-                        dvgCarrito.Rows.Add(txtCodProducto.Text, txtNombreProducto.Text, txtPrecio.Text, txtCantidad.Text, txtStock.Text, txtSubtotal.Text);
+                        dvgCarrito.Rows.Add(txtCodProducto.Text, txtNombreProducto.Text, txtPrecio.Text, txtCantidad.Text, txtStock.Text,txtDescuento.Text ,txtSubtotal.Text);
                     }
-
                     foreach (DataGridViewRow row in dvgCarrito.Rows)
                     {
                         if (row.Cells["precio_producto"].Value != null && row.Cells["cantidad"].Value != null)
@@ -127,11 +128,35 @@ namespace Control_Gym.Capa_de_presentacion
                             if (decimal.TryParse(row.Cells["precio_producto"].Value.ToString(), out precio) &&
                                 int.TryParse(row.Cells["cantidad"].Value.ToString(), out cantidad) && decimal.TryParse(txtDescuento.Text, out descuento))
                             {
-                                subtotal = (precio - (precio * descuento / 100)) * cantidad;
+                                decimal descuento_ = Convert.ToDecimal(row.Cells["descuento"].Value);
+                                subtotal = (precio - (precio * descuento_ / 100)) * cantidad;
                                 row.Cells["subtotal_producto"].Value = subtotal;
+                                //row.Cells["descuento"].Value = descuento;
                             }
                         }
                     }
+
+                    ///             AL AGREGAR AL CARRITO UN PRODUCTO SIN NINGUN DESCUENTO Y DESPUES AGREGO AL CARRITO EL MISMO PRODUCTO PERO CON DESCUENTO, NO LE AGREGA EL DESCUENTO A NINGUNO DE LOS DOS
+                    ///             FALTA VALIDACION PARA VERIFICAR QUE EL DNI EMPLEADO EXISTA, PORQUE EN EL CASO DE QUE NO EXISTA, NO SE INSERTA EN LA DB PERO APARECE EL CARTEL DE VENTA REALIZADA
+
+
+                    //foreach (DataGridViewRow row in dvgCarrito.Rows)
+                    //{
+                    //    if (row.Cells["precio_producto"].Value != null && row.Cells["cantidad"].Value != null)
+                    //    {
+                    //        decimal precio = 0;
+                    //        int cantidad = 0;
+                    //        decimal descuento = 0;
+
+                    //        if (decimal.TryParse(row.Cells["precio_producto"].Value.ToString(), out precio) &&
+                    //            int.TryParse(row.Cells["cantidad"].Value.ToString(), out cantidad) && decimal.TryParse(txtDescuento.Text, out descuento))
+                    //        {
+                    //            subtotal = (precio - (precio * descuento / 100)) * cantidad;
+                    //            row.Cells["subtotal_producto"].Value = subtotal;
+                    //            row.Cells["descuento"].Value = descuento;
+                    //        }
+                    //    }
+                    //}
                     lblTotal.Text = "$ " + CalcularTodosSubtotales().ToString();
 
                     txtSubtotal.Text = CalcultarTotal().ToString();
@@ -151,68 +176,94 @@ namespace Control_Gym.Capa_de_presentacion
         {
             try
             {
-                int dniCliente, dniEmpleado;
-                decimal descuento;
-
-                if (int.TryParse(txtDniCliente.Text, out dniCliente) && int.TryParse(txtDniEmpleado.Text, out dniEmpleado) &&
-                    decimal.TryParse(txtDescuento.Text, out descuento) && Convert.ToInt32(txtPrecio.Text) > 0)
+                bool existe = cVentaD.ClienteExiste(Convert.ToInt32(txtDniCliente.Text));
+                if (existe)
                 {
-                    List<CDetalleVenta> detallesVenta = new List<CDetalleVenta>();
-                    decimal subtotal = 0;
+                    int dni_Cliente, dniEmpleado;
+                    decimal descuento;
 
-                    foreach (DataGridViewRow row in dvgCarrito.Rows)
+                    if (int.TryParse(txtDniCliente.Text, out dni_Cliente) && int.TryParse(txtDniEmpleado.Text, out dniEmpleado) &&
+                        decimal.TryParse(txtDescuento.Text, out descuento) && Convert.ToInt32(txtPrecio.Text) > 0)
                     {
-                        if (row.Cells["cod_producto"].Value != null &&
-                            row.Cells["precio_producto"].Value != null &&
-                            row.Cells["cantidad"].Value != null)
-                        {
-                            long codProducto;
-                            decimal precio;
-                            int cantidad;
+                        List<CDetalleVenta> detallesVenta = new List<CDetalleVenta>();
+                        decimal subtotal = 0;
 
-                            if (long.TryParse(row.Cells["cod_producto"].Value.ToString(), out codProducto) &&
-                                decimal.TryParse(row.Cells["precio_producto"].Value.ToString(), out precio) &&
-                                int.TryParse(row.Cells["cantidad"].Value.ToString(), out cantidad)
-                            )
+                        foreach (DataGridViewRow row in dvgCarrito.Rows)
+                        {
+                            if (row.Cells["cod_producto"].Value != null &&
+                                row.Cells["precio_producto"].Value != null &&
+                                row.Cells["cantidad"].Value != null && row.Cells["descuento"].Value != null)
                             {
-                                subtotal += precio * cantidad;
-                                CDetalleVenta detalle = new CDetalleVenta
+                                long codProducto;
+                                decimal precio;
+                                int cantidad;
+
+                                if (long.TryParse(row.Cells["cod_producto"].Value.ToString(), out codProducto) &&
+                                    decimal.TryParse(row.Cells["precio_producto"].Value.ToString(), out precio) &&
+                                    int.TryParse(row.Cells["cantidad"].Value.ToString(), out cantidad) &&
+                                    decimal.TryParse(row.Cells["descuento"].Value.ToString(), out descuento)
+                                )
                                 {
-                                    cod_producto = codProducto,
-                                    subtotal = (precio - (precio * descuento / 100)) * cantidad,
-                                    cantidad = cantidad,
-                                    descuento = descuento
-                                };
-                                detallesVenta.Add(detalle);
+                                    subtotal += precio * cantidad;
+                                    CDetalleVenta detalle = new CDetalleVenta
+                                    {
+                                        cod_producto = codProducto,
+                                        subtotal = (precio - (precio * descuento / 100)) * cantidad,
+                                        cantidad = cantidad,
+                                        descuento = descuento
+                                    };
+                                    detallesVenta.Add(detalle);
+                                }
                             }
                         }
-                    }
+                        Console.WriteLine("DETALLES" + detallesVenta.Count);
 
-                    decimal total = CalcularTodosSubtotales();
-
-                    bool ventaExitosa = cVenta.RealizarVenta(dniCliente, dniEmpleado, descuento, total, detallesVenta);
-
-                    if (!ventaExitosa)
-                    {
-                        MessageBox.Show("No hay suficiente stock disponible para completar la venta.");
+                        if (detallesVenta.Count > 0)
+                        {
+                            decimal total = CalcularTodosSubtotales();
+                            bool ventaExitosa = cVenta.RealizarVenta(dni_Cliente, dniEmpleado, descuento, total, detallesVenta);
+                            if (!ventaExitosa)
+                            {
+                                MessageBox.Show("No hay suficiente stock disponible para completar la venta.");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Venta realizada con éxito.");
+                                List<CProducto> productos = cProducto.traerProductos();
+                                Limpiar();
+                                cbCodProducto.DataSource = productos;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Agrega productos al carrito!");
+                        }                  
                     }
                     else
                     {
-                        MessageBox.Show("Venta realizada con éxito.");
-                        List<CProducto> productos = cProducto.traerProductos();
-                        Limpiar();
-
-                        cbCodProducto.DataSource = productos;
+                        MessageBox.Show("Por favor, ingresa valores numéricos válidos en los campos de DNI y Descuento.");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Por favor, ingresa valores numéricos válidos en los campos de DNI y Descuento.");
+                    FormAgregarCliente agregarClienteForm = new FormAgregarCliente(txtDniCliente.Text);
+
+                    DialogResult result = agregarClienteForm.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        string dniCliente = agregarClienteForm.DniCliente;
+                        string nombre = agregarClienteForm.Nombre;
+                        string apellido = agregarClienteForm.Apellido;
+                        string telefono = agregarClienteForm.Telefono;
+                        string domicilio = agregarClienteForm.Domicilio;
+                        string email = agregarClienteForm.Email;
+
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al realizar la venta: " + ex.Message);
+                MessageBox.Show("Por favor, verifique y llene todos los campos");
             }
         }
 
@@ -231,7 +282,6 @@ namespace Control_Gym.Capa_de_presentacion
         {
             try
             {
-                CVentaD cVentaD = new CVentaD();
                 if (txtDniCliente.Text != "")
                 {
                     bool existe = cVentaD.ClienteExiste(Convert.ToInt32(txtDniCliente.Text));
@@ -241,7 +291,7 @@ namespace Control_Gym.Capa_de_presentacion
                     }
                     else
                     {
-                        FormAgregarCliente agregarClienteForm = new FormAgregarCliente();
+                        FormAgregarCliente agregarClienteForm = new FormAgregarCliente(txtDniCliente.Text);
 
                         DialogResult result = agregarClienteForm.ShowDialog();
                         if (result == DialogResult.OK)

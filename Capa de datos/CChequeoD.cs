@@ -92,7 +92,7 @@ namespace Control_Gym.Capa_de_datos
                 {
                     DateTime fecha_inicio = DateTime.Parse(reader["fecha_inicio"].ToString());
                     DateTime fecha_fin = DateTime.Parse(reader["fecha_fin"].ToString());
-                    DateTime fecha_actual = DateTime.Now; 
+                    DateTime fecha_actual = DateTime.Now;
                     TimeSpan diferencia = (fecha_fin - fecha_actual);
                     int dias_restantes = diferencia.Days;
 
@@ -113,6 +113,39 @@ namespace Control_Gym.Capa_de_datos
             }
 
             return result.ToArray();
+        }
+
+        public ClsSocio[] traerDatosDeSocioPorDni(int dni)
+        {
+            ClsSocio[] array = new ClsSocio[1];
+            try
+            {
+                conexionBD.AbrirConexion();
+                string query = "select * from socios where dni_socio = @dni";
+                SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
+                comando.Parameters.AddWithValue("@dni", dni);
+                SqlDataReader reader = comando.ExecuteReader();
+                {
+                    while (reader.Read())
+                    {
+                        string nombre = reader["nombre"].ToString();
+                        string apellido = reader["apellido"].ToString();
+
+                        ClsSocio socio = new ClsSocio(nombre, apellido);
+                        array.SetValue(socio, 0);
+                    }
+                }
+                return array;
+            }
+            catch
+            {
+                MessageBox.Show("Error al traer los datos del socio");
+                return null;
+            }
+            finally
+            {
+                conexionBD.CerrarConexion();
+            }
         }
     }
 }

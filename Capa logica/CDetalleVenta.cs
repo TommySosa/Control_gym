@@ -18,14 +18,16 @@ namespace Control_Gym.Capa_logica
 
         public CDetalleVenta() { }
 
-        public CDetalleVenta(int num_venta, long cod_producto, decimal subtotal, int cantidad)
+        public CDetalleVenta(int num_venta, long cod_producto, decimal subtotal, int cantidad, decimal descuento)
         {
             this.num_venta = num_venta;
             this.cod_producto = cod_producto;
             this.subtotal = subtotal;
             this.cantidad = cantidad;
+            this.descuento = descuento;
+
         }
-        public CDetalleVenta(long cod_producto, decimal subtotal, int cantidad)
+        public CDetalleVenta(long cod_producto, decimal subtotal, int cantidad, decimal descuento)
         {
             this.cod_producto = cod_producto;
             this.subtotal = subtotal;

@@ -59,15 +59,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtCodProducto = new System.Windows.Forms.TextBox();
             this.dvgCarrito = new System.Windows.Forms.DataGridView();
+            this.btnVenta = new System.Windows.Forms.Button();
+            this.lblTotalAPagar = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.cod_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precio_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stock_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnVenta = new System.Windows.Forms.Button();
-            this.lblTotalAPagar = new System.Windows.Forms.Label();
-            this.lblTotal = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvgCarrito)).BeginInit();
@@ -388,49 +389,14 @@
             this.precio_producto,
             this.cantidad,
             this.stock_producto,
+            this.descuento,
             this.subtotal_producto});
             this.dvgCarrito.Location = new System.Drawing.Point(25, 238);
             this.dvgCarrito.Name = "dvgCarrito";
             this.dvgCarrito.ReadOnly = true;
-            this.dvgCarrito.Size = new System.Drawing.Size(549, 355);
+            this.dvgCarrito.Size = new System.Drawing.Size(561, 355);
             this.dvgCarrito.TabIndex = 60;
             this.dvgCarrito.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dvgCarrito_RowHeaderMouseClick);
-            // 
-            // cod_producto
-            // 
-            this.cod_producto.HeaderText = "COD PRODUCTO";
-            this.cod_producto.Name = "cod_producto";
-            this.cod_producto.ReadOnly = true;
-            // 
-            // nombre_producto
-            // 
-            this.nombre_producto.HeaderText = "NOMBRE";
-            this.nombre_producto.Name = "nombre_producto";
-            this.nombre_producto.ReadOnly = true;
-            // 
-            // precio_producto
-            // 
-            this.precio_producto.HeaderText = "PRECIO U.";
-            this.precio_producto.Name = "precio_producto";
-            this.precio_producto.ReadOnly = true;
-            // 
-            // cantidad
-            // 
-            this.cantidad.HeaderText = "CANTIDAD";
-            this.cantidad.Name = "cantidad";
-            this.cantidad.ReadOnly = true;
-            // 
-            // stock_producto
-            // 
-            this.stock_producto.HeaderText = "STOCK";
-            this.stock_producto.Name = "stock_producto";
-            this.stock_producto.ReadOnly = true;
-            // 
-            // subtotal_producto
-            // 
-            this.subtotal_producto.HeaderText = "SUBTOTAL";
-            this.subtotal_producto.Name = "subtotal_producto";
-            this.subtotal_producto.ReadOnly = true;
             // 
             // btnVenta
             // 
@@ -469,6 +435,48 @@
             this.lblTotal.Size = new System.Drawing.Size(113, 37);
             this.lblTotal.TabIndex = 20;
             this.lblTotal.Text = "$ 0.00";
+            // 
+            // cod_producto
+            // 
+            this.cod_producto.HeaderText = "COD PRODUCTO";
+            this.cod_producto.Name = "cod_producto";
+            this.cod_producto.ReadOnly = true;
+            // 
+            // nombre_producto
+            // 
+            this.nombre_producto.HeaderText = "NOMBRE";
+            this.nombre_producto.Name = "nombre_producto";
+            this.nombre_producto.ReadOnly = true;
+            // 
+            // precio_producto
+            // 
+            this.precio_producto.HeaderText = "PRECIO U.";
+            this.precio_producto.Name = "precio_producto";
+            this.precio_producto.ReadOnly = true;
+            // 
+            // cantidad
+            // 
+            this.cantidad.HeaderText = "CANTIDAD";
+            this.cantidad.Name = "cantidad";
+            this.cantidad.ReadOnly = true;
+            // 
+            // stock_producto
+            // 
+            this.stock_producto.HeaderText = "STOCK";
+            this.stock_producto.Name = "stock_producto";
+            this.stock_producto.ReadOnly = true;
+            // 
+            // descuento
+            // 
+            this.descuento.HeaderText = "DESCUENTO";
+            this.descuento.Name = "descuento";
+            this.descuento.ReadOnly = true;
+            // 
+            // subtotal_producto
+            // 
+            this.subtotal_producto.HeaderText = "SUBTOTAL";
+            this.subtotal_producto.Name = "subtotal_producto";
+            this.subtotal_producto.ReadOnly = true;
             // 
             // FormVentas
             // 
@@ -528,14 +536,15 @@
         private System.Windows.Forms.Label lblTotalAPagar;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Button btnQuitar;
+        private System.Windows.Forms.TextBox txtStock;
+        private System.Windows.Forms.Label lblStock;
+        private System.Windows.Forms.Label lblNoEncontrado;
         private System.Windows.Forms.DataGridViewTextBoxColumn cod_producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre_producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio_producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn stock_producto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descuento;
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal_producto;
-        private System.Windows.Forms.TextBox txtStock;
-        private System.Windows.Forms.Label lblStock;
-        private System.Windows.Forms.Label lblNoEncontrado;
     }
 }

@@ -41,5 +41,10 @@ namespace Control_Gym.Capa_logica
             CTipoMembresiaD tiposD = new CTipoMembresiaD();
             return tiposD.traerTipos();
         }
+        public List<CTipoMembresia> traerTiposDelSocio(int dni)
+        {
+            CTipoMembresiaD tiposD = new CTipoMembresiaD();
+            return tiposD.traerTiposDelSocio(dni);
+        }
     }
 }

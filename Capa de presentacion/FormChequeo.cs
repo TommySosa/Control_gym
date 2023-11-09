@@ -24,6 +24,8 @@ namespace Control_Gym.Capa_de_presentacion
 
         private CTipoMembresia cTipoMembresia = new CTipoMembresia();
         private CMembresiaD cMembresiaD = new CMembresiaD();
+        private CChequeoD cChequeoD = new CChequeoD();
+
 
         private void FormChequeo_Load(object sender, EventArgs e)
         {
@@ -35,15 +37,6 @@ namespace Control_Gym.Capa_de_presentacion
             lblTipoMembresia.Visible = false;
 
             limpiarLabels();
-            try
-            {
-                List<CTipoMembresia> tipos = cTipoMembresia.traerTipos();
-                cmbTipoMembresia.DataSource = tipos;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar los tipos de membresía: " + ex.Message);
-            }
         }
 
         private void limpiarLabels()
@@ -54,6 +47,7 @@ namespace Control_Gym.Capa_de_presentacion
             lblDiasRestantes.Text = "00";
             cmbTipoMembresia.Visible = false;
             lblTipoMembresia.Visible = false;
+            lblNombreCompleto.Text = "";
         }
 
         private void cmbTipoMembresia_SelectedIndexChanged(object sender, EventArgs e)
@@ -129,13 +123,33 @@ namespace Control_Gym.Capa_de_presentacion
             {
                 if (txtDni.Text != "")
                 {
+
                     int dni = Convert.ToInt32(txtDni.Text);
 
                     dni_global = dni;
 
+                    try
+                    {
+                        List<CTipoMembresia> tipos = cTipoMembresia.traerTiposDelSocio(dni);
+                        cmbTipoMembresia.DataSource = tipos;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al cargar los tipos de membresía: " + ex.Message);
+                    }
+
+                    try
+                    {
+                        ClsSocio[] socio = cChequeoD.traerDatosDeSocioPorDni(dni);
+                        lblNombreCompleto.Text = socio[0].Nombre + " " + socio[0].Apellido;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al cargar los tipos de membresía: " + ex.Message);
+                    }
+
                     txtDni.Text = "";
 
-                    CChequeoD cChequeoD = new CChequeoD();
                     string[] resultado = cChequeoD.buscarPorDni(dni);
                     int cant_tipo_membresia = cChequeoD.ContarTiposMembresia(dni);
 

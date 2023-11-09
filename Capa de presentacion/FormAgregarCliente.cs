@@ -15,9 +15,12 @@ namespace Control_Gym.Capa_de_presentacion
 {
     public partial class FormAgregarCliente : Form
     {
-        public FormAgregarCliente()
+        private string dni_cliente;
+        public FormAgregarCliente(string dni_cliente)
         {
             InitializeComponent();
+            this.dni_cliente = dni_cliente;
+            txtDniCliente.Text = dni_cliente;
         }
         private ConexionBD conexionBD = ConexionBD.Instancia;
 
