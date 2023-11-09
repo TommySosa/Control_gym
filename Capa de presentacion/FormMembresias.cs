@@ -1,13 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Control_Gym.Capa_de_datos;
 using Control_Gym.Capa_logica;
@@ -60,15 +53,19 @@ namespace Control_Gym.Capa_de_presentacion
         {
             btnCancelarMembresia.Visible = false;
             btnActualizarMembresia.Visible = false;
-            btnCancelarMembresia.Visible = false;
             btnEliminarMembresia.Visible = false;
             dtpFechaFin.Value = dtpFechaFin.Value.AddDays(cMembresia.cantidad_dias);
             dvgMembresias.CellFormatting += dvgMembresias_CellFormatting;
             CargarGrilla();
 
-            txtDniMembresia.Text = "";
-            txtDniMembresia.Text = dni_socio.ToString();
-
+            if (dni_socio == 0)
+            {
+                txtDniMembresia.Text = "";
+            }
+            else
+            {
+                txtDniMembresia.Text = dni_socio.ToString();
+            }
         }
 
         public void CancelarModificar()
@@ -90,17 +87,32 @@ namespace Control_Gym.Capa_de_presentacion
         {
             try
             {
-                if (txtDniMembresia.Text != "")
+                if (txtDniMembresia.Text != "" && cbTipoMembresia.Text != "")
                 {
                     CMembresia cMembresia = new CMembresia(Convert.ToInt32(cTipoMembresia.cod_tipo_membresia), Convert.ToInt32(txtDniMembresia.Text), DateTime.Parse(dtpFechaInicio.Value.ToString("yyyy/MM/dd")), DateTime.Parse(dtpFechaFin.Value.ToString("yyyy/MM/dd")));
                     CMembresiaD cMembresiaD = new CMembresiaD();
+
                     bool existe = cMembresiaD.SocioExiste(cMembresia.dni_socio);
+
+                    int cod_tipo_membresia = cbTipoMembresia.SelectedIndex+1;
+                    int dni = Convert.ToInt32(txtDniMembresia.Text);
+
+                    bool TieneTipoMembresia = cMembresiaD.TieneTipoMembresia(dni, cod_tipo_membresia);
+
                     if (existe)
-                    {
-                        cMembresia.CrearMembresia(cMembresia);
-                        LimpiarCampos();
-                        CargarGrilla();
-                        MessageBox.Show("Membresía creada correctamente");
+                    { 
+                        if (!TieneTipoMembresia)
+                        {
+                            cMembresia.CrearMembresia(cMembresia);
+                            LimpiarCampos();
+                            CargarGrilla();
+                            MessageBox.Show("Membresía creada correctamente");
+                        }
+                        else
+                        {
+                            MessageBox.Show("El socio ya tiene cargado una membresia de ese tipo.");
+                            LimpiarCampos();
+                        }
                     }
                     else
                     {
@@ -109,7 +121,7 @@ namespace Control_Gym.Capa_de_presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Por favor ingrese el DNI");
+                    MessageBox.Show("Por favor complete todos los campos");
                 }
             }
             catch (Exception ex)
@@ -128,31 +140,13 @@ namespace Control_Gym.Capa_de_presentacion
                     int id = Convert.ToInt32(filaSeleccionada.Cells["cod_membresia"].Value);
                     cMembresia.EliminarMembresia(id);
                     CargarGrilla();
+                    LimpiarCampos();
+                    CancelarModificar();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al eliminar la membresía: " + ex.Message);
-            }
-        }
-
-        private void btnBuscarMembresia_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (txtBuscarDni.Text != "")
-                {
-                    List<CMembresia> membresias = cMembresia.BuscarPorDNI(Convert.ToInt32(txtBuscarDni.Text));
-                    dvgMembresias.DataSource = membresias;
-                }
-                else
-                {
-                    CargarGrilla();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al buscar membresías: " + ex.Message);
             }
         }
 
@@ -235,10 +229,12 @@ namespace Control_Gym.Capa_de_presentacion
                     {
                         cMembresia.EditarMembresia(cMembresiaG);
                         CargarGrilla();
+                        LimpiarCampos();
+                        CancelarModificar();
                     }
                     else
                     {
-                        MessageBox.Show("El socio con el DNI especificado no existe en la base de datos. Primero haga el alta al socio.");
+                        MessageBox.Show("El socio con el DNI especificado no existe en la base de datos. Primero haga el alta del socio.");
                     }
                 }
                 else
@@ -282,7 +278,6 @@ namespace Control_Gym.Capa_de_presentacion
                     txtDniMembresia.Text = filaSeleccionada.Cells["dni_socio"].Value.ToString();
                     dtpFechaInicio.Text = filaSeleccionada.Cells["fecha_inicio"].Value.ToString();
                     dtpFechaFin.Text = filaSeleccionada.Cells["fecha_fin"].Value.ToString();
-
                 }
                 else
                 {
@@ -321,6 +316,26 @@ namespace Control_Gym.Capa_de_presentacion
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void txtBuscarDni_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtBuscarDni.Text != "")
+                {
+                    List<CMembresia> membresias = cMembresia.BuscarPorDNI(Convert.ToInt32(txtBuscarDni.Text));
+                    dvgMembresias.DataSource = membresias;
+                }
+                else
+                {
+                    CargarGrilla();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar membresías: " + ex.Message);
             }
         }
     }

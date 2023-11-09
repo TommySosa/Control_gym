@@ -42,10 +42,10 @@ namespace Control_Gym.Capa_logica
             CSociosD.GuardarSocio(dni, nombre, apellido, fechaNacimiento, telefono, domicilio, email);
 
         }
-        public void ModificarSocio(string cod, int dni, string nombre, string apellido, DateTime fechaNacimiento, string telefono, string domicilio, string email)
+        public void ModificarSocio(int dni, string nombre, string apellido, DateTime fechaNacimiento, string telefono, string domicilio, string email)
         {
             CSociosD cSociosD = new CSociosD();
-            cSociosD.ModificarSocio(cod, dni, nombre, apellido, fechaNacimiento, telefono, domicilio, email);
+            cSociosD.ModificarSocio(dni, nombre, apellido, fechaNacimiento, telefono, domicilio, email);
         }
         public DataTable CargarDatos()
         {
@@ -56,17 +56,17 @@ namespace Control_Gym.Capa_logica
 
             return tabla;
         }
-        public void EliminarDatos(string cod, string nombre)
+        public void EliminarDatos(int dni, string nombre)
         {
             CSociosD cSociosD = new CSociosD();
-            cSociosD.EliminarDatos(cod, nombre);
+            cSociosD.EliminarDatos(dni, nombre);
         }
-         public DataTable Filtrar(string cod)
+         public DataTable Filtrar(string dni)
         {
 
             CSociosD cSociosD = new CSociosD();
             DataTable tabla = new DataTable();
-            tabla = cSociosD.Filtrar(cod);
+            tabla = cSociosD.Filtrar(dni);
 
             return tabla;
         }

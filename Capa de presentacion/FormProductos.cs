@@ -105,36 +105,43 @@ namespace Control_Gym.Capa_de_presentacion
         {
             try
             {
-                long cod_producto;
-
-                if (string.IsNullOrWhiteSpace(txtCodProducto.Text))
+                if (txtCod.Text != "" && txtNombre.Text != "" && txtPrecioVenta.Text != "" && txtCod.Text != "" && txtStock.Text != "")
                 {
-                    MessageBox.Show("El campo Código de Producto no puede estar vacío.");
-                    return;
-                }
+                    long cod_producto;
 
-                if (!long.TryParse(txtCodProducto.Text.Trim(), out cod_producto))
+                    if (string.IsNullOrWhiteSpace(txtCodProducto.Text))
+                    {
+                        MessageBox.Show("El campo Código de Producto no puede estar vacío.");
+                        return;
+                    }
+
+                    if (!long.TryParse(txtCodProducto.Text.Trim(), out cod_producto))
+                    {
+                        MessageBox.Show("El campo Código de Producto debe ser un número válido.");
+                        return;
+                    }
+
+                    int cod_proveedor = cProveedor.Cod;
+                    int cod_tipo_producto = cTipoProducto.Cod_tipo_producto;
+                    string nombre = txtNombre.Text;
+                    DateTime fecha_venc = dtpFechaVenc.Value;
+                    decimal preciocosto = Convert.ToDecimal(txtCosto.Text);
+                    decimal precioventa = Convert.ToDecimal(txtPrecioVenta.Text);
+                    decimal resultado = (precioventa - preciocosto);
+                    txtGanancia.Text = resultado.ToString();
+                    decimal ganancia = Convert.ToDecimal(txtGanancia.Text);
+                    int stock = Convert.ToInt32(txtStock.Text);
+
+                    CProducto CProductoD = new CProducto();
+                    CProductoD.GuardarProducto(cod_producto, cod_proveedor, cod_tipo_producto, nombre, fecha_venc, preciocosto, precioventa, ganancia, stock);
+                    dgvProductos.DataSource = CProductoD.MostrarDatos();
+
+                    limpiarCampos();
+                }
+                else
                 {
-                    MessageBox.Show("El campo Código de Producto debe ser un número válido.");
-                    return;
+                    MessageBox.Show("Por favor complete todos los campos");
                 }
-
-                int cod_proveedor = cProveedor.Cod;
-                int cod_tipo_producto = cTipoProducto.Cod_tipo_producto;
-                string nombre = txtNombre.Text;
-                DateTime fecha_venc = dtpFechaVenc.Value;
-                decimal preciocosto = Convert.ToDecimal(txtCosto.Text);
-                decimal precioventa = Convert.ToDecimal(txtPrecioVenta.Text);
-                decimal resultado = (precioventa - preciocosto);
-                txtGanancia.Text = resultado.ToString();
-                decimal ganancia = Convert.ToDecimal(txtGanancia.Text);
-                int stock = Convert.ToInt32(txtStock.Text);
-
-                CProducto CProductoD = new CProducto();
-                CProductoD.GuardarProducto(cod_producto, cod_proveedor, cod_tipo_producto, nombre, fecha_venc, preciocosto, precioventa, ganancia, stock);
-                dgvProductos.DataSource = CProductoD.MostrarDatos();
-
-                limpiarCampos();
             }
             catch (Exception ex)
             {

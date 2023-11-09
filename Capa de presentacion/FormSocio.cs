@@ -18,48 +18,12 @@ namespace Control_Gym.Capa_de_presentacion
 {
     public partial class FormSocio : Form
     {
+        CMembresiaD cMembresiaD = new CMembresiaD();
+        CSociosD cSociosD = new CSociosD();
+
         public FormSocio()
         {
             InitializeComponent();
-        }
-
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                CMembresiaD cMembresiaD = new CMembresiaD();
-                ClsSocio oClsSocio = new ClsSocio();
-
-                int dni = Convert.ToInt32(txtDniSocio.Text);
-                string nombre = txtNombreSocio.Text;
-                string apellido = txtApellidoSocio.Text;
-                DateTime fechaNacimiento = dtpFechaNacimiento.Value;
-                string telefono = txtTelefonoSocio.Text;
-                string domicilio = txtDomicilio.Text;
-                string email = txtEmail.Text;
-
-                bool existe = cMembresiaD.SocioExiste(dni);
-                if (existe)
-                {
-                    MessageBox.Show("El DNI ya está en uso. No se puede crear un socio con el mismo DNI.");
-                    mostrarElementos();
-                }
-                else
-                {
-                    oClsSocio.GuardarSocio(dni, nombre, apellido, fechaNacimiento, telefono, domicilio, email);
-                    dgvSocios.DataSource = oClsSocio.CargarDatos();
-
-                    limpiarCampos();
-                    CancelarModificar();
-
-                    AbrirFormEnPanel(new FormMembresias(dni));
-                    ocultarElementos();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al guardar un socio: " + ex.Message);
-            }
         }
 
         private void AbrirFormEnPanel(object Formhijo)
@@ -102,13 +66,11 @@ namespace Control_Gym.Capa_de_presentacion
 
             dgvSocios.Visible = true;
 
-            btnBuscarSocio.Visible = true;
             btnGuardar.Visible = true;
         }
 
         private void ocultarElementos()
         {
-            lblCod.Visible = false;
             lblDni.Visible = false;
             lblNombre.Visible = false;
             lblApellido.Visible = false;
@@ -117,7 +79,6 @@ namespace Control_Gym.Capa_de_presentacion
             lblDomicilio.Visible = false;
             lblEmail.Visible = false;
 
-            txtCod.Visible = false;
             txtDniSocio.Visible = false;
             txtNombreSocio.Visible = false;
             txtApellidoSocio.Visible = false;
@@ -129,7 +90,6 @@ namespace Control_Gym.Capa_de_presentacion
 
             dgvSocios.Visible = false;
 
-            btnBuscarSocio.Visible = false;
             btnGuardar.Visible = false;
             btnCancelar.Visible = false;
             btnBorrar.Visible = false;
@@ -141,12 +101,63 @@ namespace Control_Gym.Capa_de_presentacion
             
         }
 
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtDniSocio.Text != "" && txtNombreSocio.Text != "" && txtApellidoSocio.Text != "" && txtTelefonoSocio.Text != "" && txtDomicilio.Text != "" && txtEmail.Text != "")
+                {
+                    ClsSocio oClsSocio = new ClsSocio();
+
+                    int dni = Convert.ToInt32(txtDniSocio.Text);
+                    string nombre = txtNombreSocio.Text;
+                    string apellido = txtApellidoSocio.Text;
+                    DateTime fechaNacimiento = dtpFechaNacimiento.Value;
+                    string telefono = txtTelefonoSocio.Text;
+                    string domicilio = txtDomicilio.Text;
+                    string email = txtEmail.Text;
+
+                    bool existeDNI = cMembresiaD.SocioExiste(dni);
+                    bool existeEmail = cMembresiaD.EmailExiste(email);
+
+                    if (existeDNI)
+                    {
+                        MessageBox.Show("El DNI ya está en uso. No se puede crear el socio.");
+                    }
+
+                    else if (existeEmail)
+                    {
+                        MessageBox.Show("El E-Mail ya está en uso. No se puede crear el socio.");
+                    }
+
+                    else
+                    {
+                        oClsSocio.GuardarSocio(dni, nombre, apellido, fechaNacimiento, telefono, domicilio, email);
+                        dgvSocios.DataSource = oClsSocio.CargarDatos();
+
+                        limpiarCampos();
+                        CancelarModificar();
+
+                        ocultarElementos();
+                        AbrirFormEnPanel(new FormMembresias(dni));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Por favor complete todos los campos");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar un socio: " + ex.Message);
+            }
+        }
+
         private void btnModificar_Click(object sender, EventArgs e)
         {
             try
             {
                 ClsSocio clsSocio = new ClsSocio();
-                string cod = txtCod.Text;
                 int dni = Convert.ToInt32(txtDniSocio.Text);
                 string nombre = txtNombreSocio.Text;
                 string apellido = txtApellidoSocio.Text;
@@ -155,37 +166,27 @@ namespace Control_Gym.Capa_de_presentacion
                 string domicilio = txtDomicilio.Text;
                 string email = txtEmail.Text;
 
-                ClsSocio oclsSocio = new ClsSocio();
-                oclsSocio.ModificarSocio(cod, dni, nombre, apellido, fechaNacimiento, telefono, domicilio, email);
-                dgvSocios.DataSource = clsSocio.CargarDatos();
+                bool existeEmail = cMembresiaD.EmailExiste(email);
 
-                limpiarCampos();
-                CancelarModificar();
+                if (existeEmail)
+                {
+                    MessageBox.Show("El E-Mail ya está en uso. No se puede modificar el socio.");
+                    limpiarCampos();
+                    CancelarModificar();
+                }
+                else
+                {
+                    ClsSocio oclsSocio = new ClsSocio();
+                    oclsSocio.ModificarSocio(dni, nombre, apellido, fechaNacimiento, telefono, domicilio, email);
+                    dgvSocios.DataSource = clsSocio.CargarDatos();
+
+                    limpiarCampos();
+                    CancelarModificar();
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al modificar socio: " + ex.Message);
-            }
-        }
-
-        private void btnBuscarSocio_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ClsSocio clsSocio = new ClsSocio();
-                if (txtBuscarSocio.Text != "")
-                {
-                    string cod = txtBuscarSocio.Text;
-                    dgvSocios.DataSource = clsSocio.Filtrar(cod);
-                }
-                else
-                {
-                    clsSocio.CargarDatos();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al buscar socio: " + ex.Message);
             }
         }
 
@@ -194,13 +195,25 @@ namespace Control_Gym.Capa_de_presentacion
             try
             {
                 ClsSocio clsSocio = new ClsSocio();
-                string cod = txtCod.Text;
                 string nombre = txtNombreSocio.Text;
-                clsSocio.EliminarDatos(cod, nombre);
-                dgvSocios.DataSource = clsSocio.CargarDatos();
+                int dni = Convert.ToInt32(txtDniSocio.Text);
 
-                limpiarCampos();
-                CancelarModificar();
+                bool MembresiaActiva = cSociosD.MembresiaActiva(dni);
+
+                if (MembresiaActiva)
+                {
+                    MessageBox.Show("No se puede eliminar un socio que tiene una membresía activa");
+                    limpiarCampos();
+                    CancelarModificar();
+                }
+                else
+                {
+                    clsSocio.EliminarDatos(dni, nombre);
+                    dgvSocios.DataSource = clsSocio.CargarDatos();
+
+                    limpiarCampos();
+                    CancelarModificar();
+                }
             }
             catch (Exception ex)
             {
@@ -230,8 +243,7 @@ namespace Control_Gym.Capa_de_presentacion
             btnCancelar.Visible = true;
             btnBorrar.Visible = true;
             btnModificar.Visible = true;
-
-            txtCod.Text = dgvSocios.SelectedCells[0].Value.ToString();
+            
             txtDniSocio.Text = dgvSocios.SelectedCells[0].Value.ToString();
             txtNombreSocio.Text = dgvSocios.SelectedCells[1].Value.ToString();
             txtApellidoSocio.Text = dgvSocios.SelectedCells[2].Value.ToString();
@@ -239,6 +251,13 @@ namespace Control_Gym.Capa_de_presentacion
             dtpFechaNacimiento.Text = dgvSocios.SelectedCells[4].Value.ToString();
             txtDomicilio.Text = dgvSocios.SelectedCells[5].Value.ToString();
             txtEmail.Text = dgvSocios.SelectedCells[6].Value.ToString();
+
+            txtDniSocio.ReadOnly = true;
+        }
+
+        private void btnBuscarSocio_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void txtBuscarSocio_TextChanged(object sender, EventArgs e)
@@ -249,8 +268,8 @@ namespace Control_Gym.Capa_de_presentacion
 
                 if (txtBuscarSocio.Text != "")
                 {
-                    string cod = txtBuscarSocio.Text;
-                    dgvSocios.DataSource = clsSocio.Filtrar(cod);
+                    string dni = txtBuscarSocio.Text;
+                    dgvSocios.DataSource = clsSocio.Filtrar(dni);
                 }
                 else
                 {
@@ -282,11 +301,13 @@ namespace Control_Gym.Capa_de_presentacion
             btnCancelar.Visible = false;
             btnBorrar.Visible = false;
             btnModificar.Visible = false;
+
+            txtDniSocio.ReadOnly = false;
+
         }
 
         private void limpiarCampos()
         {
-            txtCod.Text = "";
             txtDniSocio.Text = "";
             txtNombreSocio.Text = "";
             txtApellidoSocio.Text = "";
@@ -327,6 +348,11 @@ namespace Control_Gym.Capa_de_presentacion
                 e.Handled = true;
                 return;
             }
+        }
+
+        private void txtDniSocio_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("No se puede modificar el DNI de un socio");
         }
     }
 }

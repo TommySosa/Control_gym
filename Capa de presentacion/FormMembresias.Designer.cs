@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMembresias));
             this.txtDniMembresia = new System.Windows.Forms.TextBox();
             this.lblDniMembresia = new System.Windows.Forms.Label();
             this.btnActualizarMembresia = new System.Windows.Forms.Button();
@@ -37,7 +38,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dvgMembresias = new System.Windows.Forms.DataGridView();
             this.txtBuscarDni = new System.Windows.Forms.TextBox();
-            this.btnBuscarMembresia = new System.Windows.Forms.Button();
             this.lblDni2Membresia = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cbTipoMembresia = new System.Windows.Forms.ComboBox();
@@ -47,9 +47,11 @@
             this.lblFechaFinMembresia = new System.Windows.Forms.Label();
             this.lblFechaInicioMembresia = new System.Windows.Forms.Label();
             this.txtCodMembresia = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvgMembresias)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtDniMembresia
@@ -147,41 +149,28 @@
             this.dvgMembresias.AllowUserToOrderColumns = true;
             this.dvgMembresias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dvgMembresias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgMembresias.Location = new System.Drawing.Point(67, 290);
+            this.dvgMembresias.Location = new System.Drawing.Point(12, 236);
             this.dvgMembresias.MultiSelect = false;
             this.dvgMembresias.Name = "dvgMembresias";
             this.dvgMembresias.ReadOnly = true;
-            this.dvgMembresias.Size = new System.Drawing.Size(921, 285);
+            this.dvgMembresias.Size = new System.Drawing.Size(1015, 357);
             this.dvgMembresias.TabIndex = 111;
             this.dvgMembresias.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dvgMembresias_CellFormatting);
             this.dvgMembresias.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dvgMembresias_RowHeaderMouseClick);
             // 
             // txtBuscarDni
             // 
-            this.txtBuscarDni.Location = new System.Drawing.Point(68, 245);
+            this.txtBuscarDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscarDni.Location = new System.Drawing.Point(69, 204);
             this.txtBuscarDni.Name = "txtBuscarDni";
-            this.txtBuscarDni.Size = new System.Drawing.Size(189, 20);
+            this.txtBuscarDni.Size = new System.Drawing.Size(189, 26);
             this.txtBuscarDni.TabIndex = 77;
-            // 
-            // btnBuscarMembresia
-            // 
-            this.btnBuscarMembresia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnBuscarMembresia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnBuscarMembresia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarMembresia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarMembresia.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnBuscarMembresia.Location = new System.Drawing.Point(263, 239);
-            this.btnBuscarMembresia.Name = "btnBuscarMembresia";
-            this.btnBuscarMembresia.Size = new System.Drawing.Size(75, 30);
-            this.btnBuscarMembresia.TabIndex = 88;
-            this.btnBuscarMembresia.Text = "Buscar";
-            this.btnBuscarMembresia.UseVisualStyleBackColor = false;
-            this.btnBuscarMembresia.Click += new System.EventHandler(this.btnBuscarMembresia_Click);
+            this.txtBuscarDni.TextChanged += new System.EventHandler(this.txtBuscarDni_TextChanged);
             // 
             // lblDni2Membresia
             // 
             this.lblDni2Membresia.AutoSize = true;
-            this.lblDni2Membresia.Location = new System.Drawing.Point(65, 229);
+            this.lblDni2Membresia.Location = new System.Drawing.Point(66, 188);
             this.lblDni2Membresia.Name = "lblDni2Membresia";
             this.lblDni2Membresia.Size = new System.Drawing.Size(26, 13);
             this.lblDni2Membresia.TabIndex = 14;
@@ -259,11 +248,22 @@
             // 
             // txtCodMembresia
             // 
-            this.txtCodMembresia.Location = new System.Drawing.Point(156, 201);
+            this.txtCodMembresia.Location = new System.Drawing.Point(12, 35);
             this.txtCodMembresia.Name = "txtCodMembresia";
             this.txtCodMembresia.Size = new System.Drawing.Size(100, 20);
             this.txtCodMembresia.TabIndex = 99;
             this.txtCodMembresia.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(264, 204);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 26);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 112;
+            this.pictureBox1.TabStop = false;
             // 
             // FormMembresias
             // 
@@ -271,10 +271,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1050, 605);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtCodMembresia);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.lblDni2Membresia);
-            this.Controls.Add(this.btnBuscarMembresia);
             this.Controls.Add(this.txtBuscarDni);
             this.Controls.Add(this.dvgMembresias);
             this.Controls.Add(this.panel1);
@@ -286,6 +286,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dvgMembresias)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -302,7 +303,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dvgMembresias;
         private System.Windows.Forms.TextBox txtBuscarDni;
-        private System.Windows.Forms.Button btnBuscarMembresia;
         private System.Windows.Forms.Label lblDni2Membresia;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label lblFechaFinMembresia;
@@ -312,5 +312,6 @@
         private System.Windows.Forms.ComboBox cbTipoMembresia;
         private System.Windows.Forms.Label lblTipoMembresia;
         private System.Windows.Forms.TextBox txtCodMembresia;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

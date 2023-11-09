@@ -59,18 +59,25 @@ namespace Control_Gym.Capa_de_presentacion
         {
             try
             {
-                ClsProvedores clsProvedores = new ClsProvedores();
+                if (txtNombre.Text != "" && txtCuit.Text != "" && txtTelefono.Text != "" && txtDireccion.Text != "" && txtEmail.Text != "")
+                {
+                    ClsProvedores clsProvedores = new ClsProvedores();
 
-                string nombre = txtNombre.Text;
-                string cuit = txtCuit.Text;
-                string telefono = txtTelefono.Text;
-                string direccion = txtDireccion.Text;
-                string email = txtEmail.Text;
+                    string nombre = txtNombre.Text;
+                    string cuit = txtCuit.Text;
+                    string telefono = txtTelefono.Text;
+                    string direccion = txtDireccion.Text;
+                    string email = txtEmail.Text;
 
-                clsProvedores.AgregarProv(nombre, cuit, telefono, direccion, email);
-                dgvProveedores.DataSource = clsProvedores.CargarDatos();
+                    clsProvedores.AgregarProv(nombre, cuit, telefono, direccion, email);
+                    dgvProveedores.DataSource = clsProvedores.CargarDatos();
 
-                limpiarCampos();
+                    limpiarCampos();
+                }
+                else
+                {
+                    MessageBox.Show("Por favor complete todos los campos");
+                }
             }
             catch (Exception ex)
             {
@@ -151,49 +158,6 @@ namespace Control_Gym.Capa_de_presentacion
             btnCancelar.Visible = false;
             btnEliminar.Visible = false;
             btnModificar.Visible = false;
-        }
-
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                ClsProvedores clsProvedores = new ClsProvedores();
-                if (txtBuscar.Text != "")
-                {
-                    string cod = txtBuscar.Text;
-                    dgvProveedores.DataSource = clsProvedores.Filtrar(cod);
-                }
-                else
-                {
-                    dgvProveedores.DataSource = clsProvedores.CargarDatos();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al buscar proveedor: " + ex.Message);
-            }
-        }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ClsProvedores clsProvedores = new ClsProvedores();
-
-                if (txtBuscar.Text != "")
-                {
-                    string cod = txtBuscar.Text;
-                    dgvProveedores.DataSource = clsProvedores.Filtrar(cod);
-                }
-                else
-                {
-                    clsProvedores.CargarDatos();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al buscar proveedor: " + ex.Message);
-            }
         }
 
         private void txtCuit_KeyPress(object sender, KeyPressEventArgs e)

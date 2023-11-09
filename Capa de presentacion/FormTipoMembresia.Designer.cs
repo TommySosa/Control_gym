@@ -41,8 +41,6 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.dgvTipoMembresia = new System.Windows.Forms.DataGridView();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTipoMembresia)).BeginInit();
             this.SuspendLayout();
@@ -194,31 +192,12 @@
             this.dgvTipoMembresia.AllowUserToDeleteRows = false;
             this.dgvTipoMembresia.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvTipoMembresia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTipoMembresia.Location = new System.Drawing.Point(12, 34);
+            this.dgvTipoMembresia.Location = new System.Drawing.Point(12, 12);
             this.dgvTipoMembresia.Name = "dgvTipoMembresia";
             this.dgvTipoMembresia.ReadOnly = true;
-            this.dgvTipoMembresia.Size = new System.Drawing.Size(622, 389);
+            this.dgvTipoMembresia.Size = new System.Drawing.Size(622, 411);
             this.dgvTipoMembresia.TabIndex = 12;
             this.dgvTipoMembresia.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTipoMembresia_RowHeaderMouseClick);
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtBuscar.Location = new System.Drawing.Point(59, 8);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(261, 20);
-            this.txtBuscar.TabIndex = 13;
-            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 11);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 13);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Buscar";
             // 
             // label6
             // 
@@ -238,8 +217,6 @@
             this.ClientSize = new System.Drawing.Size(974, 448);
             this.ControlBox = false;
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.dgvTipoMembresia);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnEliminar);
@@ -278,8 +255,6 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.DataGridView dgvTipoMembresia;
-        private System.Windows.Forms.TextBox txtBuscar;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
     }
 }
