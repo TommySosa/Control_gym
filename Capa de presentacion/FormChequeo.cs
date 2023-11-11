@@ -286,5 +286,21 @@ namespace Control_Gym.Capa_de_presentacion
                 ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
             }
         }
+
+        private void cmbTipoMembresia_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
+            }
+        }
+
+        private void cmbTipoMembresia_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

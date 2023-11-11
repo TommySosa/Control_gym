@@ -177,6 +177,8 @@
             this.cmbTipoMembresia.Size = new System.Drawing.Size(176, 36);
             this.cmbTipoMembresia.TabIndex = 2;
             this.cmbTipoMembresia.SelectedIndexChanged += new System.EventHandler(this.cmbTipoMembresia_SelectedIndexChanged);
+            this.cmbTipoMembresia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbTipoMembresia_KeyDown);
+            this.cmbTipoMembresia.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cmbTipoMembresia_MouseDown);
             // 
             // timer1
             // 
