@@ -146,12 +146,12 @@ namespace Control_Gym.Capa_de_presentacion
                 {
                     CEmpleado cEmpleado = new CEmpleado(
                         Convert.ToInt32(mtxtDniEmpleado.Text),
-                        txtNombreEmpleado.Text,
-                        txtApellidoEmpleado.Text,
+                        txtNombreEmpleado.Text.Trim(),
+                        txtApellidoEmpleado.Text.Trim(),
                         txtTelefonoEmpleado.Text,
                         DateTime.Parse(dtpFechNacEmpleado.Value.ToString("yyyy/MM/dd")),
-                        txtDomicilioEmpleado.Text,
-                        txtEmailEmpleado.Text,
+                        txtDomicilioEmpleado.Text.Trim(),
+                        txtEmailEmpleado.Text.Trim(),
                         txtContraseñaEmpleado.Text
                     );
                     CEmpleadoD cEmpleadoD = new CEmpleadoD();

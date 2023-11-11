@@ -26,7 +26,7 @@ namespace Control_Gym.Capa_de_presentacion
                 {
                     ClsTipoMembresia clsTipoMembresia = new ClsTipoMembresia();
 
-                    string nombre = txtNombre.Text;
+                    string nombre = txtNombre.Text.Trim();
                     decimal precio = Convert.ToDecimal(txtPrecio.Text);
                     int dias = Convert.ToInt32(txtDias.Text);
 
