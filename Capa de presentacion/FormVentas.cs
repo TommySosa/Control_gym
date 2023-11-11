@@ -25,6 +25,7 @@ namespace Control_Gym.Capa_de_presentacion
         private CVenta cVenta = new CVenta();
         private CProducto cProducto = new CProducto();
         private CVentaD cVentaD = new CVentaD();
+        private CEmpleadoD cEmpleadoD = new CEmpleadoD();
 
 
         private void FormVentas_Load(object sender, EventArgs e)
@@ -91,79 +92,93 @@ namespace Control_Gym.Capa_de_presentacion
         {
             try
             {
-                if (txtCodProducto.Text != "" && txtNombreProducto.Text != "" && txtPrecio.Text != "" && txtCantidad.Text != "" && txtStock.Text != "")
+                if (!string.IsNullOrEmpty(txtCodProducto.Text) && !string.IsNullOrEmpty(txtNombreProducto.Text) && !string.IsNullOrEmpty(txtPrecio.Text) && !string.IsNullOrEmpty(txtCantidad.Text) && !string.IsNullOrEmpty(txtStock.Text))
                 {
-                    decimal subtotal = 0;
-                    bool productoExistente = false;
-
-                    foreach (DataGridViewRow row in dvgCarrito.Rows)
+                    decimal descuento__ = 0;
+                    int cantidad__ = 0;
+                    if (decimal.TryParse(txtDescuento.Text, out descuento__) && int.TryParse(txtCantidad.Text, out cantidad__))
                     {
-                        if (row.Cells["cod_producto"].Value != null)
+                        decimal subtotal = 0;
+                        bool productoExistente = false;
+                        if (descuento__ < 0 || descuento__ > 100)
                         {
-                            long codigoExistente;
-                            if (long.TryParse(row.Cells["cod_producto"].Value.ToString(), out codigoExistente) && codigoExistente == long.Parse(txtCodProducto.Text))
+                            MessageBox.Show("El descuento debe ser de 0% hasta 100%");
+                            return;
+                        }
+                        if (cantidad__ < 0)
+                        {
+                            MessageBox.Show("Ingresa una cantidad correcta!");
+                            return;
+                        }
+
+                        if (string.IsNullOrEmpty(txtDescuento.Text))
+                        {
+                            txtDescuento.Text = "0";
+                        }
+
+                        foreach (DataGridViewRow row in dvgCarrito.Rows)
+                        {
+                            if (row.Cells["cod_producto"].Value != null)
                             {
-                                int cantidadExistente = int.Parse(row.Cells["cantidad"].Value.ToString());
-                                int nuevaCantidad = int.Parse(txtCantidad.Text);
-                                cantidadExistente += nuevaCantidad;
-                                row.Cells["cantidad"].Value = cantidadExistente;
-                                productoExistente = true;
-                                break;
+                                long codigoExistente;
+                                decimal descuentoExistente;
+                                if (long.TryParse(row.Cells["cod_producto"].Value.ToString(), out codigoExistente) && codigoExistente == long.Parse(txtCodProducto.Text) && decimal.TryParse(row.Cells["descuento"].Value.ToString(), out descuentoExistente) && descuentoExistente == decimal.Parse(txtDescuento.Text))
+                                {
+                                    int cantidadExistente = int.Parse(row.Cells["cantidad"].Value.ToString());
+                                    int nuevaCantidad = int.Parse(txtCantidad.Text);
+                                    cantidadExistente += nuevaCantidad;
+                                    row.Cells["cantidad"].Value = cantidadExistente;
+                                    productoExistente = true;
+                                    break;
+                                }
                             }
                         }
-                    }
 
-                    if (!productoExistente)
-                    {
-                        dvgCarrito.Rows.Add(txtCodProducto.Text, txtNombreProducto.Text, txtPrecio.Text, txtCantidad.Text, txtStock.Text,txtDescuento.Text ,txtSubtotal.Text);
-                    }
-                    foreach (DataGridViewRow row in dvgCarrito.Rows)
-                    {
-                        if (row.Cells["precio_producto"].Value != null && row.Cells["cantidad"].Value != null)
+
+                        if (!productoExistente)
                         {
-                            decimal precio = 0;
-                            int cantidad = 0;
-                            decimal descuento = 0;
-
-                            if (decimal.TryParse(row.Cells["precio_producto"].Value.ToString(), out precio) &&
-                                int.TryParse(row.Cells["cantidad"].Value.ToString(), out cantidad) && decimal.TryParse(txtDescuento.Text, out descuento))
+                            dvgCarrito.Rows.Add(txtCodProducto.Text, txtNombreProducto.Text, txtPrecio.Text, txtCantidad.Text, txtStock.Text, txtDescuento.Text, txtSubtotal.Text);
+                        }
+                        foreach (DataGridViewRow row in dvgCarrito.Rows)
+                        {
+                            if (row.Cells["precio_producto"].Value != null && row.Cells["cantidad"].Value != null)
                             {
-                                decimal descuento_ = Convert.ToDecimal(row.Cells["descuento"].Value);
-                                subtotal = (precio - (precio * descuento_ / 100)) * cantidad;
-                                row.Cells["subtotal_producto"].Value = subtotal;
-                                //row.Cells["descuento"].Value = descuento;
+                                decimal precio = 0;
+                                int cantidad = 0;
+                                decimal descuento = 0;
+
+                                if (decimal.TryParse(row.Cells["precio_producto"].Value.ToString(), out precio) &&
+                                    int.TryParse(row.Cells["cantidad"].Value.ToString(), out cantidad) && decimal.TryParse(txtDescuento.Text, out descuento))
+                                {
+                                    decimal descuento_ = Convert.ToDecimal(row.Cells["descuento"].Value);
+                                    if (descuento < 0 || descuento > 100)
+                                    {
+                                        MessageBox.Show("El descuento debe estar entre 0% y 100%");
+                                        return;
+                                    }
+                                    else
+                                    {
+                                        subtotal = (precio - (precio * descuento_ / 100)) * cantidad;
+                                        row.Cells["subtotal_producto"].Value = subtotal;
+
+                                    }
+                                }
                             }
                         }
+
+                        lblTotal.Text = "$ " + CalcularTodosSubtotales().ToString();
+
+                        txtSubtotal.Text = CalcultarTotal().ToString();
                     }
-
-                    ///             AL AGREGAR AL CARRITO UN PRODUCTO SIN NINGUN DESCUENTO Y DESPUES AGREGO AL CARRITO EL MISMO PRODUCTO PERO CON DESCUENTO, NO LE AGREGA EL DESCUENTO A NINGUNO DE LOS DOS
-                    ///             FALTA VALIDACION PARA VERIFICAR QUE EL DNI EMPLEADO EXISTA, PORQUE EN EL CASO DE QUE NO EXISTA, NO SE INSERTA EN LA DB PERO APARECE EL CARTEL DE VENTA REALIZADA
-
-
-                    //foreach (DataGridViewRow row in dvgCarrito.Rows)
-                    //{
-                    //    if (row.Cells["precio_producto"].Value != null && row.Cells["cantidad"].Value != null)
-                    //    {
-                    //        decimal precio = 0;
-                    //        int cantidad = 0;
-                    //        decimal descuento = 0;
-
-                    //        if (decimal.TryParse(row.Cells["precio_producto"].Value.ToString(), out precio) &&
-                    //            int.TryParse(row.Cells["cantidad"].Value.ToString(), out cantidad) && decimal.TryParse(txtDescuento.Text, out descuento))
-                    //        {
-                    //            subtotal = (precio - (precio * descuento / 100)) * cantidad;
-                    //            row.Cells["subtotal_producto"].Value = subtotal;
-                    //            row.Cells["descuento"].Value = descuento;
-                    //        }
-                    //    }
-                    //}
-                    lblTotal.Text = "$ " + CalcularTodosSubtotales().ToString();
-
-                    txtSubtotal.Text = CalcultarTotal().ToString();
+                    else
+                    {
+                        MessageBox.Show("Llená todos los campos.");
+                    
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Llená todos los campos.");
+                    MessageBox.Show("Datos incorrectos. Verifica los campos!");
                 }
             }
             catch (Exception ex)
@@ -176,8 +191,9 @@ namespace Control_Gym.Capa_de_presentacion
         {
             try
             {
-                bool existe = cVentaD.ClienteExiste(Convert.ToInt32(txtDniCliente.Text));
-                if (existe)
+                bool existeSocio = cVentaD.ClienteExiste(Convert.ToInt32(txtDniCliente.Text));
+                bool existeEmpleado = cEmpleadoD.DniExiste(Convert.ToInt32(txtDniEmpleado.Text));
+                if (existeSocio && existeEmpleado)
                 {
                     int dni_Cliente, dniEmpleado;
                     decimal descuento;
@@ -185,6 +201,11 @@ namespace Control_Gym.Capa_de_presentacion
                     if (int.TryParse(txtDniCliente.Text, out dni_Cliente) && int.TryParse(txtDniEmpleado.Text, out dniEmpleado) &&
                         decimal.TryParse(txtDescuento.Text, out descuento) && Convert.ToInt32(txtPrecio.Text) > 0)
                     {
+                        if (descuento < 0 || descuento > 100)
+                        {
+                            MessageBox.Show("El descuento puede ser de 0% a 100%.");
+                            return;
+                        }
                         List<CDetalleVenta> detallesVenta = new List<CDetalleVenta>();
                         decimal subtotal = 0;
 
@@ -216,7 +237,6 @@ namespace Control_Gym.Capa_de_presentacion
                                 }
                             }
                         }
-                        Console.WriteLine("DETALLES" + detallesVenta.Count);
 
                         if (detallesVenta.Count > 0)
                         {
@@ -241,10 +261,10 @@ namespace Control_Gym.Capa_de_presentacion
                     }
                     else
                     {
-                        MessageBox.Show("Por favor, ingresa valores numéricos válidos en los campos de DNI y Descuento.");
+                        MessageBox.Show("Por favor, ingresa valores numéricos válidos en los campos de DNI.");
                     }
                 }
-                else
+                else if(!existeSocio)
                 {
                     FormAgregarCliente agregarClienteForm = new FormAgregarCliente(txtDniCliente.Text);
 
@@ -259,6 +279,10 @@ namespace Control_Gym.Capa_de_presentacion
                         string email = agregarClienteForm.Email;
 
                     }
+                }
+                else
+                {
+                    MessageBox.Show("No hay un empleado con ese DNI!");
                 }
             }
             catch (Exception ex)
