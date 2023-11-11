@@ -29,6 +29,18 @@ namespace Control_Gym.Capa_de_presentacion
             {
                 CProducto CProductoD = new CProducto();
                 dgvProductos.DataSource = CProductoD.MostrarDatos();
+
+
+                dgvProductos.Columns["cod_proveedor"].Visible = false;
+                dgvProductos.Columns["cod_producto"].Visible = false;
+                dgvProductos.Columns["cod_tipo_producto"].Visible = false;
+
+                dgvProductos.Columns["nombre"].HeaderText = "Nombre";
+                dgvProductos.Columns["fecha_venc"].HeaderText = "Fecha de vencimiento";
+                dgvProductos.Columns["precio_costo"].HeaderText = "Precio de costo";
+                dgvProductos.Columns["precio_venta"].HeaderText = "Precio de venta";
+                dgvProductos.Columns["ganancia"].HeaderText = "Ganancia";
+                dgvProductos.Columns["stock"].HeaderText = "Stock";
                 List<CTipoProducto> tipos_productos = cTipoProducto.traerTiposProductos();
                 cmbTipoProducto.DataSource = tipos_productos;
                 List<ClsProvedores> tipos_provedores = cProveedor.traerTiposProveedores();
@@ -105,7 +117,7 @@ namespace Control_Gym.Capa_de_presentacion
         {
             try
             {
-                if (txtCod.Text != "" && txtNombre.Text != "" && txtPrecioVenta.Text != "" && txtCod.Text != "" && txtStock.Text != "")
+                if (txtNombre.Text != "" && txtPrecioVenta.Text != "" && txtStock.Text != "")
                 {
                     long cod_producto;
 
