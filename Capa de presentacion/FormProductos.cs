@@ -303,6 +303,10 @@ namespace Control_Gym.Capa_de_presentacion
                 MessageBox.Show("Solo números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 e.Handled = true;
             }
+            if (e.KeyChar == ' ')
+            {
+                e.Handled = true;
+            }
         }
 
         private void txtCosto_KeyPress(object sender, KeyPressEventArgs e)
@@ -312,6 +316,10 @@ namespace Control_Gym.Capa_de_presentacion
                 MessageBox.Show("Solo números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 e.Handled = true;
             }
+            if (e.KeyChar == ' ')
+            {
+                e.Handled = true;
+            }
         }
 
         private void txtStock_KeyPress(object sender, KeyPressEventArgs e)
@@ -319,6 +327,10 @@ namespace Control_Gym.Capa_de_presentacion
             if ((e.KeyChar >= 33 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
             {
                 MessageBox.Show("Solo números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+            }
+            if (e.KeyChar == ' ')
+            {
                 e.Handled = true;
             }
         }
@@ -434,6 +446,19 @@ namespace Control_Gym.Capa_de_presentacion
             {
                 // Deshabilita el menú contextual al hacer clic derecho en el ComboBox
                 ((ComboBox)sender).ContextMenuStrip = new ContextMenuStrip();
+            }
+        }
+
+        private void txtCodProducto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 33 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+            }
+            if (e.KeyChar == ' ')
+            {
+                e.Handled = true;
             }
         }
     }
