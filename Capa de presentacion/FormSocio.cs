@@ -110,12 +110,12 @@ namespace Control_Gym.Capa_de_presentacion
                     ClsSocio oClsSocio = new ClsSocio();
 
                     int dni = Convert.ToInt32(txtDniSocio.Text);
-                    string nombre = txtNombreSocio.Text;
-                    string apellido = txtApellidoSocio.Text;
+                    string nombre = txtNombreSocio.Text.Trim();
+                    string apellido = txtApellidoSocio.Text.Trim();
                     DateTime fechaNacimiento = dtpFechaNacimiento.Value;
                     string telefono = txtTelefonoSocio.Text;
-                    string domicilio = txtDomicilio.Text;
-                    string email = txtEmail.Text;
+                    string domicilio = txtDomicilio.Text.Trim();
+                    string email = txtEmail.Text.Trim();
 
                     bool existeDNI = cMembresiaD.SocioExiste(dni);
                     bool existeEmail = cMembresiaD.EmailExiste(email);

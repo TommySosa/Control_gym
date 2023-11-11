@@ -63,11 +63,11 @@ namespace Control_Gym.Capa_de_presentacion
                 {
                     ClsProvedores clsProvedores = new ClsProvedores();
 
-                    string nombre = txtNombre.Text;
+                    string nombre = txtNombre.Text.Trim();
                     string cuit = txtCuit.Text;
                     string telefono = txtTelefono.Text;
-                    string direccion = txtDireccion.Text;
-                    string email = txtEmail.Text;
+                    string direccion = txtDireccion.Text.Trim();
+                    string email = txtEmail.Text.Trim();
 
                     clsProvedores.AgregarProv(nombre, cuit, telefono, direccion, email);
                     dgvProveedores.DataSource = clsProvedores.CargarDatos();

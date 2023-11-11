@@ -45,7 +45,7 @@ namespace Control_Gym.Capa_de_presentacion
                 if ((txtNombre.Text != ""))
                 {
                     CTipoProducto cTipoProducto = new CTipoProducto();
-                    string nombre = txtNombre.Text;
+                    string nombre = txtNombre.Text.Trim();
                     cTipoProducto.AgregarTipoProducto(nombre);
                     dgvTipoProducto.DataSource = cTipoProducto.MostrarTipoProducto();
                     limpiarCampos();

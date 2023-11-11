@@ -135,7 +135,7 @@ namespace Control_Gym.Capa_de_presentacion
 
                     int cod_proveedor = cProveedor.Cod;
                     int cod_tipo_producto = cTipoProducto.Cod_tipo_producto;
-                    string nombre = txtNombre.Text;
+                    string nombre = txtNombre.Text.Trim();
                     DateTime fecha_venc = dtpFechaVenc.Value;
                     decimal preciocosto = Convert.ToDecimal(txtCosto.Text);
                     decimal precioventa = Convert.ToDecimal(txtPrecioVenta.Text);

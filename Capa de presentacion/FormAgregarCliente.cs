@@ -32,13 +32,13 @@ namespace Control_Gym.Capa_de_presentacion
 
         public string Nombre
         {
-            get { return txtNombre.Text; }
+            get { return txtNombre.Text.Trim(); }
             set { txtNombre.Text = value; }
         }
 
         public string Apellido
         {
-            get { return txtApellido.Text; }
+            get { return txtApellido.Text.Trim(); }
             set { txtApellido.Text = value; }
         }
 
@@ -50,13 +50,13 @@ namespace Control_Gym.Capa_de_presentacion
 
         public string Domicilio
         {
-            get { return txtDomicilio.Text; }
+            get { return txtDomicilio.Text.Trim(); }
             set { txtDomicilio.Text = value; }
         }
 
         public string Email
         {
-            get { return txtEmail.Text; }
+            get { return txtEmail.Text.Trim(); }
             set { txtEmail.Text = value; }
         }
 
