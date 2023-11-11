@@ -146,6 +146,7 @@
             this.txtDniEmpleado.Name = "txtDniEmpleado";
             this.txtDniEmpleado.Size = new System.Drawing.Size(128, 20);
             this.txtDniEmpleado.TabIndex = 2;
+            this.txtDniEmpleado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDniEmpleado_KeyDown);
             this.txtDniEmpleado.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtDniEmpleado_MouseDown);
             // 
             // txtDniCliente
@@ -367,6 +368,8 @@
             this.cbCodProducto.Size = new System.Drawing.Size(178, 21);
             this.cbCodProducto.TabIndex = 4;
             this.cbCodProducto.SelectedIndexChanged += new System.EventHandler(this.cbCodProducto_SelectedIndexChanged);
+            this.cbCodProducto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbCodProducto_KeyDown);
+            this.cbCodProducto.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbCodProducto_MouseDown);
             // 
             // label6
             // 

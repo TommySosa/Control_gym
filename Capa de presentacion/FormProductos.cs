@@ -390,6 +390,38 @@ namespace Control_Gym.Capa_de_presentacion
                 ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
             }
         }
+
+        private void cmbProveedor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void cmbTipoProducto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void cmbProveedor_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
+            }
+        }
+
+        private void cmbTipoProducto_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
+            }
+        }
     }
 }
 

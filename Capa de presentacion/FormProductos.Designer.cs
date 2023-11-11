@@ -103,6 +103,8 @@
             this.cmbTipoProducto.Size = new System.Drawing.Size(156, 21);
             this.cmbTipoProducto.TabIndex = 2;
             this.cmbTipoProducto.SelectedIndexChanged += new System.EventHandler(this.cmbTipoProducto_SelectedIndexChanged);
+            this.cmbTipoProducto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbTipoProducto_KeyDown);
+            this.cmbTipoProducto.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cmbTipoProducto_MouseDown);
             // 
             // txtNombre
             // 
@@ -132,6 +134,8 @@
             this.cmbProveedor.Size = new System.Drawing.Size(156, 21);
             this.cmbProveedor.TabIndex = 1;
             this.cmbProveedor.SelectedIndexChanged += new System.EventHandler(this.cmbProveedor_SelectedIndexChanged);
+            this.cmbProveedor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProveedor_KeyDown);
+            this.cmbProveedor.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cmbProveedor_MouseDown);
             // 
             // dtpFechaVenc
             // 

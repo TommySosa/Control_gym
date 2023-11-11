@@ -204,6 +204,8 @@
             this.cbTipoMembresia.Size = new System.Drawing.Size(200, 21);
             this.cbTipoMembresia.TabIndex = 2;
             this.cbTipoMembresia.SelectedIndexChanged += new System.EventHandler(this.cbTipoMembresia_SelectedIndexChanged);
+            this.cbTipoMembresia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbTipoMembresia_KeyDown);
+            this.cbTipoMembresia.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbTipoMembresia_MouseDown);
             // 
             // lblTipoMembresia
             // 
