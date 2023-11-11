@@ -551,7 +551,8 @@ namespace Control_Gym.Capa_de_presentacion
         {
             if (e.Button == MouseButtons.Right)
             {
-                ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
+                // Deshabilita el menú contextual al hacer clic derecho en el ComboBox
+                ((ComboBox)sender).ContextMenuStrip = new ContextMenuStrip();
             }
         }
     }

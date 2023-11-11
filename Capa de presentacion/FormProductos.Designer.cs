@@ -96,6 +96,7 @@
             // 
             // cmbTipoProducto
             // 
+            this.cmbTipoProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbTipoProducto.FormattingEnabled = true;
             this.cmbTipoProducto.Location = new System.Drawing.Point(131, 61);
@@ -127,6 +128,7 @@
             // 
             // cmbProveedor
             // 
+            this.cmbProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbProveedor.FormattingEnabled = true;
             this.cmbProveedor.Location = new System.Drawing.Point(131, 34);
