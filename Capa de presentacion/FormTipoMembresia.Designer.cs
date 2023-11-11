@@ -62,7 +62,9 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(155, 20);
             this.txtPrecio.TabIndex = 1;
+            this.txtPrecio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPrecio_KeyDown);
             this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
+            this.txtPrecio.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtPrecio_MouseDown);
             // 
             // txtNombre
             // 
@@ -71,6 +73,8 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(155, 20);
             this.txtNombre.TabIndex = 0;
+            this.txtNombre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombre_KeyDown);
+            this.txtNombre.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtNombre_MouseDown);
             // 
             // txtDias
             // 
@@ -79,7 +83,9 @@
             this.txtDias.Name = "txtDias";
             this.txtDias.Size = new System.Drawing.Size(155, 20);
             this.txtDias.TabIndex = 2;
+            this.txtDias.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDias_KeyDown);
             this.txtDias.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDias_KeyPress);
+            this.txtDias.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtDias_MouseDown);
             // 
             // label1
             // 

@@ -338,5 +338,21 @@ namespace Control_Gym.Capa_de_presentacion
                 MessageBox.Show("Error al buscar membresías: " + ex.Message);
             }
         }
+
+        private void txtDniMembresia_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtDniMembresia_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
+            }
+        }
     }
 }

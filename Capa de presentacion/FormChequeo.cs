@@ -42,12 +42,12 @@ namespace Control_Gym.Capa_de_presentacion
         private void limpiarLabels()
         {
             txtDni.Text = "";
+            lblNombreCompleto.Text = "";
             lblInicio.Text = "00/00";
             lblFin.Text = "00/00";
             lblDiasRestantes.Text = "00";
             cmbTipoMembresia.Visible = false;
             lblTipoMembresia.Visible = false;
-            lblNombreCompleto.Text = "";
         }
 
         private void cmbTipoMembresia_SelectedIndexChanged(object sender, EventArgs e)
@@ -128,25 +128,7 @@ namespace Control_Gym.Capa_de_presentacion
 
                     dni_global = dni;
 
-                    try
-                    {
-                        List<CTipoMembresia> tipos = cTipoMembresia.traerTiposDelSocio(dni);
-                        cmbTipoMembresia.DataSource = tipos;
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error al cargar los tipos de membresía: " + ex.Message);
-                    }
-
-                    try
-                    {
-                        ClsSocio[] socio = cChequeoD.traerDatosDeSocioPorDni(dni);
-                        lblNombreCompleto.Text = socio[0].Nombre + " " + socio[0].Apellido;
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error al cargar los tipos de membresía: " + ex.Message);
-                    }
+                    
 
                     txtDni.Text = "";
 
@@ -167,6 +149,26 @@ namespace Control_Gym.Capa_de_presentacion
 
                     if (resultado.Length > 0)
                     {
+                        try
+                        {
+                            List<CTipoMembresia> tipos = cTipoMembresia.traerTiposDelSocio(dni);
+                            cmbTipoMembresia.DataSource = tipos;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error al cargar los tipos de membresía: " + ex.Message);
+                        }
+
+                        try
+                        {
+                            ClsSocio[] socio = cChequeoD.traerDatosDeSocioPorDni(dni);
+                            lblNombreCompleto.Text = socio[0].Nombre + " " + socio[0].Apellido;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error al cargar los tipos de membresía: " + ex.Message);
+                        }
+
                         if (Convert.ToInt32(resultado[2]) <= 5 && Convert.ToInt32(resultado[2]) >= 1)
                         {
                             lblInicio.Text = resultado[0];
@@ -266,6 +268,22 @@ namespace Control_Gym.Capa_de_presentacion
             catch (Exception ex)
             {
                 MessageBox.Show("Error en el manejo de entrada: " + ex.Message);
+            }
+        }
+
+        private void txtDni_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtDni_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
             }
         }
     }

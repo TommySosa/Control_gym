@@ -59,9 +59,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtCodProducto = new System.Windows.Forms.TextBox();
             this.dvgCarrito = new System.Windows.Forms.DataGridView();
-            this.btnVenta = new System.Windows.Forms.Button();
-            this.lblTotalAPagar = new System.Windows.Forms.Label();
-            this.lblTotal = new System.Windows.Forms.Label();
             this.cod_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precio_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,6 +66,9 @@
             this.stock_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnVenta = new System.Windows.Forms.Button();
+            this.lblTotalAPagar = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvgCarrito)).BeginInit();
@@ -146,6 +146,7 @@
             this.txtDniEmpleado.Name = "txtDniEmpleado";
             this.txtDniEmpleado.Size = new System.Drawing.Size(128, 20);
             this.txtDniEmpleado.TabIndex = 2;
+            this.txtDniEmpleado.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtDniEmpleado_MouseDown);
             // 
             // txtDniCliente
             // 
@@ -153,7 +154,9 @@
             this.txtDniCliente.Name = "txtDniCliente";
             this.txtDniCliente.Size = new System.Drawing.Size(128, 20);
             this.txtDniCliente.TabIndex = 0;
+            this.txtDniCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDniCliente_KeyDown);
             this.txtDniCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDniCliente_KeyPress);
+            this.txtDniCliente.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtDniCliente_MouseDown);
             // 
             // label5
             // 
@@ -181,7 +184,9 @@
             this.txtDescuento.Size = new System.Drawing.Size(54, 20);
             this.txtDescuento.TabIndex = 6;
             this.txtDescuento.Text = "0";
+            this.txtDescuento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDescuento_KeyDown);
             this.txtDescuento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescuento_KeyPress);
+            this.txtDescuento.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtDescuento_MouseDown);
             // 
             // groupBox2
             // 
@@ -289,7 +294,9 @@
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(95, 20);
             this.txtCantidad.TabIndex = 5;
+            this.txtCantidad.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCantidad_KeyDown);
             this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
+            this.txtCantidad.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtCantidad_MouseDown);
             // 
             // txtNombreProducto
             // 
@@ -352,6 +359,7 @@
             // 
             // cbCodProducto
             // 
+            this.cbCodProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbCodProducto.FormattingEnabled = true;
             this.cbCodProducto.ItemHeight = 13;
             this.cbCodProducto.Location = new System.Drawing.Point(302, 52);
@@ -376,6 +384,8 @@
             this.txtCodProducto.Size = new System.Drawing.Size(172, 20);
             this.txtCodProducto.TabIndex = 3;
             this.txtCodProducto.TextChanged += new System.EventHandler(this.txtCodProducto_TextChanged);
+            this.txtCodProducto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodProducto_KeyDown);
+            this.txtCodProducto.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtCodProducto_MouseDown);
             // 
             // dvgCarrito
             // 
@@ -397,44 +407,6 @@
             this.dvgCarrito.Size = new System.Drawing.Size(561, 355);
             this.dvgCarrito.TabIndex = 60;
             this.dvgCarrito.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dvgCarrito_RowHeaderMouseClick);
-            // 
-            // btnVenta
-            // 
-            this.btnVenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnVenta.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVenta.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnVenta.Image = ((System.Drawing.Image)(resources.GetObject("btnVenta.Image")));
-            this.btnVenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVenta.Location = new System.Drawing.Point(719, 380);
-            this.btnVenta.Name = "btnVenta";
-            this.btnVenta.Size = new System.Drawing.Size(159, 48);
-            this.btnVenta.TabIndex = 8;
-            this.btnVenta.Text = "Realizar venta";
-            this.btnVenta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVenta.UseVisualStyleBackColor = false;
-            this.btnVenta.Click += new System.EventHandler(this.btnVenta_Click);
-            // 
-            // lblTotalAPagar
-            // 
-            this.lblTotalAPagar.AutoSize = true;
-            this.lblTotalAPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalAPagar.Location = new System.Drawing.Point(602, 321);
-            this.lblTotalAPagar.Name = "lblTotalAPagar";
-            this.lblTotalAPagar.Size = new System.Drawing.Size(297, 37);
-            this.lblTotalAPagar.TabIndex = 19;
-            this.lblTotalAPagar.Text = "TOTAL A PAGAR:";
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(892, 321);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(113, 37);
-            this.lblTotal.TabIndex = 20;
-            this.lblTotal.Text = "$ 0.00";
             // 
             // cod_producto
             // 
@@ -477,6 +449,44 @@
             this.subtotal_producto.HeaderText = "SUBTOTAL";
             this.subtotal_producto.Name = "subtotal_producto";
             this.subtotal_producto.ReadOnly = true;
+            // 
+            // btnVenta
+            // 
+            this.btnVenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnVenta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVenta.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnVenta.Image = ((System.Drawing.Image)(resources.GetObject("btnVenta.Image")));
+            this.btnVenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVenta.Location = new System.Drawing.Point(719, 380);
+            this.btnVenta.Name = "btnVenta";
+            this.btnVenta.Size = new System.Drawing.Size(159, 48);
+            this.btnVenta.TabIndex = 8;
+            this.btnVenta.Text = "Realizar venta";
+            this.btnVenta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVenta.UseVisualStyleBackColor = false;
+            this.btnVenta.Click += new System.EventHandler(this.btnVenta_Click);
+            // 
+            // lblTotalAPagar
+            // 
+            this.lblTotalAPagar.AutoSize = true;
+            this.lblTotalAPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalAPagar.Location = new System.Drawing.Point(602, 321);
+            this.lblTotalAPagar.Name = "lblTotalAPagar";
+            this.lblTotalAPagar.Size = new System.Drawing.Size(297, 37);
+            this.lblTotalAPagar.TabIndex = 19;
+            this.lblTotalAPagar.Text = "TOTAL A PAGAR:";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Location = new System.Drawing.Point(892, 321);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(113, 37);
+            this.lblTotal.TabIndex = 20;
+            this.lblTotal.Text = "$ 0.00";
             // 
             // FormVentas
             // 
