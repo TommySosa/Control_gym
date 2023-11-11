@@ -134,6 +134,8 @@
             this.txtCod.Size = new System.Drawing.Size(156, 20);
             this.txtCod.TabIndex = 0;
             this.txtCod.Visible = false;
+            this.txtCod.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCod_KeyDown);
+            this.txtCod.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtCod_MouseDown);
             // 
             // btnCancelar
             // 

@@ -81,7 +81,9 @@
             this.txtDni.Size = new System.Drawing.Size(512, 141);
             this.txtDni.TabIndex = 0;
             this.txtDni.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDni.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDni_KeyDown);
             this.txtDni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDni_KeyPress);
+            this.txtDni.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtDni_MouseDown);
             // 
             // label1
             // 
@@ -167,6 +169,7 @@
             // cmbTipoMembresia
             // 
             this.cmbTipoMembresia.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmbTipoMembresia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbTipoMembresia.Font = new System.Drawing.Font("Sitka Banner", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTipoMembresia.FormattingEnabled = true;
             this.cmbTipoMembresia.Location = new System.Drawing.Point(220, 286);

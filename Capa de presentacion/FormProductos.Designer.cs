@@ -96,6 +96,7 @@
             // 
             // cmbTipoProducto
             // 
+            this.cmbTipoProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbTipoProducto.FormattingEnabled = true;
             this.cmbTipoProducto.Location = new System.Drawing.Point(131, 61);
             this.cmbTipoProducto.Name = "cmbTipoProducto";
@@ -109,6 +110,8 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(156, 20);
             this.txtNombre.TabIndex = 3;
+            this.txtNombre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombre_KeyDown);
+            this.txtNombre.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtNombre_MouseDown);
             // 
             // txtCodProducto
             // 
@@ -117,9 +120,12 @@
             this.txtCodProducto.Size = new System.Drawing.Size(156, 20);
             this.txtCodProducto.TabIndex = 0;
             this.txtCodProducto.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.txtCodProducto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodProducto_KeyDown);
+            this.txtCodProducto.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtCodProducto_MouseDown);
             // 
             // cmbProveedor
             // 
+            this.cmbProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbProveedor.FormattingEnabled = true;
             this.cmbProveedor.Location = new System.Drawing.Point(131, 34);
             this.cmbProveedor.Name = "cmbProveedor";
@@ -158,7 +164,9 @@
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(156, 20);
             this.txtStock.TabIndex = 7;
+            this.txtStock.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStock_KeyDown);
             this.txtStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStock_KeyPress);
+            this.txtStock.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtStock_MouseDown);
             // 
             // lblStock
             // 
@@ -192,7 +200,9 @@
             this.txtCosto.Name = "txtCosto";
             this.txtCosto.Size = new System.Drawing.Size(156, 20);
             this.txtCosto.TabIndex = 5;
+            this.txtCosto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCosto_KeyDown);
             this.txtCosto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCosto_KeyPress);
+            this.txtCosto.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtCosto_MouseDown);
             // 
             // txtPrecioVenta
             // 
@@ -200,7 +210,9 @@
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(156, 20);
             this.txtPrecioVenta.TabIndex = 4;
+            this.txtPrecioVenta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPrecioVenta_KeyDown);
             this.txtPrecioVenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioVenta_KeyPress);
+            this.txtPrecioVenta.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtPrecioVenta_MouseDown);
             // 
             // lblGanancia
             // 

@@ -114,5 +114,37 @@ namespace Control_Gym.Capa_de_presentacion
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+        private void txtDniEmpleado_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtDniEmpleado_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
+            }
+        }
+
+        private void txtContraseñaEmpleado_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtContraseñaEmpleado_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
+            }
+        }
     }
 }

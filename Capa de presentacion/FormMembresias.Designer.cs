@@ -60,7 +60,9 @@
             this.txtDniMembresia.Name = "txtDniMembresia";
             this.txtDniMembresia.Size = new System.Drawing.Size(200, 20);
             this.txtDniMembresia.TabIndex = 1;
+            this.txtDniMembresia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDniMembresia_KeyDown);
             this.txtDniMembresia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDniMembresia_KeyPress);
+            this.txtDniMembresia.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtDniMembresia_MouseDown);
             // 
             // lblDniMembresia
             // 
@@ -195,6 +197,7 @@
             // 
             // cbTipoMembresia
             // 
+            this.cbTipoMembresia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbTipoMembresia.FormattingEnabled = true;
             this.cbTipoMembresia.Location = new System.Drawing.Point(137, 57);
             this.cbTipoMembresia.Name = "cbTipoMembresia";

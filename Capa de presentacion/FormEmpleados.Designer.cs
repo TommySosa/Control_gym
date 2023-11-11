@@ -217,6 +217,8 @@
             this.txtNombreEmpleado.Name = "txtNombreEmpleado";
             this.txtNombreEmpleado.Size = new System.Drawing.Size(156, 20);
             this.txtNombreEmpleado.TabIndex = 1;
+            this.txtNombreEmpleado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombreEmpleado_KeyDown);
+            this.txtNombreEmpleado.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtNombreEmpleado_MouseDown);
             // 
             // txtApellidoEmpleado
             // 
@@ -225,6 +227,8 @@
             this.txtApellidoEmpleado.Name = "txtApellidoEmpleado";
             this.txtApellidoEmpleado.Size = new System.Drawing.Size(156, 20);
             this.txtApellidoEmpleado.TabIndex = 2;
+            this.txtApellidoEmpleado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtApellidoEmpleado_KeyDown);
+            this.txtApellidoEmpleado.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtApellidoEmpleado_MouseDown);
             // 
             // txtTelefonoEmpleado
             // 
@@ -233,7 +237,9 @@
             this.txtTelefonoEmpleado.Name = "txtTelefonoEmpleado";
             this.txtTelefonoEmpleado.Size = new System.Drawing.Size(156, 20);
             this.txtTelefonoEmpleado.TabIndex = 3;
+            this.txtTelefonoEmpleado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTelefonoEmpleado_KeyDown);
             this.txtTelefonoEmpleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonoEmpleado_KeyPress);
+            this.txtTelefonoEmpleado.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTelefonoEmpleado_MouseDown);
             // 
             // txtDomicilioEmpleado
             // 
@@ -242,6 +248,8 @@
             this.txtDomicilioEmpleado.Name = "txtDomicilioEmpleado";
             this.txtDomicilioEmpleado.Size = new System.Drawing.Size(156, 20);
             this.txtDomicilioEmpleado.TabIndex = 5;
+            this.txtDomicilioEmpleado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDomicilioEmpleado_KeyDown);
+            this.txtDomicilioEmpleado.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtDomicilioEmpleado_MouseDown);
             // 
             // txtEmailEmpleado
             // 
@@ -250,6 +258,8 @@
             this.txtEmailEmpleado.Name = "txtEmailEmpleado";
             this.txtEmailEmpleado.Size = new System.Drawing.Size(156, 20);
             this.txtEmailEmpleado.TabIndex = 6;
+            this.txtEmailEmpleado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmailEmpleado_KeyDown);
+            this.txtEmailEmpleado.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtEmailEmpleado_MouseDown);
             // 
             // txtContraseñaEmpleado
             // 
@@ -258,6 +268,8 @@
             this.txtContraseñaEmpleado.Name = "txtContraseñaEmpleado";
             this.txtContraseñaEmpleado.Size = new System.Drawing.Size(156, 20);
             this.txtContraseñaEmpleado.TabIndex = 7;
+            this.txtContraseñaEmpleado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtContraseñaEmpleado_KeyDown);
+            this.txtContraseñaEmpleado.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtContraseñaEmpleado_MouseDown);
             // 
             // dtpFechNacEmpleado
             // 
@@ -274,7 +286,9 @@
             this.mtxtDniEmpleado.Name = "mtxtDniEmpleado";
             this.mtxtDniEmpleado.Size = new System.Drawing.Size(156, 20);
             this.mtxtDniEmpleado.TabIndex = 0;
+            this.mtxtDniEmpleado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mtxtDniEmpleado_KeyDown);
             this.mtxtDniEmpleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mtxtDniEmpleado_KeyPress);
+            this.mtxtDniEmpleado.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mtxtDniEmpleado_MouseDown);
             // 
             // FormEmpleados
             // 

@@ -44,7 +44,9 @@
             this.txtDniEmpleado.Name = "txtDniEmpleado";
             this.txtDniEmpleado.Size = new System.Drawing.Size(129, 26);
             this.txtDniEmpleado.TabIndex = 2;
+            this.txtDniEmpleado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDniEmpleado_KeyDown);
             this.txtDniEmpleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDniEmpleado_KeyPress);
+            this.txtDniEmpleado.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtDniEmpleado_MouseDown);
             // 
             // txtContraseñaEmpleado
             // 
@@ -54,7 +56,9 @@
             this.txtContraseñaEmpleado.PasswordChar = '*';
             this.txtContraseñaEmpleado.Size = new System.Drawing.Size(129, 26);
             this.txtContraseñaEmpleado.TabIndex = 3;
+            this.txtContraseñaEmpleado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtContraseñaEmpleado_KeyDown);
             this.txtContraseñaEmpleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContraseñaEmpleado_KeyPress);
+            this.txtContraseñaEmpleado.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtContraseñaEmpleado_MouseDown);
             // 
             // btnIniciarSesion
             // 

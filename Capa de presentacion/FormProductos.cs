@@ -105,7 +105,7 @@ namespace Control_Gym.Capa_de_presentacion
         {
             try
             {
-                if (txtCod.Text != "" && txtNombre.Text != "" && txtPrecioVenta.Text != "" && txtCod.Text != "" && txtStock.Text != "")
+                if (txtNombre.Text != "" && txtPrecioVenta.Text != "" && txtStock.Text != "")
                 {
                     long cod_producto;
 
@@ -308,6 +308,86 @@ namespace Control_Gym.Capa_de_presentacion
             {
                 MessageBox.Show("Solo números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 e.Handled = true;
+            }
+        }
+
+        private void txtCodProducto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtNombre_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtPrecioVenta_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtCosto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtStock_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtCodProducto_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
+            }
+        }
+
+        private void txtNombre_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
+            }
+        }
+
+        private void txtPrecioVenta_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
+            }
+        }
+
+        private void txtCosto_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
+            }
+        }
+
+        private void txtStock_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
             }
         }
     }

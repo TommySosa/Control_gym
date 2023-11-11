@@ -52,8 +52,8 @@
             this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.lblDni = new System.Windows.Forms.Label();
             this.panelContenedor = new System.Windows.Forms.Panel();
-            this.lblDni2Membresia = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblDni2Membresia = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
             this.panelContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -79,7 +79,9 @@
             this.txtDniSocio.Size = new System.Drawing.Size(212, 20);
             this.txtDniSocio.TabIndex = 0;
             this.txtDniSocio.Click += new System.EventHandler(this.txtDniSocio_Click);
+            this.txtDniSocio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDniSocio_KeyDown);
             this.txtDniSocio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDniSocio_KeyPress);
+            this.txtDniSocio.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtDniSocio_MouseDown);
             // 
             // txtNombreSocio
             // 
@@ -87,6 +89,8 @@
             this.txtNombreSocio.Name = "txtNombreSocio";
             this.txtNombreSocio.Size = new System.Drawing.Size(212, 20);
             this.txtNombreSocio.TabIndex = 1;
+            this.txtNombreSocio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombreSocio_KeyDown);
+            this.txtNombreSocio.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtNombreSocio_MouseDown);
             // 
             // txtApellidoSocio
             // 
@@ -94,6 +98,8 @@
             this.txtApellidoSocio.Name = "txtApellidoSocio";
             this.txtApellidoSocio.Size = new System.Drawing.Size(212, 20);
             this.txtApellidoSocio.TabIndex = 2;
+            this.txtApellidoSocio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtApellidoSocio_KeyDown);
+            this.txtApellidoSocio.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtApellidoSocio_MouseDown);
             // 
             // txtTelefonoSocio
             // 
@@ -101,7 +107,9 @@
             this.txtTelefonoSocio.Name = "txtTelefonoSocio";
             this.txtTelefonoSocio.Size = new System.Drawing.Size(212, 20);
             this.txtTelefonoSocio.TabIndex = 3;
+            this.txtTelefonoSocio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTelefonoSocio_KeyDown);
             this.txtTelefonoSocio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonoSocio_KeyPress);
+            this.txtTelefonoSocio.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTelefonoSocio_MouseDown);
             // 
             // txtDomicilio
             // 
@@ -109,6 +117,8 @@
             this.txtDomicilio.Name = "txtDomicilio";
             this.txtDomicilio.Size = new System.Drawing.Size(212, 20);
             this.txtDomicilio.TabIndex = 5;
+            this.txtDomicilio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDomicilio_KeyDown);
+            this.txtDomicilio.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtDomicilio_MouseDown);
             // 
             // txtEmail
             // 
@@ -116,6 +126,8 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(212, 20);
             this.txtEmail.TabIndex = 6;
+            this.txtEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmail_KeyDown);
+            this.txtEmail.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtEmail_MouseDown);
             // 
             // lblNombre
             // 
@@ -275,15 +287,6 @@
             this.panelContenedor.Size = new System.Drawing.Size(1050, 605);
             this.panelContenedor.TabIndex = 28;
             // 
-            // lblDni2Membresia
-            // 
-            this.lblDni2Membresia.AutoSize = true;
-            this.lblDni2Membresia.Location = new System.Drawing.Point(379, 12);
-            this.lblDni2Membresia.Name = "lblDni2Membresia";
-            this.lblDni2Membresia.Size = new System.Drawing.Size(26, 13);
-            this.lblDni2Membresia.TabIndex = 23;
-            this.lblDni2Membresia.Text = "DNI";
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -293,6 +296,15 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 24;
             this.pictureBox1.TabStop = false;
+            // 
+            // lblDni2Membresia
+            // 
+            this.lblDni2Membresia.AutoSize = true;
+            this.lblDni2Membresia.Location = new System.Drawing.Point(379, 12);
+            this.lblDni2Membresia.Name = "lblDni2Membresia";
+            this.lblDni2Membresia.Size = new System.Drawing.Size(26, 13);
+            this.lblDni2Membresia.TabIndex = 23;
+            this.lblDni2Membresia.Text = "DNI";
             // 
             // FormSocio
             // 

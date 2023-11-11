@@ -69,6 +69,8 @@
             this.txtCodigo.Size = new System.Drawing.Size(156, 20);
             this.txtCodigo.TabIndex = 0;
             this.txtCodigo.Visible = false;
+            this.txtCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodigo_KeyDown);
+            this.txtCodigo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtCodigo_MouseDown);
             // 
             // txtNombre
             // 
@@ -77,6 +79,8 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(156, 20);
             this.txtNombre.TabIndex = 1;
+            this.txtNombre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombre_KeyDown);
+            this.txtNombre.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtNombre_MouseDown);
             // 
             // txtCuit
             // 
@@ -85,7 +89,9 @@
             this.txtCuit.Name = "txtCuit";
             this.txtCuit.Size = new System.Drawing.Size(156, 20);
             this.txtCuit.TabIndex = 2;
+            this.txtCuit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCuit_KeyDown);
             this.txtCuit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCuit_KeyPress);
+            this.txtCuit.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtCuit_MouseDown);
             // 
             // txtTelefono
             // 
@@ -94,7 +100,9 @@
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(156, 20);
             this.txtTelefono.TabIndex = 3;
+            this.txtTelefono.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTelefono_KeyDown);
             this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
+            this.txtTelefono.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTelefono_MouseDown);
             // 
             // txtDireccion
             // 
@@ -103,6 +111,8 @@
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(156, 20);
             this.txtDireccion.TabIndex = 4;
+            this.txtDireccion.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDireccion_KeyDown);
+            this.txtDireccion.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtDireccion_MouseDown);
             // 
             // txtEmail
             // 
@@ -111,6 +121,8 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(156, 20);
             this.txtEmail.TabIndex = 5;
+            this.txtEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmail_KeyDown);
+            this.txtEmail.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtEmail_MouseDown);
             // 
             // lblCod
             // 

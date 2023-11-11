@@ -135,5 +135,101 @@ namespace Control_Gym.Capa_de_presentacion
                 e.Handled = true;
             }
         }
+
+        private void txtDniCliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtNombre_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtApellido_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtTelefono_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtDomicilio_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtDniCliente_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
+            }
+        }
+
+        private void txtNombre_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
+            }
+        }
+
+        private void txtApellido_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
+            }
+        }
+
+        private void txtTelefono_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
+            }
+        }
+
+        private void txtDomicilio_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
+            }
+        }
+
+        private void txtEmail_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
+            }
+        }
     }
 }
