@@ -141,6 +141,22 @@ namespace Control_Gym.Capa_de_presentacion
                 e.SuppressKeyPress = true;
             }
         }
+
+        private void txtNombre_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
+            }
+        }
+
+        private void txtNombre_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }
 

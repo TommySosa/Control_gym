@@ -124,6 +124,7 @@
             this.txtCodProducto.TabIndex = 0;
             this.txtCodProducto.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             this.txtCodProducto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodProducto_KeyDown);
+            this.txtCodProducto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodProducto_KeyPress);
             this.txtCodProducto.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtCodProducto_MouseDown);
             // 
             // cmbProveedor

@@ -423,15 +423,33 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void txtDniCliente_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (char.IsDigit(e.KeyChar))
+            {
+                string currentText = txtDniCliente.Text;
+
+                if (currentText.Length + 1 > 8)
+                {
+                    e.Handled = true;
+                }
+            }
+            else if (!char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
             if ((e.KeyChar >= 33 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
             {
                 MessageBox.Show("Solo números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 e.Handled = true;
+                return;
             }
         }
 
         private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == ' ')
+            {
+                e.Handled = true;
+            }
             if ((e.KeyChar >= 33 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
             {
                 MessageBox.Show("Solo números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -446,6 +464,10 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void txtDescuento_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == ' ')
+            {
+                e.Handled = true;
+            }
             if ((e.KeyChar >= 33 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
             {
                 MessageBox.Show("Solo números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -553,6 +575,42 @@ namespace Control_Gym.Capa_de_presentacion
             {
                 // Deshabilita el menú contextual al hacer clic derecho en el ComboBox
                 ((ComboBox)sender).ContextMenuStrip = new ContextMenuStrip();
+            }
+        }
+
+        private void txtDniEmpleado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                string currentText = txtDniEmpleado.Text;
+
+                if (currentText.Length + 1 > 8)
+                {
+                    e.Handled = true;
+                }
+            }
+            else if (!char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if ((e.KeyChar >= 33 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void txtCodProducto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == ' ')
+            {
+                e.Handled = true;
+            }
+            if ((e.KeyChar >= 33 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
             }
         }
     }

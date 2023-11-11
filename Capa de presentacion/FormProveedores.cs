@@ -162,15 +162,24 @@ namespace Control_Gym.Capa_de_presentacion
 
         private void txtCuit_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((e.KeyChar >= 33 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+            if (!((Char.IsDigit(e.KeyChar) || e.KeyChar == '-') || Char.IsControl(e.KeyChar)))
             {
-                MessageBox.Show("Solo números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Solo números y guion medio permitido", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 e.Handled = true;
             }
+            if (e.KeyChar == ' ')
+            {
+                e.Handled = true;
+            }
+
         }
 
         private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == ' ')
+            {
+                e.Handled = true;
+            }
             if ((e.KeyChar >= 33 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
             {
                 MessageBox.Show("Solo números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

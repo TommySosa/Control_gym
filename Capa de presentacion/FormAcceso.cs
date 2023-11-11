@@ -108,6 +108,10 @@ namespace Control_Gym.Capa_de_presentacion
                     e.Handled = true;
                     btnIniciarSesion_Click(sender, e);
                 }
+                if (e.KeyChar == ' ')
+                {
+                    e.Handled = true;
+                }
             }
             catch (Exception ex)
             {

@@ -147,6 +147,7 @@
             this.txtDniEmpleado.Size = new System.Drawing.Size(128, 20);
             this.txtDniEmpleado.TabIndex = 2;
             this.txtDniEmpleado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDniEmpleado_KeyDown);
+            this.txtDniEmpleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDniEmpleado_KeyPress);
             this.txtDniEmpleado.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtDniEmpleado_MouseDown);
             // 
             // txtDniCliente
@@ -389,6 +390,7 @@
             this.txtCodProducto.TabIndex = 3;
             this.txtCodProducto.TextChanged += new System.EventHandler(this.txtCodProducto_TextChanged);
             this.txtCodProducto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodProducto_KeyDown);
+            this.txtCodProducto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodProducto_KeyPress);
             this.txtCodProducto.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtCodProducto_MouseDown);
             // 
             // dvgCarrito
