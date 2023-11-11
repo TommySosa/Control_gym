@@ -360,6 +360,7 @@
             // 
             // cbCodProducto
             // 
+            this.cbCodProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCodProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbCodProducto.FormattingEnabled = true;
             this.cbCodProducto.ItemHeight = 13;

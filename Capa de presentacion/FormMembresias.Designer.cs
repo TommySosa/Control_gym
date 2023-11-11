@@ -197,6 +197,7 @@
             // 
             // cbTipoMembresia
             // 
+            this.cbTipoMembresia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipoMembresia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbTipoMembresia.FormattingEnabled = true;
             this.cbTipoMembresia.Location = new System.Drawing.Point(137, 57);
