@@ -88,5 +88,11 @@ namespace Control_Gym.Capa_logica
             List<CMembresia> membresias = cMembresiaD.BuscarPorDNI(dni);
             return membresias;
         }
+
+        public void Renovar(CMembresia cMembresia)
+        {
+            CMembresia membresia = new CMembresia();
+            membresia.Renovar(cMembresia);
+        }
     }
 }

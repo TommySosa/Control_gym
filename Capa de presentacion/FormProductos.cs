@@ -236,6 +236,7 @@ namespace Control_Gym.Capa_de_presentacion
 
                     DataGridViewRow filaSeleccionada = dgvProductos.SelectedRows[0];
                     txtCodProducto.Text = filaSeleccionada.Cells["cod_producto"].Value.ToString();
+                    txtCod.Text = filaSeleccionada.Cells["cod_producto"].Value.ToString();
                     cmbProveedor.Text = filaSeleccionada.Cells["cod_proveedor"].Value.ToString();
                     cmbTipoProducto.Text = filaSeleccionada.Cells["cod_tipo_producto"].Value.ToString();
                     txtNombre.Text = filaSeleccionada.Cells["nombre"].Value.ToString();

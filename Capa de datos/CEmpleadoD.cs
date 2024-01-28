@@ -76,7 +76,14 @@ namespace Control_Gym.Capa_de_datos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al eliminar el empleado en la CAPA DE DATOS: " + ex);
+                if (ex is SqlException sqlException && sqlException.Number == 547)
+                {
+                    MessageBox.Show("No se puede eliminar el empleado porque tiene ventas relacionadas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar el empleado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

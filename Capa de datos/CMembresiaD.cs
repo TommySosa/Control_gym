@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography;
@@ -13,6 +14,7 @@ namespace Control_Gym.Capa_de_datos
     internal class CMembresiaD
     {
         private ConexionBD conexionBD = ConexionBD.Instancia;
+        private CCuotaD cCuotaD = new CCuotaD();
 
         public bool TieneTipoMembresia(int dni, int cod_tipo)
         {
@@ -43,9 +45,10 @@ namespace Control_Gym.Capa_de_datos
             }
         }
 
-        public void CrearMembresia(CMembresia cMembresia)
+        public int CrearMembresia(CMembresia cMembresia)
         {
-            string query = "INSERT INTO membresias(cod_tipo_membresia, dni_socio, fecha_inicio, fecha_fin) VALUES (@cod_tipo_membresia, @dni_socio, @fecha_inicio, @fecha_fin)";
+            string query = "INSERT INTO membresias(cod_tipo_membresia, dni_socio, fecha_inicio, fecha_fin) VALUES (@cod_tipo_membresia, @dni_socio, @fecha_inicio, @fecha_fin); SELECT SCOPE_IDENTITY();";
+
             try
             {
                 SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
@@ -55,17 +58,22 @@ namespace Control_Gym.Capa_de_datos
                 comando.Parameters.Add(new SqlParameter("@fecha_inicio", cMembresia.fecha_inicio));
                 comando.Parameters.Add(new SqlParameter("@fecha_fin", cMembresia.fecha_fin));
 
-                comando.ExecuteNonQuery();
+                int idMembresia = Convert.ToInt32(comando.ExecuteScalar());
+                cCuotaD.CrearCuota(idMembresia);
+
+                return idMembresia;
             }
             catch (Exception)
             {
                 MessageBox.Show("Error al crear la membresia.");
+                return -1; 
             }
             finally
             {
                 conexionBD.CerrarConexion();
             }
         }
+
 
         public bool SocioExiste(int dni)
         {
@@ -225,19 +233,35 @@ namespace Control_Gym.Capa_de_datos
             }
         }
 
-
         public void EliminarMembresia(int id)
         {
-            string query = "delete membresias where cod_membresia = '" + id + "'";
             try
             {
-                SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
+                SqlCommand comando = new SqlCommand("EliminarMembresia", conexionBD.AbrirConexion());
+                comando.CommandType = CommandType.StoredProcedure;
+
+                // Parámetro de entrada
+                comando.Parameters.AddWithValue("@id", id);
+
+                // Parámetro de salida para capturar el mensaje del procedimiento almacenado
+                SqlParameter mensajeOutput = new SqlParameter("@mensajeOutput", SqlDbType.NVarChar, 500);
+                mensajeOutput.Direction = ParameterDirection.Output;
+                comando.Parameters.Add(mensajeOutput);
+
                 comando.ExecuteNonQuery();
-                MessageBox.Show("Membresia eliminada.");
+
+                // Obtener el mensaje de salida del procedimiento almacenado
+                string mensajeResultado = mensajeOutput.Value.ToString();
+
+                MessageBox.Show(mensajeResultado, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al eliminar la membresia" + ex);
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conexionBD.CerrarConexion();
             }
         }
 
@@ -275,6 +299,39 @@ namespace Control_Gym.Capa_de_datos
             {
                 MessageBox.Show("Hubo un error al mostrar las membresias: " + ex);
                 throw;
+            }
+            finally
+            {
+                conexionBD.CerrarConexion();
+            }            
+        }
+        public void Renovar(CMembresia cMembresia)
+        {
+            string query = "UPDATE membresias SET fecha_inicio = @fecha_inicio, fecha_fin = @fecha_fin WHERE cod_membresia = @cod_membresia";
+            string query3 = "select cantidad_dias from tipos_membresias t inner join membresias m on t.cod_tipo_membresia = m.cod_tipo_membresia where cod_membresia ='"+ cMembresia.cod_membresia +"'";
+
+            try
+            {
+                SqlCommand updateMembresia = new SqlCommand(query, conexionBD.AbrirConexion());
+                SqlCommand canttDiasPorTipo = new SqlCommand(query3, conexionBD.AbrirConexion());
+                int cantidad_dias = (int)canttDiasPorTipo.ExecuteScalar();
+                cMembresia.fecha_inicio = DateTime.Now;
+                DateTime fechaInicio = cMembresia.fecha_inicio;
+                DateTime fechaFin = fechaInicio.AddDays(cantidad_dias);
+                cMembresia.fecha_fin = fechaFin;
+
+                updateMembresia.Parameters.Add(new SqlParameter("@fecha_inicio", cMembresia.fecha_inicio.ToString("yyyy/MM/dd")));
+                updateMembresia.Parameters.Add(new SqlParameter("@fecha_fin", cMembresia.fecha_fin.ToString("yyyy/MM/dd")));
+                updateMembresia.Parameters.Add(new SqlParameter("@cod_membresia", cMembresia.cod_membresia));
+
+
+                cCuotaD.CrearCuota(cMembresia.cod_membresia);
+                updateMembresia.ExecuteNonQuery();
+                MessageBox.Show("Membresía renovada correctamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al renovar la membresía: " + ex.Message);
             }
             finally
             {

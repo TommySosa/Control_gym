@@ -47,6 +47,7 @@
             this.btnMenu = new System.Windows.Forms.PictureBox();
             this.iconrestaurar = new System.Windows.Forms.PictureBox();
             this.panelContenedor = new System.Windows.Forms.Panel();
+            this.btnCaja = new System.Windows.Forms.Button();
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnlogoInicio)).BeginInit();
@@ -61,6 +62,7 @@
             // MenuVertical
             // 
             this.MenuVertical.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.MenuVertical.Controls.Add(this.btnCaja);
             this.MenuVertical.Controls.Add(this.lblNombre);
             this.MenuVertical.Controls.Add(this.lblDNI);
             this.MenuVertical.Controls.Add(this.lbluser);
@@ -198,7 +200,7 @@
             this.btnAdministracion.ForeColor = System.Drawing.Color.White;
             this.btnAdministracion.Image = ((System.Drawing.Image)(resources.GetObject("btnAdministracion.Image")));
             this.btnAdministracion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdministracion.Location = new System.Drawing.Point(12, 241);
+            this.btnAdministracion.Location = new System.Drawing.Point(12, 287);
             this.btnAdministracion.Name = "btnAdministracion";
             this.btnAdministracion.Size = new System.Drawing.Size(250, 48);
             this.btnAdministracion.TabIndex = 3;
@@ -307,6 +309,23 @@
             this.panelContenedor.Size = new System.Drawing.Size(1050, 605);
             this.panelContenedor.TabIndex = 2;
             // 
+            // btnCaja
+            // 
+            this.btnCaja.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCaja.FlatAppearance.BorderSize = 0;
+            this.btnCaja.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnCaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCaja.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCaja.ForeColor = System.Drawing.Color.White;
+            this.btnCaja.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCaja.Location = new System.Drawing.Point(0, 241);
+            this.btnCaja.Name = "btnCaja";
+            this.btnCaja.Size = new System.Drawing.Size(250, 40);
+            this.btnCaja.TabIndex = 19;
+            this.btnCaja.Text = "CAJA";
+            this.btnCaja.UseVisualStyleBackColor = true;
+            this.btnCaja.Click += new System.EventHandler(this.btnCaja_Click);
+            // 
             // FormContenedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -319,7 +338,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormContenedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Administracion";
             this.Load += new System.EventHandler(this.FormContenedor_Load);
             this.MenuVertical.ResumeLayout(false);
             this.MenuVertical.PerformLayout();
@@ -355,6 +374,7 @@
         private System.Windows.Forms.Label lblusuario;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblDNI;
+        private System.Windows.Forms.Button btnCaja;
     }
 }
 

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -76,6 +77,13 @@ namespace Control_Gym.Capa_de_presentacion
 
             ClsTipoMembresia clsTipoMembresia = new ClsTipoMembresia();
             dgvTipoMembresia.DataSource = clsTipoMembresia.CargarDatos();
+            dgvTipoMembresia.Columns[0].HeaderText = "Código";
+            dgvTipoMembresia.Columns[1].HeaderText = "Nombre";
+            dgvTipoMembresia.Columns[2].HeaderText = "Precio";
+            dgvTipoMembresia.Columns[3].HeaderText = "Cantidad de dias";
+            dgvTipoMembresia.AutoResizeColumns();
+            dgvTipoMembresia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvTipoMembresia.Columns[0].Width = 50;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -94,7 +102,14 @@ namespace Control_Gym.Capa_de_presentacion
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al eliminar el tipo de membresía: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (ex is SqlException sqlException && sqlException.Number == 547)
+                {
+                    MessageBox.Show("No se puede eliminar el tipo de producto porque tiene productos relacionados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar el tipo de producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

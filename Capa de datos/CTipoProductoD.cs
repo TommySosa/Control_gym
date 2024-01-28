@@ -93,8 +93,15 @@ namespace Control_Gym.Capa_de_datos
                 MessageBox.Show("Producto eliminado correctamente");
             }
             catch (Exception ex) 
-            { 
-                MessageBox.Show("Error al eliminar el tipo de producto" +  ex);
+            {
+                if (ex is SqlException sqlException && sqlException.Number == 547)
+                {
+                    MessageBox.Show("No se puede eliminar el tipo de producto porque tiene productos relacionados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar el tipo de producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
         public List<CTipoProducto> traerTiposProducto()

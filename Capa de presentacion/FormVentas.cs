@@ -285,7 +285,7 @@ namespace Control_Gym.Capa_de_presentacion
                     MessageBox.Show("No hay un empleado con ese DNI!");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Por favor, verifique y llene todos los campos");
             }
@@ -457,7 +457,6 @@ namespace Control_Gym.Capa_de_presentacion
             }
             if (e.KeyChar == (char)22) // 22 es el código ASCII para Ctrl + V
             {
-                // Evita que se realice la acción de pegar
                 e.Handled = true;
             }
         }
@@ -473,9 +472,8 @@ namespace Control_Gym.Capa_de_presentacion
                 MessageBox.Show("Solo números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 e.Handled = true;
             }
-            if (e.KeyChar == (char)22) // 22 es el código ASCII para Ctrl + V
+            if (e.KeyChar == (char)22)
             {
-                // Evita que se realice la acción de pegar
                 e.Handled = true;
             }
         }
@@ -484,7 +482,6 @@ namespace Control_Gym.Capa_de_presentacion
         {
             if (e.Control && e.KeyCode == Keys.V)
             {
-                // Evita que se realice la acción de pegar
                 e.Handled = true;
             }
         }
@@ -573,7 +570,6 @@ namespace Control_Gym.Capa_de_presentacion
         {
             if (e.Button == MouseButtons.Right)
             {
-                // Deshabilita el menú contextual al hacer clic derecho en el ComboBox
                 ((ComboBox)sender).ContextMenuStrip = new ContextMenuStrip();
             }
         }

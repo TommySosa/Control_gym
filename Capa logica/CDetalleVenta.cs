@@ -11,9 +11,11 @@ namespace Control_Gym.Capa_logica
     {
         public int num_venta { get; set; }
         public long cod_producto { get; set; }
-        public decimal subtotal { get; set; }
+        public string nombre_producto { get; set; }
         public int cantidad { get; set; }
+        public decimal precio_producto { get; set; }
         public decimal descuento { get; set; }
+        public decimal subtotal { get; set; }
 
 
         public CDetalleVenta() { }

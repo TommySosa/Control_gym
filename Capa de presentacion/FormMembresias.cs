@@ -54,6 +54,7 @@ namespace Control_Gym.Capa_de_presentacion
             btnCancelarMembresia.Visible = false;
             btnActualizarMembresia.Visible = false;
             btnEliminarMembresia.Visible = false;
+            btnRenovar.Visible = false;
             dtpFechaFin.Value = dtpFechaFin.Value.AddDays(cMembresia.cantidad_dias);
             dvgMembresias.CellFormatting += dvgMembresias_CellFormatting;
             CargarGrilla();
@@ -74,6 +75,7 @@ namespace Control_Gym.Capa_de_presentacion
             btnActualizarMembresia.Visible = false;
             btnEliminarMembresia.Visible = false;
             btnCancelarMembresia.Visible = false;
+            btnRenovar.Visible = false;
         }
 
         public void LimpiarCampos()
@@ -271,10 +273,13 @@ namespace Control_Gym.Capa_de_presentacion
                     btnCancelarMembresia.Visible = true;
                     btnActualizarMembresia.Visible = true;
                     btnEliminarMembresia.Visible = true;
+                    btnRenovar.Visible = true;
 
                     DataGridViewRow filaSeleccionada = dvgMembresias.SelectedRows[0];
                     txtCodMembresia.Text = filaSeleccionada.Cells["cod_membresia"].Value.ToString();
                     cbTipoMembresia.Text = filaSeleccionada.Cells["cod_tipo_membresia"].Value.ToString();
+                    cbTipoMembresia.Text = filaSeleccionada.Cells["nombre_tipo"].Value.ToString();
+
                     txtDniMembresia.Text = filaSeleccionada.Cells["dni_socio"].Value.ToString();
                     dtpFechaInicio.Text = filaSeleccionada.Cells["fecha_inicio"].Value.ToString();
                     dtpFechaFin.Text = filaSeleccionada.Cells["fecha_fin"].Value.ToString();
@@ -359,7 +364,6 @@ namespace Control_Gym.Capa_de_presentacion
         {
             if (e.Button == MouseButtons.Right)
             {
-                // Deshabilita el menú contextual al hacer clic derecho en el ComboBox
                 ((ComboBox)sender).ContextMenuStrip = new ContextMenuStrip();
             }
         }
@@ -369,6 +373,38 @@ namespace Control_Gym.Capa_de_presentacion
             if (e.Control && e.KeyCode == Keys.V)
             {
                 e.SuppressKeyPress = true;
+            }
+        }
+
+        private void btnRenovar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dvgMembresias.SelectedRows.Count > 0)
+                {
+                    CMembresia cMembresiaG = new CMembresia(Convert.ToInt32(txtCodMembresia.Text), cTipoMembresia.cod_tipo_membresia, Convert.ToInt32(txtDniMembresia.Text), DateTime.Parse(dtpFechaInicio.Value.ToString("yyyy/MM/dd")), DateTime.Parse(dtpFechaFin.Value.ToString("yyyy/MM/dd")));
+                    CMembresiaD cMembresiaD = new CMembresiaD();
+                    //bool existe = cMembresiaD.SocioExiste(cMembresiaG.dni_socio);
+                    if (dvgMembresias.SelectedRows[0].Cells[4].Style.BackColor != Color.LightGreen)
+                    {
+                        cMembresiaD.Renovar(cMembresiaG);
+                        CargarGrilla();
+                        LimpiarCampos();
+                        CancelarModificar();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Quedan muchos dias, aún no se puede renovar.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Por favor ingrese el DNI");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar la membresía: " + ex.Message);
             }
         }
     }

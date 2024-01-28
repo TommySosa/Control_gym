@@ -42,6 +42,43 @@ namespace Control_Gym.Capa_de_datos
 
         }
 
+        public List<CVenta> traerVentas()
+        {
+            List<CVenta> ventas = new List<CVenta>();
+            try
+            {
+                conexionBD.AbrirConexion();
+                string query = "select * from ventas";
+                SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
+                SqlDataReader reader = comando.ExecuteReader();
+                {
+                    while (reader.Read())
+                    {
+                        CVenta venta = new CVenta
+                        {
+                            num_venta = Convert.ToInt32(reader["num_venta"]),
+                            dni_cliente = Convert.ToInt32(reader["dni_cliente"]),
+                            dni_empleado = Convert.ToInt32(reader["dni_empleado"]),
+                            fecha = Convert.ToDateTime(reader["fecha"]),
+                            total = Convert.ToDecimal(reader["total"]),
+                        };
+
+                        ventas.Add(venta);
+                    }
+                }
+                return ventas;
+            }
+            catch
+            {
+                MessageBox.Show("Error al traer las ventas");
+                return null;
+            }
+            finally
+            {
+                conexionBD.CerrarConexion();
+            }
+        }
+
         public bool RealizarVenta(int dniCliente, int dniEmpleado, decimal descuento, decimal total, List<CDetalleVenta> detallesVenta)
         {
             try
@@ -176,6 +213,147 @@ namespace Control_Gym.Capa_de_datos
             {
                 MessageBox.Show("Hubo un error al buscar el producto: " + ex.Message);
                 throw;
+            }
+            finally
+            {
+                conexionBD.CerrarConexion();
+            }
+        }
+
+        public decimal ObtenerTotal()
+        {
+            string query = "select ISNULL(SUM(total),0) as total from ventas;";
+
+            try
+            {
+                SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
+
+                SqlDataReader reader = comando.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    decimal total = Convert.ToDecimal(reader["total"]);
+
+                    reader.Close();
+                    return total;
+                }
+                else
+                {
+                    reader.Close();
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocurrió un error al obtener el total");
+                throw;
+            }
+            finally
+            {
+                conexionBD.CerrarConexion();
+            }
+        }
+
+        public decimal ObtenerTotalMesActual()
+        {
+            string query = "SELECT ISNULL(SUM(total), 0) as total FROM ventas WHERE MONTH(fecha) = MONTH(GETDATE()) AND YEAR(fecha) = YEAR(GETDATE());";
+
+            try
+            {
+                SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
+
+                SqlDataReader reader = comando.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    decimal total = Convert.ToDecimal(reader["total"]);
+
+                    reader.Close();
+                    return total;
+                }
+                else
+                {
+                    reader.Close();
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocurrió un error al obtener el total de este mes");
+                throw;
+            }
+            finally
+            {
+                conexionBD.CerrarConexion();
+            }
+        }
+
+        public decimal ObtenerTotalHoy()
+        {
+            string query = "SELECT ISNULL(SUM(total), 0) as total from ventas WHERE fecha = CAST(GETDATE() AS DATE);";
+
+            try
+            {
+                SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
+
+                SqlDataReader reader = comando.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    decimal total = Convert.ToDecimal(reader["total"]);
+
+                    reader.Close();
+                    return total;
+                }
+                else
+                {
+                    reader.Close();
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocurrió un error al obtener el total de hoy");
+                throw;
+            }
+            finally
+            {
+                conexionBD.CerrarConexion();
+            }
+        }
+
+        public List<CDetalleVenta> traerDetalles(int num_venta)
+        {
+            List<CDetalleVenta> detalles = new List<CDetalleVenta>();
+            try
+            {
+                conexionBD.AbrirConexion();
+                string query = $"select d.num_venta, d.cod_producto, p.nombre , d.cantidad, p.precio_venta, d.descuento, d.subtotal from detalles_ventas d inner join productos p on d.cod_producto = p.cod_producto where num_venta = {num_venta}";
+                SqlCommand comando = new SqlCommand(query, conexionBD.AbrirConexion());
+                SqlDataReader reader = comando.ExecuteReader();
+                {
+                    while (reader.Read())
+                    {
+                        CDetalleVenta detalle = new CDetalleVenta
+                        {
+                            num_venta = Convert.ToInt32(reader["num_venta"]),
+                            cod_producto = Convert.ToInt64(reader["cod_producto"]),
+                            nombre_producto = reader["nombre"].ToString(),
+                            cantidad = Convert.ToInt32(reader["cantidad"]),
+                            precio_producto = Convert.ToDecimal(reader["precio_venta"]),
+                            descuento = Convert.ToDecimal(reader["descuento"]),
+                            subtotal = Convert.ToDecimal(reader["subtotal"]),
+                        };
+
+                        detalles.Add(detalle);
+                    }
+                }
+                return detalles;
+            }
+            catch
+            {
+                MessageBox.Show("Error al traer los detalles");
+                return null;
             }
             finally
             {

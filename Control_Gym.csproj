@@ -36,6 +36,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Capa de datos\CAccesoD.cs" />
+    <Compile Include="Capa de datos\CCuotaD.cs" />
     <Compile Include="Capa de datos\CChequeoD.cs" />
     <Compile Include="Capa de datos\CDetalleVentaD.cs" />
     <Compile Include="Capa de datos\CEmpleadoD.cs" />
@@ -77,6 +79,12 @@
     </Compile>
     <Compile Include="Capa de presentacion\FormAgregarCliente.Designer.cs">
       <DependentUpon>FormAgregarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Capa de presentacion\FormCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Capa de presentacion\FormCaja.Designer.cs">
+      <DependentUpon>FormCaja.cs</DependentUpon>
     </Compile>
     <Compile Include="Capa de presentacion\FormChequeo.cs">
       <SubType>Form</SubType>
@@ -144,7 +152,14 @@
     <Compile Include="Capa de presentacion\FormVentas.Designer.cs">
       <DependentUpon>FormVentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Capa de presentacion\FormVerDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Capa de presentacion\FormVerDetalle.Designer.cs">
+      <DependentUpon>FormVerDetalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Capa logica\CAcceso.cs" />
+    <Compile Include="Capa logica\CCuota.cs" />
     <Compile Include="Capa logica\CDetalleVenta.cs" />
     <Compile Include="Capa logica\CEmpleado.cs" />
     <Compile Include="Capa logica\ClsProvedores.cs" />
@@ -165,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Capa de presentacion\FormAgregarCliente.resx">
       <DependentUpon>FormAgregarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Capa de presentacion\FormCaja.resx">
+      <DependentUpon>FormCaja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Capa de presentacion\FormChequeo.resx">
       <DependentUpon>FormChequeo.cs</DependentUpon>
@@ -199,6 +217,9 @@
     <EmbeddedResource Include="Capa de presentacion\FormVentas.resx">
       <DependentUpon>FormVentas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Capa de presentacion\FormVerDetalle.resx">
+      <DependentUpon>FormVerDetalle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -216,11 +237,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Iconos\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include=".gitignore" />
+    <None Include="Iconos\caja.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

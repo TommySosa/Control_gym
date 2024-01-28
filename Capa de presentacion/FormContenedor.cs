@@ -194,5 +194,19 @@ namespace Control_Gym
                 MessageBox.Show("Error al cargar el formulario de contenedor: " + ex.Message);
             }
         }
+
+        private void btnCaja_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AbrirFormEnPanel(new FormCaja());
+                lblDNI.Text = this.dni_empleado.ToString();
+                lblNombre.Text = this.nombre;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el formulario de contenedor: " + ex.Message);
+            }
+        }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,16 @@ namespace Control_Gym.Capa_de_presentacion
             {
                 ClsProvedores clsProvedores = new ClsProvedores();
                 dgvProveedores.DataSource = clsProvedores.CargarDatos();
+                dgvProveedores.Columns[0].HeaderText = "Código";
+                dgvProveedores.Columns[1].HeaderText = "Nombre";
+                dgvProveedores.Columns[2].HeaderText = "CUIT";
+                dgvProveedores.Columns[3].HeaderText = "Teléfono";
+                dgvProveedores.Columns[4].HeaderText = "Dirección";
+                dgvProveedores.Columns[5].HeaderText = "E-mail";
+                dgvProveedores.AutoResizeColumns();
+                dgvProveedores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgvProveedores.Columns[0].Width = 50;
+
             }
             catch (Exception ex)
             {
@@ -125,7 +136,14 @@ namespace Control_Gym.Capa_de_presentacion
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al eliminar proveedor: " + ex.Message);
+                if (ex is SqlException sqlException && sqlException.Number == 547)
+                {
+                    MessageBox.Show("No se puede eliminar el tipo de producto porque tiene productos relacionados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar el tipo de producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

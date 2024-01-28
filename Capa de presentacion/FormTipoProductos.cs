@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -34,7 +35,14 @@ namespace Control_Gym.Capa_de_presentacion
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al eliminar el tipo de producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (ex is SqlException sqlException && sqlException.Number == 547)
+                {
+                    MessageBox.Show("No se puede eliminar el tipo de producto porque tiene productos relacionados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar el tipo de producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -86,6 +94,11 @@ namespace Control_Gym.Capa_de_presentacion
 
             CTipoProducto cTipoProducto = new CTipoProducto();
             dgvTipoProducto.DataSource = cTipoProducto.MostrarTipoProducto();
+            dgvTipoProducto.Columns[0].HeaderText = "Código";
+            dgvTipoProducto.Columns[1].HeaderText = "Nombre";
+            dgvTipoProducto.AutoResizeColumns();
+            dgvTipoProducto.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvTipoProducto.Columns[0].Width = 50;
         }
 
         private void cancelarActualizar()

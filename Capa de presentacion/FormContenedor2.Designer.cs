@@ -204,7 +204,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormContenedor2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormContenedor2";
+            this.Text = "Inicio";
             this.Load += new System.EventHandler(this.FormContenedor2_Load);
             this.BarraTitulo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnlogoInicio)).EndInit();

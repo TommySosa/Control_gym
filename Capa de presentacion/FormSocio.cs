@@ -202,7 +202,7 @@ namespace Control_Gym.Capa_de_presentacion
 
                 if (MembresiaActiva)
                 {
-                    MessageBox.Show("No se puede eliminar un socio que tiene una membresía activa");
+                    MessageBox.Show("No se puede eliminar el socio porque tiene una membresia relacionada");
                     limpiarCampos();
                     CancelarModificar();
                 }
@@ -228,6 +228,13 @@ namespace Control_Gym.Capa_de_presentacion
                 ClsSocio clsSocio = new ClsSocio();
 
                 dgvSocios.DataSource = clsSocio.CargarDatos();
+                dgvSocios.Columns[0].HeaderText = "DNI";
+                dgvSocios.Columns[1].HeaderText = "Nombre";
+                dgvSocios.Columns[2].HeaderText = "Apellido";
+                dgvSocios.Columns[3].HeaderText = "Teléfono";
+                dgvSocios.Columns[4].HeaderText = "Fecha de Nacimiento";
+                dgvSocios.Columns[5].HeaderText = "Domicilio";
+                dgvSocios.Columns[6].HeaderText = "E-mail";
 
                 CancelarModificar();
             }
