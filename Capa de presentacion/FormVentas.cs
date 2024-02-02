@@ -102,12 +102,12 @@ namespace Control_Gym.Capa_de_presentacion
                         bool productoExistente = false;
                         if (descuento__ < 0 || descuento__ > 100)
                         {
-                            MessageBox.Show("El descuento debe ser de 0% hasta 100%");
+                            MessageBox.Show("El descuento debe ser de 0% hasta 100%", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             return;
                         }
                         if (cantidad__ < 0)
                         {
-                            MessageBox.Show("Ingresa una cantidad correcta!");
+                            MessageBox.Show("Ingresa una cantidad correcta!", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             return;
                         }
 
@@ -153,7 +153,7 @@ namespace Control_Gym.Capa_de_presentacion
                                     decimal descuento_ = Convert.ToDecimal(row.Cells["descuento"].Value);
                                     if (descuento < 0 || descuento > 100)
                                     {
-                                        MessageBox.Show("El descuento debe estar entre 0% y 100%");
+                                        MessageBox.Show("El descuento debe estar entre 0% y 100%", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                         return;
                                     }
                                     else
@@ -172,13 +172,13 @@ namespace Control_Gym.Capa_de_presentacion
                     }
                     else
                     {
-                        MessageBox.Show("Llená todos los campos.");
+                        MessageBox.Show("Llená todos los campos.", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Datos incorrectos. Verifica los campos!");
+                    MessageBox.Show("Datos incorrectos. Verifica los campos!", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception ex)
@@ -203,7 +203,7 @@ namespace Control_Gym.Capa_de_presentacion
                     {
                         if (descuento < 0 || descuento > 100)
                         {
-                            MessageBox.Show("El descuento puede ser de 0% a 100%.");
+                            MessageBox.Show("El descuento puede ser de 0% a 100%.", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             return;
                         }
                         List<CDetalleVenta> detallesVenta = new List<CDetalleVenta>();
@@ -244,7 +244,7 @@ namespace Control_Gym.Capa_de_presentacion
                             bool ventaExitosa = cVenta.RealizarVenta(dni_Cliente, dniEmpleado, descuento, total, detallesVenta);
                             if (!ventaExitosa)
                             {
-                                MessageBox.Show("No hay suficiente stock disponible para completar la venta.");
+                                MessageBox.Show("No hay suficiente stock disponible para completar la venta.", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             }
                             else
                             {
@@ -256,12 +256,12 @@ namespace Control_Gym.Capa_de_presentacion
                         }
                         else
                         {
-                            MessageBox.Show("Agrega productos al carrito!");
+                            MessageBox.Show("Agrega productos al carrito!", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }                  
                     }
                     else
                     {
-                        MessageBox.Show("Por favor, ingresa valores numéricos válidos en los campos de DNI.");
+                        MessageBox.Show("Por favor, ingresa valores numéricos válidos en los campos de DNI.", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
                 else if(!existeSocio)
@@ -282,12 +282,12 @@ namespace Control_Gym.Capa_de_presentacion
                 }
                 else
                 {
-                    MessageBox.Show("No hay un empleado con ese DNI!");
+                    MessageBox.Show("No hay un empleado con ese DNI!", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("Por favor, verifique y llene todos los campos");
+                MessageBox.Show("Por favor, verifique y llene todos los campos", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -332,7 +332,7 @@ namespace Control_Gym.Capa_de_presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Debes ingresar el DNI del cliente.");
+                    MessageBox.Show("Debes ingresar el DNI del cliente.", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception ex)

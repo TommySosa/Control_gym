@@ -76,6 +76,8 @@ namespace Control_Gym.Capa_de_presentacion
             btnEliminarMembresia.Visible = false;
             btnCancelarMembresia.Visible = false;
             btnRenovar.Visible = false;
+
+            txtDniMembresia.ReadOnly = false;
         }
 
         public void LimpiarCampos()
@@ -112,18 +114,19 @@ namespace Control_Gym.Capa_de_presentacion
                         }
                         else
                         {
-                            MessageBox.Show("El socio ya tiene cargado una membresia de ese tipo.");
+                            MessageBox.Show("El socio ya tiene cargado una membresia de ese tipo.", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             LimpiarCampos();
                         }
                     }
                     else
                     {
-                        MessageBox.Show("El socio con el DNI especificado no existe en la base de datos.");
+                        MessageBox.Show("El socio con el DNI especificado no existe en la base de datos.", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        LimpiarCampos();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Por favor complete todos los campos");
+                    MessageBox.Show("Por favor complete todos los campos", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception ex)
@@ -236,12 +239,12 @@ namespace Control_Gym.Capa_de_presentacion
                     }
                     else
                     {
-                        MessageBox.Show("El socio con el DNI especificado no existe en la base de datos. Primero haga el alta del socio.");
+                        MessageBox.Show("El socio con el DNI especificado no existe en la base de datos. Primero haga el alta del socio.", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Por favor ingrese el DNI");
+                    MessageBox.Show("Por favor ingrese el DNI", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception ex)
@@ -274,6 +277,8 @@ namespace Control_Gym.Capa_de_presentacion
                     btnActualizarMembresia.Visible = true;
                     btnEliminarMembresia.Visible = true;
                     btnRenovar.Visible = true;
+
+                    txtDniMembresia.ReadOnly = true;
 
                     DataGridViewRow filaSeleccionada = dvgMembresias.SelectedRows[0];
                     txtCodMembresia.Text = filaSeleccionada.Cells["cod_membresia"].Value.ToString();
@@ -394,17 +399,25 @@ namespace Control_Gym.Capa_de_presentacion
                     }
                     else
                     {
-                        MessageBox.Show("Quedan muchos dias, aún no se puede renovar.");
+                        MessageBox.Show("Quedan muchos dias, aún no se puede renovar.", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Por favor ingrese el DNI");
+                    MessageBox.Show("Por favor ingrese el DNI", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al actualizar la membresía: " + ex.Message);
+            }
+        }
+
+        private void txtDniMembresia_Click(object sender, EventArgs e)
+        {
+            if (txtDniMembresia.ReadOnly)
+            {
+                MessageBox.Show("No se puede modificar el DNI", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
     }

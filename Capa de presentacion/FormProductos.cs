@@ -60,13 +60,13 @@ namespace Control_Gym.Capa_de_presentacion
 
                 if (string.IsNullOrWhiteSpace(txtCodProducto.Text))
                 {
-                    MessageBox.Show("El campo Código de Producto no puede estar vacío.");
+                    MessageBox.Show("El campo Código de Producto no puede estar vacío.", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
 
                 if (!long.TryParse(txtCodProducto.Text.Trim(), out cod_producto))
                 {
-                    MessageBox.Show("El campo Código de Producto debe ser un número válido.");
+                    MessageBox.Show("El campo Código de Producto debe ser un número válido.", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
 
@@ -123,13 +123,13 @@ namespace Control_Gym.Capa_de_presentacion
 
                     if (string.IsNullOrWhiteSpace(txtCodProducto.Text))
                     {
-                        MessageBox.Show("El campo Código de Producto no puede estar vacío.");
+                        MessageBox.Show("El campo Código de Producto no puede estar vacío.", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return;
                     }
 
                     if (!long.TryParse(txtCodProducto.Text.Trim(), out cod_producto))
                     {
-                        MessageBox.Show("El campo Código de Producto debe ser un número válido.");
+                        MessageBox.Show("El campo Código de Producto debe ser un número válido.", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return;
                     }
 
@@ -152,7 +152,7 @@ namespace Control_Gym.Capa_de_presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Por favor complete todos los campos");
+                    MessageBox.Show("Por favor complete todos los campos", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception ex)
@@ -248,7 +248,7 @@ namespace Control_Gym.Capa_de_presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Selecciona una fila en la grilla antes de cargar los datos.");
+                    MessageBox.Show("Selecciona una fila en la grilla antes de cargar los datos.", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception ex)

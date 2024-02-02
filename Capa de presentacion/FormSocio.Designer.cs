@@ -52,6 +52,8 @@
             this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.lblDni = new System.Windows.Forms.Label();
             this.panelContenedor = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblDni2Membresia = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
@@ -64,11 +66,11 @@
             this.dgvSocios.AllowUserToAddRows = false;
             this.dgvSocios.AllowUserToDeleteRows = false;
             this.dgvSocios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSocios.Location = new System.Drawing.Point(360, 60);
+            this.dgvSocios.Location = new System.Drawing.Point(308, 60);
             this.dgvSocios.Name = "dgvSocios";
             this.dgvSocios.ReadOnly = true;
             this.dgvSocios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSocios.Size = new System.Drawing.Size(667, 511);
+            this.dgvSocios.Size = new System.Drawing.Size(741, 511);
             this.dgvSocios.TabIndex = 50;
             this.dgvSocios.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvSocios_RowHeaderMouseClick);
             // 
@@ -76,18 +78,19 @@
             // 
             this.txtDniSocio.Location = new System.Drawing.Point(109, 72);
             this.txtDniSocio.Name = "txtDniSocio";
-            this.txtDniSocio.Size = new System.Drawing.Size(212, 20);
+            this.txtDniSocio.Size = new System.Drawing.Size(176, 20);
             this.txtDniSocio.TabIndex = 0;
             this.txtDniSocio.Click += new System.EventHandler(this.txtDniSocio_Click);
             this.txtDniSocio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDniSocio_KeyDown);
             this.txtDniSocio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDniSocio_KeyPress);
+            this.txtDniSocio.Leave += new System.EventHandler(this.txtDniSocio_Leave);
             this.txtDniSocio.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtDniSocio_MouseDown);
             // 
             // txtNombreSocio
             // 
             this.txtNombreSocio.Location = new System.Drawing.Point(109, 108);
             this.txtNombreSocio.Name = "txtNombreSocio";
-            this.txtNombreSocio.Size = new System.Drawing.Size(212, 20);
+            this.txtNombreSocio.Size = new System.Drawing.Size(176, 20);
             this.txtNombreSocio.TabIndex = 1;
             this.txtNombreSocio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombreSocio_KeyDown);
             this.txtNombreSocio.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtNombreSocio_MouseDown);
@@ -96,7 +99,7 @@
             // 
             this.txtApellidoSocio.Location = new System.Drawing.Point(109, 148);
             this.txtApellidoSocio.Name = "txtApellidoSocio";
-            this.txtApellidoSocio.Size = new System.Drawing.Size(212, 20);
+            this.txtApellidoSocio.Size = new System.Drawing.Size(176, 20);
             this.txtApellidoSocio.TabIndex = 2;
             this.txtApellidoSocio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtApellidoSocio_KeyDown);
             this.txtApellidoSocio.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtApellidoSocio_MouseDown);
@@ -105,7 +108,7 @@
             // 
             this.txtTelefonoSocio.Location = new System.Drawing.Point(109, 186);
             this.txtTelefonoSocio.Name = "txtTelefonoSocio";
-            this.txtTelefonoSocio.Size = new System.Drawing.Size(212, 20);
+            this.txtTelefonoSocio.Size = new System.Drawing.Size(176, 20);
             this.txtTelefonoSocio.TabIndex = 3;
             this.txtTelefonoSocio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTelefonoSocio_KeyDown);
             this.txtTelefonoSocio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonoSocio_KeyPress);
@@ -115,7 +118,7 @@
             // 
             this.txtDomicilio.Location = new System.Drawing.Point(109, 266);
             this.txtDomicilio.Name = "txtDomicilio";
-            this.txtDomicilio.Size = new System.Drawing.Size(212, 20);
+            this.txtDomicilio.Size = new System.Drawing.Size(176, 20);
             this.txtDomicilio.TabIndex = 5;
             this.txtDomicilio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDomicilio_KeyDown);
             this.txtDomicilio.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtDomicilio_MouseDown);
@@ -124,7 +127,7 @@
             // 
             this.txtEmail.Location = new System.Drawing.Point(109, 302);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(212, 20);
+            this.txtEmail.Size = new System.Drawing.Size(176, 20);
             this.txtEmail.TabIndex = 6;
             this.txtEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmail_KeyDown);
             this.txtEmail.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtEmail_MouseDown);
@@ -134,18 +137,18 @@
             this.lblNombre.AutoSize = true;
             this.lblNombre.Location = new System.Drawing.Point(12, 111);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(54, 13);
+            this.lblNombre.Size = new System.Drawing.Size(61, 13);
             this.lblNombre.TabIndex = 9;
-            this.lblNombre.Text = "NOMBRE";
+            this.lblNombre.Text = "NOMBRE *";
             // 
             // lblApellido
             // 
             this.lblApellido.AutoSize = true;
             this.lblApellido.Location = new System.Drawing.Point(12, 151);
             this.lblApellido.Name = "lblApellido";
-            this.lblApellido.Size = new System.Drawing.Size(59, 13);
+            this.lblApellido.Size = new System.Drawing.Size(66, 13);
             this.lblApellido.TabIndex = 10;
-            this.lblApellido.Text = "APELLIDO";
+            this.lblApellido.Text = "APELLIDO *";
             // 
             // lblTelefono
             // 
@@ -179,9 +182,9 @@
             this.lblEmail.AutoSize = true;
             this.lblEmail.Location = new System.Drawing.Point(12, 305);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(39, 13);
+            this.lblEmail.Size = new System.Drawing.Size(42, 13);
             this.lblEmail.TabIndex = 14;
-            this.lblEmail.Text = "EMAIL";
+            this.lblEmail.Text = "E-MAIL";
             // 
             // btnGuardar
             // 
@@ -220,7 +223,7 @@
             this.btnBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBorrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBorrar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnBorrar.Location = new System.Drawing.Point(244, 347);
+            this.btnBorrar.Location = new System.Drawing.Point(210, 347);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(75, 30);
             this.btnBorrar.TabIndex = 8;
@@ -262,7 +265,7 @@
             // 
             this.dtpFechaNacimiento.Location = new System.Drawing.Point(109, 226);
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
-            this.dtpFechaNacimiento.Size = new System.Drawing.Size(212, 20);
+            this.dtpFechaNacimiento.Size = new System.Drawing.Size(176, 20);
             this.dtpFechaNacimiento.TabIndex = 4;
             this.dtpFechaNacimiento.ValueChanged += new System.EventHandler(this.dtpFechaNacimiento_ValueChanged);
             // 
@@ -271,21 +274,49 @@
             this.lblDni.AutoSize = true;
             this.lblDni.Location = new System.Drawing.Point(12, 75);
             this.lblDni.Name = "lblDni";
-            this.lblDni.Size = new System.Drawing.Size(26, 13);
+            this.lblDni.Size = new System.Drawing.Size(33, 13);
             this.lblDni.TabIndex = 27;
-            this.lblDni.Text = "DNI";
+            this.lblDni.Text = "DNI *";
             // 
             // panelContenedor
             // 
             this.panelContenedor.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelContenedor.Controls.Add(this.label2);
+            this.panelContenedor.Controls.Add(this.label1);
             this.panelContenedor.Controls.Add(this.pictureBox1);
             this.panelContenedor.Controls.Add(this.lblDni2Membresia);
+            this.panelContenedor.Controls.Add(this.btnBorrar);
             this.panelContenedor.Controls.Add(this.txtBuscarSocio);
+            this.panelContenedor.Controls.Add(this.dgvSocios);
+            this.panelContenedor.Controls.Add(this.btnGuardar);
+            this.panelContenedor.Controls.Add(this.btnModificar);
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenedor.Location = new System.Drawing.Point(0, 0);
             this.panelContenedor.Name = "panelContenedor";
             this.panelContenedor.Size = new System.Drawing.Size(1050, 605);
             this.panelContenedor.TabIndex = 28;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(127, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(103, 20);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "ATENCIÓN!";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(12, 54);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(293, 15);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "*El DNI no se podrá modificar mas adelente!";
             // 
             // pictureBox1
             // 
@@ -316,7 +347,6 @@
             this.Controls.Add(this.lblDni);
             this.Controls.Add(this.dtpFechaNacimiento);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblDomicilio);
             this.Controls.Add(this.lblFechaNacimiento);
@@ -329,9 +359,6 @@
             this.Controls.Add(this.txtApellidoSocio);
             this.Controls.Add(this.txtNombreSocio);
             this.Controls.Add(this.txtDniSocio);
-            this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.btnModificar);
-            this.Controls.Add(this.dgvSocios);
             this.Controls.Add(this.panelContenedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(536, 560);
@@ -373,5 +400,7 @@
         private System.Windows.Forms.Panel panelContenedor;
         private System.Windows.Forms.Label lblDni2Membresia;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

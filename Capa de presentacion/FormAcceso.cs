@@ -56,12 +56,14 @@ namespace Control_Gym.Capa_de_presentacion
                     }
                     else
                     {
-                        MessageBox.Show("Datos incorrectos.");
+                        MessageBox.Show("Datos incorrectos.", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        txtDniEmpleado.Text = "";
+                        txtContraseñaEmpleado.Text = "";
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Uno de los campos está vacío");
+                    MessageBox.Show("Uno de los campos está vacío", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception ex)
@@ -149,6 +151,26 @@ namespace Control_Gym.Capa_de_presentacion
             {
                 ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
             }
+        }
+
+        private void txtContraseñaEmpleado_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDniEmpleado_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDni_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblContraseña_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

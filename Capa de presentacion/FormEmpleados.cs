@@ -52,6 +52,8 @@ namespace Control_Gym.Capa_de_presentacion
         {
             try
             {
+                OcultarAdvertencia();
+
                 btnCancelarEmpleado.Visible = false;
                 btnActualizarEmpleado.Visible = false;
                 btnEliminarEmpleado.Visible = false;
@@ -138,7 +140,7 @@ namespace Control_Gym.Capa_de_presentacion
                 string dni = mtxtDniEmpleado.Text;
                 if (dni.Length != 8 || !int.TryParse(dni, out _))
                 {
-                    MessageBox.Show("El DNI debe contener exactamente 8 dígitos numéricos.");
+                    MessageBox.Show("El DNI debe contener exactamente 8 dígitos numéricos.", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
 
@@ -159,7 +161,7 @@ namespace Control_Gym.Capa_de_presentacion
 
                     if (existe)
                     {
-                        MessageBox.Show("El DNI ya está en uso. No se puede crear un empleado con el mismo DNI.");
+                        MessageBox.Show("El DNI ya está en uso. No se puede crear un empleado con el mismo DNI.", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                     else
                     {
@@ -171,7 +173,7 @@ namespace Control_Gym.Capa_de_presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Por favor complete los campos.");
+                    MessageBox.Show("Por favor complete los campos.", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception ex)
@@ -187,7 +189,7 @@ namespace Control_Gym.Capa_de_presentacion
                 string dni = mtxtDniEmpleado.Text;
                 if (dni.Length != 8 || !int.TryParse(dni, out _))
                 {
-                    MessageBox.Show("El DNI debe contener exactamente 8 dígitos numéricos.");
+                    MessageBox.Show("El DNI debe contener exactamente 8 dígitos numéricos.", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
 
@@ -214,7 +216,7 @@ namespace Control_Gym.Capa_de_presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Por favor complete los campos.");
+                    MessageBox.Show("Por favor complete los campos.", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception ex)
@@ -251,6 +253,16 @@ namespace Control_Gym.Capa_de_presentacion
         }
 
         // FIN CRUD //
+
+        private void MostrarAdvertencia()
+        {
+            label10.Visible = true;
+        }
+
+        private void OcultarAdvertencia()
+        {
+            label10.Visible = false;
+        }
 
         private void txtTelefonoEmpleado_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -402,6 +414,23 @@ namespace Control_Gym.Capa_de_presentacion
             {
                 ((System.Windows.Forms.TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
             }
+        }
+
+        private void mtxtDniEmpleado_Click(object sender, EventArgs e)
+        {
+            if (mtxtDniEmpleado.ReadOnly)
+            {
+                MessageBox.Show("No se puede modificar el DNI", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                MostrarAdvertencia();
+            }
+        }
+
+        private void mtxtDniEmpleado_Leave(object sender, EventArgs e)
+        {
+            OcultarAdvertencia();
         }
     }
 }

@@ -45,30 +45,6 @@ namespace Control_Gym.Capa_de_presentacion
             }
         }
 
-        private void mostrarElementos()
-        {
-            lblDni.Visible = true;
-            lblNombre.Visible = true;
-            lblApellido.Visible = true;
-            lblTelefono.Visible = true;
-            lblFechaNacimiento.Visible = true;
-            lblDomicilio.Visible = true;
-            lblEmail.Visible = true;
-
-            txtDniSocio.Visible = true;
-            txtNombreSocio.Visible = true;
-            txtApellidoSocio.Visible = true;
-            dtpFechaNacimiento.Visible = true;
-            txtTelefonoSocio.Visible = true;
-            txtDomicilio.Visible = true;
-            txtEmail.Visible = true;
-            txtBuscarSocio.Visible = true;
-
-            dgvSocios.Visible = true;
-
-            btnGuardar.Visible = true;
-        }
-
         private void ocultarElementos()
         {
             lblDni.Visible = false;
@@ -105,7 +81,7 @@ namespace Control_Gym.Capa_de_presentacion
         {
             try
             {
-                if (txtDniSocio.Text != "" && txtNombreSocio.Text != "" && txtApellidoSocio.Text != "" && txtTelefonoSocio.Text != "" && txtDomicilio.Text != "" && txtEmail.Text != "")
+                if (txtDniSocio.Text != "" && txtNombreSocio.Text != "" && txtApellidoSocio.Text != "")
                 {
                     ClsSocio oClsSocio = new ClsSocio();
 
@@ -122,12 +98,7 @@ namespace Control_Gym.Capa_de_presentacion
 
                     if (existeDNI)
                     {
-                        MessageBox.Show("El DNI ya está en uso. No se puede crear el socio.");
-                    }
-
-                    else if (existeEmail)
-                    {
-                        MessageBox.Show("El E-Mail ya está en uso. No se puede crear el socio.");
+                        MessageBox.Show("El DNI ya está en uso. No se puede crear el socio.", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
 
                     else
@@ -144,7 +115,7 @@ namespace Control_Gym.Capa_de_presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Por favor complete todos los campos");
+                    MessageBox.Show("Por favor complete los campos obligatorios", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception ex)
@@ -165,24 +136,13 @@ namespace Control_Gym.Capa_de_presentacion
                 string telefono = txtTelefonoSocio.Text;
                 string domicilio = txtDomicilio.Text;
                 string email = txtEmail.Text;
+                
+                ClsSocio oclsSocio = new ClsSocio();
+                oclsSocio.ModificarSocio(dni, nombre, apellido, fechaNacimiento, telefono, domicilio, email);
+                dgvSocios.DataSource = clsSocio.CargarDatos();
 
-                bool existeEmail = cMembresiaD.EmailExiste(email);
-
-                if (existeEmail)
-                {
-                    MessageBox.Show("El E-Mail ya está en uso. No se puede modificar el socio.");
-                    limpiarCampos();
-                    CancelarModificar();
-                }
-                else
-                {
-                    ClsSocio oclsSocio = new ClsSocio();
-                    oclsSocio.ModificarSocio(dni, nombre, apellido, fechaNacimiento, telefono, domicilio, email);
-                    dgvSocios.DataSource = clsSocio.CargarDatos();
-
-                    limpiarCampos();
-                    CancelarModificar();
-                }
+                limpiarCampos();
+                CancelarModificar();
             }
             catch (Exception ex)
             {
@@ -202,7 +162,7 @@ namespace Control_Gym.Capa_de_presentacion
 
                 if (MembresiaActiva)
                 {
-                    MessageBox.Show("No se puede eliminar el socio porque tiene una membresia relacionada");
+                    MessageBox.Show("No se puede eliminar el socio porque tiene una membresia relacionada", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     limpiarCampos();
                     CancelarModificar();
                 }
@@ -225,6 +185,7 @@ namespace Control_Gym.Capa_de_presentacion
         {
             try
             {
+                OcultarAdvertencia();
                 ClsSocio clsSocio = new ClsSocio();
 
                 dgvSocios.DataSource = clsSocio.CargarDatos();
@@ -324,6 +285,18 @@ namespace Control_Gym.Capa_de_presentacion
             txtEmail.Text = "";
         }
 
+        private void MostrarAdvertencia()
+        {
+            label1.Visible = true;
+            label2.Visible = true;
+        }
+
+        private void OcultarAdvertencia()
+        {
+            label1.Visible = false;
+            label2.Visible = false;
+        }
+
         private void txtDniSocio_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsDigit(e.KeyChar))
@@ -365,7 +338,11 @@ namespace Control_Gym.Capa_de_presentacion
         {
             if (txtDniSocio.ReadOnly)
             {
-                MessageBox.Show("No se puede modificar el DNI de un socio");
+                MessageBox.Show("No se puede modificar el DNI", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                MostrarAdvertencia();
             }
         }
 
@@ -463,6 +440,11 @@ namespace Control_Gym.Capa_de_presentacion
             {
                 ((TextBox)sender).ContextMenuStrip = new ContextMenuStrip();
             }
+        }
+
+        private void txtDniSocio_Leave(object sender, EventArgs e)
+        {
+            OcultarAdvertencia();
         }
     }
 }

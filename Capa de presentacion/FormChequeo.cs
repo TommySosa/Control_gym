@@ -107,7 +107,7 @@ namespace Control_Gym.Capa_de_presentacion
                     }
                     else
                     {
-                        MessageBox.Show("El socio no tiene esta membresía");
+                        MessageBox.Show("El socio no tiene esta membresía","alerta",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
             }
@@ -205,7 +205,7 @@ namespace Control_Gym.Capa_de_presentacion
                     }
                     else
                     {
-                        MessageBox.Show("el DNI ingresado no existe.");
+                        MessageBox.Show("el DNI ingresado no existe.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         limpiarLabels();
                         pbNeutro.Visible = true;
                         pbYes.Visible = false;
@@ -215,7 +215,7 @@ namespace Control_Gym.Capa_de_presentacion
                 }
                 else
                 {
-                    MessageBox.Show("El campo está vacío, ingrese un DNI");
+                    MessageBox.Show("El campo está vacío, ingrese un DNI", "error",MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)

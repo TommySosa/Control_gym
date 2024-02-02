@@ -49,6 +49,7 @@
             this.txtContraseñaEmpleado = new System.Windows.Forms.TextBox();
             this.dtpFechNacEmpleado = new System.Windows.Forms.DateTimePicker();
             this.mtxtDniEmpleado = new System.Windows.Forms.MaskedTextBox();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtvEmpleado)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,10 +59,10 @@
             this.dtvEmpleado.AllowUserToDeleteRows = false;
             this.dtvEmpleado.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dtvEmpleado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtvEmpleado.Location = new System.Drawing.Point(5, 28);
+            this.dtvEmpleado.Location = new System.Drawing.Point(12, 12);
             this.dtvEmpleado.Name = "dtvEmpleado";
             this.dtvEmpleado.ReadOnly = true;
-            this.dtvEmpleado.Size = new System.Drawing.Size(698, 394);
+            this.dtvEmpleado.Size = new System.Drawing.Size(698, 405);
             this.dtvEmpleado.TabIndex = 100;
             this.dtvEmpleado.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtvEmpleado_CellFormatting);
             this.dtvEmpleado.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtvEmpleado_RowHeaderMouseClick);
@@ -286,9 +287,22 @@
             this.mtxtDniEmpleado.Name = "mtxtDniEmpleado";
             this.mtxtDniEmpleado.Size = new System.Drawing.Size(156, 20);
             this.mtxtDniEmpleado.TabIndex = 0;
+            this.mtxtDniEmpleado.Click += new System.EventHandler(this.mtxtDniEmpleado_Click);
             this.mtxtDniEmpleado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mtxtDniEmpleado_KeyDown);
             this.mtxtDniEmpleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mtxtDniEmpleado_KeyPress);
+            this.mtxtDniEmpleado.Leave += new System.EventHandler(this.mtxtDniEmpleado_Leave);
             this.mtxtDniEmpleado.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mtxtDniEmpleado_MouseDown);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(757, 9);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(215, 13);
+            this.label10.TabIndex = 101;
+            this.label10.Text = "*El DNI no se podrá modificar mas adelente!";
             // 
             // FormEmpleados
             // 
@@ -296,6 +310,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(974, 448);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.mtxtDniEmpleado);
             this.Controls.Add(this.dtpFechNacEmpleado);
             this.Controls.Add(this.txtContraseñaEmpleado);
@@ -350,5 +365,6 @@
         private System.Windows.Forms.TextBox txtContraseñaEmpleado;
         private System.Windows.Forms.DateTimePicker dtpFechNacEmpleado;
         private System.Windows.Forms.MaskedTextBox mtxtDniEmpleado;
+        private System.Windows.Forms.Label label10;
     }
 }
